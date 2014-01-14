@@ -1,0 +1,41 @@
+\documentclass[a4paper,12pt]{book}
+\usepackage{inputenc}
+\usepackage[spanish]{babel}
+%\usepackage{graphicx}
+\usepackage{fontspec}
+%\usepackage{classicthesis} 
+%\usepackage{arsclassica}
+\usepackage[hidelinks]{hyperref}
+%\usepackage{bookmark}
+\setmainfont{Helvetica Neue}
+
+
+\begin{document}
+
+\author{Rub\'{e}n Agudo Santos}
+\title{Trabajo de Fin de Grado}
+\date{\today}
+
+\frontmatter
+\maketitle
+\tableofcontents
+
+\mainmatter
+    
+   \include{./Chapters/Introduccion}
+   \include{./Chapters/Objetivos_del_proyecto}
+   \include{./Chapters/Antecedentes}
+   \include{./Chapters/Captura_de_requisitos}
+   \include{./Chapters/Analisis_y_Diseno}
+   \include{./Chapters/Verificacion_y_evaluacion}
+   \include{./Chapters/Conclusiones_y_trabajo_futuro}
+    
+    
+    
+\backmatter
+    \bibliographystyle{plain}
+    \bibliography{./Bibliography/bibliografia}
+    
+% bibliography, glossary and index would go here.
+
+\end{document}

@@ -1,0 +1,93 @@
+\chapter{An\'{a}lisis y dise\~{n}o}
+%\newpage
+Cómo se plantea el desarrollo del trabajo. En que partes se 
+divide la solución, justificando dicha división y explicando 
+cada una de las partes.
+
+En aquellos trabajos donde sea aplicable se documentará 
+usando el modelo de dominio, el diagrama de clases, los 
+módulos/paquetes del software desarrollado, etc.
+
+\section{An\'{a}lisis}
+
+\section{Dise\~{n}o}
+
+\subsection{Librer\'{i}as usadas}
+\begin{itemize}
+    \item \textbf{AvalonDock:} 
+    Es una librer\'{i}a que permite crear ventanas acoplables en WPF, al mas puro estilo Eclipse o Visual Studio. Es una librer\'{i}a de
+    c\'{o}digo abierto y gratuita, pese a que tambi\'{e}n dispone de una versi\'{o}n profesional que es de pago. La usada en este proyecto
+    ha sido la versi\'{o}n gratuita o \emph{community} como dicen ellos. La versi\'{o}n usada esta licenciada bajo licencia BSD.
+    
+\end{itemize}
+
+\subsection{Patrones utilizados}
+
+\subsubsection{MVVM}
+
+\subsubsection{Iterator}
+Si bien el titulo alude al patr\'{o}n \emph{Iterator} .NET no dispone como Java de la interfaz \texttt{Iterable}.
+En cambio, dispone de una interfaz llamada \texttt{IEnumerator<>} que ofrece toda la funcionalidad b\'{a}sica del iterator,
+y con algunas funcionalidades extra.
+
+He decidido utilizar este patr\'{o}n por los siguientes motivos:
+\begin{enumerate}
+    \item \textbf{Abstracci\'{o}n:}
+    Al utilizar este patr\'{o}n podemos obtener los elementos de un contenedor, que puede ser un \texttt{array}, una \texttt{LinkedList<>}... sin
+    exponer su representaci\'{o}n interna, aumentando la seguridad y previniendo que una clase tenga acceso a cosas que no deba.
+    
+    \item \textbf{Facilidad de uso:}
+    Siempre es preferible utilizar cosas que nos provea el \emph{framework}, ya que no es necesario perder el tiempo en banalidades como 
+    recorrer una lista, y probablemente lo haremos menos eficientemente que lo actualmente programado. De todas formas, si necesitamos
+    recorrerlo de una manera particular, y que sabemos hacerlo muy eficientemente, no hay problema en no seguir el patr\'{o}n, ya que no son
+    normas, si no recomendaciones.
+    
+    \item \textbf{Prevenci\'{o}n de errores:}
+    Relacionado con lo anterior. Si perdemos el tiempo a\~{n}adiendo l\'{i}neas extra la probabilidad de que cometamos un error aumenta. Y aunque
+    no lo haya probado emp\'{i}ricamente, tendemos a pensar que \emph{¿Como me voy a equivocar en recorrer un array? ¡Pero si est\'{a} perfecto!}. 
+    Y ello nos llevar\'{a} a malgastar m\'{a}s aun nuestro preciado tiempo. Pero al menos nos daremos cuenta de nuestro error y veremos lo
+    \'{u}tiles que son los patrones.
+\end{enumerate}
+
+\subsection{SOLID}
+SOLID es un acr\'{o}nimo mnem\'{o}nico acu\~{n}ado a comienzos de la d\'{e}cada de los 2000 por Robert C. Martin \cite{bringhurst:elements} 
+que hace representa cinco principios b\'{a}sicos de la programaci\'{o}n orientada a objetos y el dise\~{n}o de software.
+
+SOLID merece un apartado en esta memoria ya que he intentado cumplir en el mayor grado que me ha sido posible los cinco principios.
+
+Los principios son los siguientes:
+\subsubsection{Single responsibility principle}
+Traducido al castellano: Princpio de responsabilidad \'{u}nica. El nombre puede llevar a enga\~{n}o ya que Martin define como \emph{responsabilidad}
+a una \emph{raz\'{o}n de cambio}. Martin, concluye que una clase, debiera tener, una, y solamente una raz\'{o}n para cambiar.
+
+Por ejemplo, imaginemos que disponemos de una clase, o m\'{o}dulo que compila e imprime un informe. Ese informe puede cambiar por dos razones,
+de estilo, o de contenido. 
+
+El principio de responsabilidad \'{u}nica dice que una clase solo debiera cambiar por un motivo, y por tanto tendr\'{i}amos que separar el m\'{o}dulo
+en dos: El que compila el informe, y el que lo imprime.
+
+Utilizando este principio volveremos nuestro c\'{o}digo mas robusto, ya que un cambio en una clase, no deber\'{i}a afectar a la salida, y por tanto
+los siguientes m\'{o}dulos que se alimenten de esa clase.
+
+\subsubsection{Open/Closed principle}
+El principio abierto / cerrado implica que una clase est\'{a} abierta a la extensi\'{o}n pero cerrada a la modificaci\'{o}n. Ya que un cambio en el
+funcionamiento de una clase har\'{i}a tambalear la estabilidad de nuestro software.
+
+\subsubsection{Liskov's substitution principle}
+El principio de sustituci\'{o}n de Liskov \footnote{\url{https://en.wikipedia.org/wiki/Barbara_Liskov}} sostiene que cualquier subtipo de una clase
+debe poder sustituir a su supertipo sin que haya un cambio de comportamiento.
+
+M\'{a}s formalmente: Si \textbf{S} es un subtipo de \textbf{T} entonces \textbf{T} puede sustituirse por \textbf{S} y 
+conservar su exactitud, tarea que realiza etc.
+
+\subsubsection{Interface segregation principle}
+El principio de segregaci\'{o}n de interfaces dice que es mejor tener muchas interfaces espec\'{i}ficas, que una gran interfaz que contenga todo.
+
+De esta manera evitamos que haya partes del software que dependan de m\'{e}todos que no influyen en esa clase.
+
+\subsubsection{Dependency inversion principle}
+El principio de Inversi\'{o}n de dependencia dice que:
+\begin{enumerate}
+    \item Los m\'{o}dulos de alto nivel no deben depender en m\'{o}dulos de bajo nivel. Ambos deben depender de abstracciones
+    \item Las abstracciones no deben depender en los detalles. Los detalles deben depender de las abstracciones.
+\end{enumerate}
