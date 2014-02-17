@@ -1,12 +1,12 @@
 \chapter{An\'{a}lisis y dise\~{n}o}
 %\newpage
-Cómo se plantea el desarrollo del trabajo. En que partes se 
-divide la solución, justificando dicha división y explicando 
-cada una de las partes.
+%Cómo se plantea el desarrollo del trabajo. En que partes se 
+%divide la solución, justificando dicha división y explicando 
+%cada una de las partes.
 
-En aquellos trabajos donde sea aplicable se documentará 
-usando el modelo de dominio, el diagrama de clases, los 
-módulos/paquetes del software desarrollado, etc.
+%En aquellos trabajos donde sea aplicable se documentará 
+%usando el modelo de dominio, el diagrama de clases, los 
+%módulos/paquetes del software desarrollado, etc.
 
 \section{An\'{a}lisis}
 
@@ -22,9 +22,38 @@ módulos/paquetes del software desarrollado, etc.
     Es la librer\'{i}a de Microsoft para realizar distintos tipos de gr\'{a}ficas.
 \end{itemize}
 
+\subsection{title}
+
 \subsection{Patrones utilizados}
 
 \subsubsection{MVVM}
+MVVM es un patr\'{o}n de dise\~{n}o creado por Microsoft. Intenta conseguir las ventajas de Model-View-Controller como ademas una separaci\'{o}n total
+de la vista del controlador. De esta forma los dise\~{n}adores de UI pueden centrar todos sus esfuerzos en crear la interfaz sin preocuparse 
+del c\'{o}digo de la aplicaci\'{o}n, ya que se asume que la interfaz va a cambiar mucho durante el ciclo de vida de la aplicaci\'{o}n. Pero,
+¿Si separamos totalmente la vista del modelo, como se comunican? En MVC el encargado de eso es el controlador, pero un detalle importante es 
+que el c\'{o}digo referente a la vista debe tener llamadas a funciones en el lenguaje utilizado.
+
+Y en este punto es donde la parte VM \footnote{View-Model} toma sentido. el View-Model es una abstracci\'{o}n de la vista, y que es el objetivo 
+de los enlaces de datos. El View-Model expone los datos del modelo para que el creador de interfaces pueda enlazar los elementos de la UI
+con los datos del modelo (bien utilizando orientaci\'{o}n a objetos o exponiendo los datos de la BD) sin escribir una sola l\'{i}nea de 
+c\'{o}digo .NET.
+
+\paragraph{Elementos de MVVM}
+
+\begin{itemize}
+    \item \textbf{Model:} Dentro del patr\'{o}n MVC corresponde al modelo de dominio utilizando orientaci\'{o}n a objetos, o a los datos
+    representados por una BD.
+    \item \textbf{View:} La interfaz de usuario con sus botones, cajas de texto etc.
+    \item \textbf{View Model:} Es la \emph{Vista del Modelo}, siendo una abstracci\'{o}n que sirve de mediadora y que expone los datos
+    del modelo a la vista, para que esta \'{u}ltima pueda utilizarlas mediante enlaces de datos simples que no requieren de c\'{o}digo, sino
+    que se crean mediante XAML. Realmente, no s\'{o}lo expone los datos, si no que ademas convierte los datos del modelo, en datos de vista, listos
+    para ser visualizados.
+\end{itemize}
+
+\paragraph{Cr\'{i}ticas}
+Es curioso que las principales cr\'{i}ticas provengan de su creador, Josh Gossman, el cual dice que utilizar a la fuerza MVVM para operaciones simples
+de UI es una exageraci\'{o}n y que si los enlaces de datos si no se gestionan correctamente puede llevar a un consumo excesivo de 
+memoria de la aplicaci\'{o}n \cite{MVVM:Criticism}
 
 \subsubsection{Iterator}
 Si bien el titulo alude al patr\'{o}n \emph{Iterator} .NET no dispone como Java de la interfaz \texttt{Iterable}.
@@ -59,7 +88,7 @@ SOLID merece un apartado en esta memoria ya que he intentado cumplir en el mayor
 Los principios son los siguientes:
 \subsubsection{Single responsibility principle}
 Traducido al castellano: Princpio de responsabilidad \'{u}nica. El nombre puede llevar a enga\~{n}o ya que Martin define como \emph{responsabilidad}
-a una \emph{raz\'{o}n de cambio}. Martin, concluye que una clase, debiera tener, una, y solamente una raz\'{o}n para cambiar.
+a una \emph{raz\'{o}n de cambio} \cite{brunetti-JMMM-2002}. Martin, concluye que una clase, debiera tener, una, y solamente una raz\'{o}n para cambiar.
 
 Por ejemplo, imaginemos que disponemos de una clase, o m\'{o}dulo que compila e imprime un informe. Ese informe puede cambiar por dos razones,
 de estilo, o de contenido. 
