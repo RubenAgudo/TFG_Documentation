@@ -1,0 +1,109 @@
+\chapter{Desarrollo}
+%Explicacion del trabajo desarrollado usando un lenguaje natural
+%se debe dar respuesta a cuestiones como ¿Que se ha hecho? Tambien se explicara
+%que problemas se han encontrado durante el desarrollo del trabajo, que soluciones 
+%se han estudiado, cual fue la elegida etc. Todo ello justificando las decisiones tomadas
+
+\section{Qu\'{e} se ha hecho}
+Se ha desarrollado una aplicac\'{i}on que dados unos datos organizados
+de una determinada manera permite la visualizaci\'{o}n de los mismos y
+la selecci\'{o}n de unos rangos para guardar determinar que en ese rango de tiempo
+est\'{a} sucediendo una acci\'{o}n determinada.
+
+Los datos representan Pasos y Observaciones. Cada paso y observaci\'{o}n tiene una serie
+de propiedades que son las que se visualizan. Estos datos, cuando fueron capturados, puede
+que tengan uno o varios v\'{i}deos asociados. La visualizaci\'{o}n de los v\'{i}deos es completamente
+optativa, y en caso de visualizarlos, ir\'{a}n sincronizados con los gr\'{a}ficos.
+
+Es decir, en cada gr\'{a}fico habr\'{a} una l\'{i}nea de progreso para que sea f\'{a}cil determinar en que momento
+de simulaci\'{o}n estamos \footnote{Un momento de simulaci\'{o}n es la unidad de tiempo elegida para la captura de datos, no
+    necesariamente es un segundo.}.
+
+\section{Decisiones importantes tomadas}
+La elecci\'{o}n de la plataforma y entorno de desarrollo ven\'{i}a dada, por lo que las elecciones han sido tomadas
+tomando como base que iba a usarse como Sistema Operativo, Windows 8.1 y Visual Studio 2013 como IDE.
+
+\subsection{¿WPF o Windows Forms?}
+Ambas tecnolog\'{i}as pertenecen a Microsoft, pero tienen diferencias clave. Entre otras cosas, WPF tuvo su lanzamiento inicial en 2006
+junto con .NET Framework 3 \cite{WPF:Overview}. En cambio Windows Forms es una tecnolog\'{i}a 
+mucho mas madura, que tiene a sus espaldas 12 años de desarrollo, y que fue lanzada junto con la primera versi\'{o}n de .NET Framework.
+
+\subsubsection{Comparativa}
+Lo mejor para realizar la comparativa es mediante una tabla, ya que se ven las capacidades de cada tecnolog\'{i}a.
+La tabla ha sido confeccionada a partir de los datos obtenidos de \cite{WPFvsWinForms:Comparative} y elaboraci\'{o}n propia.
+
+\begin{table}[H]
+    \begin{center}
+        \rowcolors{1}{lightgray}{} %\rowcolors{<starting row index>}{<odd row color>}{<even row color>}
+        \begin{tabular}{|p{5cm} | p{4cm} | p{4cm}|}
+            \rowcolor{darkgray}                         & \color{white}Windows Forms               & \color{white}WPF \\
+            Formularios y controles                     & Si                                       & Si \\
+            Documentos en pantalla                      & Si                                       & Si \\
+            Documentos de formato fijo (XPS, PDF)       & No                                       & Si \\
+            Im\'{a}genes                                & No                                       & Si \\
+            V\'{i}deo y audio                           & No                                       & Si \\
+            Gr\'{a}ficos 2D                             & No                                       & Si \\
+            Gr\'{a}ficos 3D                             & No                                       & Si \\
+            Interfaz compatible con altas resoluciones  & No, basada en BMP                        & Si, basada en vectores \\
+            Creaci\'{o}n de la interfaz                 & Arrastrando y soltando los elementos     & Interfaz declarativa tipo XML \\
+            Multilenguaje                               & Mediante archivos de recursos, f\'{a}cil y bien documentado & Mediante DLLs sat\'{e}lite, poco documentado y las herramientas aun no est\'{a}n listas para un entorno de producci\'{o}n. \\
+            \hline
+        \end{tabular}
+    \end{center}
+\end{table}
+
+Como la mayor\'{i}a de las cosas que necesitaba para el proyecto WPF las cumpl\'{i}a sin a\~{n}adidos extra como GDI+ me decant\'{e} por
+WPF.
+
+\subsection{Sistema de gr\'{a}ficos}
+A la hora de elegir de que manera iba a tratar los gr\'{a}ficos establec\'{i} una serie de caracter\'{i}sticas
+que se deb\'{i}an satisfacer para elegir la librar\'{i}a.
+
+Las condiciones son:
+\begin{itemize}
+    \item Permitir mostrar gr\'{a}ficos cont\'{i}nuos y discretos, y estos \'{u}ltimos tanto num\'{e}ricos como por categor\'{i}as.
+    \item Permitir la selecci\'{o}n de rangos con el rat\'{o}n.
+    \item Permitir mostrar el progreso del v\'{i}deo asociado. Bien sin programar la funci\'{o}n o al menos que fuese f\'{a}cilmente programable.
+\end{itemize}
+
+\subsubsection{Gr\'{a}ficos integrados de WPF}
+Al principio parec\'{i}a una alternativa interesante, ya que no habr\'{i}a que depender de librer\'{i}as externas. Pero resulta
+que son unos gr\'{a}ficos muy sencillos, con apenas opciones y que b\'{a}sicamente son unas polilineas sobre un elemento canvas.
+
+Para conseguir satisfacer las condiciones requeridas para ser elegido requerir\'{i}a de un trabajo importante construyendo por mi mismo
+las funciones requeridas, ya que de serie no cumple mas que el primer punto, adem\'{a}s sin mostrar datos sobre las leyendas ni permitiendo superponer
+varias series de datos etc.
+
+\paragraph{Ventajas:} Integrado en WPF, las funciones de serie son muy f\'{a}ciles de usar, documentaci\'{o}n abundante en MSDN.
+\paragraph{Desventajas:} De serie no permite la selecci\'{o}n de rangos ni leyendas, ni mostrar el progreso asociado a un v\'{i}deo.
+\paragraph{Veredicto:} Rechazado. 
+
+\subsubsection{AForge .NET}
+Framework ampliamente recomendada y usada para el tratamiento de im\'{a}genes, gr\'{a}ficos, Computer Vision, inteligencia artificial, machine learning etc.
+
+De serie soporta mostrar los gr\'{a}ficos continuos y discretos y la selecci\'{o}n de rangos. Al permitir la selecci\'{o}n de rangos
+intuyo que programar la sincronizaci\'{o}n con el v\'{i}deo es bastante f\'{a}cil.
+
+\paragraph{Ventajas:} Framework Open Source, cumple con todos los requisitos, documentaci\'{o}n abundante.
+\paragraph{Desventajas:} Los controles para mostrar los gr\'{a}ficos son controles .NET, no WPF. La documentaci\'{o}n sobre mostrar los gr\'{a}ficos no
+esta demasiado elaborada.
+\paragraph{Veredicto:} Rechazado.
+
+\subsubsection{WPF Toolkit}
+Extensi\'{o}n open source de las capacidades de mostrar gr\'{a}ficos de WPF desarrollado por Microsoft de manera oficial. 
+Ofrece una manera muy simple y muy clara depoder enlazar datos con un ViewModel o bien de manera program\'{a}tica. 
+Admite la representaci\'{o}n de todo tipo de gr\'{a}ficos imaginables: Histrogramas, \'{a}rea, barras horizontales, 
+l\'{i}nea, dispersi\'{o}n, circular (tarta), burbuja...
+ 
+La presentaci\'{o}n de los gr\'{a}ficos es muy profesional, pero no he encontrado ninguna manera de poder seleccionar un rango sin tener que modificar
+por mi mismo las clases del propio toolkit. Por lo que \'{u}nicamente cumple uno de los tres requisitos indispensables, y el \emph{workaround} no
+es algo que se haga en un momento y no es algo sencillo de llevar a cabo.
+
+\paragraph{Ventajas:} Open Source, mantenido por Microsoft, por lo que podemos asegurar una estabilidad alta, sencillez de uso, gr\'{a}ficos profesionales.
+\paragraph{Desventajas:} Ausencia total de documentaci\'{o}n, el proyecto lleva sin actualizarse desde 2010, no permite de manera f\'{a}cil seleccionar 
+rangos ni sincronizar con v\'{i}deo.
+\paragraph{Veredicto:} Rechazado.
+
+\subsubsection{OxyPlot}
+
+\section{Problemas}
