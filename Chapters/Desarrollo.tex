@@ -5,9 +5,9 @@
 %se han estudiado, cual fue la elegida etc. Todo ello justificando las decisiones tomadas
 
 \section{Qu\'{e} se ha hecho}
-Se ha desarrollado una aplicac\'{i}on que dados unos datos organizados
+Se ha desarrollado una aplicaci\'{o}n que dados unos datos organizados
 de una determinada manera permite la visualizaci\'{o}n de los mismos y
-la selecci\'{o}n de unos rangos para guardar determinar que en ese rango de tiempo
+la selecci\'{o}n de unos rangos para guardar y determinar que en ese rango de tiempo
 est\'{a} sucediendo una acci\'{o}n determinada.
 
 Los datos representan Pasos y Observaciones. Cada paso y observaci\'{o}n tiene una serie
@@ -157,22 +157,118 @@ lo que a\~{n}ade una capa de complejidad que queremos evitar, y haciendo los dat
 \paragraph{Veredicto:} Rechazado.
 
 \subsection{XML}
-Est\'{a}ndar desarrollado por W3C que intenta ser un formato que sea f\'{a}cilmente legible por los humanos tanto como por las m\'{a}quinas.
+Est\'{a}ndar desarrollado por W3C que intenta ser un formato que sea f\'{a}cilmente legible por los humanos tanto como por las m\'{a}quinas. La
+versi\'{o}n actual es 1.0 quinta edici\'{o}n. Es un formato recomendado por la W3C \cite{XML:Specification}.
+
+\paragraph{Ventajas:} Formato est\'{a}ndar ampliamente utilizado, f\'{a}cil de leer y de crear tanto por humanos como por m\'{a}quinas, los
+lenguajes modernos permiten cargar los XML f\'{a}cilmente y realizar consultas similares a SQL por lo que buscar, filtrar e iterar se hace muy sencillo.
+Tambi\'{e}n muy f\'{a}cil compartir informaci\'{o}n entre aplicaciones si se define un esquema com\'{u}n y si es validado en ambos extremos los datos
+siempre ser\'{a}n consistentes. No requiere de un software externo para funcionar.
+
+\paragraph{Desventajas:} Propiamente dicho no es un formato pensado para aplicaciones de escritorio, sino para la web. No se puede acceder a los datos 
+directamente como de una base de datos se tratase, ya que el fichero tiene que se proporcionado para su uso.
+\paragraph{Veredicto:} Aceptado.
 
 \section{Estructura de los XML de guardado y cargado de datos}
-
+Despu\'{e}s de elegir como \'{i}bamos a guardar los datos, llegamos a la tesitura de elegir una estructura de guardado. las dos opciones son las
+siguientes. 
 \subsection{Estructura 1}
+\lstinputlisting[tabsize=2, language=XML]{./Attachments/Adjunto1.xml}
+
+Como se puede observar, el acercamiento sugerido es, que por cada instante de simulaci\'{o}n guardemos las observaciones que est\'{a}n teniendo lugar,
+y los valores de las propiedades que tienen en ese instante.
+
+Este formato, a la vista parece bueno, ya que podr\'{i}amos construir los gr\'{a}ficos instante a instante, todos a la vez. Pero, ¿Y si queremos
+obtener el valor de una propiedad en concreto para mostrar todo el gr\'{a}fico de golpe? No se obtiene de manera directa, ya que habr\'{i}a que ciclar
+a trav\'{e}s de todos los nodos instante, y a trav\'{e}s de todos los nodos observaci\'{o}n, buscando la propiedad que nos interesa. 
+
+N\'{o}tese que en distintas observaciones puede haber propiedades que tengan el mismo nombre, aumentando de complejidad la b\'{u}squeda.
 
 \subsection{Estructura 2}
+\lstinputlisting[tabsize=2, language=xml]{./Attachments/Adjunto2.xml}
+
+En este segundo ejemplo, de un simple vistazo podemos determinar todos los valores que va a tomar una propiedad de una observaci\'{o}n en concreto,
+sin ning\'{u}n tipo de iteraci\'{o}n. En el nodo \emph{<data>} se ha a\~{n}adido un nuevo atributo \emph{instantLength} que determina, en segundos,
+la longitud de un instante. 
+
+Por ejemplo, en la propiedad \emph{prop14} se ve que los instantes no son consecutivos, por lo que el sistema sabe que el gr\'{a}fico ha de ser
+disjunto en ese punto, es decir, desde el punto (1, 4) no debe unirse al (3, 5). Esto es \'{u}til para saber si una propiedad esta sucediendo o no.
 
 \section{Gesti\'{o}n del c\'{o}digo fuente}
+Todo proyecto debe llevar una gesti\'{o}n eficiente de su c\'{o}digo fuente de una u otra manera. Las opciones que se barajaron fueron las siguientes,
+teniendo en cuenta que deb\'{i}a permitir volver a versiones anteriores f\'{a}cilmente y poder trabajar sobre una copia, y sincronizar con los
+distintos dispositivos de desarrollo que utilizo habitualmente.
+
 \subsection{Dropbox}
+Un viejo conocido desde principios de la carrera. Un servicio de sincronizaci\'{o}n de carpetas, que ofrece un ``pendrive´´ en la nube de 2GB ampliable.
+
+\paragraph{Ventajas:} La sincronizaci\'{o}n entre dispositivos es perfecta, realiz\'{a}ndose al instante, multiplataforma, y gratuito, pero de c\'{o}digo
+cerrado, mantiene un hist\'{o}rico de cambios de los archivos. Sencill\'{i}simo de utilizar, apenas requiere de configuraci\'{o}n o conocimientos
+t\'{e}cnicos.
+
+\paragraph{Desventajas:} Para trabajar sobre una copia, hay que realizar una copia f\'{i}sica de todo el proyecto, algo que no suele ser pr\'{a}ctico.
+Todos los cambios que se realicen se confirman al instante en todos los dispositivos, pudiendo romper algo que funcionaba bien. Dif\'{i}cil de manejar
+el hist\'{o}rico de versiones, ya que crea una copia cada vez que sincroniza un cambio.
+
+\paragraph{Veredicto:} Rechazado.
 
 \subsection{GIT}
+Software de control de versiones distribuido, dise\~{n}ado espec\'{i}ficamente para esa tarea por Linus Torvalds y contribuyentes. Aunque esta dise\~{n}ado 
+para que un equipo pueda trabajar de manera mas eficiente y con pocos conflictos, es muy \'{u}til para proyectos unipersonales, ya que no vas a tener que
+resolver conflictos porque todo ha sido desarrollado por ti, y tienes todas las ventajas de un software de control de versiones.
+
+\paragraph{Ventajas:} Permite la creaci\'{o}n de versiones (bifurcaciones) del c\'{o}digo actual, manteniendo 2 versiones paralelas. Permite volver a 
+cualquier instante de desarrollo del proyecto que se hubiera confirmado previamente. Fusionar dos ramas de desarrollo etc. Para mas informaci\'{o}n ver la 
+secci\'{o}n de herramientas utilizadas.
+
+\paragraph{Desventajas:} Curva de aprendizaje pronunciada. Pese a que hay disponibles muchas interfaces gr\'{a}ficas, para sacarle todo el provecho hay
+que utilizar la consola. Requiere de una configuraci\'{o}n inicial que depende de la experiencia puede ser mas o menos compleja.
+
+\paragraph{Veredicto:} Aceptado.
 
 \section{Creaci\'{o}n de la documentaci\'{o}n}
+Aunque esta secci\'{o}n pueda parecer una elecci\'{o}n obvia, me trajo bastantes quebraderos de cabeza. Por un lado quer\'{i}a algo que no requiriera
+de un estudio previo de 3 meses, que fuese lo suficientemente potente, que su rendimiento no decreciera seg\'{u}n aumentaban las p\'{a}ginas, y desde luego,
+que pudiera editar tanto desde Windows, como Linux.
 \subsection{Microsoft Office}
+C\'{o}mo el proyecto lo estaba realizando en Windows, y para Windows, parec\'{i}a la elecci\'{o}n obvia. Un producto potente muy bien integrado
+en Windows, que permite crear documentos muy vistosos de manera muy sencilla. Pese a solo tener versiones oficiales de Windows y Mac OSX en Linux
+funciona razonablemente bien utilizando WINE.
+
+\paragraph{Ventajas:} Muy f\'{a}cil de usar y utilizado en numerosas ocasiones a lo largo de la carrera. Sigue un esquema WYSIWYG (Lo que ves, es lo
+que obtienes), por lo que el dise\~{n}o se hace muy sencillo. Exporta a PDF directamente.
+
+\paragraph{Desventajas:} De pago, seg\'{u}n aumenta el n\'{u}mero de p\'{a}ginas el rendimiento desciende, sobre todo si tiene im\'{a}genes o tablas
+grandes. El tama\~{n}o de los ficheros resultantes, si tiene im\'{a}genes es bastante grande. A veces la colocaci\'{o}n de las tablas y las im\'{a}genes
+puede ser intrincado.
+
+\paragraph{Veredicto:} Rechazado.
+
 
 \subsection{LibreOffice / OpenOffice}
+B\'{a}sicamente tuve en cuenta a LibreOffice y OpenOffice porque son multiplataforma, pero adolecen de los mismos problemas que Microsoft Office.
+El manejo de tablas e im\'{a}genes es aun mas complicado, y no se consiguen resultados visualmente tan agradables.
+
+Se que todo lo que se hace en Microsoft Word puede hacerse en LibreOffice, pero requerir\'{i}a de dedicarle bastante tiempo a estudiar como hace
+LibreOffice las cosas. Como ventaja a\~{n}adida tiene que es una suite ofim\'{a}tica gratuita y de c\'{o}digo abierto.
+
+\paragraph{Veredicto:} Rechazado.
 
 \subsection{\LaTeX}
+Software de composici\'{o}n de textos creado por Donald E. Knuth \footnote{\url{http://www-cs-faculty.stanford.edu/~uno/}} muy popular entre los
+cient\'{i}ficos. Ofrece una manera similar de crear documentos a HTML aunque deber\'{i}a decirse al rev\'{e}s, ya que \LaTeX es bastante mas antiguo.
+
+Para sacarle todo el partido se requiere un buen editor, con resaltado de sintaxis y autocompletado, mi elecci\'{o}n ha sido TexStudio, un
+software de c\'{o}digo abierto que ofrece todo tipo de facilidades, multiplataforma.
+
+\paragraph{Ventajas:} Independientemente de lo largo o complejo que sea el texto, el archivo que lo contiene es un fichero en texto plano, por lo que
+puede ser editado pr\'{a}cticamente con cualquier editor de textos. Independientemente del software que se use para su creaci\'{o}n, una vez compilado
+en todos los sitios se ver\'{a} igual. Abstrae al escritor de la forma para que se centre en el contenido, el estilo se define una vez, al inicio del
+escrito, y se mantiene consistente a lo largo de todo el documento. Proyecto Open Source y mucha documentaci\'{o}n online. Miles de paquetes y 
+macros que extienden la funcionalidad inicial, por ejemplo para mostrar c\'{o}digo de manera limpia, estilos etc. 
+
+\paragraph{Desventajas:} Requiere de un aprendizaje previo, as\'{i} como la necesidad de instalar un software externo que compile lo que hemos escrito,
+conocido como \emph{Distribuciones \LaTeX}. Al ser tan extensible cada paquete dispone de su propia documentaci\'{o}n por lo que puede ser mas improductivo
+al principio. 
+
+\paragraph{Veredicto:} Aceptado.
