@@ -142,22 +142,21 @@ que resultar\'{i}a en muchas tablas y referencias para obtener unos datos muy se
 \paragraph{Veredicto:} Rechazado.
 
 \subsection{MongoDB}
-Base de datos de nueva generaci\'{o}n conocida como NoSQL. Los datos se guardan en estructuras conocidas como ``documentos´´ y a su vez los
-documentos se guardan en ``colecciones´´. Cada documento tiene un formato muy similar a JSON 
+Base de datos de nueva generaci\'{o}n conocida como NoSQL. Los datos se guardan en estructuras conocidas como "documentos" y a su vez los
+documentos se guardan en "colecciones". Cada documento tiene un formato muy similar a JSON 
 \footnote{especificaci\'{o}n JSON: \url{http://json.org/}}.
 
 \paragraph{Ventajas:} Open Source, en los \'{u}ltimos tiempos se ha vuelto muy popular por lo que hay muchas referencias
 online. Muy buen rendimiento cuando no hay que hacer relaciones, permite guardar y recuperar estructuras de datos muy complejas. Drivers
-muy potentes para el desarrollo en C\#.
+muy potentes para el desarrollo en C#.
 
 \paragraph{Desventajas:} Al no ser un est\'{a}ndar no sabemos si seguira existiendo de aqu\'{i} a diez a\~{n}os. Obligar\'{i}amos
 al resto de software que vaya a interactual con el nuestro a utilizar la base de datos aunque \'{u}nicamente sea para leer los datos,
-lo que a\~{n}ade una capa de complejidad que queremos evitar, y haciendo los datos mas ``oscuros´´ y ocultos.
+lo que a\~{n}ade una capa de complejidad que queremos evitar, y haciendo los datos mas "oscuros" y ocultos.
 
 \paragraph{Veredicto:} Rechazado.
 
 \subsection{XML}
-Est\'{a}ndar desarrollado por W3C que intenta ser un formato que sea f\'{a}cilmente legible por los humanos tanto como por las m\'{a}quinas.
 
 \section{Estructura de los XML de guardado y cargado de datos}
 
