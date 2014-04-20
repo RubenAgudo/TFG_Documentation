@@ -173,7 +173,7 @@ directamente como de una base de datos se tratase, ya que el fichero tiene que s
 Despu\'{e}s de elegir como \'{i}bamos a guardar los datos, llegamos a la tesitura de elegir una estructura de guardado. las dos opciones son las
 siguientes. 
 \subsection{Estructura 1}
-\lstinputlisting[tabsize=2, language=XML]{./Attachments/Adjunto1.xml}
+\lstinputlisting[tabsize=2, language=XML, numbers=left]{./Attachments/Adjunto1.xml}
 
 Como se puede observar, el acercamiento sugerido es, que por cada instante de simulaci\'{o}n guardemos las observaciones que est\'{a}n teniendo lugar,
 y los valores de las propiedades que tienen en ese instante.
@@ -185,7 +185,7 @@ a trav\'{e}s de todos los nodos instante, y a trav\'{e}s de todos los nodos obse
 N\'{o}tese que en distintas observaciones puede haber propiedades que tengan el mismo nombre, aumentando de complejidad la b\'{u}squeda.
 
 \subsection{Estructura 2}
-\lstinputlisting[tabsize=2, language=xml]{./Attachments/Adjunto2.xml}
+\lstinputlisting[tabsize=2, language=xml, numbers=left]{./Attachments/Adjunto2.xml}
 
 En este segundo ejemplo, de un simple vistazo podemos determinar todos los valores que va a tomar una propiedad de una observaci\'{o}n en concreto,
 sin ning\'{u}n tipo de iteraci\'{o}n. En el nodo \emph{<data>} se ha a\~{n}adido un nuevo atributo \emph{instantLength} que determina, en segundos,
