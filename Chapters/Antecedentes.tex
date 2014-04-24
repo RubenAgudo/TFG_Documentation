@@ -28,3 +28,16 @@ ten\'ia que ya hab\'ia creado algunas aplicaciones MDI en .NET por lo que no hab
 Pero afront\'emoslo, estamos en 2014 y las ventanas MDI no son muy c\'omodas de utilizar cuando se disponen de varias ventanas
 abiertas, ya que no se acoplan autom\'aticamente a los lados, ni se pueden crear pesta\~nas de manera din\'amica.
 Por otro lado, las ventanas MDI fueron desaprobadas en WPF, que es el nuevo sistema de ventanas de Microsoft.
+
+\subsection{Crear una interfaz tipo IDE}
+La mayor\'ia de los IDE que conocemos, como Eclipse, Visual Studio, NetBeans IntelliJ Idea... disponen de un sistema de 
+ventanas acoplables din\'amicas. Pueden crearse grupos de pesta\~nas, redimensionarlas, ponerlas lado a lado etc.
+
+Debido a que el software va a desarrollarse con Visual Studio, factible pensar que crear una interfaz similar al propio
+Visual Studio ser\'ia f\'acil, con controles gr\'aficos que facilitaran la tarea.
+
+La realidad es bien distinta, ya que se necesita de componentes de terceros para crear ese tipo de interfaz. Pese a ese
+peque\~no inconveniente hay distintas librer\'ias de c\'odigo abierto que proporcionan esa funcionalidad.
+
+Por tanto la alternativa que se tom\'o fue esta. Implementar una interfaz tipo IDE que permita el acoplamiento de ventanas,
+crear grupos de pesta\~nas etc.
