@@ -8,12 +8,13 @@
 Los objetivos del proyecto consisten en crear un software que extienda la funcionalidad actual del sistema INTRASIM desarrollado 
 por la universidad de Navarra y del grupo de investigación GALAN perteneciente a la UPV/EHU.
 
-Es un software que permite gráficamente visualizar las observaciones del sistema.
-El objetivo principal es brindar al experto una herramienta para poder señalar gráficamente en que momento de esa 
-observación sucede el hecho concreto que estaban buscando.
+El software, permite cargar observaciones y propiedades previamente capturadas con diversas herramientas (Kinect) y
+visualizarlas gr\'aficamente. Esas observaciones y propiedades se cargar\'an en un panel lateral con forma de \'arbol
+y podr\'an seleccionarse para ser visualizadas. Los gr\'aficos pueden ser reorganizados como el
+usuario quiera, para verlos al mismo tiempo.
 
-La herramienta permite visualizar los datos en bruto tanto en modo v\'{i}deo (si esta disponible), 
-como en modo gr\'{a}fico, con gr\'{a}ficos cont\'{i}nuos y discretos. Tales gráficos permiten la selección de rangos.
+La herramienta permite visualizar los datos en bruto y v\'{i}deo (si esta disponible). El fin de la herramienta es
+permitir al usuario experto seleccionar un rango en cualquiera de los gr\'aficos y exportarlo en formato XML.
 
 \section{Alcance}
 El alcance del proyecto se define mediante una Estructura de Descomposición del Trabajo. Es una figura en la que de manera jer\'{a}rquica
@@ -279,7 +280,7 @@ En vez de seguir una planificación clásica, como puede ser COCOMO \footnote{\u
 Scrum es una serie de herramientas (framework) para la gestión y desarrollo de software basado en un proceso iterativo e incremental \cite{Scrum:WhatIsIt}.
 
 \begin{figure}[H]
-    \includegraphics[width=0.7\linewidth]{./Figures/Scrumm}
+    \includegraphics[width=0.7\linewidth]{./Figures/Scrumm.PNG}
     \caption[Proceso iterativo Scrum]{En este gráfico podemos ver el método de trabajo según Scrum, en el cual se observa lo importante que son los entregables}
     \label{fig:Scrum}
 \end{figure}
@@ -333,7 +334,7 @@ Este sprint era el comienzo del proyecto, establecer prioridades, documentarse e
 \end{itemize} 
 
 \subsubsection{Sprint 2}
-Una vez configurado y elegidas las librer\'{a}s necesarias lo siguiente que se hizo fue:
+Una vez configurado y elegidas las librer\'{a}s necesarias:
 
 \begin{itemize}
     \item Reunirse con Mikel para realizar una captura de requisitos.
@@ -351,7 +352,7 @@ El siguiente paso consiste en poder cargar v\'{i}deos, tantos como se quieran, d
         \item Cargar distintos v\'{i}deos desde el sistema de archivos.
         \item Cada v\'{i}deo debe disponer de sus controles individuales. Play, pausa, stop y avanzar de tantos segundos en tantos segundos, y que sea
         configurable por el usuario, mediante un archivo de configuraci\'{o}n.
-        \item El contenedor de v\'{i}deos debe tener de unos controles generales que pause, y que los reproduzca de manera simultanea
+        \item El contenedor de v\'{i}deos debe disponer de unos controles generales que pause, y que los reproduzca de manera simult\'anea
         para mantener la sincronizaci\'{o}n.
         \item Debe permitir establecer para cada v\'{i}deo el momento de inicio del v\'{i}deo manualmente para mantener la sincronizaci\'{o}n.
     \end{itemize}
@@ -361,13 +362,12 @@ El siguiente paso consiste en poder cargar v\'{i}deos, tantos como se quieran, d
 Despu\'{e}s de terminar la visualizaci\'{o}n de v\'{i}deos, lo siguiente en la lista de tareas es crear un visualizador de datos.
 
 \begin{itemize}
-    \item Crear el contenedor que nos permita visualizar datos. El control debe permitir:
+    \item Crear el contenedor que nos permita ver datos. El control debe permitir:
     \begin{itemize}
         \item Visualizar datos continuos y discretos.
-        \item Seleccionar un rango en la gr\'{a}fica, estableciendo un inicio y un fin para un paso.
+        \item Seleccionar un rango en la gr\'{a}fica, estableciendo un inicio y un fin para las propiedades.
         \item Que muestre el progreso, y que este sincronizado con el v\'{i}deo.
-        \item Guardar el inicio y fin del paso en la base de datos.
-        
+        \item Guardar el inicio y fin seleccionado.
     \end{itemize}
 \end{itemize}
 
@@ -375,31 +375,24 @@ Despu\'{e}s de terminar la visualizaci\'{o}n de v\'{i}deos, lo siguiente en la l
 Ya tenemos todo preparado para funcionar, ahora hay que poder guardar datos.
 
 \begin{itemize}
-    \item Elegir una Base de Datos.
-    \item Configurar los usuarios y permisos de la base de datos.
-    \item Crear el diagrama Entidad-Relaci\'{o}n que representara el modo de guardado de datos.
-    \item A\~{n}adir al c\'{o}digo existente las llamadas necesarias a la base de datos.
-    \item Permitir cambiar la ubicaci\'{o}n de la base de datos mediante un archivo de configuraci\'{o}n.
+    \item Elegir el m\'etodo de guardado de los datos.
+    \item Configurar la base de datos (si aplica).
+    \item Crear el diagrama Entidad-Relaci\'{o}n que representara el modo de guardado de datos (si aplica).
+    \item A\~{n}adir al c\'{o}digo existente las llamadas necesarias a la base de datos (si aplica).
+    \item Permitir cambiar la ubicaci\'{o}n de la base de datos mediante un archivo de configuraci\'{o}n (Si aplica).
 \end{itemize}
 
 \subsubsection{Sprint 6}
 En este momento ya tenemos una aplicaci\'{o}n completamente funcional pero con datos de prueba. Hay que poder cargar datos de los XML.
 
 \begin{itemize}
-    \item Crear la clase que lea los XML.
+    \item Crear la clase para interactuar con los XML.
     \item Hablar con Mikel para saber como est\'{a}n guardadas las observaciones.
     \item Utilizando los datos del XML cargar la aplicaci\'{o}n con esos datos.
 \end{itemize}
 
-\subsubsection{Observaciones}
-N\'{o}tese que hay 6 sprints y desde septiembre hasta junio hay 10 meses. Por lo que se entiende que el resto de tiempo es para:
-\begin{enumerate}
-    \item Poder realizar las tareas de clase.
-    \item Amortiguar el impacto de los retrasos que puedan darse.
-\end{enumerate}
-
 \section{Herramientas}
-El proyecto, al no ser enteramente mío, no he tenido una libertad total para la elección de herramientas. 
+El proyecto, al no ser enteramente m\'io, no he tenido una libertad total para la elecci\'on de herramientas. 
 
 Las herramientas que he utilizado para llevar a cabo este proyecto han sido:
 \begin{itemize}

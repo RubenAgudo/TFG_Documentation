@@ -2,3 +2,29 @@
 
 %Situación actual, estudio de diferentes alternativas 
 %existentes o distintos posibles enfoques del problema a solucionar
+\section{Situaci\'on actual}
+El grupo de investigaci\'on GALAN, esta construyendo y manteniendo un sistema de simulaci\'on que sirve para
+apoyar en la ense\~nanza a los alumnos, sobre todo en cosas que tenga que ver con actividad f\'isica.
+
+Actualmente, cuando capturan al experto realizando el ejercicio que se ha definido, no saben a ciencia cierta
+cuando est\'a sucediendo que cosa.
+
+Por ejemplo, si est\'an capturando un \emph{drive} de golf, que se compone de distintas fases, no saben exactamente
+cuando empieza realmente la acci\'on de bajar los brazos para empezar el golpeo, por lo que lo hacen ``a ojo´´.
+
+Al ver que este m\'etodo es poco preciso y adem\'as poco conveniente ya que se trata un poco de prueba y error,
+se me propuso realizar una aplicaci\'on que llevaban tiempo ideando.
+
+\section{Estudio de diferentes alternativas}
+La aplicaci\'on consiste en poder visualizar tanto en gr\'aficos como en v\'ideo lo capturado por Kinect. Al visualizar
+los gr\'aficos por pantalla y adem\'as sincronizados con uno o varios v\'ideos puede elegirse con mayor precisi\'on.
+
+Para conseguir este objetivo, se barajaron distintos tipos de acercamientos al problema.
+
+\subsection{M\'ultiples ventanas dentro de una ventana maestra (MDI)}
+Al principio lo primero que se me ocurri\'o fue crear una interfaz MDI (Multiple Document Interface). Como ventajas
+ten\'ia que ya hab\'ia creado algunas aplicaciones MDI en .NET por lo que no habr\'ia mucho problema cre\'andola.
+
+Pero afront\'emoslo, estamos en 2014 y las ventanas MDI no son muy c\'omodas de utilizar cuando se disponen de varias ventanas
+abiertas, ya que no se acoplan autom\'aticamente a los lados, ni se pueden crear pesta\~nas de manera din\'amica.
+Por otro lado, las ventanas MDI fueron desaprobadas en WPF, que es el nuevo sistema de ventanas de Microsoft.
