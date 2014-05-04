@@ -9,6 +9,15 @@
 %módulos/paquetes del software desarrollado, etc.
 
 \section{An\'{a}lisis}
+Los datos que recoge el software est\'an en un XML. El XML describe los datos que han de mostrarse. A grosso modo se dividen en
+\begin{itemize}
+	\item Observaciones
+	\item Propiedades
+	\item Instantes
+\end{itemize}
+
+Por tanto se ha decidido guardar la lista de Observaciones, la lista de Propiedades para cada Observaci\'on y cada Propiedad
+una lista de Instantes en los que se guardar\'a los valores.
 
 \section{Dise\~{n}o}
 
@@ -20,9 +29,10 @@
     ha sido la versi\'{o}n gratuita o \emph{community} como dicen ellos. La versi\'{o}n usada esta licenciada bajo licencia BSD.
     \item \textbf{Charting Toolkit}
     Es la librer\'{i}a de Microsoft para realizar distintos tipos de gr\'{a}ficas.
+    \item \textbf{Infralution Localization}
+    Es una libreri\'ia creada por un usuario para facilitar la localizaci\'on en WPF, ya que la manera por defecto de WPF est\'a
+    muy verde.
 \end{itemize}
-
-\subsection{title}
 
 \subsection{Patrones utilizados}
 
