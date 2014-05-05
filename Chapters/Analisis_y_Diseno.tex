@@ -9,7 +9,7 @@
 %módulos/paquetes del software desarrollado, etc.
 
 \section{An\'{a}lisis}
-Los datos que recoge el software est\'an en un XML. El XML describe los datos que han de mostrarse. A grosso modo se dividen en
+Los datos que recoge el software est\'an en un XML. El XML describe los datos que han de mostrarse. A grosso modo se dividen en:
 \begin{itemize}
 	\item Observaciones
 	\item Propiedades
@@ -19,7 +19,31 @@ Los datos que recoge el software est\'an en un XML. El XML describe los datos qu
 Por tanto se ha decidido guardar la lista de Observaciones, la lista de Propiedades para cada Observaci\'on y cada Propiedad
 una lista de Instantes en los que se guardar\'a los valores.
 
+Como cada observaci\'on tiene muchas propiedades, es un requisito que las propiedades est\'en
+agrupadas por observaci\'on.
+
+Tambi\'en, los v\'ideos que se a\~nadan para facilitar la identificaci\'on de los rangos que
+nos interesan deben estar agrupados por observaci\'on.
+
+El rango seleccionado en cada propiedad estar\'a sincronizado con el resto de propiedades de
+la observaci\'on. Ya que no tiene sentido que por ejemplo, la observaci\'on ``coche´´, 
+que tiene como propiedades ``velocidad´´ y ``aceleraci\'on´´ tengan distintos rangos 
+seleccionados, ya que si en ``velocidad´´ seleccionamos [1, 3] y en ``aceleraci\'on´´ [3,4], 
+¿Qu\'e guardamos? ¿El primero o el segundo? Por tanto, ya que todas las propiedades suceden al
+mismo tiempo se sabe que est\'an relacionadas, por lo que es necesario que los rangos est\'en
+seleccionados.
+
+Gr\'aficamente las clases se dividen de dos maneras: Contenedores y clases ``hoja´´.
+El programa puede verse como una estructura de \'arbol, en las que de la ventana principal,
+cuelgan los contenedores de observaci\'on, de los e observaci\'on cuelga el contenedor de
+gr\'aficos y el contenedor de v\'ideos, y finalmente, de cada uno de ellos cuelga el 
+visualizador de datos y el visualizador de v\'ideos respectivamente.
+
 \section{Dise\~{n}o}
+
+\subsection{Diagrama de clases}
+
+\subsection{Listado de m\'odulos}
 
 \subsection{Librer\'{i}as usadas}
 \begin{itemize}
