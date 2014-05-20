@@ -17,8 +17,10 @@ La herramienta permite visualizar los datos en bruto y v\'{i}deo (si esta dispon
 permitir al usuario experto seleccionar un rango en cualquiera de los gr\'aficos y exportarlo en formato XML.
 
 \section{Alcance}
-El alcance del proyecto se define mediante una Estructura de Descomposición del Trabajo. Es una figura en la que de manera jer\'{a}rquica
-se representa que es lo que va a hacerse.
+El alcance del proyecto va a definirse mediante un EDT, y el ciclo de vida que se ha decidido utilizar son las metodolog\'ias
+\'agiles, como Scrum y Kanban que ser\'an detallados mas adelante. Pero se puede adelantar que al utilizar este tipo
+de metodolog\'ias se hace frente a uno de los mayores problemas del desarrollo de software: la incertidumbre y los cambios
+no contemplados inicialmente, as\'i como incrementar la productividad al ser mas sistem\'aticos.
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\linewidth]{./Figures/EDT}
@@ -27,14 +29,18 @@ se representa que es lo que va a hacerse.
 \end{figure}
 
 \subsection{An\'{a}lisis inicial}
-\subsubsection{Boceto de pantallas}
+Tal y como se ve en \ref{fig:Alcance} cada una de esas tareas deber\'an realizarse en cada uno de los sprints
+que se van a realizar. Para cada tarea se ha realizado una peque\~na tabla en la que se detalla que se va a hacer,
+la duraci\'on y esfuerzo aproximados, as\'i como otros datos de inter\'es.
+
+\subsection{Boceto de pantallas}
 \begin{table}[H]
     \begin{center}
         \rowcolors{1}{lightgray}{} %\rowcolors{<starting row index>}{<odd row color>}{<even row color>}
         \begin{tabular}{l p{8cm}}
             Responsable                           & Rub\'{e}n \\
-            Duraci\'{o}n (horas)                  & 4. \\ 
-            Esfuerzo (Horas / Persona)            & 2. \\
+            Duraci\'{o}n (Horas / Persona)        & 4. \\ 
+            Esfuerzo (Horas)                      & 4. \\
             Descripci\'{o}n                       & Diseño de pantallas inicial en base a las ideas obtenidas de lo
                                                     contado por Mikel, a fin de obtener dudas sobre funcionalidades. \\
             Entradas                              & Ninguna \\
@@ -52,9 +58,9 @@ se representa que es lo que va a hacerse.
         \rowcolors{1}{lightgray}{} %\rowcolors{<starting row index>}{<odd row color>}{<even row color>}
         \begin{tabular}{l p{8cm}}
             Responsable                           & Rub\'{e}n \\
-            Duraci\'{o}n (horas)                  & 7. \\ 
-            Esfuerzo (Horas / Persona)            & 7. \\
-            Descripci\'{o}n                       & Creacion de cada sprint con sus respectivas tareas para crear la pila de tareas. \\
+            Duraci\'{o}n (Horas / Persona)        & 7. \\ 
+            Esfuerzo (Horas)                      & 7. \\
+            Descripci\'{o}n                       & Creaci\'on de cada sprint con sus respectivas tareas para crear la pila de tareas. \\
             Entradas                              & Requisitos del cliente.\\
             Salidas / Entregables                 & Un listado con todas las tareas a completar \\
             Recursos necesarios                   & PC con un editor de textos.\\
@@ -70,8 +76,8 @@ se representa que es lo que va a hacerse.
         \rowcolors{1}{lightgray}{} %\rowcolors{<starting row index>}{<odd row color>}{<even row color>}
         \begin{tabular}{l p{8cm}}
             Responsable                           & Rub\'{e}n \\
-            Duraci\'{o}n                          & 7. \\ 
-            Esfuerzo (Horas / Persona)            & 7. \\
+            Duraci\'{o}n (Horas / Persona)        & 7. \\ 
+            Esfuerzo (Horas)                      & 7. \\
             Descripci\'{o}n                       & Realizar las secciones de la memoria de la Introducci\'{o}n y los
                                                     objetivos del proyecto. \\
             Entradas                              & Scrum backlog  \\
@@ -90,10 +96,10 @@ se representa que es lo que va a hacerse.
         \rowcolors{1}{lightgray}{} %\rowcolors{<starting row index>}{<odd row color>}{<even row color>}
         \begin{tabular}{l p{8cm}}
             Responsable                           & Rub\'{e}n \\
-            Duraci\'{o}n                          & 2. \\ 
-            Esfuerzo (Horas / Persona)            & 1.5 \\
-            Descripci\'{o}n                       & Mostrar al cliente (Mikel), un prototipo inicial de pantallas
-                                                    para asi poder mejorar el dise\~{n}o para que sea mas f\'{a}cil de usar. \\
+            Duraci\'{o}n (Horas / Persona)        & 2. \\ 
+            Esfuerzo (Horas)                      & 2. \\
+            Descripci\'{o}n                       & Mostrar al cliente, un prototipo inicial de pantallas
+                                                    para as\'i poder mejorar el dise\~{n}o para que sea mas f\'{a}cil de usar. \\
             Entradas                              & Requisitos del cliente. \\
             Salidas / Entregables                 & Prototipo realizado en WPF que muestra el comportamiento y forma de las pantallas. \\
             Recursos necesarios                   & Visual Studio 2013, Avalon Dock, un PC. \\
@@ -109,9 +115,9 @@ se representa que es lo que va a hacerse.
         \rowcolors{1}{lightgray}{} %\rowcolors{<starting row index>}{<odd row color>}{<even row color>}
         \begin{tabular}{l p{8cm}}
             Responsable                           & Rub\'{e}n \\
-            Duraci\'{o}n                          & 2. \\ 
-            Esfuerzo (Horas / Persona)            & 1.5 \\
-            Descripci\'{o}n                       & Reuni\'{o}n para que el director de proyecto vea como va el trabajo,
+            Duraci\'{o}n (Horas / Persona)        & 2. \\ 
+            Esfuerzo (Horas)                      & 2. \\
+            Descripci\'{o}n                       & Reuni\'{o}n para que el cliente vea como va el trabajo,
                                                     aclarar dudas etc. \\
             Entradas                              & El trabajo realizado hasta el momento.\\
             Salidas / Entregables                 & Ninguno / acta de reuni\'{o}n \\
@@ -129,12 +135,12 @@ se representa que es lo que va a hacerse.
         \rowcolors{1}{lightgray}{} %\rowcolors{<starting row index>}{<odd row color>}{<even row color>}
         \begin{tabular}{l p{8cm}}
             Responsable                           & Rub\'{e}n \\
-            Duraci\'{o}n                          & 1 \\ 
-            Esfuerzo (Horas / Persona)            & 0.5 \\
+            Duraci\'{o}n (Horas / Persona)        & 1 \\ 
+            Esfuerzo (Horas)                      & 1. \\
             Descripci\'{o}n                       & Elegir las tareas que van a conformar el sprint del mes. \\
             Entradas                              & La lista de tareas completa\\
             Salidas / Entregables                 & Post-it con las tareas seleccionadas para ese sprint \\
-            Recursos necesarios                   & Post-it, boli y lista de tareas. \\
+            Recursos necesarios                   & Post-it, bol\'igrafo y lista de tareas. \\
             Precedencias                          & Scrum backlog \\
         \end{tabular}
     \end{center}
@@ -147,13 +153,14 @@ se representa que es lo que va a hacerse.
         \rowcolors{1}{lightgray}{} %\rowcolors{<starting row index>}{<odd row color>}{<even row color>}
         \begin{tabular}{l p{8cm}}
             Responsable                           & Rub\'{e}n \\
-            Duraci\'{o}n                          & 10. \\ 
-            Esfuerzo (Horas / Persona)            & 4. \\
+            Duraci\'{o}n (Horas / Persona)        & 10. \\ 
+            Esfuerzo (Horas)                      & 10. \\
             Descripci\'{o}n                       & Realizar el diseño de software, clases, Interfaces necesarias, que patrones van a usarse etc. \\
             Entradas                              & Tarea a realizar y la interfaz de usuario.\\
             Salidas / Entregables                 & Dise\~{n}o de software que guiar\'{a} la siguiente tarea y la documentaci\'{o}n
                                                     habr\'{a} sido actualizada en consecuencia. \\
-            Recursos necesarios                   & La documentaci\'{o}n realizada hasta el momento, Visual Studio 2013, Git y un PC. \\
+            Recursos necesarios                   & La documentaci\'{o}n realizada hasta el momento, Visual Studio 2013, Git y 	un 
+            										PC. \\
             Precedencias                          & Sprint Backlog. \\
         \end{tabular}
     \end{center}
@@ -166,13 +173,14 @@ se representa que es lo que va a hacerse.
         \rowcolors{1}{lightgray}{} %\rowcolors{<starting row index>}{<odd row color>}{<even row color>}
         \begin{tabular}{l p{8cm}}
             Responsable                           & Rub\'{e}n \\
-            Duraci\'{o}n                          & 20. \\ 
-            Esfuerzo (Horas / Persona)            & 20. \\
+            Duraci\'{o}n (Horas / Persona)        & 20. \\ 
+            Esfuerzo (Horas)                      & 20. \\
             Descripci\'{o}n                       & Implementar lo dise\~{n}ado, lo que describe la tarea en el post-it del sprint. \\
             Entradas                              & Dise\~{n}o realizado sobre la tarea, post-it con la tarea.\\
             Salidas / Entregables                 & La pieza de software con la nueva funcionalidad implementada, y la documentaci\'{o}n
                                                     actualizada. \\
-            Recursos necesarios                   & La documentaci\'{o}n realizada hasta el momento, Visual Studio 2013, Git y un PC. \\
+            Recursos necesarios                   & La documentaci\'{o}n realizada hasta el momento, Visual Studio 2013, Git y un 
+            										PC. \\
             Precedencias                          & Dise\~{n}o. \\
         \end{tabular}
     \end{center}
@@ -186,7 +194,7 @@ se representa que es lo que va a hacerse.
         \begin{tabular}{l p{8cm}}
             Responsable                           & Rub\'{e}n \\
             Duraci\'{o}n                          & 10. \\ 
-            Esfuerzo (Horas / Persona)            & 5. \\
+            Esfuerzo (Horas / Persona)            & 10. \\
             Descripci\'{o}n                       & Revisar y actualizar la documentaci\'{o}n realizada durante el sprint. \\
             Entradas                              & La documentaci\'{o}n realizada hasta el momento.\\
             Salidas / Entregables                 & La documentaci\'{o}n actualizada. \\
@@ -204,8 +212,8 @@ se representa que es lo que va a hacerse.
         \rowcolors{1}{lightgray}{} %\rowcolors{<starting row index>}{<odd row color>}{<even row color>}
         \begin{tabular}{l p{8cm}}
             Responsable                           & Rub\'{e}n \\
-            Duraci\'{o}n                          & 30. \\ 
-            Esfuerzo (Horas / Persona)            & 30. \\
+            Duraci\'{o}n (Horas  / Persona)       & 30. \\ 
+            Esfuerzo (Horas)                      & 30. \\
             Descripci\'{o}n                       & Realizar los cap\'{i}tulos adicionales: Verificaci\'{o}n y evaluaci\'{o}n, conclusiones y trabajo futuro
                                                     etc. \\
             Entradas                              & La documentaci\'{o}n realizada. \\
@@ -223,8 +231,8 @@ se representa que es lo que va a hacerse.
         \rowcolors{1}{lightgray}{} %\rowcolors{<starting row index>}{<odd row color>}{<even row color>}
         \begin{tabular}{l p{8cm}}
             Responsable                           & Rub\'{e}n \\
-            Duraci\'{o}n                          & 1 \\ 
-            Esfuerzo (Horas / Persona)            & 1 \\
+            Duraci\'{o}n (Horas / Persona)        & 1 \\ 
+            Esfuerzo (Horas)                      & 1 \\
             Descripci\'{o}n                       & Entregar la documentaci\'{o}n en secretar\'{i}a \\
             Entradas                              & La documentaci\'{o}n. \\
             Salidas / Entregables                 & Ninguna. \\
@@ -260,8 +268,8 @@ se representa que es lo que va a hacerse.
         \rowcolors{1}{lightgray}{} %\rowcolors{<starting row index>}{<odd row color>}{<even row color>}
         \begin{tabular}{l p{8cm}}
             Responsable                           & Rub\'{e}n \\
-            Duraci\'{o}n                          & 20 minutos. \\ 
-            Esfuerzo (Horas / Persona)            & 20 minutos. \\
+            Duraci\'{o}n (Horas / Persona)        & 20 minutos. \\ 
+            Esfuerzo (Horas)                      & 20 minutos. \\
             Descripci\'{o}n                       & Presentar el proyecto y defenderlo ante el tribunal. \\
             Entradas                              & Slides de la presentaci\'{o}n.\\
             Salidas / Entregables                 & Ninguna. \\
@@ -274,18 +282,24 @@ se representa que es lo que va a hacerse.
 
 
 \section{Planificaci\'{o}n temporal}
-En vez de seguir una planificación clásica, como puede ser COCOMO \footnote{\url{http://sunset.usc.edu/csse/research/COCOMOII/cocomo_main.html}} o Waterfall \footnote{\url{http://pdf.aminer.org/000/361/405/software_requirements_are_they_really_a_problem.pdf}} he decidido utilizar las metodologías agiles de desarrollo, concretamente Scrum y Kanban
+En vez de seguir una planificación cl\'asica, como puede ser COCOMO 
+\footnote{\url{http://sunset.usc.edu/csse/research/COCOMOII/cocomo_main.html}} o Waterfall 
+\footnote{\url{http://pdf.aminer.org/000/361/405/software_requirements_are_they_really_a_problem.pdf}} se ha decidido utilizar las 
+metodologías \'agiles de desarrollo, concretamente Scrum y Kanban
 
 \subsection{Scrum}
-Scrum es una serie de herramientas (framework) para la gestión y desarrollo de software basado en un proceso iterativo e incremental \cite{Scrum:WhatIsIt}.
+Scrum es una serie de herramientas (framework) para la gesti\'on y desarrollo de software basado en un proceso iterativo e incremental 
+\cite{Scrum:WhatIsIt}.
 
 \begin{figure}[H]
     \includegraphics[width=0.7\linewidth]{./Figures/Scrumm.PNG}
-    \caption[Proceso iterativo Scrum]{En este gráfico podemos ver el método de trabajo según Scrum, en el cual se observa lo importante que son los entregables}
+    \caption[Proceso iterativo Scrum]{Diagrama Scrum}
     \label{fig:Scrum}
 \end{figure}
 
-
+En la figura \ref{fig:Scrum} \footnote{\url{https://upload.wikimedia.org/wikipedia/commons/e/e5/Scrumm.PNG} Autor: Maxie Ayala 
+	Licenciado bajo \hyperlink{creativecommons.org/licenses/by-sa/3.0/}{CC BY-SA 3.0}} 
+se pueve ver el método de trabajo seg\'un Scrum, en el cual se observa lo importante que son los entregables.
 
 %\newpage
 Scrum, de manera resumida consiste en lo siguiente:
@@ -298,46 +312,58 @@ Scrum, de manera resumida consiste en lo siguiente:
     \item Repetir.
 \end{enumerate}
 
-Es fundamental entre sprint y sprint que el valor del producto haya aumentado. Es decir, lo importante es el producto, no como vamos nosotros en el propio proyecto. Podríamos haber avanzado mucho en el diseño del software, pero si eso es algo que el cliente no puede ver estaremos fallando en nuestra agilidad.
+Es fundamental entre sprint y sprint que el valor del producto haya aumentado. Es decir, lo importante es el producto, no como vamos 
+nosotros en el propio proyecto. Podríamos haber avanzado mucho en el diseño del software, pero si eso es algo que el cliente no 
+puede ver estaremos fallando en nuestra agilidad.
 
-Por otro lado, si cometemos algún error será muy sencillo corregir el error ya que si los sprints son de dos semanas por ejemplo, no habremos perdido apenas tiempo. Y además para el cliente los entregables serán predecibles en el tiempo.
+Por otro lado, si cometemos algún error será muy sencillo corregir el error ya que si los sprints son de dos semanas por ejemplo, no 
+habremos perdido apenas tiempo. Y además para el cliente los entregables serán predecibles en el tiempo.
 
-Scrum es también muy importante, y se posiciona como una alternativa muy potente frente a COCOMO o waterfall, es porque en la creación de software hay un componente de incertidumbre muy grande. No sabemos como, ni cuando pueden cambiar los requisitos de un software. Por ello toman importancia los sprints de nuevo. 
+Scrum es también muy importante, y se posiciona como una alternativa muy potente frente a COCOMO o waterfall, es porque en la 
+creación de software hay un componente de incertidumbre muy grande. No sabemos como, ni cuando pueden cambiar los requisitos de un 
+software. Por ello toman importancia los sprints de nuevo. 
 
-En los modelos antiguos, si ya habíamos terminado la fase de análisis y diseño, y se requería una nueva funcionalidad es necesario paralizar el desarrollo del software y volver a analizar y diseñar. En cambio, con Scrum es posible integrar ese cambio en el siguiente sprint.
+En los modelos antiguos, si ya habíamos terminado la fase de análisis y diseño, y se requería una nueva funcionalidad es necesario 
+paralizar el desarrollo del software y volver a analizar y diseñar. En cambio, con Scrum es posible integrar ese cambio en el 
+siguiente sprint.
 
 \subsection{Kanban}
-Kanban es un método de organización del conocimiento del trabajo que se está realizando con un gran énfasis en el la entrega justo a tiempo \footnote{JIT Delivery: Just-In-Time Delivery} sin sobrecargar al equipo \cite{Kanban:WhatIsIt}.
+Kanban es un método de organización del conocimiento del trabajo que se está realizando con un gran énfasis en el la entrega justo a 
+tiempo \footnote{JIT Delivery: Just-In-Time Delivery} sin sobrecargar al equipo \cite{Kanban:WhatIsIt}.
 
-Kanban se centra mucho en que lo importante no es empezar muchas cosas, si no que acabemos aquello que empezamos. Sirve sobre todo para ver de una manera visual:
+Kanban se centra mucho en que lo importante no es empezar muchas cosas, si no que acabemos aquello que empezamos. Sirve sobre todo 
+para ver de una manera visual:
 \begin{itemize}
     \item Qué tenemos pendiente
     \item Qué estamos haciendo ahora mismo
     \item Qué hemos terminado.
 \end{itemize}
 
-El m\'{e}todo Kanban es algo muy extenso, pero yo simplemente he aplicado el tablero Kanban mezclado con Scrum. 
-Cada dos semanas, me creo una lista de tareas que debo completar (Backlog) y lo coloco en la columna de ``Tareas pendientes´´, 
-ordenadas por prioridad. Después, coloco en la lista de ``En progreso´´ como m\'{a}ximo dos tareas. Y no empiezo ninguna otra hasta 
-que esas dos hayan sido pasadas a la columna de ``Tareas finalizadas´´.
+El m\'{e}todo Kanban es algo muy extenso, pero simplemente se ha aplicado el tablero Kanban mezclado con Scrum. 
+Cada dos semanas, se crea una lista de tareas que se debe completar (Backlog) y se coloca en la columna de ``Tareas pendientes", 
+ordenadas por prioridad. Después, se coloca en la lista de ``En progreso" como m\'{a}ximo dos tareas. Y no se empieza ninguna otra
+ hasta que esas dos hayan sido pasadas a la columna de ``Tareas finalizadas".
 
 \subsection{Mi planificaci\'{o}n}
-Cada sprint tiene una duraci\'{o}n de un mes, empezando desde Septiembre del 2013.
+Cada sprint tiene una duraci\'{o}n de un mes, empezando desde Septiembre del 2013. El esfuerzo en horas que se va a 
+realizar se decidir\'a al inicio de cada sprint, en funci\'on de algunos par\'ametros, por ejemplo, si se va con retraso,
+si hay entregables de clase pendientes, otros trabajos etc. 
+
 \subsubsection{Sprint 1}
-Este sprint era el comienzo del proyecto, establecer prioridades, documentarse etc. Lo que ha compuesto este sprint ha sido:
+Inicio del proyecto, establecer prioridades, documentarse etc. Lo que compone este sprint es:
 
 \begin{itemize}
     \item Crear y configurar el repositorio Git y los clientes en los dos ordenadores.
     \item Leer la documentaci\'{o}n existente y obtener el c\'{o}digo fuente original.
-    \item Iniciar dise\~{n}os gr\'{a}ficos preliminares en papel para elegir las librer\'{i}as necesarias.
-    \item Buscar y documentarse sobre las librer\'{i}as que cumplan los requisitos del punto anterior. 
+    \item Iniciar dise\~{n}os gr\'{a}ficos preliminares en papel para elegir las bibliotecas necesarias.
+    \item Buscar y documentarse sobre las bibliotecas que cumplan los requisitos del punto anterior. 
 \end{itemize} 
 
 \subsubsection{Sprint 2}
-Una vez configurado y elegidas las librer\'{a}s necesarias:
+Una vez configurados ordenadores y elegidas las bibliotecas necesarias:
 
 \begin{itemize}
-    \item Reunirse con Mikel para realizar una captura de requisitos.
+    \item Reunirse con el cliente para realizar una captura de requisitos.
     \item Dise\~{n}ar unos prototipos funcionales.
     \item Documentar lo que se hab\'{i}a realizado hasta el momento, es decir, el tipo de planificaci\'{o}n que se hab\'{i}a elegido,
     tecnolog\'{i}as que se iban a usar etc.
@@ -350,11 +376,12 @@ El siguiente paso consiste en poder cargar v\'{i}deos, tantos como se quieran, d
     \item Crear el control de cargar v\'{i}deos (contenedor de v\'{i}deos). El contenedor debe permitir:
     \begin{itemize}
         \item Cargar distintos v\'{i}deos desde el sistema de archivos.
-        \item Cada v\'{i}deo debe disponer de sus controles individuales. Play, pausa, stop y avanzar de tantos segundos en tantos segundos, y que sea
-        configurable por el usuario, mediante un archivo de configuraci\'{o}n.
-        \item El contenedor de v\'{i}deos debe disponer de unos controles generales que pause, y que los reproduzca de manera simult\'anea
-        para mantener la sincronizaci\'{o}n.
-        \item Debe permitir establecer para cada v\'{i}deo el momento de inicio del v\'{i}deo manualmente para mantener la sincronizaci\'{o}n.
+        \item Cada v\'{i}deo debe disponer de sus controles individuales. Play, pausa, stop y avanzar de tantos segundos en tantos 
+        segundos, poder silenciarlo, y que sea configurable por el usuario, mediante un archivo de configuraci\'{o}n.
+        \item El contenedor de v\'{i}deos debe disponer de unos controles generales que ofrezcan id\'enticas funcionalidades
+        que el punto anterior.
+        \item Debe permitir establecer para cada v\'{i}deo el momento de inicio del v\'{i}deo manualmente para mantener la 
+        sincronizaci\'{o}n.
     \end{itemize}
 \end{itemize}
 
@@ -383,33 +410,45 @@ Ya tenemos todo preparado para funcionar, ahora hay que poder guardar datos.
 \end{itemize}
 
 \subsubsection{Sprint 6}
-En este momento ya tenemos una aplicaci\'{o}n completamente funcional pero con datos de prueba. Hay que poder cargar datos de los XML.
+En este momento se dispone de una aplicaci\'{o}n completamente funcional pero con datos de prueba. 
+Hay que poder cargar datos desde el origen de datos.
 
 \begin{itemize}
-    \item Crear la clase para interactuar con los XML.
-    \item Hablar con Mikel para saber como est\'{a}n guardadas las observaciones.
-    \item Utilizando los datos del XML cargar la aplicaci\'{o}n con esos datos.
+    \item Crear la clase para interactuar con el origen de datos.
+    \item Hablar con el cliente para saber como est\'{a}n guardados los datos.
+    \item Utilizando los datos de origen cargar la aplicaci\'{o}n con esos datos.
 \end{itemize}
 
 \section{Herramientas}
-El proyecto, al no ser enteramente m\'io, no he tenido una libertad total para la elecci\'on de herramientas. 
+El proyecto, al ser propuesto por el director de TFG, no se ha tenido libertad total en elecci\'on de herramientas. 
 
-Las herramientas que he utilizado para llevar a cabo este proyecto han sido:
+Las herramientas que se han utilizado para llevar a cabo este proyecto han sido:
 \begin{itemize}
     \item 
     \textbf{Visual Studio}
-    
-    Para el desarrollo propiamente dicho del proyecto he usado Visual Studio 2013 Ultimate, proporcionado de manera gratuita gracias al acuerdo que mantiene la UPV/EHU con Microsoft.
+    El \'unico software en el que no se ha tenido libertad de elecci\'on. Debido a que el software en el que este TFG
+    ser\'a integrado est\'a desarrollado usando Visual Studio, se ha utilizado por compatibilidad. Adem\'as, se estaba
+    valorando la posibilidad de portar el software original a WPF por lo que Visual Studio se convert\'ia en una elecci\'on
+    obvia ya es un software muy potente dise\~nado para trabajar e integrarse perfectamente con esas tecnolog\'ias.
+
+    La versi\'on utilizada ha sido Visual Studio 2013 Ultimate, proporcionado de manera gratuita gracias al acuerdo que mantiene 
+    la UPV/EHU con Microsoft.
     
     \item 
     \textbf{TeXstudio y \LaTeX}
     
-    Dos herramientas gratuitas y de código abierto para generar documentos.
+    Dos herramientas gratuitas y de código abierto para generar documentos con el lenguaje de programaci\'on \LaTeX.
     
     \item
     \textbf{Git y GitHub}
     
-    Fundamental en los proyectos que se basen en metodologías ágiles. Git es un software de gestión de control de versiones distribuido, esto es, que cada desarrollador dispone de una copia completa del repositorio, desarrollado por Linus Torvalds y Junio Hamano en 2005 y similar a SVN.
+    Fundamental en los proyectos que se basen en metodologías ágiles. Git es un software de gestión de control de versiones 
+    distribuido, esto es, que cada desarrollador dispone de una copia completa del repositorio, desarrollado por Linus Torvalds y 
+    Junio Hamano en 2005 y similar a SVN.
+    
+    GitHub es un repositorio online, gratuito para proyectos Open Source desarrollado y mantenido por GitHub Inc. Se ha elegido
+    por ser la alternativa mas conocida as\'i como punto de referencia de los desarrolladores a la hora de alojar proyectos
+    y buscar software.
     
     \item
     \textbf{OxyPlot}
@@ -419,15 +458,15 @@ Las herramientas que he utilizado para llevar a cabo este proyecto han sido:
 \end{itemize}
 
 \section{Gesti\'{o}n de riesgos}
-Dadas las fechas de entrega impuestas por mi mismo para la finalizaci\'{o}n del Trabajo de Fin de Grado, es un hecho que
-aparecerán riesgos que pueden poner en peligro el proyecto. Es por ello que se necesita tener en cuenta las probabilidades de los sucesos que 
+Como en todo proyecto de software, existen una serie de riesgos que hay que tener en cuenta y en la medida de lo posible,
+evitarlos. Es por ello que se necesita tener en cuenta las probabilidades de los sucesos que 
 pueden ocurrir y que puedan retrasar el trabajo de forma notable. Una vez
-listados, se puede proceder a crear un plan de prevención para evitarlos. Y en caso de que la prevención no
-funcionara, un plan de contingencia que pueda amortiguar las consecuencias de ese riesgo. A continuación
+listados, se puede proceder a crear un plan de prevención para evitarlos. Y en caso de que la prevenci\'on no
+funcionase, un plan de contingencia que pueda amortiguar las consecuencias de ese riesgo. A continuación
 se listan de forma detallada los riesgos que pueden aparecer durante el transcurso del proyecto.
 
 \subsection{Planificaci\'{o}n}
-En esta categor\'{i}a se engloban los riesgos que sean causados por una mala planificaci\'{o}n temporal.
+En esta categor\'{i}a se engloban los riesgos que pueden causados por una mala planificaci\'{o}n temporal.
 \subsubsection{Mala concepci\'{o}n del proyecto}
 \begin{table}[H]
     \begin{center}
@@ -435,10 +474,11 @@ En esta categor\'{i}a se engloban los riesgos que sean causados por una mala pla
        \begin{tabular}{l p{8cm}}
            Descripci\'{o}n                 & Por decisiones erróneas, como puede ser elegir utilizar una
            base de datos, puede que el trabajo deba ser reconstruido desde el principio. \\
-           Prevenci\'{o}n                  & Una buena planificación y conocimiento exacto de lo que quiere y necesita el cliente. \\ 
-           Plan de contingencia            & Un programa flexible a cambios \\
-           Probabilidad                    & Improbable \\
-           Impacto                         & Muy alto\\
+           Prevenci\'{o}n                  & Una buena planificación y conocimiento exacto de lo que quiere y necesita el cliente. 
+           									  \\ 
+           Plan de contingencia            & Un programa flexible a cambios. \\
+           Probabilidad                    & Improbable. \\
+           Impacto                         & Muy alto. \\
         \end{tabular}
     \end{center}
     
@@ -448,13 +488,14 @@ En esta categor\'{i}a se engloban los riesgos que sean causados por una mala pla
     \begin{center}
         \rowcolors{1}{lightgray}{} %\rowcolors{<starting row index>}{<odd row color>}{<even row color>}
         \begin{tabular}{l p{8cm}}
-            Descripci\'{o}n                 & Por una mala compresión y falta de experiencia el cálculo
-            de tiempo estimado de una de las tareas es erróneo y hay que reajustar todo el proyecto. \\
+            Descripci\'{o}n                 & Por una mala compresi\'on y falta de experiencia el c\'alculo
+            de tiempo estimado de una de las tareas es err\'oneo y hay que reajustar todo el proyecto. \\
             Prevenci\'{o}n                  & Realizar la estimación lo mejor posible y tener una buena
-            comunicación con el cliente para no tener fallos de comprensión. \\ 
-            Plan de contingencia            & Margen de error en los tiempos \\
-            Probabilidad                    & Muy probable \\
-            Impacto                         & Medio\\
+            								  comunicaci\'on con el cliente para no tener fallos de comprensión. Utilizar de manera 
+            								  correcta las metodolog\'ias \'agiles. \\ 
+            Plan de contingencia            & Margen de error en los tiempos. \\
+            Probabilidad                    & Muy probable. \\
+            Impacto                         & Medio. \\
         \end{tabular}
     \end{center}
     
@@ -465,8 +506,9 @@ En esta categor\'{i}a se engloban los riesgos que sean causados por una mala pla
     \begin{center}
         \rowcolors{1}{lightgray}{} %\rowcolors{<starting row index>}{<odd row color>}{<even row color>}
         \begin{tabular}{l p{8cm}}
-            Descripci\'{o}n                 & Al utilizar dos ordenadores, una workstation y un port\'{a}til puede que no disponga de las mismas
-            versiones del software o que no se satisfagan todas las dependencias. \\
+            Descripci\'{o}n                 & Al utilizar dos ordenadores, una workstation y un port\'{a}til puede que no 
+            								  disponga de las mismas versiones del software o que no se satisfagan todas las 
+            								  dependencias. \\
             Prevenci\'{o}n                  & Asegurarme de disponer el mismo software con las mismas versiones. \\ 
             Plan de contingencia            & Resolver manualmente las dependencias. \\
             Probabilidad                    & Probable \\
@@ -480,9 +522,10 @@ En esta categor\'{i}a se engloban los riesgos que sean causados por una mala pla
     \begin{center}
         \rowcolors{1}{lightgray}{} %\rowcolors{<starting row index>}{<odd row color>}{<even row color>}
         \begin{tabular}{l p{8cm}}
-            Descripci\'{o}n                 & Al ser algo no ense\~{n}ado en profundidad en clase puede causar problemas al usar las
-            funciones avanzadas. \\
-            Prevenci\'{o}n                  & Tener un buen manual y tener una copia local en otra carpeta para prevenir perdidas de informaci\'{o}n. \\ 
+            Descripci\'{o}n                 & Al ser algo no ense\~{n}ado en profundidad en la universidad puede causar problemas al 
+            								  usar las funciones avanzadas. \\
+            Prevenci\'{o}n                  & Tener un buen manual y tener una copia local en otra carpeta para prevenir perdidas de 
+            								  informaci\'{o}n. \\ 
             Plan de contingencia            & Desechar el software de control de versiones y buscar alternativas como Dropbox. \\
             Probabilidad                    & Poco probable \\
             Impacto                         & Bajo \\
@@ -496,7 +539,8 @@ En esta categor\'{i}a se engloban los riesgos que sean causados por una mala pla
         \begin{tabular}{l p{8cm}}
             Descripci\'{o}n                 & Que las librar\'{i}as escogidas no cumplan los requisitos necesarios \\
             Prevenci\'{o}n                  & Mirar con anterioridad que las librar\'{i}as cumplen todos nuestros requisitos. \\ 
-            Plan de contingencia            & Buscar otra librar\'{i}a o intentar parchear la actual, ya que son de c\'{o}digo abierto. \\
+            Plan de contingencia            & Buscar otra librar\'{i}a o intentar parchear la actual, ya que son de c\'{o}digo 
+            								  abierto. \\
             Probabilidad                    & Muy probable \\
             Impacto                         & Alto \\
         \end{tabular}
@@ -509,9 +553,12 @@ En esta categor\'{i}a se engloban los riesgos que sean causados por una mala pla
     \begin{center}
         \rowcolors{1}{lightgray}{} %\rowcolors{<starting row index>}{<odd row color>}{<even row color>}
         \begin{tabular}{l p{8cm}}
-            Descripci\'{o}n                 & Despu\'{e}s de la entrega del proyecto puede suceder que el cliente no est\'{e} satisfecho. \\
-            Prevenci\'{o}n                  & Una buena comunicación con el cliente y reuniones progresivas para ir mostrando la evolución del proyecto. \\ 
-            Plan de contingencia            & Blindar las caracter\'{i}sticas, solo se realizaran las estipuladas durante el proyecto. \\
+            Descripci\'{o}n                 & Despu\'{e}s de la entrega del proyecto puede suceder que el cliente no est\'{e} 
+            								  satisfecho. \\
+            Prevenci\'{o}n                  & Una buena comunicación con el cliente y reuniones progresivas para ir mostrando la 
+            								  evolución del proyecto. \\ 
+            Plan de contingencia            & Blindar las caracter\'{i}sticas, solo se realizaran las estipuladas durante el 
+            							   	  proyecto. \\
             Probabilidad                    & Probable \\
             Impacto                         & Muy alto \\
         \end{tabular}
@@ -559,11 +606,12 @@ En esta categor\'{i}a se engloban los riesgos que sean causados por una mala pla
         \rowcolors{1}{lightgray}{} %\rowcolors{<starting row index>}{<odd row color>}{<even row color>}
         \begin{tabular}{l p{8cm}}
             Descripci\'{o}n                 & Debido a que el cliente tiene nuevas necesidades solicita la
-            implementaci\'{o}n de funcionalidades extras o la desaparici\'{o}n de alguna que se hayan podido volver innecesarias. \\
+            								  implementaci\'{o}n de funcionalidades extras o la desaparici\'{o}n de alguna que se 
+            								  hayan podido volver innecesarias. \\
             Prevenci\'{o}n                  & Realizar un buen dise\~{n}o para la posibilidad de añadir
-            funcionalidades sin que suponga un coste muy elevado. \\ 
+            								  funcionalidades sin que suponga un coste muy elevado. \\ 
             Plan de contingencia            & Evaluar los nuevos requisitos para saber si se pueden
-            abordar o no y si fuese que si estudiar la situación y asignar el trabajo a los trabajadores. \\
+            								  abordar o no y si fuese que s\'i estudiar la situación y realizarlo. \\
             Probabilidad                    & Probable \\
             Impacto                         & Alto \\
         \end{tabular}
@@ -588,34 +636,49 @@ En esta categor\'{i}a se engloban los riesgos que sean causados por una mala pla
 \end{table}
 
 \section{Planificaci\'{o}n econ\'{o}mica}
-No se obtendr\'{a} beneficio econ\'{o}mico del proyecto ya que se hace por el bien de la ciencia, y porque esta licenciado
-bajo licencia GPLv3.
+No se obtendr\'{a} beneficio econ\'{o}mico del proyecto ya que se realiza con car\'acter comunitario y con la intenci\'on
+de ayudar a un grupo de investigaci\'on. El c\'odigo est\'a licenciado bajo licencia GPLv3.
 
 Por lo tanto el coste de venta de nuestro coste sera 0€
 
-\subsection{Amortizaci\'{o}n de material}
-\subsubsection{Oficina}
-La oficina que utilizamos es el domicilio familiar y no hay que pagar alquiler ya que es de nuestra propiedad. Por lo que el gasto de alquiler/hipoteca es 0€
-\subsubsection{Material inform\'{a}tico}
-El material informático que se va a usar es un portátil Acer TravelMate 5742G comprado en 
-Diciembre de 2010 y usado intensivamente durante estos 4 años. 
-El portátil estaba pensado para ser amortizado en 4 años. \emph{As\'{i} que por aqui habra que hacer algun calculo tonto}, por lo que durante el 
-transcurso del TFG no va a generar ning\'{u}n tipo de gasto, ni beneficio, porque recordemos, es un proyecto sin \'{a}nimo de lucro.
+\subsection{Gastos}
+Como el proyecto es de c\'odigo abierto, y se realiza como ayuda a un grupo de investigaci\'on, y como no se va a cobrar
+por el software, no se ve necesidad de contabilizar los gastos, ya que se est\'a haciendo a fondo perdido intencionadamente.
 
-Tambi\'{e}n se va a usar un PC gen\'{e}rico comprado a piezas en 2012.
+El modelo de desarrollo es de car\'acter completamente comunitario, todas las contribuciones son desinteresadas.
 
+No se realiza un presupuesto dada la alta dificultad de separar los costes y atribuirle una medida, es decir, \% de los recursos 
+destinados a esa tarea porque aunque el ordenador se deteriore y dem\'as a lo mejor tengas que cambiarlo en el transcurso del 
+tiempo tiene mas usos q ese y es complejo estimar cual seria la cuota destinada a ese uso para calcular la amortizacion y parte de 
+la compra del hipotetico siguiente pc aparte de q seria tan baja que es irrelevante no?
 
-\subsection{Otros gastos}
+que no tienes clste de oportunidad xq no hay otra actividad rentable ni te contrataria nadie por la situacion economica actual
+y q no eres autonomo sino investigador en tu ambito de competencia y q madie tiene intwncio de adquirir eso
+por lo tanto no tiene valor de mercaod
 
-\begin{tabular}{l*{1}{c}r}
-    Concepto                   & Gastos en € / mes & \\
-    \hline
-    Luz                        & 60 & \\
-    Agua                       & 50 & \\
-    Internet + Teléfono        & 60 & \\
-    Gas                        & 70 & \\
-    \hline
-    Total Mes                  & 325 & \\
-    Total A\~{n}o              & 3900 &\\
-\end{tabular}
+%\subsection{Amortizaci\'{o}n de material}
+%\subsubsection{Oficina}
+%La oficina que utilizamos es el domicilio familiar y no hay que pagar alquiler ya que es de nuestra propiedad. Por lo que el gasto de alquiler/hipoteca es 0€
+%\subsubsection{Material inform\'{a}tico}
+%El material informático que se va a usar es un portátil Acer TravelMate 5742G comprado en 
+%Diciembre de 2010 y usado intensivamente durante estos 4 años. 
+%El portátil estaba pensado para ser amortizado en 4 años. \emph{As\'{i} que por aqui habra que hacer algun calculo tonto}, por lo que durante el 
+%transcurso del TFG no va a generar ning\'{u}n tipo de gasto, ni beneficio, porque recordemos, es un proyecto sin \'{a}nimo de lucro.
+%
+%Tambi\'{e}n se va a usar un PC gen\'{e}rico comprado a piezas en 2012.
+%
+%
+%\subsection{Otros gastos}
+%
+%\begin{tabular}{l*{1}{c}r}
+%    Concepto                   & Gastos en € / mes & \\
+%    \hline
+%    Luz                        & 60 & \\
+%    Agua                       & 50 & \\
+%    Internet + Teléfono        & 60 & \\
+%    Gas                        & 70 & \\
+%    \hline
+%    Total Mes                  & 325 & \\
+%    Total A\~{n}o              & 3900 &\\
+%\end{tabular}
 

@@ -22,22 +22,22 @@ una lista de Instantes en los que se guardar\'a los valores.
 Como cada observaci\'on tiene muchas propiedades, es un requisito que las propiedades est\'en
 agrupadas por observaci\'on.
 
-Tambi\'en, los v\'ideos que se a\~nadan para facilitar la identificaci\'on de los rangos que
-nos interesan deben estar agrupados por observaci\'on.
-
-El rango seleccionado en cada propiedad estar\'a sincronizado con el resto de propiedades de
-la observaci\'on. Ya que no tiene sentido que por ejemplo, la observaci\'on ``coche´´, 
-que tiene como propiedades ``velocidad´´ y ``aceleraci\'on´´ tengan distintos rangos 
-seleccionados, ya que si en ``velocidad´´ seleccionamos [1, 3] y en ``aceleraci\'on´´ [3,4], 
+El rango seleccionado en cada propiedad estar\'a sincronizado con el resto de propiedades cargadas. 
+Ya que no tiene sentido que por ejemplo, la observaci\'on ``coche", 
+que tiene como propiedades ``velocidad" y ``aceleraci\'on" tengan distintos rangos 
+seleccionados, ya que si en ``velocidad" seleccionamos [1, 3] y en ``aceleraci\'on" [3,4], 
 ¿Qu\'e guardamos? ¿El primero o el segundo? Por tanto, ya que todas las propiedades suceden al
 mismo tiempo se sabe que est\'an relacionadas, por lo que es necesario que los rangos est\'en
 seleccionados.
 
-Gr\'aficamente las clases se dividen de dos maneras: Contenedores y clases ``hoja´´.
+A la hora de guardar, tampoco podr\'an guardarse distintos rangos que se solapen con los
+previamente creados. Ya que en un mismo instante de tiempo, no pueden estar sucediendo dos cosas al mismo tiempo.
+Por ejemplo, un brazo no puede estar levant\'andose, y baj\'andose al mismo tiempo.
+
+Gr\'aficamente las clases se dividen de dos maneras: Contenedores y clases ``hoja".
 El programa puede verse como una estructura de \'arbol, en las que de la ventana principal,
-cuelgan los contenedores de observaci\'on, de los e observaci\'on cuelga el contenedor de
-gr\'aficos y el contenedor de v\'ideos, y finalmente, de cada uno de ellos cuelga el 
-visualizador de datos y el visualizador de v\'ideos respectivamente.
+cuelgan los contenedores de v\'ideo y gr\'aficos, de los de gr\'aficos cuelga el 
+visualizador de datos.
 
 \section{Dise\~{n}o}
 
@@ -107,22 +107,22 @@ He decidido utilizar este patr\'{o}n por los siguientes motivos:
     normas, si no recomendaciones.
     
     \item \textbf{Prevenci\'{o}n de errores:}
-    Relacionado con lo anterior. Si perdemos el tiempo a\~{n}adiendo l\'{i}neas extra la probabilidad de que cometamos un error aumenta. Y aunque
-    no lo haya probado emp\'{i}ricamente, tendemos a pensar que \emph{¿Como me voy a equivocar en recorrer un array? ¡Pero si est\'{a} perfecto!}. 
-    Y ello nos llevar\'{a} a malgastar m\'{a}s aun nuestro preciado tiempo. Pero al menos nos daremos cuenta de nuestro error y veremos lo
-    \'{u}tiles que son los patrones.
+    Relacionado con lo anterior. Si se pierde el tiempo a\~{n}adiendo l\'{i}neas extra la probabilidad de que cometamos un error 
+    aumenta. Y aunque no haya sido probado emp\'{i}ricamente, se tiende a pensar que \emph{¿Como me voy a equivocar en recorrer un array? ¡Pero si est\'{a} perfecto!}. 
+    Y ello llevar\'{a} a malgastar m\'{a}s aun algo tan preciado como tiempo. Pero al menos servir\'a para darse cuenta del error y 
+    se ver\'a lo \'{u}tiles que son los patrones.
 \end{enumerate}
 
 \subsection{SOLID}
 SOLID es un acr\'{o}nimo mnem\'{o}nico acu\~{n}ado a comienzos de la d\'{e}cada de los 2000 por Robert C. Martin \cite{SOLID:ADefinition}
-que hace representa cinco principios b\'{a}sicos de la programaci\'{o}n orientada a objetos y el dise\~{n}o de software.
+que representa cinco principios b\'{a}sicos de la programaci\'{o}n orientada a objetos y el dise\~{n}o de software.
 
 SOLID merece un apartado en esta memoria ya que he intentado cumplir en el mayor grado que me ha sido posible los cinco principios.
 
 Los principios son los siguientes:
 \subsubsection{Single responsibility principle}
 Traducido al castellano: Princpio de responsabilidad \'{u}nica. El nombre puede llevar a enga\~{n}o ya que Martin define como \emph{responsabilidad}
-a una \emph{raz\'{o}n de cambio} \cite{brunetti-JMMM-2002}. Martin, concluye que una clase, debiera tener, una, y solamente una raz\'{o}n para cambiar.
+a una \emph{raz\'{o}n de cambio} \cite{}. Martin, concluye que una clase, debiera tener, una, y solamente una raz\'{o}n para cambiar.
 
 Por ejemplo, imaginemos que disponemos de una clase, o m\'{o}dulo que compila e imprime un informe. Ese informe puede cambiar por dos razones,
 de estilo, o de contenido. 
