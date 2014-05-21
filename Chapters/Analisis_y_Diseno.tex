@@ -24,8 +24,8 @@ agrupadas por observaci\'on.
 
 El rango seleccionado en cada propiedad estar\'a sincronizado con el resto de propiedades cargadas. 
 Ya que no tiene sentido que por ejemplo, la observaci\'on ``coche", 
-que tiene como propiedades ``velocidad" y ``aceleraci\'on" tengan distintos rangos 
-seleccionados, ya que si en ``velocidad" seleccionamos [1, 3] y en ``aceleraci\'on" [3,4], 
+que tiene como propiedades ``velocidad" \ y ``aceleraci\'on" \ tengan distintos rangos 
+seleccionados, ya que si en ``velocidad" \ seleccionamos [1, 3] y en ``aceleraci\'on" \ [3, 4], 
 ¿Qu\'e guardamos? ¿El primero o el segundo? Por tanto, ya que todas las propiedades suceden al
 mismo tiempo se sabe que est\'an relacionadas, por lo que es necesario que los rangos est\'en
 seleccionados.
@@ -44,6 +44,34 @@ visualizador de datos.
 \subsection{Diagrama de clases}
 
 \subsection{Listado de m\'odulos}
+
+\subsection{Diagrama de casos de uso extendidos}
+En el diagrama de casos de uso, se puede ver que acciones puede realizar el usuario en cualquier momento, y cuales
+est\'an supeditadas a ciertas condiciones. N\'otese que las condiciones de los ``extend" \ son los comentarios a\~nadidos
+a los subcasos de uso.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=1.0\linewidth]{./Figures/useCaseDiagram.png}
+\caption[Diagrama de casos de uso]{Diagrama de casos de uso}
+\label{fig:useCaseDiagram}
+\end{figure}
+
+\subsection{Modelo de dominio}
+Los datos que se guardan son ciertamente bastante simples, ya que para la tripleta Instante, Observaci\'on y Propiedad,
+toma un \'unico valor posible. 
+
+La Figura \ref{fig:ModelodeDominio} representa tanto los datos de entrada del software, tanto los datos
+de salida.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.7\linewidth]{./Figures/ModelodeDominio}
+\caption[Modelo de dominio]{Modelo de dominio}
+\label{fig:ModelodeDominio}
+\end{figure}
+
+
 
 \subsection{Librer\'{i}as usadas}
 \begin{itemize}
@@ -117,12 +145,13 @@ He decidido utilizar este patr\'{o}n por los siguientes motivos:
 SOLID es un acr\'{o}nimo mnem\'{o}nico acu\~{n}ado a comienzos de la d\'{e}cada de los 2000 por Robert C. Martin \cite{SOLID:ADefinition}
 que representa cinco principios b\'{a}sicos de la programaci\'{o}n orientada a objetos y el dise\~{n}o de software.
 
-SOLID merece un apartado en esta memoria ya que he intentado cumplir en el mayor grado que me ha sido posible los cinco principios.
+SOLID merece un apartado en esta memoria ya que se ha intentado cumplir en el mayor grado posible los cinco principios.
+\cite*{Art:Programming}
 
 Los principios son los siguientes:
 \subsubsection{Single responsibility principle}
 Traducido al castellano: Princpio de responsabilidad \'{u}nica. El nombre puede llevar a enga\~{n}o ya que Martin define como \emph{responsabilidad}
-a una \emph{raz\'{o}n de cambio} \cite{}. Martin, concluye que una clase, debiera tener, una, y solamente una raz\'{o}n para cambiar.
+a una \emph{raz\'{o}n de cambio} \cite{SOLID:SRP}. Martin, concluye que una clase, debiera tener, una, y solamente una raz\'{o}n para cambiar.
 
 Por ejemplo, imaginemos que disponemos de una clase, o m\'{o}dulo que compila e imprime un informe. Ese informe puede cambiar por dos razones,
 de estilo, o de contenido. 
@@ -134,18 +163,18 @@ Utilizando este principio volveremos nuestro c\'{o}digo mas robusto, ya que un c
 los siguientes m\'{o}dulos que se alimenten de esa clase.
 
 \subsubsection{Open/Closed principle}
-El principio abierto / cerrado implica que una clase est\'{a} abierta a la extensi\'{o}n pero cerrada a la modificaci\'{o}n. Ya que un cambio en el
+El principio abierto / cerrado \cite{SOLID:OCP} implica que una clase est\'{a} abierta a la extensi\'{o}n pero cerrada a la modificaci\'{o}n. Ya que un cambio en el
 funcionamiento de una clase har\'{i}a tambalear la estabilidad de nuestro software.
 
 \subsubsection{Liskov's substitution principle}
-El principio de sustituci\'{o}n de Liskov \footnote{\url{http://pmg.csail.mit.edu/~liskov/}} sostiene que cualquier subtipo de una clase
+El principio de sustituci\'{o}n de Liskov \cite{SOLID:LSP} \footnote{\url{http://pmg.csail.mit.edu/~liskov/}} sostiene que cualquier subtipo de una clase
 debe poder sustituir a su supertipo sin que haya un cambio de comportamiento.
 
 M\'{a}s formalmente: Si \textbf{S} es un subtipo de \textbf{T} entonces \textbf{T} puede sustituirse por \textbf{S} y 
 conservar su exactitud, tarea que realiza etc.
 
 \subsubsection{Interface segregation principle}
-El principio de segregaci\'{o}n de interfaces dice que es mejor tener muchas interfaces espec\'{i}ficas, que una gran interfaz que contenga todo.
+El principio de segregaci\'{o}n de interfaces dice que es mejor tener muchas interfaces espec\'{i}ficas, que una gran interfaz que contenga todo \cite{SOLID:ISP}.
 
 De esta manera evitamos que haya partes del software que dependan de m\'{e}todos que no influyen en esa clase.
 
@@ -155,3 +184,4 @@ El principio de Inversi\'{o}n de dependencia dice que:
     \item Los m\'{o}dulos de alto nivel no deben depender en m\'{o}dulos de bajo nivel. Ambos deben depender de abstracciones
     \item Las abstracciones no deben depender en los detalles. Los detalles deben depender de las abstracciones.
 \end{enumerate}
+\cite{SOLID:DIP}
