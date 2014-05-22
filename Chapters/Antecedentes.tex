@@ -3,38 +3,105 @@
 %Situación actual, estudio de diferentes alternativas 
 %existentes o distintos posibles enfoques del problema a solucionar
 \section{Situaci\'on actual}
-El grupo de investigaci\'on GALAN, esta construyendo y manteniendo un sistema de simulaci\'on que sirve para
-apoyar en la ense\~nanza a los alumnos, sobre todo en cosas que tenga que ver con actividad f\'isica.
+El proyecto desarrollado por el grupo de investigaci\'on GALAN, en colaboraci\'on con la universidad de Navarra, 
+consiste en un sistema de realidad virtual para ser utilizado para la ense\~nanza de tareas no evaluables de manera
+cl\'asica. Es decir, para lo que sirve el proyecto, es para ense\~nar habilidades y para los que se necesita un 
+profesor experto que eval\'ue en tiempo real.
 
-Actualmente, cuando capturan al experto realizando el ejercicio que se ha definido, no saben a ciencia cierta
-cuando est\'a sucediendo que cosa.
+El objetivo principal es conseguir un sistema en el que la gente entrene una habilidad concreta, por ejemplo, aprender
+a sacar correctamente en tenis, y que el sistema sea capaz de evaluar, determinar donde se ha equivocado, y en definitiva,
+ayudar a esa persona a aprender a realizar un saque de tenis correctamente.
 
-Por ejemplo, si est\'an capturando un \emph{drive} de golf, que se compone de distintas fases, no saben exactamente
-cuando empieza realmente la acci\'on de bajar los brazos para empezar el golpeo, por lo que lo hacen ``a ojo´´.
+Actualmente, se dispone de un sistema emulador de realidad virtual, en el que el alumno se captura a si mismo realizando
+la tarea que quiere aprender. Para poder realizar un diagn\'ostico, se han definido tres niveles.
 
-Al ver que este m\'etodo es poco preciso y adem\'as poco conveniente ya que se trata un poco de prueba y error,
-se me propuso realizar una aplicaci\'on que llevaban tiempo ideando.
+\begin{enumerate}
+	\item Nivel de observaci\'on
+	\item Nivel de interpretaci\'on
+	\item Nivel de diagn\'ostico
+\end{enumerate}
+
+En esos tres niveles, lo que se hace es transformar los datos en bruto generados por el sistema de realidad virtual
+a los objetos definidos del propio sistema: observaciones y propiedades.
+
+\subsection{Nivel de observaci\'on}
+En el nivel de observaci\'on lo que se hace es transformar los datos en bruto generados por el sistema de realidad virtual
+a los objetos que han sido definidos en el propio sistema: Observaciones y Propiedades.
+
+Para poder determinar de manera correcta esas propiedades y observaciones, es necesario contar con un 
+experto en el sistema interactivo, y un experto del dominio, que es quien define las observaciones y las
+propiedades que han de tenerse en cuenta. N\'otese que el experto del dominio define las observaciones y las
+propiedades en un lenguaje natural, t\'ecnico en campo.
+
+\subsubsection{Observaciones y propiedades}
+Una observaci\'on representa un hecho interesante para el diagn\'ostico, algo que tiene sentido, pero suelen
+ser lo suficientemente peque\~nas para que sean f\'acilmente diagnosticables. Ya que si la observaci\'on
+fuese ``Realizar saque", es una secuencia de varias acciones, por ejemplo: ``lanzar pelota", ``echar raqueta hacia atr\'as"
+y ``golpear pelota". De esta manera se es mucho mas granular y se pueden dar mejores diagn\'osticos.
+
+Cada observaci\'on contiene una serie de propiedades, que es lo que caracteriza una observaci\'on. 
+Siguiendo con el ejemplo del tenis, unas posibles propiedades para la observaci\'on ``lanzar pelota"
+pueden ser la velocidad a la que se levanta el brazo, el \'angulo del codo y la posici\'on del hombro.
+
+\subsection{Nivel de interpretaci\'on}
+Este es un nivel clave, en el que se crean relaciones entre las observaciones, que en el sistema se le conoce como Paso.
+Las relaciones entre observaciones son necesarias, ya que no todas las observaciones que se capturan influyen en las dem\'as,
+o no aportan informaci\'on \'util o relevante, y puede que incluso creen ruido, empeorando el diagn\'ostico.
+
+\paragraph{\textbf{Paso:}}
+Es el comportamiento de un conjunto de observaciones en el tiempo. Con un paso se define como se tienen
+que comportar las observaciones y sus propiedades en un periodo de tiempo concreto. Al igual que con las observaciones,
+se suelen definir pasos peque\~nos, como por ejemplo, ``levantar raqueta", para realizar los diagn\'osticos mejor.
+
+\paragraph{\textbf{Situacion:}}
+Define el contexto en el que suceden las observaciones y pueden influir (o no) al Paso, ya que por ejemplo, a la hora
+de tirar la pelota, habr\'ia que tener en cuenta el viento, para compensar su trayectoria, pero no habr\'ia que tener
+en cuenta el sol, ya que no afecta a la manera de lanzar la pelota.
+
+Actualmente, para crear las relaciones entre pasos y situaciones, hay una persona que lo realiza a mano. En muchos casos
+es un trabajo de prueba y error y adem\'as con resultados sub\'optimos ya que no siempre se ven claramente las relaciones,
+e incluso pueden crearse relaciones que no aporten nada.
+
+En esta situaci\'on es donde cobra sentido la realizaci\'on de este TFG. El TFG, es un primer paso para facilitar
+el trabajo a la persona que crea esas relaciones. Es una herramienta de autor que de manera gr\'afica, permite
+acotar los datos procesados en el nivel de observaci\'on. Es decir, el software no recibe datos en bruto, sino
+las propiedades y las observaciones, con sus valores en el tiempo durante una sesi\'on de trabajo.
+
+Al acotar esos datos en distintos rangos se pueden crear pasos y situaciones de una manera mucho mas sencilla, y adem\'as
+siendo mas eficientes, ya que el cerebro humano es capaz de detectar patrones complejos en el espacio.
+
+Una vez creados los pasos y situaciones, se utilizar\'an algoritmos de \emph{Machine Learning} y miner\'ia de datos para
+realizar un \emph{Feature Selection \footnote{\url{http://jmlr.org/papers/volume3/guyon03a/guyon03a.pdf}}},
+establecer las relaciones etc.
+
+\subsection{Nivel de diagn\'ostico}
+Finalmente, en este nivel, mediante distintas t\'ecnicas de diagn\'ostico, como por ejemplo el \emph{Clustering} y
+algoritmos de clasificaci\'on supervisada, compar\'andose con el experto.
+se determina si el alumno ha adquirido la habilidad, y se le proporciona el \emph{feedback} 
+necesario para saber donde tiene que incidir para poder mejorar.
 
 \section{Estudio de diferentes alternativas}
-La aplicaci\'on consiste en poder visualizar tanto en gr\'aficos como en v\'ideo lo capturado por Kinect. Al visualizar
-los gr\'aficos por pantalla y adem\'as sincronizados con uno o varios v\'ideos puede elegirse con mayor precisi\'on.
+La aplicaci\'on consiste en poder visualizar tanto en gr\'aficos como en v\'ideo lo capturado por una herramienta
+de realidad virtual. Al visualizar los gr\'aficos por pantalla y adem\'as sincronizados con uno o varios v\'ideos 
+puede elegirse con mayor precisi\'on.
 
 Para conseguir este objetivo, se barajaron distintos tipos de acercamientos al problema.
 
 \subsection{M\'ultiples ventanas dentro de una ventana maestra (MDI)}
-Al principio lo primero que se me ocurri\'o fue crear una interfaz MDI (Multiple Document Interface). Como ventajas
-ten\'ia que ya hab\'ia creado algunas aplicaciones MDI en .NET por lo que no habr\'ia mucho problema cre\'andola.
+La primera opci\'on barajada fue crear una interfaz MDI (Multiple Document Interface). Como ventajas se
+dispon\'ia de cierta experiencia creando aplicaciones MDI en .NET.
 
 Pero afront\'emoslo, estamos en 2014 y las ventanas MDI no son muy c\'omodas de utilizar cuando se disponen de varias ventanas
 abiertas, ya que no se acoplan autom\'aticamente a los lados, ni se pueden crear pesta\~nas de manera din\'amica.
-Por otro lado, las ventanas MDI fueron desaprobadas en WPF, que es el nuevo sistema de ventanas de Microsoft.
+Por otro lado, las ventanas MDI fueron desaprobadas en WPF, que es el nuevo sub sistema gr\'afico para renderizar 
+interfaces de usuario de Microsoft.
 
 \subsection{Crear una interfaz tipo IDE}
-La mayor\'ia de los IDE que conocemos, como Eclipse, Visual Studio, NetBeans IntelliJ Idea... disponen de un sistema de 
+La mayor\'ia de los IDEs conocidos, como Eclipse, Visual Studio, NetBeans IntelliJ Idea... disponen de un sistema de 
 ventanas acoplables din\'amicas. Pueden crearse grupos de pesta\~nas, redimensionarlas, ponerlas lado a lado etc.
 
 Debido a que el software va a desarrollarse con Visual Studio, era factible pensar que crear una interfaz similar al propio
-Visual Studio ser\'ia f\'acil, con controles gr\'aficos que facilitaran la tarea.
+Visual Studio ser\'ia sencillo, con controles gr\'aficos que facilitaran la tarea.
 
 La realidad es bien distinta, ya que se necesita de componentes de terceros para crear ese tipo de interfaz. Pese a ese
 peque\~no inconveniente hay distintas librer\'ias de c\'odigo abierto que proporcionan esa funcionalidad.

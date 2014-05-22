@@ -169,7 +169,7 @@ En esta secci\'on se proceder\'a a explicar brevemente cada caso de uso. %, dar 
 		    Poscondiciones			   & El contenedor de la observaci\'on y todas las 
 		    							 propiedades de la observaci\'on o la propiedad
 		    							 seleccionada dependiendo de donde se haya hecho 
-		    							 doble click. \\
+		    							 doble click y sincronizada con el rango existente, si es que lo hay. \\
 		    Interfaz gr\'afica		   & Figuras \ref{fig:Alcance}, \ref{fig:Scrum},
 		    							 \ref{fig:Alcance}, \ref{fig:Scrum} y \ref{fig:Alcance}\\
 		    \hline
@@ -180,162 +180,108 @@ En esta secci\'on se proceder\'a a explicar brevemente cada caso de uso. %, dar 
 \end{table}
 \pagebreak
 
-\subsubsection{Cargar XML}
+\subsubsection{Seleccionar rango}
 
 \begin{table}[H]
 	\begin{center}
 		\rowcolors{2}{lightgray}{} %\rowcolors{<starting row index>}{<odd row color>}{<even row color>}
 		\begin{tabular}{|l*{1}{p{10cm}}|}
 			
-			\multicolumn{2}{c}{\includegraphics[width=0.4\linewidth]{./Figures/CargarXML.png}} \\
+			\multicolumn{2}{c}{\includegraphics[width=1.0\linewidth]{./Figures/SeleccionarRango.png}} \\
 			\hline
-		    Nombre                     & Cargar XML \\
-		    Descripci\'on              & Carga un XML que contiene las propiedades
-		    							 y las observaciones en el sistema. \'Unicamente
-		    							 se cargan si el archivo valida contra el XSD.  \\ 
+		    Nombre                     & Seleccionar rango \\
+		    Descripci\'on              & Al pinchar y mover el rat\'on sobre un visualizador de datos,
+		    							 se seleccionar\'a un rango en todos los visualizadores de datos
+		    							 cargados en el sistema. \\ 
 		    Actores                    & User  \\
-		    Precondiciones             & Ninguna  \\
+		    Precondiciones             & Alguna propiedad tiene que estar cargada  \\
 		    Requisitos no funcionales  & Ninguno  \\
 		    Flujo de eventos           & \begin{enumerate}
-		    								\item El usuario pincha en File -> Load XML.
-		    								\item Se abre una ventana de selecci\'on de archivos.
-		    								\item \textbf{Si el usuario quiere cargar un fichero}
+		    								\item El usuario pincha en un visualizador de datos.
+		    								\item El usuario arrastra (manteniendo pinchado) el rat\'on.
 		    								\begin{enumerate}
-		    									\item Lo busca en el sistema de archivos
-		    									\item Lo selecciona y pincha en Abrir.
-		    									
-		    									\item \textbf{Si es un documento v\'alido}
-		    									\begin{enumerate}
-		    										\item Las observaciones y sus propiedades 
-		    											  aparecen en el \'arbol lateral.
-		    									\end{enumerate}
-		    									\item \textbf{Si no}
-		    									\begin{enumerate}
-		    										\item Se muestra un error.
-		    									\end{enumerate}
+		    									\item Cada vez que el rango seleccionado cambia, se notifica al contenedor padre.
+		    									\item El contenedor, notifica al repositorio de contenedores, para que todos
+		    									se sincronicen con el dato proporciado.
+		    									\item Se recorren todos los visualizadores de datos para sincronizarse con el nuevo
+		    									valor.
 		    								\end{enumerate}
-		    								\item \textbf{Si no desea cargarlo}
-		    								\begin{enumerate}
-		    									\item Pincha en cancelar.
-		    								\end{enumerate}
+		    								\item El usuario deja de pinchar, y se queda el rango seleccionado
 		    							 \end{enumerate} \\
-		    Poscondiciones			   & El \'arbol contendr\'a las observaciones y 
-		    							 propiedades si era un documento v\'alido, mostrar\'a
-		    							 un error si era un documento inv\'alido, o no 
-		    							 suceder\'a nada si el usuario ha decidido no cargar
-		    							 el fichero.  \\
+		    Poscondiciones			   & El rango quedar\'a seleccionado en todos los visualizadores de datos
+		    							 cargados en el sistema.  \\
 		    Interfaz gr\'afica		   & Figuras \ref{fig:Alcance}, \ref{fig:Scrum},
 		    							 \ref{fig:Alcance}, \ref{fig:Scrum} y \ref{fig:Alcance}\\
 		    \hline
 		\end{tabular}
-	\caption[Cargar XML]{Cargar XML}
-	\label{Cargar XML}
+	\caption[Seleccionar rango]{Seleccionar rango}
+	\label{SeleccionarRango}
 	\end{center}
 \end{table}
+\pagebreak
 
-\subsubsection{Cargar XML}
-
+\subsubsection{Cerrar observaci\'on}
 \begin{table}[H]
 	\begin{center}
 		\rowcolors{2}{lightgray}{} %\rowcolors{<starting row index>}{<odd row color>}{<even row color>}
 		\begin{tabular}{|l*{1}{p{10cm}}|}
 			
-			\multicolumn{2}{c}{\includegraphics[width=0.4\linewidth]{./Figures/CargarXML.png}} \\
+			\multicolumn{2}{c}{\includegraphics[width=1.0\linewidth]{./Figures/CerrarObservacion.png}} \\
 			\hline
-		    Nombre                     & Cargar XML \\
-		    Descripci\'on              & Carga un XML que contiene las propiedades
-		    							 y las observaciones en el sistema. \'Unicamente
-		    							 se cargan si el archivo valida contra el XSD.  \\ 
+		    Nombre                     & Cerrar observaci\'on \\
+		    Descripci\'on              & Elimina, tanto de manera visual, como de memoria, la observaci\'on
+		    							 seleccionada y todos sus visualizadores de datos (propiedades) asociadas  \\ 
 		    Actores                    & User  \\
-		    Precondiciones             & Ninguna  \\
+		    Precondiciones             & La observaci\'on ten\'ia que estar cargada. \\
 		    Requisitos no funcionales  & Ninguno  \\
 		    Flujo de eventos           & \begin{enumerate}
-		    								\item El usuario pincha en File -> Load XML.
-		    								\item Se abre una ventana de selecci\'on de archivos.
-		    								\item \textbf{Si el usuario quiere cargar un fichero}
-		    								\begin{enumerate}
-		    									\item Lo busca en el sistema de archivos
-		    									\item Lo selecciona y pincha en Abrir.
-		    									
-		    									\item \textbf{Si es un documento v\'alido}
-		    									\begin{enumerate}
-		    										\item Las observaciones y sus propiedades 
-		    											  aparecen en el \'arbol lateral.
-		    									\end{enumerate}
-		    									\item \textbf{Si no}
-		    									\begin{enumerate}
-		    										\item Se muestra un error.
-		    									\end{enumerate}
-		    								\end{enumerate}
-		    								\item \textbf{Si no desea cargarlo}
-		    								\begin{enumerate}
-		    									\item Pincha en cancelar.
-		    								\end{enumerate}
+		    								\item El usuario pincha sobre la ``X" \ en la esquina
+		    									  superior derecha de la observaci\'on.
+		    								\item Se borra del repositorio, liberando sus recursos, y con ello,
+		    									  sus propiedades.
+		    								\item Finalmente se borra de la pantalla.
 		    							 \end{enumerate} \\
-		    Poscondiciones			   & El \'arbol contendr\'a las observaciones y 
-		    							 propiedades si era un documento v\'alido, mostrar\'a
-		    							 un error si era un documento inv\'alido, o no 
-		    							 suceder\'a nada si el usuario ha decidido no cargar
-		    							 el fichero.  \\
+		    Poscondiciones			   & El espacio de trabajo contendr\'a todas las observaciones
+		    							 y propiedades menos la que se ha cerrado.  \\
 		    Interfaz gr\'afica		   & Figuras \ref{fig:Alcance}, \ref{fig:Scrum},
 		    							 \ref{fig:Alcance}, \ref{fig:Scrum} y \ref{fig:Alcance}\\
 		    \hline
 		\end{tabular}
-	\caption[Cargar XML]{Cargar XML}
-	\label{Cargar XML}
+	\caption[Cerrar observaci\'on]{Cerrar observaci\'on}
+	\label{Cerrar observacion}
 	\end{center}
 \end{table}
+\pagebreak
 
-\subsubsection{Cargar XML}
+\subsubsection{Cerrar propiedad}
 
 \begin{table}[H]
 	\begin{center}
 		\rowcolors{2}{lightgray}{} %\rowcolors{<starting row index>}{<odd row color>}{<even row color>}
 		\begin{tabular}{|l*{1}{p{10cm}}|}
 			
-			\multicolumn{2}{c}{\includegraphics[width=0.4\linewidth]{./Figures/CargarXML.png}} \\
+			\multicolumn{2}{c}{\includegraphics[width=1.0\linewidth]{./Figures/CerrarPropiedad.png}} \\
 			\hline
-		    Nombre                     & Cargar XML \\
-		    Descripci\'on              & Carga un XML que contiene las propiedades
-		    							 y las observaciones en el sistema. \'Unicamente
-		    							 se cargan si el archivo valida contra el XSD.  \\ 
-		    Actores                    & User  \\
-		    Precondiciones             & Ninguna  \\
-		    Requisitos no funcionales  & Ninguno  \\
-		    Flujo de eventos           & \begin{enumerate}
-		    								\item El usuario pincha en File -> Load XML.
-		    								\item Se abre una ventana de selecci\'on de archivos.
-		    								\item \textbf{Si el usuario quiere cargar un fichero}
-		    								\begin{enumerate}
-		    									\item Lo busca en el sistema de archivos
-		    									\item Lo selecciona y pincha en Abrir.
-		    									
-		    									\item \textbf{Si es un documento v\'alido}
-		    									\begin{enumerate}
-		    										\item Las observaciones y sus propiedades 
-		    											  aparecen en el \'arbol lateral.
-		    									\end{enumerate}
-		    									\item \textbf{Si no}
-		    									\begin{enumerate}
-		    										\item Se muestra un error.
-		    									\end{enumerate}
-		    								\end{enumerate}
-		    								\item \textbf{Si no desea cargarlo}
-		    								\begin{enumerate}
-		    									\item Pincha en cancelar.
-		    								\end{enumerate}
-		    							 \end{enumerate} \\
-		    Poscondiciones			   & El \'arbol contendr\'a las observaciones y 
-		    							 propiedades si era un documento v\'alido, mostrar\'a
-		    							 un error si era un documento inv\'alido, o no 
-		    							 suceder\'a nada si el usuario ha decidido no cargar
-		    							 el fichero.  \\
-		    Interfaz gr\'afica		   & Figuras \ref{fig:Alcance}, \ref{fig:Scrum},
-		    							 \ref{fig:Alcance}, \ref{fig:Scrum} y \ref{fig:Alcance}\\
-		    \hline
+			Nombre                     & Cerrar propiedad \\
+			Descripci\'on              & Elimina, tanto de manera visual, como de memoria, la propiedad
+									  	 seleccionada.  \\ 
+			Actores                    & User.  \\
+			Precondiciones             & La propiedad ten\'ia que estar cargada. \\
+			Requisitos no funcionales  & Ninguno.  \\
+			Flujo de eventos           & \begin{enumerate}
+										 	\item El usuario pincha sobre la ``X" \ en la esquina
+												  superior derecha de la propiedad.
+											\item Se borra del contenedor al que estaba asociada.
+											\item Finalmente se borra de la pantalla.
+										 \end{enumerate} \\
+			Poscondiciones			   & El espacio de trabajo contendr\'a todas las observaciones
+										 y propiedades menos la propiedad que se ha cerrado.  \\
+			Interfaz gr\'afica		   & Figuras \ref{fig:Alcance}, \ref{fig:Scrum},
+			\ref{fig:Alcance}, \ref{fig:Scrum} y \ref{fig:Alcance}\\
+			\hline
 		\end{tabular}
-	\caption[Cargar XML]{Cargar XML}
-	\label{Cargar XML}
+	\caption[Cerrar propiedad]{Cerrar propiedad}
+	\label{Cerrar propiedad}
 	\end{center}
 \end{table}
 
