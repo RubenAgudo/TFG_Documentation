@@ -20,6 +20,377 @@ a los subcasos de uso.
 \end{figure}
 
 \subsection{Casos de uso extendidos}
+En esta secci\'on se proceder\'a a explicar brevemente cada caso de uso. %, dar una descripci\'on
+%de que se hace, que actores toman parte, precondiciones, requisitos no funcionales, el flujo de
+%eventos, as\'i como sus poscondiciones e interfaz gr\'afica asociada.
+
+\subsubsection{Cargar XML}
+
+\begin{table}[H]
+	\begin{center}
+		\rowcolors{2}{lightgray}{} %\rowcolors{<starting row index>}{<odd row color>}{<even row color>}
+		\begin{tabular}{|l*{1}{p{10cm}}|}
+			
+			\multicolumn{2}{c}{\includegraphics[width=0.4\linewidth]{./Figures/CargarXML.png}} \\
+			\hline
+		    Nombre                     & Cargar XML \\
+		    Descripci\'on              & Carga un XML que contiene las propiedades
+		    							 y las observaciones en el sistema. \'Unicamente
+		    							 se cargan si el archivo valida contra el XSD.  \\ 
+		    Actores                    & User  \\
+		    Precondiciones             & Ninguna  \\
+		    Requisitos no funcionales  & Ninguno  \\
+		    Flujo de eventos           & \begin{enumerate}
+		    								\item El usuario pincha en File -> Load XML.
+		    								\item Se abre una ventana de selecci\'on de archivos.
+		    								\item \textbf{Si el usuario quiere cargar un fichero}
+		    								\begin{enumerate}
+		    									\item Lo busca en el sistema de archivos
+		    									\item Lo selecciona y pincha en Abrir.
+		    									
+		    									\item \textbf{Si es un documento v\'alido}
+		    									\begin{enumerate}
+		    										\item Las observaciones y sus propiedades 
+		    											  aparecen en el \'arbol lateral.
+		    									\end{enumerate}
+		    									\item \textbf{Si no}
+		    									\begin{enumerate}
+		    										\item Se muestra un error.
+		    									\end{enumerate}
+		    								\end{enumerate}
+		    								\item \textbf{Si no desea cargarlo}
+		    								\begin{enumerate}
+		    									\item Pincha en cancelar.
+		    								\end{enumerate}
+		    							 \end{enumerate} \\
+		    Poscondiciones			   & El \'arbol contendr\'a las observaciones y 
+		    							 propiedades si era un documento v\'alido, mostrar\'a
+		    							 un error si era un documento inv\'alido, o no 
+		    							 suceder\'a nada si el usuario ha decidido no cargar
+		    							 el fichero.  \\
+		    Interfaz gr\'afica		   & Figuras \ref{fig:Alcance}, \ref{fig:Scrum},
+		    							 \ref{fig:Alcance}, \ref{fig:Scrum} y \ref{fig:Alcance}\\
+		    \hline
+		\end{tabular}
+	\caption[Cargar XML]{Cargar XML}
+	\label{Cargar XML}
+	\end{center}
+\end{table}
+
+\subsubsection{A\~nadir v\'ideo}
+
+\begin{table}[H]
+	\begin{center}
+		\rowcolors{2}{lightgray}{} %\rowcolors{<starting row index>}{<odd row color>}{<even row color>}
+		\begin{tabular}{|l*{1}{p{10cm}}|}
+			
+			\multicolumn{2}{c}{\includegraphics[width=0.4\linewidth]{./Figures/AnadirVideo.png}} \\
+			\hline
+		    Nombre                     & A\~nadir v\'ideo \\
+		    Descripci\'on              & Abre un v\'ideo y lo a\~nade al contenedor
+		    							 de v\'ideos si ya hab\'ia v\'ideos previamente
+		    							 cargados. Si no, a\~nade tambi\'en un contenedor
+		    							 de v\'ideos.  \\ 
+		    Actores                    & User  \\
+		    Precondiciones             & Ninguna  \\
+		    Requisitos no funcionales  & Ninguno  \\
+		    Flujo de eventos           & \begin{enumerate}
+		    								\item El usuario pincha en Add Video.
+		    								\item Se abre una ventana de selecci\'on de archivos.
+		    								\item \textbf{Si el usuario quiere cargar un v\'ideo}
+		    								\begin{enumerate}
+		    									\item Lo busca en el sistema de archivos
+		    									\item Lo selecciona y pincha en Abrir.
+		    									
+		    									\item \textbf{Si el contenedor de v\'ideos estaba
+		    												  cargado}
+		    									\begin{enumerate}
+		    										\item Se a\~nade el v\'ideo al contenedor
+		    											  existente.
+		    									\end{enumerate}
+		    									\item \textbf{Si no}
+		    									\begin{enumerate}
+		    										\item Se crea y a\~nade un contenedor de v\'ideos y se le a\~nade el nuevo v\'ideo.
+		    									\end{enumerate}
+		    								\end{enumerate}
+		    								\item \textbf{Si no desea cargarlo}
+		    								\begin{enumerate}
+		    									\item Pincha en cancelar.
+		    								\end{enumerate}
+		    							 \end{enumerate} \\
+		    Poscondiciones			   & El contenedor con el nuevo v\'ideo a\~nadido  \\
+		    Interfaz gr\'afica		   & Figuras \ref{fig:Alcance}, \ref{fig:Scrum},
+		    							 \ref{fig:Alcance}, \ref{fig:Scrum} y \ref{fig:Alcance}\\
+		    \hline
+		\end{tabular}
+	\caption[A\~nadir v\'ideo]{A\~nadir v\'ideo}
+	\label{Anadir video}
+	\end{center}
+\end{table}
+\pagebreak
+
+\subsubsection{Cargar propiedad}
+
+\begin{table}[H]
+	\begin{center}
+		\rowcolors{2}{lightgray}{} %\rowcolors{<starting row index>}{<odd row color>}{<even row color>}
+		\begin{tabular}{|l*{1}{p{10cm}}|}
+			
+			\multicolumn{2}{c}{\includegraphics[width=1.0\linewidth]{./Figures/CargarPropiedad.png}} \\
+			\hline
+		    Nombre                     & Cargar propiedad \\
+		    Descripci\'on              & Carga una propiedad en el contenedor de gr\'aficos
+		    							 correspondiente a la observaci\'on a la que pertenece.
+		    							 Tambi\'en puede a\~nadir propiedades en grupo, haciendo
+		    							 doble click sobre el nombre de la observaci\'on. Si
+		    							 el contenedor no est\'a creado, lo crea.  \\ 
+		    Actores                    & User  \\
+		    Precondiciones             & Ninguna  \\
+		    Requisitos no funcionales  & Ninguno  \\
+		    Flujo de eventos           & \begin{enumerate}
+		    								\item El usuario hace doble click en alg\'un elemento
+		    									  del \'arbol de observaciones y propiedades.
+		    								\item \textbf{Si el elemento es una observaci\'on}
+		    								\begin{enumerate}
+		    									\item Carga el contenedor si no estaba creado
+		    									\item A\~nade todos sus hijos no cargados al
+		    										  contenedor.
+		    								\end{enumerate}
+		    								\item \textbf{Si el elemento es una propiedad}
+		    								\begin{enumerate}
+			    								\item Crea el contenedor de la observaci\'on
+			    									  a la que pertenece la propiedad seleccionada
+			    									  si no estaba cargado.
+			    								\item A\~nade la propiedad si no estaba cargada
+			    									  previamente.
+			    									  
+		    								\end{enumerate}
+		    							 \end{enumerate} \\
+		    Poscondiciones			   & El contenedor de la observaci\'on y todas las 
+		    							 propiedades de la observaci\'on o la propiedad
+		    							 seleccionada dependiendo de donde se haya hecho 
+		    							 doble click. \\
+		    Interfaz gr\'afica		   & Figuras \ref{fig:Alcance}, \ref{fig:Scrum},
+		    							 \ref{fig:Alcance}, \ref{fig:Scrum} y \ref{fig:Alcance}\\
+		    \hline
+		\end{tabular}
+	\caption[Cargar propiedad]{Cargar propiedad}
+	\label{Cargar propiedad}
+	\end{center}
+\end{table}
+\pagebreak
+
+\subsubsection{Cargar XML}
+
+\begin{table}[H]
+	\begin{center}
+		\rowcolors{2}{lightgray}{} %\rowcolors{<starting row index>}{<odd row color>}{<even row color>}
+		\begin{tabular}{|l*{1}{p{10cm}}|}
+			
+			\multicolumn{2}{c}{\includegraphics[width=0.4\linewidth]{./Figures/CargarXML.png}} \\
+			\hline
+		    Nombre                     & Cargar XML \\
+		    Descripci\'on              & Carga un XML que contiene las propiedades
+		    							 y las observaciones en el sistema. \'Unicamente
+		    							 se cargan si el archivo valida contra el XSD.  \\ 
+		    Actores                    & User  \\
+		    Precondiciones             & Ninguna  \\
+		    Requisitos no funcionales  & Ninguno  \\
+		    Flujo de eventos           & \begin{enumerate}
+		    								\item El usuario pincha en File -> Load XML.
+		    								\item Se abre una ventana de selecci\'on de archivos.
+		    								\item \textbf{Si el usuario quiere cargar un fichero}
+		    								\begin{enumerate}
+		    									\item Lo busca en el sistema de archivos
+		    									\item Lo selecciona y pincha en Abrir.
+		    									
+		    									\item \textbf{Si es un documento v\'alido}
+		    									\begin{enumerate}
+		    										\item Las observaciones y sus propiedades 
+		    											  aparecen en el \'arbol lateral.
+		    									\end{enumerate}
+		    									\item \textbf{Si no}
+		    									\begin{enumerate}
+		    										\item Se muestra un error.
+		    									\end{enumerate}
+		    								\end{enumerate}
+		    								\item \textbf{Si no desea cargarlo}
+		    								\begin{enumerate}
+		    									\item Pincha en cancelar.
+		    								\end{enumerate}
+		    							 \end{enumerate} \\
+		    Poscondiciones			   & El \'arbol contendr\'a las observaciones y 
+		    							 propiedades si era un documento v\'alido, mostrar\'a
+		    							 un error si era un documento inv\'alido, o no 
+		    							 suceder\'a nada si el usuario ha decidido no cargar
+		    							 el fichero.  \\
+		    Interfaz gr\'afica		   & Figuras \ref{fig:Alcance}, \ref{fig:Scrum},
+		    							 \ref{fig:Alcance}, \ref{fig:Scrum} y \ref{fig:Alcance}\\
+		    \hline
+		\end{tabular}
+	\caption[Cargar XML]{Cargar XML}
+	\label{Cargar XML}
+	\end{center}
+\end{table}
+
+\subsubsection{Cargar XML}
+
+\begin{table}[H]
+	\begin{center}
+		\rowcolors{2}{lightgray}{} %\rowcolors{<starting row index>}{<odd row color>}{<even row color>}
+		\begin{tabular}{|l*{1}{p{10cm}}|}
+			
+			\multicolumn{2}{c}{\includegraphics[width=0.4\linewidth]{./Figures/CargarXML.png}} \\
+			\hline
+		    Nombre                     & Cargar XML \\
+		    Descripci\'on              & Carga un XML que contiene las propiedades
+		    							 y las observaciones en el sistema. \'Unicamente
+		    							 se cargan si el archivo valida contra el XSD.  \\ 
+		    Actores                    & User  \\
+		    Precondiciones             & Ninguna  \\
+		    Requisitos no funcionales  & Ninguno  \\
+		    Flujo de eventos           & \begin{enumerate}
+		    								\item El usuario pincha en File -> Load XML.
+		    								\item Se abre una ventana de selecci\'on de archivos.
+		    								\item \textbf{Si el usuario quiere cargar un fichero}
+		    								\begin{enumerate}
+		    									\item Lo busca en el sistema de archivos
+		    									\item Lo selecciona y pincha en Abrir.
+		    									
+		    									\item \textbf{Si es un documento v\'alido}
+		    									\begin{enumerate}
+		    										\item Las observaciones y sus propiedades 
+		    											  aparecen en el \'arbol lateral.
+		    									\end{enumerate}
+		    									\item \textbf{Si no}
+		    									\begin{enumerate}
+		    										\item Se muestra un error.
+		    									\end{enumerate}
+		    								\end{enumerate}
+		    								\item \textbf{Si no desea cargarlo}
+		    								\begin{enumerate}
+		    									\item Pincha en cancelar.
+		    								\end{enumerate}
+		    							 \end{enumerate} \\
+		    Poscondiciones			   & El \'arbol contendr\'a las observaciones y 
+		    							 propiedades si era un documento v\'alido, mostrar\'a
+		    							 un error si era un documento inv\'alido, o no 
+		    							 suceder\'a nada si el usuario ha decidido no cargar
+		    							 el fichero.  \\
+		    Interfaz gr\'afica		   & Figuras \ref{fig:Alcance}, \ref{fig:Scrum},
+		    							 \ref{fig:Alcance}, \ref{fig:Scrum} y \ref{fig:Alcance}\\
+		    \hline
+		\end{tabular}
+	\caption[Cargar XML]{Cargar XML}
+	\label{Cargar XML}
+	\end{center}
+\end{table}
+
+\subsubsection{Cargar XML}
+
+\begin{table}[H]
+	\begin{center}
+		\rowcolors{2}{lightgray}{} %\rowcolors{<starting row index>}{<odd row color>}{<even row color>}
+		\begin{tabular}{|l*{1}{p{10cm}}|}
+			
+			\multicolumn{2}{c}{\includegraphics[width=0.4\linewidth]{./Figures/CargarXML.png}} \\
+			\hline
+		    Nombre                     & Cargar XML \\
+		    Descripci\'on              & Carga un XML que contiene las propiedades
+		    							 y las observaciones en el sistema. \'Unicamente
+		    							 se cargan si el archivo valida contra el XSD.  \\ 
+		    Actores                    & User  \\
+		    Precondiciones             & Ninguna  \\
+		    Requisitos no funcionales  & Ninguno  \\
+		    Flujo de eventos           & \begin{enumerate}
+		    								\item El usuario pincha en File -> Load XML.
+		    								\item Se abre una ventana de selecci\'on de archivos.
+		    								\item \textbf{Si el usuario quiere cargar un fichero}
+		    								\begin{enumerate}
+		    									\item Lo busca en el sistema de archivos
+		    									\item Lo selecciona y pincha en Abrir.
+		    									
+		    									\item \textbf{Si es un documento v\'alido}
+		    									\begin{enumerate}
+		    										\item Las observaciones y sus propiedades 
+		    											  aparecen en el \'arbol lateral.
+		    									\end{enumerate}
+		    									\item \textbf{Si no}
+		    									\begin{enumerate}
+		    										\item Se muestra un error.
+		    									\end{enumerate}
+		    								\end{enumerate}
+		    								\item \textbf{Si no desea cargarlo}
+		    								\begin{enumerate}
+		    									\item Pincha en cancelar.
+		    								\end{enumerate}
+		    							 \end{enumerate} \\
+		    Poscondiciones			   & El \'arbol contendr\'a las observaciones y 
+		    							 propiedades si era un documento v\'alido, mostrar\'a
+		    							 un error si era un documento inv\'alido, o no 
+		    							 suceder\'a nada si el usuario ha decidido no cargar
+		    							 el fichero.  \\
+		    Interfaz gr\'afica		   & Figuras \ref{fig:Alcance}, \ref{fig:Scrum},
+		    							 \ref{fig:Alcance}, \ref{fig:Scrum} y \ref{fig:Alcance}\\
+		    \hline
+		\end{tabular}
+	\caption[Cargar XML]{Cargar XML}
+	\label{Cargar XML}
+	\end{center}
+\end{table}
+
+\subsubsection{Cargar XML}
+
+\begin{table}[H]
+	\begin{center}
+		\rowcolors{2}{lightgray}{} %\rowcolors{<starting row index>}{<odd row color>}{<even row color>}
+		\begin{tabular}{|l*{1}{p{10cm}}|}
+			
+			\multicolumn{2}{c}{\includegraphics[width=0.4\linewidth]{./Figures/CargarXML.png}} \\
+			\hline
+		    Nombre                     & Cargar XML \\
+		    Descripci\'on              & Carga un XML que contiene las propiedades
+		    							 y las observaciones en el sistema. \'Unicamente
+		    							 se cargan si el archivo valida contra el XSD.  \\ 
+		    Actores                    & User  \\
+		    Precondiciones             & Ninguna  \\
+		    Requisitos no funcionales  & Ninguno  \\
+		    Flujo de eventos           & \begin{enumerate}
+		    								\item El usuario pincha en File -> Load XML.
+		    								\item Se abre una ventana de selecci\'on de archivos.
+		    								\item \textbf{Si el usuario quiere cargar un fichero}
+		    								\begin{enumerate}
+		    									\item Lo busca en el sistema de archivos
+		    									\item Lo selecciona y pincha en Abrir.
+		    									
+		    									\item \textbf{Si es un documento v\'alido}
+		    									\begin{enumerate}
+		    										\item Las observaciones y sus propiedades 
+		    											  aparecen en el \'arbol lateral.
+		    									\end{enumerate}
+		    									\item \textbf{Si no}
+		    									\begin{enumerate}
+		    										\item Se muestra un error.
+		    									\end{enumerate}
+		    								\end{enumerate}
+		    								\item \textbf{Si no desea cargarlo}
+		    								\begin{enumerate}
+		    									\item Pincha en cancelar.
+		    								\end{enumerate}
+		    							 \end{enumerate} \\
+		    Poscondiciones			   & El \'arbol contendr\'a las observaciones y 
+		    							 propiedades si era un documento v\'alido, mostrar\'a
+		    							 un error si era un documento inv\'alido, o no 
+		    							 suceder\'a nada si el usuario ha decidido no cargar
+		    							 el fichero.  \\
+		    Interfaz gr\'afica		   & Figuras \ref{fig:Alcance}, \ref{fig:Scrum},
+		    							 \ref{fig:Alcance}, \ref{fig:Scrum} y \ref{fig:Alcance}\\
+		    \hline
+		\end{tabular}
+	\caption[Cargar XML]{Cargar XML}
+	\label{Cargar XML}
+	\end{center}
+\end{table}
 
 \section{Modelo de dominio}
 Los datos que se guardan son ciertamente bastante simples, ya que para la tripleta Instante, Observaci\'on y Propiedad,
