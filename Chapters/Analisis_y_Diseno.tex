@@ -9,26 +9,23 @@
 %módulos/paquetes del software desarrollado, etc.
 
 \section{An\'{a}lisis}
-Los datos que recoge el software est\'an en un XML. El XML describe los datos que han de mostrarse. A grosso modo se dividen en:
+Los datos que recoge el software est\'an en un XML. El XML describe los datos que han de mostrarse. Se dividen en:
 \begin{itemize}
 	\item Observaciones
 	\item Propiedades
 	\item Instantes
 \end{itemize}
 
-Por tanto se ha decidido guardar la lista de Observaciones, la lista de Propiedades para cada Observaci\'on y cada Propiedad
-una lista de Instantes en los que se guardar\'a los valores.
-
-Como cada observaci\'on tiene muchas propiedades, es un requisito que las propiedades est\'en
-agrupadas por observaci\'on.
+Por tanto se ha decidido guardar la lista de Observaciones, cada observaci\'on contiene la lista de Propiedades 
+y cada Propiedad una lista de Instantes en los que se guardar\'a los valores.
 
 El rango seleccionado en cada propiedad estar\'a sincronizado con el resto de propiedades cargadas. 
 Ya que no tiene sentido que por ejemplo, la observaci\'on ``coche", 
 que tiene como propiedades ``velocidad" \ y ``aceleraci\'on" \ tengan distintos rangos 
-seleccionados, ya que si en ``velocidad" \ seleccionamos [1, 3] y en ``aceleraci\'on" \ [3, 4], 
+seleccionados, ya que si en ``velocidad" \ seleccionamos [1, 3] y en ``aceleraci\'on" \ [2, 4], 
 ¿Qu\'e guardamos? ¿El primero o el segundo? Por tanto, ya que todas las propiedades suceden al
 mismo tiempo se sabe que est\'an relacionadas, por lo que es necesario que los rangos est\'en
-seleccionados.
+sincronizados.
 
 A la hora de guardar, tampoco podr\'an guardarse distintos rangos que se solapen con los
 previamente creados. Ya que en un mismo instante de tiempo, no pueden estar sucediendo dos cosas al mismo tiempo.
@@ -39,23 +36,60 @@ El programa puede verse como una estructura de \'arbol, en las que de la ventana
 cuelgan los contenedores de v\'ideo y gr\'aficos, de los de gr\'aficos cuelga el 
 visualizador de datos.
 
+Otro de los requisitos es permitir cargar v\'ideos, y que el progreso de esos v\'ideos vaya
+sincronizado con los gr\'aficos, para que el usuario pueda seleccionar con mayor precisi\'on los
+rangos que le interesen.
+
 \section{Dise\~{n}o}
+No se ha seguido un proceso de dise\~no cl\'asico, en el cual antes de empezar a programar se realiza
+un dise\~no exhaustivo, en el que se modelan las clases, atributos, incluso algunos m\'etodos y
+llamadas entre m\'etodos.
+
+Se ha seguido un proceso iterativo de dise\~no. En cada sprint, se iba construyendo sobre lo anterior, y refactorizando
+y mejorando lo que hab\'ia previamente. Ha sido un proceso cr\'itico de construcci\'on.
+
+En cada iteraci\'on se iba consolidando el trabajo previo. Y si se llegaba a una situaci\'on en la que hab\'ia que redise\~nar
+partes grandes se hac\'ia sin miedo.
+
+Por ejemplo, al principio, la clase \texttt{GraphicsActions} conten\'ia una lista con todos los 
+\texttt{UC\_DataVisualizer}. Este
+acercamiento se eligi\'o al principio ya que era el mas simple para conseguir el objetivo del mes: mostrar datos.
+
+Posteriormente, se hizo necesario guardar tambi\'en los \texttt{UC\_ChartContainers}, ya que las propiedades estaban agrupadas por
+observaci\'on. Por lo tanto \texttt{GraphicsActions} paso a tener un \texttt{HashMap} teniendo como clave el nombre de la 
+observaci\'on
+y como contenido una lista de \texttt{UC\_DataVisualizers}. Pero ese dise\~no entra en conflicto con uno de los principios
+SOLID que se explicar\'an mas adelante. Por lo que \texttt{GraphicsActions} ahora es un repositorio de 
+\texttt{UC\_ChartContainer},
+y cada \texttt{UC\_ChartContainer} contiene una lista de los\texttt{ UC\_DataVisualizer} que 
+pertenecen a esa observaci\'on y un \texttt{HashSet}
+con los \texttt{UC\_DataVisualizer}, para poder obtener en tiempo constante si ya estaban cargados, ya que solo se pueden cargar
+una \'unica vez.
+
+En la \'ultima iteraci\'on, se decidi\'o sustituir el \texttt{HashSet} y la lista por un \'arbol rojo negro. Ya que permite
+inserci\'on, b\'usqueda y eliminaci\'on en tiempo \textbf{O(ln n)} frente al O(n) de las listas. 
+Adem\'as un \'arbol rojo negro, solo permite que existe una vez el mismo objeto en el \'arbol.
 
 \subsection{Diagrama de clases}
+El diagrama de clases aqu\'i insertado tiene todos los m\'etodos, propiedades y atributos ocultos para que entrase
+en el propio documento. En los anexos est\'a la versi\'on completa.
 
-\subsection{Listado de m\'odulos}
+\begin{figure}[h]
+\centering
+\includegraphics[width=1.2\linewidth]{./Figures/ClassDiagram}
+\caption[Diagrama de clases compacto]{Diagrama de clases compacto}
+\label{fig:ClassDiagram}
+\end{figure}
 
 \subsection{Librer\'{i}as usadas}
 \begin{itemize}
     \item \textbf{AvalonDock:} 
-    Es una librer\'{i}a que permite crear ventanas acoplables en WPF, al mas puro estilo Eclipse o Visual Studio. Es una librer\'{i}a de
+    Es una librer\'{i}a que permite crear ventanas acoplables en WPF, al mas puro estilo Eclipse o Visual Studio. Es
     c\'{o}digo abierto y gratuita, pese a que tambi\'{e}n dispone de una versi\'{o}n profesional que es de pago. La usada en este proyecto
-    ha sido la versi\'{o}n gratuita o \emph{community} como dicen ellos. La versi\'{o}n usada esta licenciada bajo licencia BSD.
-    \item \textbf{Charting Toolkit}
-    Es la librer\'{i}a de Microsoft para realizar distintos tipos de gr\'{a}ficas.
-    \item \textbf{Infralution Localization}
-    Es una libreri\'ia creada por un usuario para facilitar la localizaci\'on en WPF, ya que la manera por defecto de WPF est\'a
-    muy verde.
+    ha sido la versi\'{o}n gratuita o \emph{community}. La versi\'{o}n usada esta licenciada bajo licencia BSD.
+    \item \textbf{OxyPlot:}
+    Biblioteca de c\'odigo abierto para realizar gr\'aficos. Permite visualizar gr\'aficos cont\'inuos, discretos, 
+    selecci\'on de rangos. Licenciada bajo los t\'erminos de la licencia MIT.
 \end{itemize}
 
 \subsection{Patrones utilizados}
@@ -114,39 +148,48 @@ He decidido utilizar este patr\'{o}n por los siguientes motivos:
 \end{enumerate}
 
 \subsection{SOLID}
-SOLID es un acr\'{o}nimo mnem\'{o}nico acu\~{n}ado a comienzos de la d\'{e}cada de los 2000 por Robert C. Martin \cite{SOLID:ADefinition}
+SOLID es un acr\'{o}nimo mnem\'{o}nico acu\~{n}ado a comienzos de la d\'{e}cada de los 2000 por 
+Robert C. Martin \cite{SOLID:ADefinition}
 que representa cinco principios b\'{a}sicos de la programaci\'{o}n orientada a objetos y el dise\~{n}o de software.
 
+Otra de las cosas en las que incide mucho Martin es que evitemos realizar comentarios en el c\'odigo,
+ya que el hecho de realizar un cambio en el c\'odigo no garantiza que vayamos a cambiar el comentario, y 
+puede llevar a errores futuros o a inconsistencias en la documentaci\'on. Adem\'as, todo el mundo sabe que programar
+es un arte \cite{Art:Programming}.
+
 SOLID merece un apartado en esta memoria ya que se ha intentado cumplir en el mayor grado posible los cinco principios.
-\cite*{Art:Programming}
 
 Los principios son los siguientes:
 \subsubsection{Single responsibility principle}
-Traducido al castellano: Princpio de responsabilidad \'{u}nica. El nombre puede llevar a enga\~{n}o ya que Martin define como \emph{responsabilidad}
-a una \emph{raz\'{o}n de cambio} \cite{SOLID:SRP}. Martin, concluye que una clase, debiera tener, una, y solamente una raz\'{o}n para cambiar.
+Traducido al castellano: Princpio de responsabilidad \'{u}nica. El nombre puede llevar a enga\~{n}o ya que Martin define como 
+\emph{responsabilidad}
+a una \emph{raz\'{o}n de cambio} \cite{SOLID:SRP}. Martin, concluye que una clase, debiera tener, una, y solamente una raz\'{o}n 
+para cambiar.
 
-Por ejemplo, imaginemos que disponemos de una clase, o m\'{o}dulo que compila e imprime un informe. Ese informe puede cambiar por dos razones,
-de estilo, o de contenido. 
+Por ejemplo, imaginemos que disponemos de una clase, o m\'{o}dulo que compila e imprime un informe. 
+Ese informe puede cambiar por dos razones, de estilo, o de contenido. 
 
-El principio de responsabilidad \'{u}nica dice que una clase solo debiera cambiar por un motivo, y por tanto tendr\'{i}amos que separar el m\'{o}dulo
-en dos: El que compila el informe, y el que lo imprime.
+El principio de responsabilidad \'{u}nica dice que una clase solo debiera cambiar por un motivo, y por 
+tanto tendr\'{i}amos que separar el m\'{o}dulo en dos: El que compila el informe, y el que lo imprime.
 
-Utilizando este principio volveremos nuestro c\'{o}digo mas robusto, ya que un cambio en una clase, no deber\'{i}a afectar a la salida, y por tanto
-los siguientes m\'{o}dulos que se alimenten de esa clase.
+Utilizando este principio volveremos nuestro c\'{o}digo mas robusto, ya que un cambio en una clase, no 
+deber\'{i}a afectar a la salida, y por tanto los siguientes m\'{o}dulos que se alimenten de esa clase.
 
 \subsubsection{Open/Closed principle}
 El principio abierto / cerrado \cite{SOLID:OCP} implica que una clase est\'{a} abierta a la extensi\'{o}n pero cerrada a la modificaci\'{o}n. Ya que un cambio en el
-funcionamiento de una clase har\'{i}a tambalear la estabilidad de nuestro software.
+funcionamiento de una clase har\'{i}a que se tambalease la estabilidad de nuestro software.
 
 \subsubsection{Liskov's substitution principle}
-El principio de sustituci\'{o}n de Liskov \cite{SOLID:LSP} \footnote{\url{http://pmg.csail.mit.edu/~liskov/}} sostiene que cualquier subtipo de una clase
+El principio de sustituci\'{o}n de Liskov \cite{SOLID:LSP} \footnote{\url{http://pmg.csail.mit.edu/~liskov/}} 
+sostiene que cualquier subtipo de una clase
 debe poder sustituir a su supertipo sin que haya un cambio de comportamiento.
 
 M\'{a}s formalmente: Si \textbf{S} es un subtipo de \textbf{T} entonces \textbf{T} puede sustituirse por \textbf{S} y 
 conservar su exactitud, tarea que realiza etc.
 
 \subsubsection{Interface segregation principle}
-El principio de segregaci\'{o}n de interfaces dice que es mejor tener muchas interfaces espec\'{i}ficas, que una gran interfaz que contenga todo \cite{SOLID:ISP}.
+El principio de segregaci\'{o}n de interfaces dice que es mejor tener muchas interfaces espec\'{i}ficas, 
+que una gran interfaz que contenga todo \cite{SOLID:ISP}.
 
 De esta manera evitamos que haya partes del software que dependan de m\'{e}todos que no influyen en esa clase.
 
