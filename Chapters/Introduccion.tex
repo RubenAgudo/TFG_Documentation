@@ -1,26 +1,39 @@
 \chapter{Introducci\'{o}n} 
 %\newpage
-El Trabajo de Fin de Grado (a partir de ahora TFG) aqu\'{i} presentado fu\'{e} propuesto por Mikel Villama\~{n}e Giron\'{e}s.
-Las razones de la aceptaci\'{o}n del TFG fueron que ve\'{i}a una continuidad, es decir, que pod\'{i}a hacer el TFG como entrada
-a un grupo de investigaci\'{o}n y/o continuar con el trabajo durante el m\'{a}ster.
+El Trabajo de Fin de Grado (a partir de ahora TFG) aqu\'{i} presentado fu\'{e} propuesto por un profesor de la universidad.
+Las razones de la aceptaci\'{o}n del TFG fueron que se ve\'{i}a una continuidad, es decir, que se pod\'{i}a 
+utilizar el TFG como entrada a un grupo de investigaci\'{o}n y/o continuar con el trabajo durante un m\'{a}ster.
 
 \section{Planteamiento del problema}
-El TFG plantea lo que coloquialmente hablando es un sistema de telemetr\'{i}a. 
-Previamente, en unas sesiones de captura, se ha capturado
-a un experto realizando ciertas acciones, que ser\'{a}n utilizadas posteriormente como una base.
+El problema que el proyecto actual intenta resolver, es ense\~nar a alumnos habilidades. Es decir, ayudar a 
+ense\~nar a las personas cosas que no son f\'acilmente evaluables mediante un examen escrito.
 
-Supongamos la situaci\'{o}n de realizar un \emph{drive} con un palo de golf. La identificaci\'{o}n de los momentos clave de dicho \emph{drive}
-a d\'{i}a de hoy no pueden realizarse autom\'{a}ticamente. Por tanto el presente TFG es justo para eso, para permitir de una manera
-mas gr\'{a}fica y clara poder seleccionar en que momentos sucede una acci\'{o}n.
+Para ello se ha dise\~nado un software que permite al alumno capturarse realizando una tarea, y el
+software dice si se est\'a realizando bien o no.
 
-\section{Justificaci\'{o}n}
+Para ello, los datos capturados en bruto por el sistema de realidad virtual son trasladados a objetos del propio software,
+que son las Observaciones y las Propiedades.
 
-El software se lleva a cabo porque uno de los integrantes del grupo de investigaci\'{o}n me lo propuso como TFG. (Porque esta justificado,
-Mikel?)
+De manera resumida, una Observaci\'on es un hecho interesante en el sistema y que quiere ser observado, y cada observaci\'on
+est\'a compuesta por propiedades, que son las caracter\'isticas que definen esa observaci\'on. De todas formas, en el 
+apartado de Antecedentes todo se explicar\'a con mayor detalle, aqu\'i solo se pretende rascar la superficie para 
+conseguir una idea general.
 
-\section{Prop\'{o}sito}
-Ofrecer un software de calidad que cumpla con todos los requerimientos y expectativas del grupo de investigaci\'{o}n.
-As\'{i} mismo ser\'{a} un software potente pero sencillo de utilizar adem\'{a}s de disponer de un apartado gr\'{a}fico agradable.
+Una vez creadas las observaciones con sus propiedades, se crean Situaciones y Pasos. Siendo una Situaci\'on el contexto
+en el que suceden las observaciones, y los Pasos como se comportan ciertas observaciones en el tiempo.
+
+Finalmente, con esos Pasos y Situaciones el sistema, mediante distintas t\'ecnicas es capaz de dar un veredicto
+a la habilidad que se quiere aprender, dici\'endole al usuario si ha conseguido la habilidad o no.
+
+\section{Justificaci\'{o}n y prop\'osito}
+Se hace evidente la necesidad de un software para facilitar la creaci\'on de Pasos y Situaciones porque
+no es una tarea trivial. La creaci\'on de relaciones puede ser muy compleja, y el software de este TFG
+tiene como objetivo simplificar en la medida de lo posible esa tarea, aprovechando al m\'aximo las capacidades
+cognitivas \footnote{\url{https://es.wikipedia.org/wiki/Cognici\%C3\%B3n}} del cerebro humano para identificar
+patrones complejos que no son f\'acilmente identificables si no se presentan gr\'aficamente.
+
+Adem\'as, deber\'a ser un software sencillo de utilizar, centrando la interfaz y todos los controles en la tarea principal:
+Identificar esos Pasos y Situaciones.
 
 \section{Definiciones, acr\'{o}nimos y abreviaturas}
 \textbf{TFG:} Trabajo de fin de grado.
