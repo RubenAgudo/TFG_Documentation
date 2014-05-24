@@ -254,7 +254,6 @@ En esta secci\'on se proceder\'a a explicar brevemente cada caso de uso. %, dar 
 \pagebreak
 
 \subsubsection{Cerrar propiedad}
-
 \begin{table}[H]
 	\begin{center}
 		\rowcolors{2}{lightgray}{} %\rowcolors{<starting row index>}{<odd row color>}{<even row color>}
@@ -277,64 +276,150 @@ En esta secci\'on se proceder\'a a explicar brevemente cada caso de uso. %, dar 
 			Poscondiciones			   & El espacio de trabajo contendr\'a todas las observaciones
 										 y propiedades menos la propiedad que se ha cerrado.  \\
 			Interfaz gr\'afica		   & Figuras \ref{fig:Alcance}, \ref{fig:Scrum},
-			\ref{fig:Alcance}, \ref{fig:Scrum} y \ref{fig:Alcance}\\
+										 \ref{fig:Alcance}, \ref{fig:Scrum} y \ref{fig:Alcance}\\
 			\hline
 		\end{tabular}
 	\caption[Cerrar propiedad]{Cerrar propiedad}
 	\label{Cerrar propiedad}
 	\end{center}
 \end{table}
+\pagebreak
 
-\subsubsection{Guardar intervalo}
-
+\subsubsection{Crear intervalo}
 \begin{table}[H]
 	\begin{center}
 		\rowcolors{2}{lightgray}{} %\rowcolors{<starting row index>}{<odd row color>}{<even row color>}
 		\begin{tabular}{|l*{1}{p{10cm}}|}
 			
-			\multicolumn{2}{c}{\includegraphics[width=0.4\linewidth]{./Figures/CargarXML.png}} \\
+			\multicolumn{2}{c}{\includegraphics[width=0.4\linewidth]{./Figures/CrearIntervalo.png}} \\
 			\hline
-		    Nombre                     & Guardar intervalo \\
+		    Nombre                     & Crear intervalo \\
 		    Descripci\'on              & A\~nade el intervalo seleccionado
 		    							 a los intervalos a guardar en el xml si
-		    							 no se superpone con los que ya est\'an guardados.  \\ 
+		    							 no se superpone con los que ya est\'an guardados.\\ 
 		    Actores                    & User  \\
-		    Precondiciones             & Ninguna  \\
+		    Precondiciones             & Alguna propiedad debe estar seleccionada
+		    							 y un rango debe estar seleccionado.  \\
 		    Requisitos no funcionales  & Ninguno  \\
 		    Flujo de eventos           & \begin{enumerate}
-		    								\item El usuario pincha en File -> Load XML.
-		    								\item Se abre una ventana de selecci\'on de archivos.
-		    								\item \textbf{Si el usuario quiere cargar un fichero}
+		    								\item El usuario pincha Create interval.
+		    								\item \textbf{Si el intervalo actual
+		    								no se superpone con ninguno
+		    								guardado previamente}
 		    								\begin{enumerate}
-		    									\item Lo busca en el sistema de archivos
-		    									\item Lo selecciona y pincha en Abrir.
-		    									
-		    									\item \textbf{Si es un documento v\'alido}
-		    									\begin{enumerate}
-		    										\item Las observaciones y sus propiedades 
-		    											  aparecen en el \'arbol lateral.
-		    									\end{enumerate}
-		    									\item \textbf{Si no}
-		    									\begin{enumerate}
-		    										\item Se muestra un error.
-		    									\end{enumerate}
+		    									\item Se guarda el intervalo en la lista
+		    									de intervalos a exportar.
+		    									\item Se muestra un dialogo notificando que
+		    									la operaci\'on se ha realizado correctamente.
 		    								\end{enumerate}
-		    								\item \textbf{Si no desea cargarlo}
+		    								\item \textbf{Si se superpone}
 		    								\begin{enumerate}
-		    									\item Pincha en cancelar.
+			    								\item Se muestra un dialogo notificando que
+		    									el rango seleccionado se superpone con alguno
+		    									guardado.
 		    								\end{enumerate}
+		    								
 		    							 \end{enumerate} \\
-		    Poscondiciones			   & El \'arbol contendr\'a las observaciones y 
-		    							 propiedades si era un documento v\'alido, mostrar\'a
-		    							 un error si era un documento inv\'alido, o no 
-		    							 suceder\'a nada si el usuario ha decidido no cargar
-		    							 el fichero.  \\
+		    Poscondiciones			   & Se guardar\'a el nuevo intervalo en
+		    							 lista de intervalos a exportar.  \\
 		    Interfaz gr\'afica		   & Figuras \ref{fig:Alcance}, \ref{fig:Scrum},
 		    							 \ref{fig:Alcance}, \ref{fig:Scrum} y \ref{fig:Alcance}\\
 		    \hline
 		\end{tabular}
-	\caption[Cargar XML]{Cargar XML}
-	\label{Cargar XML}
+	\caption[Crear intervalo]{Crear intervalo}
+	\label{Crear Intervalo}
+	\end{center}
+\end{table}
+\pagebreak
+
+\subsubsection{Guardar paso}
+\begin{table}[H]
+	\begin{center}
+		\rowcolors{2}{lightgray}{} %\rowcolors{<starting row index>}{<odd row color>}{<even row color>}
+		\begin{tabular}{|l*{1}{p{10cm}}|}
+			
+			\multicolumn{2}{c}{\includegraphics[width=0.4\linewidth]{./Figures/GuardarPaso.png}} \\
+			\hline
+		    Nombre                     & Guardar Paso. \\
+		    Descripci\'on              & Guarda todos los intervalos creados
+		    							 a disco con un elemento ra\'iz ``step".\\ 
+		    Actores                    & User  \\
+		    Precondiciones             & Ninguna.  \\
+		    Requisitos no funcionales  & Ninguno  \\
+		    Flujo de eventos           & \begin{enumerate}
+		    								\item El usuario pincha en Save selected range -> Step.
+		    								\item Se muestra un di\'alogo de guardado de datos.
+		    								\item \textbf{Si el usuario decide guardar
+		    								el fichero.}
+		    								\begin{enumerate}
+		    									\item Elige un nombre de fichero y pincha
+		    									en guardar.
+		    									\item El fichero se guarda en la carpeta
+		    									especificada.
+		    									\item Se borran todos los intervalos
+		    									guardados.
+		    								\end{enumerate}
+		    								\item \textbf{Si pincha en cancelar}
+		    								\begin{enumerate}
+		    									\item Se cierra la ventana y no se borran
+		    									los intervalos, para poder seguir trabajando.
+		    								\end{enumerate}
+		    								
+		    							 \end{enumerate} \\
+		    Poscondiciones			   & El fichero guardado en disco, o no,
+		    						     dependiendo de las acciones del usuario.  \\
+		    Interfaz gr\'afica		   & Figuras \ref{fig:Alcance}, \ref{fig:Scrum},
+		    							 \ref{fig:Alcance}, \ref{fig:Scrum} y \ref{fig:Alcance}\\
+		    \hline
+		\end{tabular}
+	\caption[Guardar paso]{Guardar paso}
+	\label{Guardar paso}
+	\end{center}
+\end{table}
+
+\subsubsection{Guardar situaci\'on}
+\begin{table}[H]
+	\begin{center}
+		\rowcolors{2}{lightgray}{} %\rowcolors{<starting row index>}{<odd row color>}{<even row color>}
+		\begin{tabular}{|l*{1}{p{10cm}}|}
+			
+			\multicolumn{2}{c}{\includegraphics[width=0.4\linewidth]{./Figures/GuardarSituacion.png}} \\
+			\hline
+		    Nombre                     & Guardar situaci\'on \\
+		    Descripci\'on              & Guarda todos los intervalos creados
+  		    							 a disco con un elemento ra\'iz ``situation".\\ 
+		    Actores                    & User  \\
+		    Precondiciones             & Ninguna.  \\
+		    Requisitos no funcionales  & Ninguno  \\
+		    Flujo de eventos           & \begin{enumerate}
+		    								\item El usuario pincha Save selected range -> 
+		    								Situation.
+		    								\item Se muestra un di\'alogo de guardado de datos.
+		    								\item \textbf{Si el usuario decide guardar
+		    								el fichero.}
+		    								\begin{enumerate}
+		    									\item Elige un nombre de fichero y pincha
+		    									en guardar.
+		    									\item El fichero se guarda en la carpeta
+		    									especificada.
+		    									\item Se borran todos los intervalos
+		    									guardados.
+		    								\end{enumerate}
+		    								\item \textbf{Si pincha en cancelar}
+		    								\begin{enumerate}
+		    									\item Se cierra la ventana y no se borran
+		    									los intervalos, para poder seguir trabajando.
+		    								\end{enumerate}
+		    								
+										\end{enumerate} \\
+			Poscondiciones			   & El fichero guardado en disco, o no,
+										 dependiendo de las acciones del usuario.  \\
+		    Interfaz gr\'afica		   & Figuras \ref{fig:Alcance}, \ref{fig:Scrum},
+		    							 \ref{fig:Alcance}, \ref{fig:Scrum} y \ref{fig:Alcance}\\
+		    \hline
+		\end{tabular}
+	\caption[Guardar situaci\'on]{Guardar situaci\'on}
+	\label{Guardar situacion}
 	\end{center}
 \end{table}
 
