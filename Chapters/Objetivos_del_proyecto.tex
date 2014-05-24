@@ -347,9 +347,22 @@ ordenadas por prioridad. Despu\'es, se coloca en la lista de ``En progreso" como
  hasta que esas dos hayan sido pasadas a la columna de ``Tareas finalizadas".
 
 \subsection{Mi planificaci\'{o}n}
-Cada sprint tiene una duraci\'{o}n de un mes, empezando desde Septiembre del 2013. El esfuerzo en horas que se va a 
+Cada sprint tiene una duraci\'{o}n de un mes, empezando desde Octubre del 2013. 
+El esfuerzo en horas que se va a 
 realizar se decidir\'a al inicio de cada sprint, en funci\'on de algunos par\'ametros, por ejemplo, si se va con retraso,
 si hay entregables de clase pendientes, otros trabajos etc. 
+
+\subsubsection{Gantt}
+Se ha creado un diagrama de Gantt para que de una manera visual pueda
+verse la distribuci\'on de los sprints, y mas adelante se detallar\'a
+en que consiste cada sprint.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.9\linewidth]{./Figures/Gantt.PNG}
+\caption[Diagrama de Gantt]{Diagrama de Gantt}
+\label{fig:Gantt}
+\end{figure}
 
 \subsubsection{Sprint 1}
 Inicio del proyecto, establecer prioridades, documentarse etc. Lo que compone este sprint es:
@@ -357,8 +370,10 @@ Inicio del proyecto, establecer prioridades, documentarse etc. Lo que compone es
 \begin{itemize}
     \item Crear y configurar el repositorio Git y los clientes en los dos ordenadores.
     \item Leer la documentaci\'{o}n existente y obtener el c\'{o}digo fuente original.
-    \item Iniciar dise\~{n}os gr\'{a}ficos preliminares en papel para elegir las bibliotecas necesarias.
-    \item Buscar y documentarse sobre las bibliotecas que cumplan los requisitos del punto anterior. 
+    \item Iniciar dise\~{n}os gr\'{a}ficos preliminares en papel para elegir las bibliotecas 
+    necesarias.
+    \item Buscar y documentarse sobre las bibliotecas que cumplan los requisitos del punto 
+    anterior. 
 \end{itemize} 
 
 \subsubsection{Sprint 2}
@@ -367,7 +382,8 @@ Una vez configurados ordenadores y elegidas las bibliotecas necesarias:
 \begin{itemize}
     \item Reunirse con el cliente para realizar una captura de requisitos.
     \item Dise\~{n}ar unos prototipos funcionales.
-    \item Documentar lo que se hab\'{i}a realizado hasta el momento, es decir, el tipo de planificaci\'{o}n que se hab\'{i}a elegido,
+    \item Documentar lo que se hab\'{i}a realizado hasta el momento, es decir, el tipo de 
+    planificaci\'{o}n que se hab\'{i}a elegido,
     tecnolog\'{i}as que se iban a usar etc.
 \end{itemize}
 
@@ -375,26 +391,33 @@ Una vez configurados ordenadores y elegidas las bibliotecas necesarias:
 El siguiente paso consiste en poder cargar v\'{i}deos, tantos como se quieran, desde el sistema de archivos.
 
 \begin{itemize}
-    \item Crear el control de cargar v\'{i}deos (contenedor de v\'{i}deos). El contenedor debe permitir:
+    \item Crear el control de cargar v\'{i}deos (contenedor de v\'{i}deos). El contenedor debe 
+    permitir:
     \begin{itemize}
         \item Cargar distintos v\'{i}deos desde el sistema de archivos.
-        \item Cada v\'{i}deo debe disponer de sus controles individuales. Play, pausa, stop y avanzar de tantos segundos en tantos 
-        segundos, poder silenciarlo, y que sea configurable por el usuario, mediante un archivo de configuraci\'{o}n.
-        \item El contenedor de v\'{i}deos debe disponer de unos controles generales que ofrezcan id\'enticas funcionalidades
+        \item Cada v\'{i}deo debe disponer de sus controles individuales. Play, pausa, stop y 
+        avanzar de tantos segundos en tantos 
+        segundos, poder silenciarlo, y que sea configurable por el usuario, mediante un archivo 
+        de configuraci\'{o}n.
+        \item El contenedor de v\'{i}deos debe disponer de unos controles generales que ofrezcan 
+        id\'enticas funcionalidades
         que el punto anterior.
-        \item Debe permitir establecer para cada v\'{i}deo el momento de inicio del v\'{i}deo manualmente para mantener la 
+        \item Debe permitir establecer para cada v\'{i}deo el momento de inicio del v\'{i}deo 
+        manualmente para mantener la 
         sincronizaci\'{o}n.
     \end{itemize}
 \end{itemize}
 
 \subsubsection{Sprint 4}
-Despu\'{e}s de terminar la visualizaci\'{o}n de v\'{i}deos, lo siguiente en la lista de tareas es crear un visualizador de datos.
+Despu\'{e}s de terminar la visualizaci\'{o}n de v\'{i}deos, lo siguiente en la lista de tareas es 
+crear un visualizador de datos.
 
 \begin{itemize}
     \item Crear el contenedor que nos permita ver datos. El control debe permitir:
     \begin{itemize}
         \item Visualizar datos continuos y discretos.
-        \item Seleccionar un rango en la gr\'{a}fica, estableciendo un inicio y un fin para las propiedades.
+        \item Seleccionar un rango en la gr\'{a}fica, estableciendo un inicio y un fin para las 
+        propiedades.
         \item Que muestre el progreso, y que este sincronizado con el v\'{i}deo.
         \item Guardar el inicio y fin seleccionado.
     \end{itemize}
@@ -406,14 +429,18 @@ Ya tenemos todo preparado para funcionar, ahora hay que poder guardar datos.
 \begin{itemize}
     \item Elegir el m\'etodo de guardado de los datos.
     \item Configurar la base de datos (si aplica).
-    \item Crear el diagrama Entidad-Relaci\'{o}n que representara el modo de guardado de datos (si aplica).
-    \item A\~{n}adir al c\'{o}digo existente las llamadas necesarias a la base de datos (si aplica).
-    \item Permitir cambiar la ubicaci\'{o}n de la base de datos mediante un archivo de configuraci\'{o}n (Si aplica).
+    \item Crear el diagrama Entidad-Relaci\'{o}n que representara el modo de guardado de datos 
+    (si aplica).
+    \item A\~{n}adir al c\'{o}digo existente las llamadas necesarias a la base de datos (si 
+    aplica).
+    \item Permitir cambiar la ubicaci\'{o}n de la base de datos mediante un archivo de 
+    configuraci\'{o}n (Si aplica).
 \end{itemize}
 
 \subsubsection{Sprint 6}
-En este momento se dispone de una aplicaci\'{o}n completamente funcional pero con datos de prueba. 
-Hay que poder cargar datos desde el origen de datos.
+En este momento se dispone de una aplicaci\'{o}n completamente funcional pero con datos de 
+prueba. 
+Hay que poder cargar datos desde un origen de datos.
 
 \begin{itemize}
     \item Crear la clase para interactuar con el origen de datos.
@@ -421,62 +448,91 @@ Hay que poder cargar datos desde el origen de datos.
     \item Utilizando los datos de origen cargar la aplicaci\'{o}n con esos datos.
 \end{itemize}
 
+\subsubsection{Sprint 7}
+Este \'ultimo sprint es sobre todo para hablar con el cliente para
+ver si sus requisitos iniciales satisfacen sus necesidades actuales
+y terminar la documentaci\'on as\'i como una revisi\'on general del c\'odigo
+para posibles optimizaciones, refactorizado final, a\~nadir o quitar comentarios
+en funci\'on de su necesidad.
+
+Tambi\'en se finalizar\'a la documentaci\'on y memoria para dejarla para ser presentada.
+
+Este sprint final es para dar por cerrado el proyecto.
+
 \section{Herramientas}
-El proyecto, al ser propuesto por el director de TFG, no se ha tenido libertad total en elecci\'on de herramientas. 
+El proyecto, al ser propuesto por el director de TFG, no se ha tenido libertad total en 
+elecci\'on de herramientas. 
 
 Las herramientas que se han utilizado para llevar a cabo este proyecto han sido:
 \begin{itemize}
     \item 
     \textbf{Visual Studio}
-    El \'unico software en el que no se ha tenido libertad de elecci\'on. Debido a que el software en el que este TFG
-    ser\'a integrado est\'a desarrollado usando Visual Studio, se ha utilizado por compatibilidad. Adem\'as, se estaba
-    valorando la posibilidad de portar el software original a WPF por lo que Visual Studio se convert\'ia en una elecci\'on
-    obvia ya es un software muy potente dise\~nado para trabajar e integrarse perfectamente con esas tecnolog\'ias.
+    El \'unico software en el que no se ha tenido libertad de elecci\'on. Debido a que el 
+    software en el que este TFG
+    ser\'a integrado est\'a desarrollado usando Visual Studio, se ha utilizado por 
+    compatibilidad. Adem\'as, se estaba
+    valorando la posibilidad de portar el software original a WPF por lo que Visual Studio se 
+    convert\'ia en una elecci\'on
+    obvia ya es un software muy potente dise\~nado para trabajar e integrarse perfectamente con 
+    esas tecnolog\'ias.
 
-    La versi\'on utilizada ha sido Visual Studio 2013 Ultimate, proporcionado de manera gratuita gracias al acuerdo que mantiene 
+    La versi\'on utilizada ha sido Visual Studio 2013 Ultimate, proporcionado de manera gratuita 
+    gracias al acuerdo que mantiene 
     la UPV/EHU con Microsoft.
     
     \item 
     \textbf{TeXstudio y \LaTeX}
     
-    Dos herramientas gratuitas y de código abierto para generar documentos con el lenguaje de programaci\'on \LaTeX.
+    Dos herramientas gratuitas y de código abierto para generar documentos con el lenguaje de 
+    programaci\'on \LaTeX.
     
     \item
     \textbf{Git y GitHub}
     
-    Fundamental en los proyectos que se basen en metodologías ágiles. Git es un software de gestión de control de versiones 
-    distribuido, esto es, que cada desarrollador dispone de una copia completa del repositorio, desarrollado por Linus Torvalds y 
+    Fundamental en los proyectos que se basen en metodologías ágiles. Git es un software de 
+    gestión de control de versiones 
+    distribuido, esto es, que cada desarrollador dispone de una copia completa del repositorio, 
+    desarrollado por Linus Torvalds y 
     Junio Hamano en 2005 y similar a SVN.
     
-    GitHub es un repositorio online, gratuito para proyectos Open Source desarrollado y mantenido por GitHub Inc. Se ha elegido
-    por ser la alternativa mas conocida as\'i como punto de referencia de los desarrolladores a la hora de alojar proyectos
+    GitHub es un repositorio online, gratuito para proyectos Open Source desarrollado y mantenido 
+    por GitHub Inc. Se ha elegido
+    por ser la alternativa mas conocida as\'i como punto de referencia de los desarrolladores a 
+    la hora de alojar proyectos
     y buscar software.
     
     \item
     \textbf{OxyPlot}
     
-    Librer\'{i}a de c\'{o}digo abierto y multiplataforma que permite crear gr\'{a}ficos de manera sencilla as\'{i} como seleccionar rangos etc.
+    Librer\'{i}a de c\'{o}digo abierto y multiplataforma que permite crear gr\'{a}ficos de manera 
+    sencilla as\'{i} como seleccionar rangos etc.
     
 \end{itemize}
 
 \section{Gesti\'{o}n de riesgos}
-Como en todo proyecto de software, existen una serie de riesgos que hay que tener en cuenta y en la medida de lo posible,
+Como en todo proyecto de software, existen una serie de riesgos que hay que tener en cuenta y en 
+la medida de lo posible,
 evitarlos. Es por ello que se necesita tener en cuenta las probabilidades de los sucesos que 
 pueden ocurrir y que puedan retrasar el trabajo de forma notable. Una vez
-listados, se puede proceder a crear un plan de prevención para evitarlos. Y en caso de que la prevenci\'on no
-funcionase, un plan de contingencia que pueda amortiguar las consecuencias de ese riesgo. A continuación
+listados, se puede proceder a crear un plan de prevención para evitarlos. Y en caso de que la 
+prevenci\'on no
+funcionase, un plan de contingencia que pueda amortiguar las consecuencias de ese riesgo. A 
+continuación
 se listan de forma detallada los riesgos que pueden aparecer durante el transcurso del proyecto.
 
 \subsection{Planificaci\'{o}n}
-En esta categor\'{i}a se engloban los riesgos que pueden causados por una mala planificaci\'{o}n temporal.
+En esta categor\'{i}a se engloban los riesgos que pueden causados por una mala planificaci\'{o}n 
+temporal.
 \subsubsection{Mala concepci\'{o}n del proyecto}
 \begin{table}[H]
     \begin{center}
        \rowcolors{1}{lightgray}{} %\rowcolors{<starting row index>}{<odd row color>}{<even row color>}
        \begin{tabular}{l p{8cm}}
-           Descripci\'{o}n                 & Por decisiones erróneas, como puede ser elegir utilizar una
+           Descripci\'{o}n                 & Por decisiones erróneas, como puede ser elegir 
+           utilizar una
            base de datos, puede que el trabajo deba ser reconstruido desde el principio. \\
-           Prevenci\'{o}n                  & Una buena planificación y conocimiento exacto de lo que quiere y necesita el cliente. 
+           Prevenci\'{o}n                  & Una buena planificación y conocimiento exacto de lo 
+           que quiere y necesita el cliente. 
            									  \\ 
            Plan de contingencia            & Un programa flexible a cambios. \\
            Probabilidad                    & Improbable. \\
@@ -490,10 +546,14 @@ En esta categor\'{i}a se engloban los riesgos que pueden causados por una mala p
     \begin{center}
         \rowcolors{1}{lightgray}{} %\rowcolors{<starting row index>}{<odd row color>}{<even row color>}
         \begin{tabular}{l p{8cm}}
-            Descripci\'{o}n                 & Por una mala compresi\'on y falta de experiencia el c\'alculo
-            de tiempo estimado de una de las tareas es err\'oneo y hay que reajustar todo el proyecto. \\
-            Prevenci\'{o}n                  & Realizar la estimación lo mejor posible y tener una buena
-            								  comunicaci\'on con el cliente para no tener fallos de comprensión. Utilizar de manera 
+            Descripci\'{o}n                 & Por una mala compresi\'on y falta de experiencia el 
+            c\'alculo
+            de tiempo estimado de una de las tareas es err\'oneo y hay que reajustar todo el 
+            proyecto. \\
+            Prevenci\'{o}n                  & Realizar la estimación lo mejor posible y tener una 
+            buena
+            								  comunicaci\'on con el cliente para no tener fallos 
+            								  de comprensión. Utilizar de manera 
             								  correcta las metodolog\'ias \'agiles. \\ 
             Plan de contingencia            & Margen de error en los tiempos. \\
             Probabilidad                    & Muy probable. \\
