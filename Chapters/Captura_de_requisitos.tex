@@ -31,7 +31,7 @@ En esta secci\'on se proceder\'a a explicar brevemente cada caso de uso. %, dar 
 		\rowcolors{2}{lightgray}{} %\rowcolors{<starting row index>}{<odd row color>}{<even row color>}
 		\begin{tabular}{|l*{1}{p{10cm}}|}
 			
-			\multicolumn{2}{c}{\includegraphics[width=0.4\linewidth]{./Figures/CargarXML.png}} \\
+			\multicolumn{2}{c}{\includegraphics[width=0.36\linewidth]{./Figures/CargarXML.png}} \\
 			\hline
 		    Nombre                     & Cargar XML \\
 		    Descripci\'on              & Carga un XML que contiene las propiedades
@@ -45,22 +45,23 @@ En esta secci\'on se proceder\'a a explicar brevemente cada caso de uso. %, dar 
 		    								\item Se abre una ventana de selecci\'on de archivos.
 		    								\item \textbf{Si el usuario quiere cargar un fichero}
 		    								\begin{enumerate}
-		    									\item Lo busca en el sistema de archivos
+		    									\item Lo busca en el sistema de archivos \ref{fig:AbrirXML1}
 		    									\item Lo selecciona y pincha en Abrir.
-		    									
 		    									\item \textbf{Si es un documento v\'alido}
 		    									\begin{enumerate}
 		    										\item Las observaciones y sus propiedades 
 		    											  aparecen en el \'arbol lateral.
+		    											  \ref{fig:AbrirXML2}
 		    									\end{enumerate}
 		    									\item \textbf{Si no}
 		    									\begin{enumerate}
 		    										\item Se muestra un error.
+		    										\ref{fig:AbrirXML3}
 		    									\end{enumerate}
 		    								\end{enumerate}
 		    								\item \textbf{Si no desea cargarlo}
 		    								\begin{enumerate}
-		    									\item Pincha en cancelar.
+		    									\item Pincha en cancelar y Se muestra un mensaje de que debe cargar un XML \ref{fig:AbrirXML4}.
 		    								\end{enumerate}
 		    							 \end{enumerate} \\
 		    Poscondiciones			   & El \'arbol contendr\'a las observaciones y 
@@ -68,8 +69,8 @@ En esta secci\'on se proceder\'a a explicar brevemente cada caso de uso. %, dar 
 		    							 un error si era un documento inv\'alido, o no 
 		    							 suceder\'a nada si el usuario ha decidido no cargar
 		    							 el fichero.  \\
-		    Interfaz gr\'afica		   & Figuras \ref{fig:Alcance}, \ref{fig:Scrum},
-		    							 \ref{fig:Alcance}, \ref{fig:Scrum} y \ref{fig:Alcance}\\
+		    Interfaz gr\'afica		   & Figuras \ref{fig:AbrirXML1}, \ref{fig:AbrirXML2},
+		    							 \ref{fig:AbrirXML3} y \ref{fig:AbrirXML4}\\
 		    \hline
 		\end{tabular}
 	\caption[Cargar XML]{Cargar XML}
@@ -96,32 +97,27 @@ En esta secci\'on se proceder\'a a explicar brevemente cada caso de uso. %, dar 
 		    Requisitos no funcionales  & Ninguno  \\
 		    Flujo de eventos           & \begin{enumerate}
 		    								\item El usuario pincha en Add Video.
-		    								\item Se abre una ventana de selecci\'on de archivos.
-		    								\item \textbf{Si el usuario quiere cargar un v\'ideo}
+		    								\ref{Anadir video}
+		    								\item \textbf{Si el contenedor no de v\'ideos estaba
+		    										      cargado}
+	    									\begin{enumerate}
+	    										\item Se crea y a\~nade un contenedor de v\'ideos.
+	    									\end{enumerate}
+	    									\item Se abre una ventana de selecci\'on de archivos.
+		    								\item \textbf{Si el usuario quiere cargar v\'ideos}
 		    								\begin{enumerate}
-		    									\item Lo busca en el sistema de archivos
-		    									\item Lo selecciona y pincha en Abrir.
-		    									
-		    									\item \textbf{Si el contenedor de v\'ideos estaba
-		    												  cargado}
-		    									\begin{enumerate}
-		    										\item Se a\~nade el v\'ideo al contenedor
-		    											  existente.
-		    									\end{enumerate}
-		    									\item \textbf{Si no}
-		    									\begin{enumerate}
-		    										\item Se crea y a\~nade un contenedor de v\'ideos y se le a\~nade el nuevo v\'ideo.
-		    									\end{enumerate}
+		    									\item Los busca en el sistema de archivos
+		    									\item Los selecciona y pincha en Abrir.
+		    									\item Se cargan si no estaban previamente cargados.
 		    								\end{enumerate}
 		    								\item \textbf{Si no desea cargarlo}
 		    								\begin{enumerate}
 		    									\item Pincha en cancelar.
 		    								\end{enumerate}
 		    							 \end{enumerate} \\
-		    Poscondiciones			   & El contenedor con el nuevo v\'ideo a\~nadido  \\
-		    Interfaz gr\'afica		   & Figuras \ref{fig:Alcance}, \ref{fig:Scrum},
-		    							 \ref{fig:Alcance}, \ref{fig:Scrum} y \ref{fig:Alcance}\\
-		    \hline
+		    Poscondiciones			   & El contenedor con los nuevos v\'ideos a\~nadidos  \\
+		    Interfaz gr\'afica		   & Figuras \ref{fig:CargarVideo}\\
+		    \hline 
 		\end{tabular}
 	\caption[A\~nadir v\'ideo]{A\~nadir v\'ideo}
 	\label{Anadir video}
@@ -136,7 +132,7 @@ En esta secci\'on se proceder\'a a explicar brevemente cada caso de uso. %, dar 
 		\rowcolors{2}{lightgray}{} %\rowcolors{<starting row index>}{<odd row color>}{<even row color>}
 		\begin{tabular}{|l*{1}{p{10cm}}|}
 			
-			\multicolumn{2}{c}{\includegraphics[width=1.0\linewidth]{./Figures/CargarPropiedad.png}} \\
+			\multicolumn{2}{c}{\includegraphics[width=0.6\linewidth]{./Figures/CargarPropiedad.png}} \\
 			\hline
 		    Nombre                     & Cargar propiedad \\
 		    Descripci\'on              & Carga una propiedad en el contenedor de gr\'aficos
@@ -170,8 +166,7 @@ En esta secci\'on se proceder\'a a explicar brevemente cada caso de uso. %, dar 
 		    							 propiedades de la observaci\'on o la propiedad
 		    							 seleccionada dependiendo de donde se haya hecho 
 		    							 doble click y sincronizada con el rango existente, si es que lo hay. \\
-		    Interfaz gr\'afica		   & Figuras \ref{fig:Alcance}, \ref{fig:Scrum},
-		    							 \ref{fig:Alcance}, \ref{fig:Scrum} y \ref{fig:Alcance}\\
+		    Interfaz gr\'afica		   & Figuras \ref{fig:CargarObservacionPropiedad}\\
 		    \hline
 		\end{tabular}
 	\caption[Cargar propiedad]{Cargar propiedad}
@@ -208,10 +203,10 @@ En esta secci\'on se proceder\'a a explicar brevemente cada caso de uso. %, dar 
 		    								\end{enumerate}
 		    								\item El usuario deja de pinchar, y se queda el rango seleccionado
 		    							 \end{enumerate} \\
-		    Poscondiciones			   & El rango quedar\'a seleccionado en todos los visualizadores de datos
+		    Poscondiciones			   & El rango quedar\'a seleccionado en todos los 
+		    							 visualizadores de datos
 		    							 cargados en el sistema.  \\
-		    Interfaz gr\'afica		   & Figuras \ref{fig:Alcance}, \ref{fig:Scrum},
-		    							 \ref{fig:Alcance}, \ref{fig:Scrum} y \ref{fig:Alcance}\\
+		    Interfaz gr\'afica		   & Figuras \ref{fig:SeleccionarRango}\\
 		    \hline
 		\end{tabular}
 	\caption[Seleccionar rango]{Seleccionar rango}
@@ -243,8 +238,7 @@ En esta secci\'on se proceder\'a a explicar brevemente cada caso de uso. %, dar 
 		    							 \end{enumerate} \\
 		    Poscondiciones			   & El espacio de trabajo contendr\'a todas las observaciones
 		    							 y propiedades menos la que se ha cerrado.  \\
-		    Interfaz gr\'afica		   & Figuras \ref{fig:Alcance}, \ref{fig:Scrum},
-		    							 \ref{fig:Alcance}, \ref{fig:Scrum} y \ref{fig:Alcance}\\
+		    Interfaz gr\'afica		   & Ninguna relevante\\
 		    \hline
 		\end{tabular}
 	\caption[Cerrar observaci\'on]{Cerrar observaci\'on}
@@ -275,8 +269,7 @@ En esta secci\'on se proceder\'a a explicar brevemente cada caso de uso. %, dar 
 										 \end{enumerate} \\
 			Poscondiciones			   & El espacio de trabajo contendr\'a todas las observaciones
 										 y propiedades menos la propiedad que se ha cerrado.  \\
-			Interfaz gr\'afica		   & Figuras \ref{fig:Alcance}, \ref{fig:Scrum},
-										 \ref{fig:Alcance}, \ref{fig:Scrum} y \ref{fig:Alcance}\\
+			Interfaz gr\'afica		   & Ninguna relevante\\
 			\hline
 		\end{tabular}
 	\caption[Cerrar propiedad]{Cerrar propiedad}
@@ -322,8 +315,8 @@ En esta secci\'on se proceder\'a a explicar brevemente cada caso de uso. %, dar 
 		    							 \end{enumerate} \\
 		    Poscondiciones			   & Se guardar\'a el nuevo intervalo en
 		    							 lista de intervalos a exportar.  \\
-		    Interfaz gr\'afica		   & Figuras \ref{fig:Alcance}, \ref{fig:Scrum},
-		    							 \ref{fig:Alcance}, \ref{fig:Scrum} y \ref{fig:Alcance}\\
+		    Interfaz gr\'afica		   & Figuras \ref{fig:CrearIntervalo} y 
+		    							 \ref{fig:CrearIntervaloError}\\
 		    \hline
 		\end{tabular}
 	\caption[Crear intervalo]{Crear intervalo}
@@ -368,14 +361,14 @@ En esta secci\'on se proceder\'a a explicar brevemente cada caso de uso. %, dar 
 		    							 \end{enumerate} \\
 		    Poscondiciones			   & El fichero guardado en disco, o no,
 		    						     dependiendo de las acciones del usuario.  \\
-		    Interfaz gr\'afica		   & Figuras \ref{fig:Alcance}, \ref{fig:Scrum},
-		    							 \ref{fig:Alcance}, \ref{fig:Scrum} y \ref{fig:Alcance}\\
+		    Interfaz gr\'afica		   & Figuras \ref{fig:GuardarPaso1} y \ref{fig:GuardarPaso2}\\
 		    \hline
 		\end{tabular}
 	\caption[Guardar paso]{Guardar paso}
 	\label{Guardar paso}
 	\end{center}
 \end{table}
+\pagebreak
 
 \subsubsection{Guardar situaci\'on}
 \begin{table}[H]
@@ -414,14 +407,108 @@ En esta secci\'on se proceder\'a a explicar brevemente cada caso de uso. %, dar 
 										\end{enumerate} \\
 			Poscondiciones			   & El fichero guardado en disco, o no,
 										 dependiendo de las acciones del usuario.  \\
-		    Interfaz gr\'afica		   & Figuras \ref{fig:Alcance}, \ref{fig:Scrum},
-		    							 \ref{fig:Alcance}, \ref{fig:Scrum} y \ref{fig:Alcance}\\
+		    Interfaz gr\'afica		   & Figuras \ref{fig:GuardarSituacion1} y 
+		    							 \ref{fig:GuardarSituacion2}\\
 		    \hline
 		\end{tabular}
 	\caption[Guardar situaci\'on]{Guardar situaci\'on}
 	\label{Guardar situacion}
 	\end{center}
 \end{table}
+\pagebreak
+
+\subsection{Figuras de los casos de uso}
+\begin{figure}[H]
+\centering
+\includegraphics[width=1.0\linewidth]{./Figures/Capturas/AbrirXML1.PNG}
+\caption{Abrir XML 1}
+\label{fig:AbrirXML1}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\linewidth]{./Figures/Capturas/AbrirXML2.PNG}
+\caption{Abrir XML 2}
+\label{fig:AbrirXML2}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\linewidth]{./Figures/Capturas/AbrirXML3.PNG}
+\caption{Abrir XML 3}
+\label{fig:AbrirXML3}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\linewidth]{./Figures/Capturas/AbrirXML4.PNG}
+\caption{Abrir XML 4}
+\label{fig:AbrirXML4}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\linewidth]{./Figures/Capturas/CargarVideo.PNG}
+\caption{Cargar V\'ideo}
+\label{fig:CargarVideo}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\linewidth]{./Figures/Capturas/CargarObservacionPropiedad.PNG}
+\caption{Cargar Observaci\'on o Propiedad}
+\label{fig:CargarObservacionPropiedad}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\linewidth]{./Figures/Capturas/SeleccionRango.PNG}
+\caption{Seleccionar rango}
+\label{fig:SeleccionarRango}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\linewidth]{./Figures/Capturas/IntervaloCreado.PNG}
+\caption{Crear intervalo}
+\label{fig:CrearIntervalo}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\linewidth]{./Figures/Capturas/IntervaloCreadoError.PNG}
+\caption{Crear intervalo con  error}
+\label{fig:CrearIntervaloError}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\linewidth]{./Figures/Capturas/GuardarPaso1.png}
+\caption{Guardar paso 1}
+\label{fig:GuardarPaso1}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\linewidth]{./Figures/Capturas/GuardarPaso2.PNG}
+\caption{Guardar paso 2}
+\label{fig:GuardarPaso2}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\linewidth]{./Figures/Capturas/GuardarSituacion1.png}
+\caption{Guardar situaci\'on 1}
+\label{fig:GuardarSituacion1}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\linewidth]{./Figures/Capturas/GuardarSituacion2.PNG}
+\caption{Guardar situaci\'on}
+\label{fig:GuardarSituacion2}
+\end{figure}
+
 
 \section{Modelo de dominio}
 Los datos que se guardan son ciertamente bastante simples, ya que para la tripleta Instante, Observaci\'on y Propiedad,
@@ -430,7 +517,7 @@ toma un \'unico valor posible.
 La Figura \ref{fig:ModelodeDominio} representa tanto los datos de entrada del software, tanto los datos
 de salida.
 
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.7\linewidth]{./Figures/ModelodeDominio}
 \caption[Modelo de dominio]{Modelo de dominio}
