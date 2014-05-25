@@ -2,8 +2,8 @@
 
 \section{Qu\'{e} se ha hecho}
 Se ha desarrollado una aplicaci\'{o}n que dados unos datos organizados
-de una determinada manera permite la visualizaci\'{o}n de los mismos y
-la selecci\'{o}n de unos rangos para guardar y determinar que en ese rango de tiempo
+de cierta manera permite la visualizaci\'{o}n de los mismos y
+la selecci\'{o}n de unos rangos para guardar y especificar que en ese rango de tiempo
 est\'{a} sucediendo una acci\'{o}n determinada, ya sea un Paso o una Situaci\'on.
 
 Los datos de entrada representan Observaciones y Propiedades. Cada observaci\'{o}n tiene una serie
@@ -21,11 +21,11 @@ Desde un principio se sab\'ia que hab\'ia que programar en un entorno Windows, u
 La raz\'on de esta decisi\'on fue que el proyecto actual est\'a desarrollado utilizando Windows Forms, y el 
 director del proyecto coment\'o que exist\'ia una intenci\'on de portarlo a WPF.
 
-Pese a conocer a esa intenci\'on, hubo que valorar que merec\'ia mas la pena, si utilizar WPF, una tecnolog\'ia moderna
+Pese a conocer a esa intenci\'on, hubo que valorar que merec\'ia m\'as la pena, si utilizar WPF, una tecnolog\'ia moderna
 en la que Microsoft est\'a poniendo todo su empe\~no, o bien Windows Forms, que es un viejo conocido del desarrollo
 .NET con un camino muy largo de desarrollo.
 
-Para decidir de la manera mas objetiva posible, se confeccion\'o la tabla \ref{ComparativaWPF} en la que se sit\'uan 
+Para decidir de la manera m\'as objetiva posible, se confeccion\'o la tabla \ref{ComparativaWPF} en la que se sit\'uan 
 las caracter\'isticas de cada tecnolog\'ia. La tabla es una elaboraci\'on propia confeccionada a partir de una comparativa
 online \cite{WPFvsWinForms:Comparative}.
 
@@ -64,16 +64,16 @@ no es posible sacarle toda la potencia a Windows Presentation Foundation.
 Una de las primeras decisiones que se tomaron, y adem\'as sin demasiado debate, fue que tipo de interfaz se deseaba.
 Se eligi\'o una interfaz tipo IDE, con ventanas acoplables, tal y como se ha detallado en el cap\'itulo de Antecedentes.
 
-En este caso en concreto no hubo mucho donde buscar, ya que no hay mucho donde elegir. La biblioteca seleccionada
+En este caso en concreto no hubo que buscar mucho, ya que no hay mucho donde elegir. La biblioteca seleccionada
 fue AvalonDock.
 
 AvalonDock es una biblioteca escrita \'integramente para WPF, con soporte para MVVM. Permite todo lo que se espera
-de un proyecto como es: Ventanas acoplables a los lados, mover pesta\~nas etc. Durante el desarrollo se descubri\'o
+de un proyecto como ese: Ventanas acoplables a los lados, mover pesta\~nas etc, fue curioso que durante desarrollo se descubri\'o
 un bug en el software.
 
 Dicho bug, lanzaba una excepci\'on cuando un elemento ``acoplable", que ten\'ia un Men\'u superior, al ponerlo
 en una pesta\~na, al cambiar de pesta\~na fallaba. El bug ya estaba reportado, pero aun as\'i se le proporcion\'o
-al desarrollador mas informaci\'on sobre el bug \footnote{\url{https://avalondock.codeplex.com/discussions/429063}}.
+al desarrollador m\'as informaci\'on sobre el bug \footnote{\url{https://avalondock.codeplex.com/discussions/429063}}.
 
 La estructura que se ha dise\~nado es un ``workbench", con un panel lateral en el que se pueden visualizar las observaciones
 y propiedades disponibles despu\'es de haber cargado un fichero XML. Cuando se hace doble click sobre un elemento
@@ -81,7 +81,7 @@ de ese \'arbol de propiedades y observaciones, el software sabe si se ha pinchad
 Si se quiere saber que sucede cuando se pincha en cada uno de ellos, todo esto est\'a mejor explicado en la secci\'on de
 Captura de requisitos, en los casos de uso extendidos.
 
-Cuando se cargan los datos que se desean, se muestran los datos cargados, organizados por observaciones. Y dentro de cada
+Cuando se cargan los datos que se desean, es decir, que se visualizan, se muestran organizados por observaciones. Y dentro de cada
 observaci\'on las propiedades que han sido cargadas. Las ventanas pueden organizarse como se quiera, ponerlas lado a lado,
 reordenar las pesta\~nas, colapsarlas a un lateral, dejarlas como ventanas flotantes etc. 
 La \'unica limitaci\'on intencionada es que una propiedad no puede acoplarse a una observaci\'on a la que no pertenece,
@@ -112,7 +112,7 @@ muy simple, pero desafortunadamente, no existe una manera sencilla de selecciona
 
 OxyPlot, por su parte, es un proyecto comunitario en constante desarrollo. Con decenas de ejemplos online en su web
 oficial fue muy sencillo crear un prototipo funcional con todos los gr\'aficos requeridos, con las leyendas en los ejes
-y los t\'itulos. Conseguir la selecci\'on de un rango conllev\'o algo mas de tiempo de desarrollo, pero finalmente 
+y los t\'itulos. Conseguir la selecci\'on de un rango conllev\'o algo m\'as de tiempo de desarrollo, pero finalmente 
 se consigui\'o.
 
 En los primeros prototipos, en cada gr\'afico pod\'ia seleccionarse un rango diferente, pero era algo inconsistente, ya
@@ -121,16 +121,17 @@ investigaci\'on para ver como podr\'ia un hijo notificar a su padre de que ha ca
 sus hijos para sincronizarse.
 
 La primera aproximaci\'on, y posiblemente la peor de todas, era realizar un \emph{polling}, es decir, cada, por ejemplo, 60 ms,
-preguntar a sus hijos a ver si han cambiado, y si alguno a cambiado, utilizar ese valor para poner ese rango en los dem\'as 
+preguntar a cada elemento si ha cambiado, y si alguno lo ha hecho, utilizar ese valor para poner ese rango en los dem\'as 
 gr\'aficos. Este enfoque, tiene diversos problemas, pese a que los gr\'aficos est\'an guardados en \'arboles rojo-negro,
-no tiene sentido recorrer el \'arbol constantemente, y si se encuentra un elemento, volviendo a recorrer todos. Eso,
-conllevar\'ia un coste de \textbf{O(2n)}.
+no tiene sentido recorrer el \'arbol constantemente, y si se encuentra un elemento, habr\'ia que recorrer cada observaci\'on cargada,
+y para cada observaci\'on todas las propiedades cargadas actualmente. Eso,
+conllevar\'ia un coste de O(2*n*m) siendo ``n" \ el n\'umero de observaciones cargadas y ``m" \ el n\'umero de propiedades.
 
 La otra soluci\'on, es implementar la interfaz \emph{INotifyPropertyChanged}. Utilizando esta interfaz, se expone un 
 nuevo evento, llamado \emph{PropertyChanged} al que otros objetos se pueden suscribir para estar a la escucha.
 
 De esta manera, cada vez que se a\~nada un nuevo gr\'afico, el contenedor de gr\'aficos se suscribe a ese evento para todos
-sus hijos. De esta manera, cuando el rango seleccionado cambie, solo ser\'a ese hijo el que notifique al padre, que iniciar\'a
+sus hijos. De esta manera, cuando el rango seleccionado cambie, ser\'a ese hijo el que notifique al padre, que iniciar\'a
 el proceso de sincronizado, tanto con sus hijos como con sus hermanos (el resto de observaciones cargadas).
 
 Para la visualizaci\'on de v\'ideos no hubo mucho problema, y se utilizaron los
@@ -141,19 +142,18 @@ aqu\'i presentado va a ser completamente independiente, hab\'ia que buscar una m
 que implicara el menor n\'umero de cambios posibles en el sistema ya creado por el grupo de investigaci\'on.
 
 Se barajaron varias posibilidades, como por ejemplo, las bases de datos relaciones, pero este sistema requerir\'ia
-de una estructura compleja para guardar unos datos bastante sencillos. Ya que del modelo de dominio, se saca que m\'inimo,
+de una estructura compleja para guardar unos datos bastante sencillos. Ya que del modelo de dominio, se infiere que m\'inimo,
 iba a haber 4 tablas para poder guardar los datos correctamente. Adem\'as, los datos no iban a ser f\'acilmente 
 visualizables por humanos, ya que ser\'ian un amasijo de n\'umeros guardados en tablas que ser\'ian dif\'iciles de
-relacionar entre de manera sencilla.
+relacionar entre ellas de manera sencilla.
 
 Es por ello que se valor\'o la posibilidad de utilizar las bases de datos no relacionales, que est\'an tan de moda
-\'ultimamente. Concretamente, la versi\'on sometida a pruebas fue MongoDB. Es una base de datos NO-SQL en la que los
+\'ultimamente. Concretamente, el producto sometido a pruebas fue MongoDB. Es una base de datos NO-SQL en la que los
 datos se guardan en formato de ``documentos", no tablas. Internamente, se guardan en formato BSON, que no deja de ser
 un JSON binario \footnote{Especificaci\'{o}n JSON: \url{http://json.org/}}. Ofrece un gran rendimiento, adem\'as
-de unos datos mejor organizados para esta tarea, ya que tienen mas forma de documento, y menos de datos que se
-relacionan de una manera cl\'asica. 
+de unos datos mejor organizados para esta tarea, con elementos que tienen arrays, y cada elemento atributos etc.
 
-Finalmente se opt\'o por descartarlo tambi\'en, ya que a\~nad\'ia mayor complejidad, ``oscuridad" y requisitos a la 
+Finalmente se opt\'o por descartarlo tambi\'en, ya que a\~nad\'ia mayor complejidad, ``oscuridad" \ y requisitos a la 
 implementaci\'on. Ya que habr\'ia que tener instalada una base de datos MongoDB, as\'i como los conectores para
 C\#.
 
@@ -244,25 +244,25 @@ sin ning\'{u}n tipo de iteraci\'{o}n. En el nodo \emph{<data>} se ha a\~{n}adido
 determina la longitud de un instante. 
 
 Por ejemplo, en la propiedad \emph{prop14} se ve que los instantes no son consecutivos, por lo que el sistema sabe que el 
-gr\'{a}fico debe ser cont\'inuo en ese punto, es decir, desde el punto (1, 4) no debe unirse al 
+gr\'{a}fico no debe ser cont\'inuo en ese punto, es decir, desde el punto (1, 4) no debe unirse al 
 (3, 5). Esto es \'{u}til para saber si una propiedad esta sucediendo o no.
 
 \section{Gesti\'{o}n del c\'{o}digo fuente}
 Hasta ahora no se ha hablado de algo que bien no es parte del desarrollo, pero que igualmente es importante.
 
-Hoy en d\'ia, todo proyecto debe tener alg\'un tipo de gesti\'on del c\'odigo fuente, para evitar perdida de datos, 
+Hoy en d\'ia, todo proyecto debe tener alg\'un tipo de gesti\'on del c\'odigo fuente, para evitar p\'erdida de datos, 
 poder volver a versiones anteriores y tener una mejor noci\'on de que se ha cambiado si es un proyecto colaborativo.
 
 En este caso, al ser un proyecto realizado por una \'unica persona, parec\'ia razonable utilizar alg\'un otro tipo
-de sistema. Ya que Git, CVS o Subversion son piezas de software muy potentes y usadas a gran escala, pero requieren
-de un tiempo de aprendizaje, teniendo adem\'as una curva de aprendizaje bastante pronunciada.
+de sistema. Ya que Git, CVS o Subversion son piezas de software muy potentes y usadas a gran escala, pero tinen
+una curva de aprendizaje bastante pronunciada.
 
 Por tanto se valor\'o la posibilidad de utilizar Dropbox como sistema de gesti\'on y sincronizado del c\'odigo fuente.
 Pero los problemas no tardaron en aflorar con cuestiones del tipo:
 
 ¿Qu\'e pasar\'ia si quiero volver a una versi\'on que hice hace 20 d\'ias? ¿C\'omo creo un trabajo derivado a partir
 de una versi\'on concreta? Por lo que finalmente se decidi\'o usar GIT, ya que incluso con la curva de aprendizaje,
-es una herramienta muy potente y \'util, en la que se puede ver f\'acilmente que se hizo cierto d\'ia, o volver sin 
+es una herramienta muy potente y \'util, en la que se puede ver f\'acilmente qu\'e se hizo cierto d\'ia, o volver sin 
 ning\'un problema a lo que se hizo ayer, o a lo que se hizo el primer d\'ia de proyecto.
 
 Crear una nueva rama de desarrollo a partir de cualquier versi\'on es muy \'util y pr\'actico, por ejemplo, para
@@ -277,12 +277,12 @@ de un estudio previo de 3 meses, que fuese lo suficientemente potente, que su re
 p\'{a}ginas, y desde luego,
 que pudiera editar tanto desde Windows, como Linux.
 
-C\'{o}mo el proyecto lo estaba realizando en Windows, y para Windows Microsoft Office, parec\'{i}a la elecci\'{o}n obvia. Un 
+C\'{o}mo el proyecto lo estaba realizando en Windows y para Windows, Microsoft Office, parec\'{i}a la elecci\'{o}n obvia. Un 
 producto potente muy bien integrado
 en Windows, que permite crear documentos muy vistosos de manera muy sencilla. 
-Pese a solo tener versiones oficiales de Windows y Mac OSX en Linux
-funciona razonablemente bien utilizando WINE. Pero cuanto mas largo es un documento, el programa cada vez reacciona
-mas lento, siendo complicado trabajar con documentos largos o con un dise\~no complejo.
+Pese a s\'olo tener versiones oficiales de Windows y Mac OSX en Linux
+funciona razonablemente bien utilizando WINE. Pero cu\'anto m\'as largo es un documento, el programa cada vez reacciona
+m\'as despacio, siendo complicado trabajar con documentos largos o con un dise\~no complejo.
 
 Tambi\'en se valor\'o la posibilidad de usar LibreOffice u OpenOffice, por ser multiplataforma, pero adolecen
 de las mismas limitaciones que Office. En ambas suites la colocaci\'on de im\'agenes y tablas puede ser como poco,
@@ -292,7 +292,7 @@ derecha.
 La \'ultima opci\'on valorada, y en la que este documento est\'a escrito ha sido \LaTeX.
 Software de composici\'{o}n de textos creado por Donald E. Knuth \footnote{\url{http://www-cs-faculty.stanford.edu/~uno/}} 
 muy popular entre los cient\'{i}ficos. Ofrece una manera similar de crear documentos a HTML 
-aunque deber\'{i}a decirse al rev\'{e}s, ya que \LaTeX es bastante mas antiguo.
+aunque deber\'{i}a decirse al rev\'{e}s, ya que \LaTeX es bastante m\'as antiguo.
 
 Para sacarle todo el partido se requiere un buen editor, con resaltado de sintaxis y autocompletado, 
 la opci\'on elegida ha sido TexStudio, un

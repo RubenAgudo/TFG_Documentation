@@ -45,30 +45,29 @@ En esta secci\'on se proceder\'a a explicar brevemente cada caso de uso. %, dar 
 		    								\item Se abre una ventana de selecci\'on de archivos.
 		    								\item \textbf{Si el usuario quiere cargar un fichero}
 		    								\begin{enumerate}
-		    									\item Lo busca en el sistema de archivos \ref{fig:AbrirXML1}
+		    									\item Lo busca en el sistema de archivos [\ref{fig:AbrirXML1}]
 		    									\item Lo selecciona y pincha en Abrir.
 		    									\item \textbf{Si es un documento v\'alido}
 		    									\begin{enumerate}
 		    										\item Las observaciones y sus propiedades 
 		    											  aparecen en el \'arbol lateral.
-		    											  \ref{fig:AbrirXML2}
+		    											  [\ref{fig:AbrirXML2}]
 		    									\end{enumerate}
 		    									\item \textbf{Si no}
 		    									\begin{enumerate}
 		    										\item Se muestra un error.
-		    										\ref{fig:AbrirXML3}
+		    										[\ref{fig:AbrirXML3}]
 		    									\end{enumerate}
 		    								\end{enumerate}
 		    								\item \textbf{Si no desea cargarlo}
 		    								\begin{enumerate}
-		    									\item Pincha en cancelar y Se muestra un mensaje de que debe cargar un XML \ref{fig:AbrirXML4}.
+		    									\item Pincha en cancelar y se muestra un mensaje de que debe cargar un XML [\ref{fig:AbrirXML4}].
 		    								\end{enumerate}
 		    							 \end{enumerate} \\
 		    Poscondiciones			   & El \'arbol contendr\'a las observaciones y 
 		    							 propiedades si era un documento v\'alido, mostrar\'a
-		    							 un error si era un documento inv\'alido, o no 
-		    							 suceder\'a nada si el usuario ha decidido no cargar
-		    							 el fichero.  \\
+		    							 un error si era un documento inv\'alido, o mostrar\'a un aviso
+                                         indicando de que se necesita cargar un XML para poder trabajar.  \\
 		    Interfaz gr\'afica		   & Figuras \ref{fig:AbrirXML1}, \ref{fig:AbrirXML2},
 		    							 \ref{fig:AbrirXML3} y \ref{fig:AbrirXML4}\\
 		    \hline
@@ -97,7 +96,7 @@ En esta secci\'on se proceder\'a a explicar brevemente cada caso de uso. %, dar 
 		    Requisitos no funcionales  & Ninguno  \\
 		    Flujo de eventos           & \begin{enumerate}
 		    								\item El usuario pincha en Add Video.
-		    								\ref{Anadir video}
+		    								[\ref{fig:CargarVideo}]
 		    								\item \textbf{Si el contenedor no de v\'ideos estaba
 		    										      cargado}
 	    									\begin{enumerate}
@@ -140,9 +139,9 @@ En esta secci\'on se proceder\'a a explicar brevemente cada caso de uso. %, dar 
 		    							 Tambi\'en puede a\~nadir propiedades en grupo, haciendo
 		    							 doble click sobre el nombre de la observaci\'on. Si
 		    							 el contenedor no est\'a creado, lo crea.  \\ 
-		    Actores                    & User  \\
-		    Precondiciones             & Ninguna  \\
-		    Requisitos no funcionales  & Ninguno  \\
+		    Actores                    & User.  \\
+		    Precondiciones             & Ninguna.  \\
+		    Requisitos no funcionales  & Ninguno.  \\
 		    Flujo de eventos           & \begin{enumerate}
 		    								\item El usuario hace doble click en alg\'un elemento
 		    									  del \'arbol de observaciones y propiedades.
@@ -164,7 +163,7 @@ En esta secci\'on se proceder\'a a explicar brevemente cada caso de uso. %, dar 
 		    							 \end{enumerate} \\
 		    Poscondiciones			   & El contenedor de la observaci\'on y todas las 
 		    							 propiedades de la observaci\'on o la propiedad
-		    							 seleccionada dependiendo de donde se haya hecho 
+		    							 seleccionada dependiendo de d\'onde se haya hecho 
 		    							 doble click y sincronizada con el rango existente, si es que lo hay. \\
 		    Interfaz gr\'afica		   & Figuras \ref{fig:CargarObservacionPropiedad}\\
 		    \hline
@@ -189,7 +188,7 @@ En esta secci\'on se proceder\'a a explicar brevemente cada caso de uso. %, dar 
 		    							 se seleccionar\'a un rango en todos los visualizadores de datos
 		    							 cargados en el sistema. \\ 
 		    Actores                    & User  \\
-		    Precondiciones             & Alguna propiedad tiene que estar cargada  \\
+		    Precondiciones             & Alguna propiedad tiene que estar cargada.  \\
 		    Requisitos no funcionales  & Ninguno  \\
 		    Flujo de eventos           & \begin{enumerate}
 		    								\item El usuario pincha en un visualizador de datos.
@@ -201,7 +200,7 @@ En esta secci\'on se proceder\'a a explicar brevemente cada caso de uso. %, dar 
 		    									\item Se recorren todos los visualizadores de datos para sincronizarse con el nuevo
 		    									valor.
 		    								\end{enumerate}
-		    								\item El usuario deja de pinchar, y se queda el rango seleccionado
+		    								\item El usuario deja de pinchar, y se queda el rango seleccionado.
 		    							 \end{enumerate} \\
 		    Poscondiciones			   & El rango quedar\'a seleccionado en todos los 
 		    							 visualizadores de datos
@@ -225,10 +224,10 @@ En esta secci\'on se proceder\'a a explicar brevemente cada caso de uso. %, dar 
 			\hline
 		    Nombre                     & Cerrar observaci\'on \\
 		    Descripci\'on              & Elimina, tanto de manera visual, como de memoria, la observaci\'on
-		    							 seleccionada y todos sus visualizadores de datos (propiedades) asociadas  \\ 
-		    Actores                    & User  \\
+		    							 seleccionada y todos sus visualizadores de datos (propiedades) asociadas.  \\ 
+		    Actores                    & User.  \\
 		    Precondiciones             & La observaci\'on ten\'ia que estar cargada. \\
-		    Requisitos no funcionales  & Ninguno  \\
+		    Requisitos no funcionales  & Ninguno.  \\
 		    Flujo de eventos           & \begin{enumerate}
 		    								\item El usuario pincha sobre la ``X" \ en la esquina
 		    									  superior derecha de la observaci\'on.
@@ -238,7 +237,7 @@ En esta secci\'on se proceder\'a a explicar brevemente cada caso de uso. %, dar 
 		    							 \end{enumerate} \\
 		    Poscondiciones			   & El espacio de trabajo contendr\'a todas las observaciones
 		    							 y propiedades menos la que se ha cerrado.  \\
-		    Interfaz gr\'afica		   & Ninguna relevante\\
+		    Interfaz gr\'afica		   & Ninguna relevante.\\
 		    \hline
 		\end{tabular}
 	\caption[Cerrar observaci\'on]{Cerrar observaci\'on}
@@ -303,13 +302,13 @@ En esta secci\'on se proceder\'a a explicar brevemente cada caso de uso. %, dar 
 		    									\item Se guarda el intervalo en la lista
 		    									de intervalos a exportar.
 		    									\item Se muestra un dialogo notificando que
-		    									la operaci\'on se ha realizado correctamente.
+		    									la operaci\'on se ha realizado correctamente. [\ref{fig:CrearIntervalo}]
 		    								\end{enumerate}
 		    								\item \textbf{Si se superpone}
 		    								\begin{enumerate}
 			    								\item Se muestra un dialogo notificando que
 		    									el rango seleccionado se superpone con alguno
-		    									guardado.
+		    									guardado. [\ref{fig:CrearIntervaloError}]
 		    								\end{enumerate}
 		    								
 		    							 \end{enumerate} \\
@@ -340,13 +339,13 @@ En esta secci\'on se proceder\'a a explicar brevemente cada caso de uso. %, dar 
 		    Precondiciones             & Ninguna.  \\
 		    Requisitos no funcionales  & Ninguno  \\
 		    Flujo de eventos           & \begin{enumerate}
-		    								\item El usuario pincha en Save selected range -> Step.
+		    								\item El usuario pincha en Save selected range -> Step. [\ref{fig:GuardarPaso1}]
 		    								\item Se muestra un di\'alogo de guardado de datos.
 		    								\item \textbf{Si el usuario decide guardar
 		    								el fichero.}
 		    								\begin{enumerate}
 		    									\item Elige un nombre de fichero y pincha
-		    									en guardar.
+		    									en guardar. [\ref{fig:GuardarPaso2}]
 		    									\item El fichero se guarda en la carpeta
 		    									especificada.
 		    									\item Se borran todos los intervalos
@@ -386,13 +385,13 @@ En esta secci\'on se proceder\'a a explicar brevemente cada caso de uso. %, dar 
 		    Requisitos no funcionales  & Ninguno  \\
 		    Flujo de eventos           & \begin{enumerate}
 		    								\item El usuario pincha Save selected range -> 
-		    								Situation.
+		    								Situation. [\ref{fig:GuardarSituacion1}]
 		    								\item Se muestra un di\'alogo de guardado de datos.
 		    								\item \textbf{Si el usuario decide guardar
 		    								el fichero.}
 		    								\begin{enumerate}
 		    									\item Elige un nombre de fichero y pincha
-		    									en guardar.
+		    									en guardar. [\ref{fig:GuardarSituacion2}]
 		    									\item El fichero se guarda en la carpeta
 		    									especificada.
 		    									\item Se borran todos los intervalos

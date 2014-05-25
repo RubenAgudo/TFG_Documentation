@@ -46,29 +46,30 @@ un dise\~no exhaustivo, en el que se modelan las clases, atributos, incluso algu
 llamadas entre m\'etodos.
 
 Se ha seguido un proceso iterativo de dise\~no. En cada sprint, se iba construyendo sobre lo anterior, y refactorizando
-y mejorando lo que hab\'ia previamente. Ha sido un proceso cr\'itico de construcci\'on.
+y mejorando lo que hab\'ia previamente. Ha sido un proceso en el que se ha sido muy cr\'itico con lo que ya estaba
+hecho, en ning\'un momento se ha dejado algo porque ``funciona", siempre se ha intentado mejorar lo que ya hab\'ia.
 
 En cada iteraci\'on se iba consolidando el trabajo previo. Y si se llegaba a una situaci\'on en la que hab\'ia que redise\~nar
 partes grandes se hac\'ia sin miedo.
 
 Por ejemplo, al principio, la clase \texttt{GraphicsActions} conten\'ia una lista con todos los 
 \texttt{UC\_DataVisualizer}. Este
-acercamiento se eligi\'o al principio ya que era el mas simple para conseguir el objetivo del mes: mostrar datos.
+acercamiento se eligi\'o al principio ya que era el m\'as simple para conseguir el objetivo del mes: mostrar datos.
 
-Posteriormente, se hizo necesario guardar tambi\'en los \texttt{UC\_ChartContainers}, ya que las propiedades estaban agrupadas por
-observaci\'on. Por lo tanto \texttt{GraphicsActions} paso a tener un \texttt{HashMap} teniendo como clave el nombre de la 
+Posteriormente, se hizo necesario guardar tambi\'en los \texttt{UC\_ChartContainer}, ya que las propiedades estaban agrupadas por
+observaci\'on. Por lo tanto \texttt{GraphicsActions} pas\'o a tener un \texttt{HashMap} teniendo como clave el nombre de la 
 observaci\'on
-y como contenido una lista de \texttt{UC\_DataVisualizers}. Pero ese dise\~no entra en conflicto con uno de los principios
-SOLID que se explicar\'an mas adelante. Por lo que \texttt{GraphicsActions} ahora es un repositorio de 
+y como contenido una lista de \texttt{UC\_DataVisualizer}. Pero ese dise\~no entra en conflicto con uno de los principios
+SOLID que se explicar\'an m\'as adelante. Por lo que \texttt{GraphicsActions} ahora es un repositorio de 
 \texttt{UC\_ChartContainer},
 y cada \texttt{UC\_ChartContainer} contiene una lista de los\texttt{ UC\_DataVisualizer} que 
 pertenecen a esa observaci\'on y un \texttt{HashSet}
-con los \texttt{UC\_DataVisualizer}, para poder obtener en tiempo constante si ya estaban cargados, ya que solo se pueden cargar
+con los nombres de las propiedades, para poder obtener en tiempo constante si ya estaban cargados, ya que solo se pueden cargar
 una \'unica vez.
 
 En la \'ultima iteraci\'on, se decidi\'o sustituir el \texttt{HashSet} y la lista por un \'arbol rojo negro. Ya que permite
-inserci\'on, b\'usqueda y eliminaci\'on en tiempo \textbf{O(ln n)} frente al O(n) de las listas. 
-Adem\'as un \'arbol rojo negro, solo permite que existe una vez el mismo objeto en el \'arbol.
+inserci\'on, b\'usqueda y eliminaci\'on en tiempo O(ln n) frente al O(n) de las listas. 
+Adem\'as un \'arbol rojo negro, s\'olo permite que existe una vez el mismo objeto en el \'arbol.
 
 \subsection{Diagrama de clases}
 El diagrama de clases aqu\'i insertado tiene todos los m\'etodos, propiedades y atributos ocultos para que entrase
@@ -84,7 +85,7 @@ en el propio documento. En los anexos est\'a la versi\'on completa.
 \subsection{Librer\'{i}as usadas}
 \begin{itemize}
     \item \textbf{AvalonDock:} 
-    Es una librer\'{i}a que permite crear ventanas acoplables en WPF, al mas puro estilo Eclipse o Visual Studio. Es
+    Es una librer\'{i}a que permite crear ventanas acoplables en WPF, al m\'as puro estilo Eclipse o Visual Studio. Es
     c\'{o}digo abierto y gratuita, pese a que tambi\'{e}n dispone de una versi\'{o}n profesional que es de pago. La usada en este proyecto
     ha sido la versi\'{o}n gratuita o \emph{community}. La versi\'{o}n usada esta licenciada bajo licencia BSD.
     \item \textbf{OxyPlot:}
@@ -95,7 +96,7 @@ en el propio documento. En los anexos est\'a la versi\'on completa.
 \subsection{Patrones utilizados}
 
 \subsubsection{MVVM}
-MVVM es un patr\'{o}n de dise\~{n}o creado por Microsoft. Intenta conseguir las ventajas de Model-View-Controller como ademas una separaci\'{o}n total
+MVVM es un patr\'{o}n de dise\~{n}o creado por Microsoft. Intenta conseguir las ventajas de Model-View-Controller como adem\'as una separaci\'{o}n total
 de la vista del controlador. De esta forma los dise\~{n}adores de UI pueden centrar todos sus esfuerzos en crear la interfaz sin preocuparse 
 del c\'{o}digo de la aplicaci\'{o}n, ya que se asume que la interfaz va a cambiar mucho durante el ciclo de vida de la aplicaci\'{o}n. Pero,
 ¿Si separamos totalmente la vista del modelo, como se comunican? En MVC el encargado de eso es el controlador, pero un detalle importante es 
@@ -114,7 +115,7 @@ c\'{o}digo .NET.
     \item \textbf{View:} La interfaz de usuario con sus botones, cajas de texto etc.
     \item \textbf{View Model:} Es la \emph{Vista del Modelo}, siendo una abstracci\'{o}n que sirve de mediadora y que expone los datos
     del modelo a la vista, para que esta \'{u}ltima pueda utilizarlas mediante enlaces de datos simples que no requieren de c\'{o}digo, sino
-    que se crean mediante XAML. Realmente, no s\'{o}lo expone los datos, si no que ademas convierte los datos del modelo, en datos de vista, listos
+    que se crean mediante XAML. Realmente, no s\'{o}lo expone los datos, si no que adem\'as convierte los datos del modelo, en datos de vista, listos
     para ser visualizados.
 \end{itemize}
 
@@ -125,13 +126,14 @@ memoria de la aplicaci\'{o}n \cite{MVVM:Criticism}
 
 \subsubsection{Iterator}
 Si bien el titulo alude al patr\'{o}n \emph{Iterator} .NET no dispone como Java de la interfaz \texttt{Iterable}.
-En cambio, dispone de una interfaz llamada \texttt{IEnumerator<>} que ofrece toda la funcionalidad b\'{a}sica del iterator,
+En cambio, dispone de una interfaz llamada \texttt{IEnumerator<T>} que ofrece toda la funcionalidad b\'{a}sica del iterator,
 y con algunas funcionalidades extra.
 
-He decidido utilizar este patr\'{o}n por los siguientes motivos:
+Se ha decidido utilizar este patr\'{o}n por los siguientes motivos:
 \begin{enumerate}
     \item \textbf{Abstracci\'{o}n:}
-    Al utilizar este patr\'{o}n podemos obtener los elementos de un contenedor, que puede ser un \texttt{array}, una \texttt{LinkedList<>}... sin
+    Al utilizar este patr\'{o}n se pueden obtener los elementos de un contenedor, que puede ser un \texttt{array}, una \texttt{LinkedList<>}...
+    cualquier clase que implemente la interfaz \texttt{IEnumerable<T>} sin
     exponer su representaci\'{o}n interna, aumentando la seguridad y previniendo que una clase tenga acceso a cosas que no deba.
     
     \item \textbf{Facilidad de uso:}
@@ -141,29 +143,86 @@ He decidido utilizar este patr\'{o}n por los siguientes motivos:
     normas, si no recomendaciones.
     
     \item \textbf{Prevenci\'{o}n de errores:}
-    Relacionado con lo anterior. Si se pierde el tiempo a\~{n}adiendo l\'{i}neas extra la probabilidad de que cometamos un error 
-    aumenta. Y aunque no haya sido probado emp\'{i}ricamente, se tiende a pensar que \emph{¿Como me voy a equivocar en recorrer un array? ¡Pero si est\'{a} perfecto!}. 
-    Y ello llevar\'{a} a malgastar m\'{a}s aun algo tan preciado como tiempo. Pero al menos servir\'a para darse cuenta del error y 
+    Relacionado con lo anterior. Si se pierde el tiempo a\~{n}adiendo l\'{i}neas extra la probabilidad de que se cometa un error 
+    aumenta. Y aunque no haya sido probado emp\'{i}ricamente, se tiende a pensar que \emph{¿Como me voy a equivocar en 
+    recorrer un array? ¡Pero si est\'{a} perfecto!}. 
+    Y ello llevar\'{a} a malgastar m\'{a}s aun algo tan preciado como el tiempo. Pero al menos servir\'a para darse cuenta del error y 
     se ver\'a lo \'{u}tiles que son los patrones.
 \end{enumerate}
+
+\subsubsection{Singleton}
+Patr\'on de dise\~no b\'asico que consigue que una clase tenga una \'unica instancia durante toda la ejecuci\'on del software, siendo 
+accesible por toda la aplicaci\'on.
+
+En general, hay dos maneras de crear una clase Singleton.
+
+\paragraph{Lazy} La inicializaci\'on \emph{Lazy} o \emph{perezosa} \'unicamente crea la instancia cuando la necesita, es decir, la primera vez.
+Para conseguirlo, cada vez que se intenta obtener la instancia se comprueba si ya hab\'ia sido previamente instanciada. Uno de los problemas de
+la inicializaci\'on perezosa es que en entornos multihilo da problemas si no se obtiene un bloqueo exclusivo de la clase.
+
+Una inicializaci\'on perezosa con comprobaci\'on doble de bloqueo se realiza as\'i:
+\begin{lstlisting}[language=C, numbers=left, showspaces=false, breaklines=true, tabsize=2]
+    public class GraphicsActions 
+    {
+        private static object myLock = new object();
+        private static GraphicActions myGraphicActions;
+        
+        public static GraphicActions getMyGraphicActions()
+        {
+            if (myGraphicActions == null)
+            {
+                lock (myLock)
+                {
+                    if (myGraphicActions == null)
+                    {
+                        myGraphicActions = new GraphicActions();
+                    }
+                }
+            }
+            
+            return myGraphicActions;
+        }
+    }
+\end{lstlisting}
+
+En .NET 4.0 fue incluida la clase \texttt{Lazy<T>} que realiza ese tipo de inicializaci\'on.
+
+\paragraph{Eager} En la inicializaci\'on \emph{Eager} o \emph{ansiosa} se crea la nueva instancia siempre. En este m\'etodo no hay problemas
+en entornos multihilo, pero tiene un mayor coste computacional si la constructora es muy compleja.
+
+Una inicializaci\'on ansiosa se realiza de la siguiente manera:
+\begin{lstlisting}[language=C, numbers=left, showspaces=false, breaklines=true, tabsize=2]
+    public class GraphicsActions 
+    {
+        private static GraphicActions myGraphicActions = new GraphicActions();
+        
+        public static GraphicActions getMyGraphicActions()
+        { 
+            return myGraphicActions;
+        }
+    }
+\end{lstlisting}
+
+\paragraph{Cr\'iticas}Pese a haberse utilizado el patr\'on Singleton, muchos desarrolladores desaconsejan su uso, ya que implican
+una violaci\'on del Principio de Responsabilidad \'Unica del que se hablar\'a m\'as adelante. Y lo viola porque
+la clase Singleton tendr\'ia dos responsabilidades, controlar que s\'olo exista una \'unica instancia y adem\'as
+toda su l\'ogica de negocio \cite{Singleton:EVIL}.
+
+Por otro lado, tambi\'en tiene como inconveniente una de las m\'aximas de la programaci\'on: Las variables globales
+son malas. Pues por si no fuera poco, un Singleton es una clase global \cite{Singleton:EVIL}.
 
 \subsection{SOLID}
 SOLID es un acr\'{o}nimo mnem\'{o}nico acu\~{n}ado a comienzos de la d\'{e}cada de los 2000 por 
 Robert C. Martin \cite{SOLID:ADefinition}
-que representa cinco principios b\'{a}sicos de la programaci\'{o}n orientada a objetos y el dise\~{n}o de software.
-
-Otra de las cosas en las que incide mucho Martin es que evitemos realizar comentarios en el c\'odigo,
-ya que el hecho de realizar un cambio en el c\'odigo no garantiza que vayamos a cambiar el comentario, y 
-puede llevar a errores futuros o a inconsistencias en la documentaci\'on. Adem\'as, todo el mundo sabe que programar
-es un arte \cite{Art:Programming}.
+que representa cinco principios b\'{a}sicos de la programaci\'{o}n orientada a objetos y del dise\~{n}o de software.
 
 SOLID merece un apartado en esta memoria ya que se ha intentado cumplir en el mayor grado posible los cinco principios.
 
 Los principios son los siguientes:
 \subsubsection{Single responsibility principle}
-Traducido al castellano: Princpio de responsabilidad \'{u}nica. El nombre puede llevar a enga\~{n}o ya que Martin define como 
+Traducido al castellano: Principio de responsabilidad \'{u}nica. El nombre puede llevar a enga\~{n}o ya que Martin define como 
 \emph{responsabilidad}
-a una \emph{raz\'{o}n de cambio} \cite{SOLID:SRP}. Martin, concluye que una clase, debiera tener, una, y solamente una raz\'{o}n 
+a una \emph{raz\'{o}n de cambio} \cite{SOLID:SRP} y concluye que una clase, debiera tener, una, y solamente una raz\'{o}n 
 para cambiar.
 
 Por ejemplo, imaginemos que disponemos de una clase, o m\'{o}dulo que compila e imprime un informe. 
@@ -172,7 +231,7 @@ Ese informe puede cambiar por dos razones, de estilo, o de contenido.
 El principio de responsabilidad \'{u}nica dice que una clase solo debiera cambiar por un motivo, y por 
 tanto tendr\'{i}amos que separar el m\'{o}dulo en dos: El que compila el informe, y el que lo imprime.
 
-Utilizando este principio volveremos nuestro c\'{o}digo mas robusto, ya que un cambio en una clase, no 
+Utilizando este principio volveremos nuestro c\'{o}digo m\'as robusto, ya que un cambio en una clase, no 
 deber\'{i}a afectar a la salida, y por tanto los siguientes m\'{o}dulos que se alimenten de esa clase.
 
 \subsubsection{Open/Closed principle}
@@ -200,3 +259,9 @@ El principio de Inversi\'{o}n de dependencia dice que:
     \item Las abstracciones no deben depender en los detalles. Los detalles deben depender de las abstracciones.
 \end{enumerate}
 \cite{SOLID:DIP}
+
+\section{Clean Code}
+Otra de las cosas en las que incide mucho Martin es que evitemos realizar comentarios en el c\'odigo,
+ya que el hecho de realizar un cambio en el c\'odigo no garantiza que vayamos a cambiar el comentario, y 
+puede llevar a errores futuros o a inconsistencias en la documentaci\'on. Adem\'as, todo el mundo sabe que programar
+es un arte \cite{Art:Programming}.

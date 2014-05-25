@@ -8,32 +8,74 @@
 Los objetivos del proyecto consisten en crear un software que extienda la funcionalidad actual del sistema INTRASIM desarrollado 
 por la universidad de Navarra y del grupo de investigación GALAN perteneciente a la UPV/EHU.
 
-El software, permite cargar observaciones y propiedades previamente capturadas con diversas herramientas (Kinect) y
+El software, debe permitir cargar observaciones y propiedades previamente capturadas con diversas herramientas (Kinect) y
 visualizarlas gr\'aficamente. Esas observaciones y propiedades se cargar\'an en un panel lateral con forma de \'arbol
 y podr\'an seleccionarse para ser visualizadas. Los gr\'aficos pueden ser reorganizados como el
 usuario quiera, para verlos al mismo tiempo.
 
-La herramienta permite visualizar los datos en bruto y v\'{i}deo (si esta disponible). El fin de la herramienta es
+La herramienta ha de permitir visualizar los datos en bruto y en v\'{i}deo (si est\'a disponible). El fin de la herramienta es
 permitir al usuario experto seleccionar un rango en cualquiera de los gr\'aficos y exportarlo en formato XML.
 
 \section{Alcance}
 El alcance del proyecto va a definirse mediante un EDT, y el ciclo de vida que se ha decidido utilizar son las metodolog\'ias
-\'agiles, como Scrum y Kanban que ser\'an detallados mas adelante. Pero se puede adelantar que al utilizar este tipo
+\'agiles, como Scrum y Kanban que ser\'an detallados m\'as adelante. Pero se puede adelantar que al utilizar este tipo
 de metodolog\'ias se hace frente a uno de los mayores problemas del desarrollo de software: la incertidumbre y los cambios
-no contemplados inicialmente, as\'i como incrementar la productividad al ser mas sistem\'aticos.
-\begin{figure}[H]
+no contemplados inicialmente, as\'i como incrementar la productividad al ser m\'as sistem\'aticos.
+\begin{figure}[h]
     \centering
     \includegraphics[width=1\linewidth]{./Figures/EDT}
     \caption[Alcance del proyecto]{EDT}
     \label{fig:Alcance}
 \end{figure}
 
-\subsection{An\'{a}lisis inicial}
-Tal y como se ve en la Figura \ref{fig:Alcance} cada una de esas tareas deber\'an realizarse en cada uno de los sprints
-que se van a realizar. Para cada tarea se ha realizado una peque\~na tabla en la que se detalla que se va a hacer,
+\section{Descripci\'on de las tareas}
+Tal y como se ve en la Figura \ref{fig:Alcance} cada una de las tareas de los grupos
+``An\'alisis inicial", ``Entrevista cliente" \ y ``Dise\~no e implementaci\'on" \ van a realizarse en cada uno de los sprints.
+Para cada tarea se ha realizado una peque\~na tabla en la que se detalla que se va a hacer,
 la duraci\'on y esfuerzo aproximados, as\'i como otros datos de inter\'es.
 
-\subsection{Boceto de pantallas}
+\subsection{Inicio proyecto}
+\subsubsection{Realizar introducci\'{o}n y objetivos del proyecto}
+\begin{table}[H]
+    \begin{center}
+        \rowcolors{1}{lightgray}{} %\rowcolors{<starting row index>}{<odd row color>}{<even row color>}
+        \begin{tabular}{l p{8cm}}
+            Responsable                           & Rub\'{e}n \\
+            Duraci\'{o}n (Horas / Persona)        & 7. \\ 
+            Esfuerzo (Horas)                      & 7. \\
+            Descripci\'{o}n                       & Realizar las secciones de la memoria de la Introducci\'{o}n y los
+            objetivos del proyecto. \\
+            Entradas                              & Scrum backlog  \\
+            Salidas / Entregables                 & Los cap\'{i}tulos de introducci\'{o}n y objetivos del proyecto. \\
+            Recursos necesarios                   & PC, \LaTeX, TeXStudio. \\
+            Precedencias                          & Ninguna. \\
+        \end{tabular}
+    \end{center}
+    
+\end{table}
+
+\subsubsection{Captura de requisitos inicial}
+\begin{table}[H]
+    \begin{center}
+        \rowcolors{1}{lightgray}{} %\rowcolors{<starting row index>}{<odd row color>}{<even row color>}
+        \begin{tabular}{l p{8cm}}
+            Responsable                           & Rub\'{e}n \\
+            Duraci\'{o}n (Horas / Persona)        & 7. \\ 
+            Esfuerzo (Horas)                      & 7. \\
+            Descripci\'{o}n                       & Entrevistarse con el cliente para obtener
+                                                    una captura de requisitos inicial. \\
+            Entradas                              & Ninguna. \\
+            Salidas / Entregables                 & Diagrama de casos de uso y modelo de dominio. \\
+            Recursos necesarios                   & PC, \LaTeX, TeXStudio. \\
+            Precedencias                          & Ninguna. \\
+        \end{tabular}
+    \end{center}
+    
+\end{table}
+
+\subsection{An\'alisis inicial}
+
+\subsubsection{Boceto de pantallas}
 \begin{table}[H]
     \begin{center}
         \rowcolors{1}{lightgray}{} %\rowcolors{<starting row index>}{<odd row color>}{<even row color>}
@@ -41,8 +83,8 @@ la duraci\'on y esfuerzo aproximados, as\'i como otros datos de inter\'es.
             Responsable                           & Rub\'{e}n \\
             Duraci\'{o}n (Horas / Persona)        & 4. \\ 
             Esfuerzo (Horas)                      & 4. \\
-            Descripci\'{o}n                       & Diseño de pantallas inicial en base a las ideas obtenidas de lo
-                                                    contado por Mikel, a fin de obtener dudas sobre funcionalidades. \\
+            Descripci\'{o}n                       & Diseño de pantallas inicial en base a las ideas obtenidas de la
+                                                    captura de datos inicial, a fin de obtener dudas sobre funcionalidades. \\
             Entradas                              & Ninguna \\
             Salidas / Entregables                 & Boceto dibujado a mano con el dise\~{n}o de las pantallas \\
             Recursos necesarios                   & Papel y l\'{a}piz \\
@@ -60,7 +102,7 @@ la duraci\'on y esfuerzo aproximados, as\'i como otros datos de inter\'es.
             Responsable                           & Rub\'{e}n \\
             Duraci\'{o}n (Horas / Persona)        & 7. \\ 
             Esfuerzo (Horas)                      & 7. \\
-            Descripci\'{o}n                       & Creaci\'on de cada sprint con sus respectivas tareas para crear la pila de tareas. \\
+            Descripci\'{o}n                       & Creaci\'on de todas las tareas para crear una pila. \\
             Entradas                              & Requisitos del cliente.\\
             Salidas / Entregables                 & Un listado con todas las tareas a completar \\
             Recursos necesarios                   & PC con un editor de textos.\\
@@ -70,24 +112,7 @@ la duraci\'on y esfuerzo aproximados, as\'i como otros datos de inter\'es.
     
 \end{table}
 
-\subsubsection{Realizar introducci\'{o}n y objetivos del proyecto}
-\begin{table}[H]
-    \begin{center}
-        \rowcolors{1}{lightgray}{} %\rowcolors{<starting row index>}{<odd row color>}{<even row color>}
-        \begin{tabular}{l p{8cm}}
-            Responsable                           & Rub\'{e}n \\
-            Duraci\'{o}n (Horas / Persona)        & 7. \\ 
-            Esfuerzo (Horas)                      & 7. \\
-            Descripci\'{o}n                       & Realizar las secciones de la memoria de la Introducci\'{o}n y los
-                                                    objetivos del proyecto. \\
-            Entradas                              & Scrum backlog  \\
-            Salidas / Entregables                 & Los cap\'{i}tulos de introducci\'{o}n y objetivos del proyecto. \\
-            Recursos necesarios                   & PC, \LaTeX, TeXStudio, Scrum backlog \\
-            Precedencias                          & Scrum backlog. \\
-        \end{tabular}
-    \end{center}
-    
-\end{table}
+
 
 \subsection{Entrevista cliente}
 \subsubsection{Revisi\'{o}n de pantallas}
@@ -99,7 +124,7 @@ la duraci\'on y esfuerzo aproximados, as\'i como otros datos de inter\'es.
             Duraci\'{o}n (Horas / Persona)        & 2. \\ 
             Esfuerzo (Horas)                      & 2. \\
             Descripci\'{o}n                       & Mostrar al cliente, un prototipo inicial de pantallas
-                                                    para as\'i poder mejorar el dise\~{n}o para que sea mas f\'{a}cil de usar. \\
+                                                    para as\'i poder mejorar el dise\~{n}o para que sea m\'as f\'{a}cil de usar. \\
             Entradas                              & Requisitos del cliente. \\
             Salidas / Entregables                 & Prototipo realizado en WPF que muestra el comportamiento y forma de las pantallas. \\
             Recursos necesarios                   & Visual Studio 2013, Avalon Dock, un PC. \\
@@ -155,9 +180,10 @@ la duraci\'on y esfuerzo aproximados, as\'i como otros datos de inter\'es.
             Responsable                           & Rub\'{e}n \\
             Duraci\'{o}n (Horas / Persona)        & 10. \\ 
             Esfuerzo (Horas)                      & 10. \\
-            Descripci\'{o}n                       & Realizar el diseño de software, clases, Interfaces necesarias, que patrones van a usarse etc. \\
+            Descripci\'{o}n                       & Realizar el diseño de software, clases, Interfaces necesarias, que patrones van a usarse etc 
+                                                    en el sprint del mes. \\
             Entradas                              & Tarea a realizar y la interfaz de usuario.\\
-            Salidas / Entregables                 & Dise\~{n}o de software que guiar\'{a} la siguiente tarea y la documentaci\'{o}n
+            Salidas / Entregables                 & Dise\~{n}o de software que guiar\'{a} el sprint del mes y la documentaci\'{o}n
                                                     habr\'{a} sido actualizada en consecuencia. \\
             Recursos necesarios                   & La documentaci\'{o}n realizada hasta el momento, Visual Studio 2013, Git y 	un 
             										PC. \\
@@ -176,8 +202,8 @@ la duraci\'on y esfuerzo aproximados, as\'i como otros datos de inter\'es.
             Duraci\'{o}n (Horas / Persona)        & 20. \\ 
             Esfuerzo (Horas)                      & 20. \\
             Descripci\'{o}n                       & Implementar lo dise\~{n}ado, lo que describe la tarea en el post-it del sprint. \\
-            Entradas                              & Dise\~{n}o realizado sobre la tarea, post-it con la tarea.\\
-            Salidas / Entregables                 & La pieza de software con la nueva funcionalidad implementada, y la documentaci\'{o}n
+            Entradas                              & Dise\~{n}o realizado sobre la tarea, post-it con el sprint del mes.\\
+            Salidas / Entregables                 & La pieza de software con las nuevas funcionalidades implementadas, y la documentaci\'{o}n
                                                     actualizada. \\
             Recursos necesarios                   & La documentaci\'{o}n realizada hasta el momento, Visual Studio 2013, Git y un 
             										PC. \\
@@ -312,16 +338,19 @@ Scrum, de manera resumida consiste en lo siguiente:
     \item Repetir.
 \end{enumerate}
 
-Es fundamental entre sprint y sprint que el valor del producto haya aumentado. Es decir, lo importante es el producto, no el avance del propio proyecto. Se podr\'ia avanzar mucho en el dise\~no del software, pero si eso es algo que el cliente no 
+Es fundamental entre sprint y sprint que el valor del producto haya aumentado. Lo importante es el producto, no el 
+avance del propio proyecto. Se podr\'ia avanzar mucho en el dise\~no del software, pero si eso es algo que el cliente no 
 puede ver, se estar\'a fallando en el objetivo de ser \'agiles, ya que no le aporta nada.
 
 Por otro lado, si se comete alg\'un error ser\'a muy sencillo corregirlo ya que si los sprints son de dos semanas por ejemplo, no 
-habr\'a perdido apenas tiempo. Y adem\'as para el cliente los entregables ser\'an predecibles en el tiempo, y se podr\'a estimar mejor cuando una funcionalidad presente en el \emph{backlog}
-ser\'a introducida en el software.
+se habr\'a perdido apenas tiempo. Y adem\'as para el cliente los entregables ser\'an predecibles en el tiempo, 
+y se podr\'a estimar mejor cuando una funcionalidad presente en el \emph{backlog}
+ser\'a introducida en el software. Esto \'ultimo es cierto porque se sabe la cantidad media de requisitos que se
+entregan en cada sprint, por lo que se puede realizar una predicci\'on r\'apida y razonablemente precisa.
 
 Scrum es tambi\'en muy interesante, y se posiciona como una alternativa muy potente frente a 
 COCOMO o waterfall, porque en la creaci\'on de software hay un componente de incertidumbre muy 
-grande. No se sabe como, ni cuando pueden cambiar los requisitos de un 
+grande. No se sabe c\'omo, ni cu\'ando pueden cambiar los requisitos de un 
 software. Por ello, toman de nuevo importancia los sprints. 
 
 En los modelos antiguos, si ya se hab\'ia terminado la fase de an\'alisis y dise\~no, y se requer\'ia una nueva funcionalidad era necesario 
@@ -342,20 +371,23 @@ para ver de una manera visual:
 \end{itemize}
 
 El m\'{e}todo Kanban es algo muy extenso, pero en este proyecto, simplemente se ha aplicado el tablero Kanban mezclado con Scrum. 
-Cada dos semanas, se crea una lista de tareas que se debe completar (Backlog) y se coloca en la columna de ``Tareas pendientes", 
-ordenadas por prioridad. Despu\'es, se coloca en la lista de ``En progreso" como m\'{a}ximo dos tareas. Y no se empieza ninguna otra
+Cada mes, se crea una lista de tareas que se debe completar (Sprint Backlog) y se coloca en la columna de ``Tareas pendientes", 
+ordenadas por prioridad. Despu\'es, se coloca en la lista de ``En progreso" \ como m\'{a}ximo dos tareas. Y no se empieza ninguna otra
  hasta que esas dos hayan sido pasadas a la columna de ``Tareas finalizadas".
 
 \subsection{Mi planificaci\'{o}n}
 Cada sprint tiene una duraci\'{o}n de un mes, empezando desde Octubre del 2013. 
 El esfuerzo en horas que se va a 
 realizar se decidir\'a al inicio de cada sprint, en funci\'on de algunos par\'ametros, por ejemplo, si se va con retraso,
-si hay entregables de clase pendientes, otros trabajos etc. 
+si hay entregables de la universidad pendientes, otros trabajos etc. Pese a ese componente variable, la cantidad
+media de horas que se trabajar\'a en el proyecto por sprint, ser\'a de 60 horas. Es decir, 3 horas diarias de lunes a viernes.
 
 \subsubsection{Gantt}
 Se ha creado un diagrama de Gantt para que de una manera visual pueda
-verse la distribuci\'on de los sprints, y mas adelante se detallar\'a
-en que consiste cada sprint.
+verse la distribuci\'on de los sprints, y m\'as adelante se detallar\'a
+en que consiste cada sprint. Hay que tener en cuenta que el contenido de
+cada sprint es orientativo. Ser\'ia algo as\'i como la planificaci\'on \'optima, pero no es algo
+que sea invariable.
 
 \begin{figure}[h]
 \centering
@@ -497,15 +529,8 @@ Las herramientas que se han utilizado para llevar a cabo este proyecto han sido:
     
     GitHub es un repositorio online, gratuito para proyectos Open Source desarrollado y mantenido 
     por GitHub Inc. Se ha elegido
-    por ser la alternativa mas conocida as\'i como punto de referencia de los desarrolladores a 
-    la hora de alojar proyectos
-    y buscar software.
-    
-    \item
-    \textbf{OxyPlot}
-    
-    Librer\'{i}a de c\'{o}digo abierto y multiplataforma que permite crear gr\'{a}ficos de manera 
-    sencilla as\'{i} como seleccionar rangos etc.
+    por ser la alternativa m\'as conocida as\'i como punto de referencia de los desarrolladores a 
+    la hora de alojar proyectos.
     
 \end{itemize}
 
@@ -670,8 +695,8 @@ temporal.
             Descripci\'{o}n                 & Debido a que el cliente tiene nuevas necesidades solicita la
             								  implementaci\'{o}n de funcionalidades extras o la desaparici\'{o}n de alguna que se 
             								  hayan podido volver innecesarias. \\
-            Prevenci\'{o}n                  & Realizar un buen dise\~{n}o para la posibilidad de añadir
-            								  funcionalidades sin que suponga un coste muy elevado. \\ 
+            Prevenci\'{o}n                  & Realizar un buen dise\~{n}o para que la posibilidad de añadir
+            								  funcionalidades no suponga un coste muy elevado. \\ 
             Plan de contingencia            & Evaluar los nuevos requisitos para saber si se pueden
             								  abordar o no y si fuese que s\'i estudiar la situación y realizarlo. \\
             Probabilidad                    & Probable \\
@@ -698,16 +723,23 @@ temporal.
 \end{table}
 
 \section{Planificaci\'{o}n econ\'{o}mica}
+Debido a que el software creado va a ser donado a un grupo de investigaci\'on, todos los datos
+utilizados en esta secci\'on de la planificaci\'on econ\'omica se han realizado suponiendo
+que el proyecto se realiza al amparo del grupo de investigaci\'on como personal contratado y que se va a pedir
+financiaci\'on al Gobierno Vasco.
+
+Al realizar esta suposici\'on, es necesario crear una estimaci\'on de los costes para poder
+pedir la ayuda al gobierno y de esta forma llevar a cabo el proyecto.
+
+\subsection{Ingresos}
 No se obtendr\'{a} beneficio econ\'{o}mico del proyecto ya que se realiza con car\'acter comunitario y con la intenci\'on
-de ayudar a un grupo de investigaci\'on. El c\'odigo est\'a licenciado bajo licencia GPLv3.
+de ayudar a un grupo de investigaci\'on. El c\'odigo est\'a disponible y ser\'a liberado bajo licencia GPLv3.
 
-Por lo tanto el coste de venta de nuestro coste sera 0€.
-
-Debido a que el software es gratuito, no es necesario calcular el Retorno de la Inversi\'on.
+Por lo tanto el coste de venta de nuestro coste sera 0€ as\'i como los ingresos directos obtenidos por el software.
 
 \subsection{Salario del investigador responsable}
 Teniendo en cuenta la complejidad, y el tiempo disponible para realizar el software, se ha
-decidido a dar un salario compensatorio de 30 € / hora al responsable del proyecto.
+decidido dar un salario compensatorio de 30 € / hora al responsable desarrollador del proyecto.
 
 Para calcular el salario total a percibir, se ha utilizado la cantidad estimada media de horas
 que se le dedicar\'a al proyecto, que son 60 horas / mes.
@@ -719,14 +751,17 @@ Por tanto:
 	$ Total \ a \ percibir (€) = 240 horas * 30 € / hora = 7.200 € $
 \end{center}
 
-\subsection{Amortizaci\'on material inform\'atico}
-Nota: todos estos datos se consideran como si no fuese un estudiante, si no como colaborador
-del grupo de investigaci\'on. Tambi\'en se considera que se va a pedir financiaci\'on al
-Gobierno Vasco, por lo que se hace necesaria una estimaci\'on de los costes.
-
 \subsubsection{Lugar de trabajo}
 El lugar de trabajo es el domicilio familiar y no hay que pagar alquiler ya que est\'a en
-propiedad. Por lo que el gasto de alquiler/hipoteca es 0€
+propiedad. Por lo que el gasto de alquiler/hipoteca es 0€.
+
+\subsection{Amortizaci\'on material inform\'atico}
+Con la amortizaci\'on cargamos al cliente con el desgaste que supone utilizar esos
+dispositivos para esa tarea. Como el proyecto ha durado siete meses, la amortizaci\'on
+correspondiente a este a\~no deber\'a ser multiplicada por $ \frac{7 meses}{12 meses} = 0.582 $ 
+para cobrar de manera correcta por ese desgaste. Este factor se le aplicar\'a tanto al Software de pago como
+a los dispositivos inform\'aticos utilizados.
+
 \subsubsection{Material inform\'{a}tico}
 El material informático que se va a usar es un portátil Acer TravelMate 5742G comprado en 
 Diciembre de 2010 y usado intensivamente durante estos 4 años. 
@@ -749,6 +784,11 @@ Amortizacion \ anual (€) = \frac{12,5 * 549}{100} = 68,625 €
 \end{equation}
 
 \begin{equation}
+Amortizacion \ a \ cargar (€) = 68,625 * 0,583 = 39,79 €
+\end{equation}
+
+
+\begin{equation}
 Amortizacion \ acumulada (€) = 68,625 * 4 = 274,5 €
 \end{equation}
 
@@ -759,7 +799,7 @@ Amortizacion \ acumulada (2014) = 274,5 + 68,625 = 343,125 €
 \end{center}
 
 Tambi\'{e}n se va a usar un PC gen\'{e}rico comprado a piezas en 2012, y pensado para
-ser amortizado en 10 a\~nos. \'Este, en cambio, su precio fue de 277.65 € IVA incluido.
+ser amortizado en 10 a\~nos. El precio fue 277.65 € IVA incluido.
 Por lo que su amortizaci\'on hasta el d\'ia de hoy ha sido:
 
 \begin{center}
@@ -776,6 +816,10 @@ Amortizacion \ anual (€) = \frac{10,0 * 277,65}{100} = 27,765 €
 \end{equation}
 
 \begin{equation}
+Amortizacion \ a \ cargar (€) = 27,765 * 0,583 = 16,187 €
+\end{equation}
+
+\begin{equation}
 Amortizacion \ acumulada (€) = 27,765 * 2 = 55,53 €
 \end{equation}
 
@@ -787,13 +831,13 @@ Amortizacion \ acumulada (2014) = 55,53 + 27,765 = 83,295 €
 
 \subsection{Software}
 Debido a la previa suposici\'on de que se est\'a trabajando de manera conjunta con la 
-universidad, se hace necesario contabilizar como gasto las licencias de software.
+universidad como personal contratado, se hace necesario contabilizar como gasto las licencias de software.
 
 \subsubsection{Visual Studio}
-La versi\'on de Visual Studio utilizada es la 2013 Ultimate, la mas completa y a la vez mas
+La versi\'on de Visual Studio utilizada es la 2013 Ultimate, la m\'as completa y a la vez m\'as
 cara, y que su Precio de Venta al P\'ublico, es de 14.237,91€ \footnote{\url{http://www.visualstudio.com/en-us/products/visual-studio-ultimate-with-msdn-vs\#Fragment_PricingHeader}}.
 
-Como es un software muy caro, tambi\'en se le va a aplicar una amortizaci\'on de 4 a\~nos.
+Como es un software muy caro, se le va a aplicar una amortizaci\'on de 4 a\~nos.
 Parece poco tiempo, pero en t\'erminos de desarrollo es un periodo bastante largo, y adem\'as
 Microsoft ofrece unos precios razonables de actualizaci\'on.
 
@@ -808,6 +852,10 @@ Amortizacion \ anual (€) = \frac{Amortizacion \ anual(\%) * Precio \ software}
 
 \begin{equation}
 Amortizacion \ anual (€) = \frac{25,0 * 14.237,91 €}{100} = 3.559,4775 €
+\end{equation}
+
+\begin{equation}
+Amortizacion \ a \ cargar (€) = 3.559,4775 * 0,583 = 2.075,17 €
 \end{equation}
 
 \begin{equation}
@@ -834,18 +882,17 @@ La tabla \ref{GastosTotales} resume los gastos estimados del proyecto.
 		\begin{tabular}{l*{1}{r}r}
 		    Concepto                   & Gastos en € & \\
 		    \hline
-		    Amortizaci\'on material    & 48,195  & \\
+		    Amortizaci\'on material    & 55,977  & \\
 		    Material inform\'atico     & 0 & \\ 
 		    Gastos personal (salario)  & 7.200 & \\
 		    Lugar de trabajo           & 0 & \\
-		    Software                   & 1.799,73875 & \\
-		    Gastos comunes             & 60 & \\
+		    Software                   & 2.075,17 & \\
 		    \hline
-		    Sub total				   & 9.107,93375 & \\
+		    Sub total				   & 9.331,147 & \\
 		    \hline
-		    Gastos comunes			   & 455,397 & \\
+		    Gastos comunes			   & 466,557 & \\
 		    \hline
-		    Total		               & 9.563,33075 &\\
+		    Total		               & 9.797,704 &\\
 		\end{tabular}
 	\caption[Gastos totales]{Gastos totales}
 	\label{GastosTotales}

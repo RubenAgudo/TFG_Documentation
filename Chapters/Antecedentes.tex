@@ -5,11 +5,11 @@
 \section{Situaci\'on actual}
 El proyecto desarrollado por el grupo de investigaci\'on GALAN, en colaboraci\'on con la universidad de Navarra, 
 consiste en un sistema de realidad virtual para ser utilizado para la ense\~nanza de tareas no evaluables de manera
-cl\'asica. Es decir, para lo que sirve el proyecto, es para ense\~nar habilidades y para los que se necesita un 
+cl\'asica. Es decir, para lo que sirve el proyecto, es para ense\~nar habilidades que necesitan de un 
 profesor experto que eval\'ue en tiempo real.
 
 El objetivo principal es conseguir un sistema en el que la gente entrene una habilidad concreta, por ejemplo, aprender
-a sacar correctamente en tenis, y que el sistema sea capaz de evaluar, determinar donde se ha equivocado, y en definitiva,
+a sacar correctamente en tenis, y que el sistema sea capaz de evaluar, determinar d\'onde se ha equivocado, y en definitiva,
 ayudar a esa persona a aprender a realizar un saque de tenis correctamente.
 
 Actualmente, se dispone de un sistema emulador de realidad virtual, en el que el alumno se captura a si mismo realizando
@@ -28,20 +28,21 @@ a los objetos que han sido definidos en el propio sistema: Observaciones y Propi
 Para poder determinar de manera correcta esas propiedades y observaciones, es necesario contar con un 
 experto en el sistema interactivo, y un experto del dominio, que es quien define las observaciones y las
 propiedades que han de tenerse en cuenta. N\'otese que el experto del dominio define las observaciones y las
-propiedades en un lenguaje natural, t\'ecnico en campo.
+propiedades en un lenguaje natural, t\'ecnico en su campo del conocimiento, pero no en el \'ambito del propio
+sistema.
 
 \subsubsection{Observaciones y propiedades}
-Una observaci\'on representa un hecho interesante para el diagn\'ostico, algo que tiene sentido, pero suelen
+Una observaci\'on representa un hecho interesante para el diagn\'ostico, algo que tiene sentido. Suelen
 ser lo suficientemente peque\~nas para que sean f\'acilmente diagnosticables. Ya que si la observaci\'on
-fuese ``Realizar saque", es una secuencia de varias acciones, por ejemplo: ``lanzar pelota", ``echar raqueta hacia atr\'as"
-y ``golpear pelota". De esta manera se es mucho mas granular y se pueden dar mejores diagn\'osticos \cite{INTRASIM:Manual}.
+fuese ``Realizar saque", es una secuencia de varias acciones, por ejemplo: ``lanzar pelota", ``echar raqueta hacia atr\'as" \
+y ``golpear pelota". De esta manera se es mucho m\'as granular y se pueden dar mejores diagn\'osticos \cite{INTRASIM:Manual}.
 
 Cada observaci\'on contiene una serie de propiedades, que es lo que caracteriza una observaci\'on. 
-Siguiendo con el ejemplo del tenis, unas posibles propiedades para la observaci\'on ``lanzar pelota"
+Siguiendo con el ejemplo del tenis, unas posibles propiedades para la observaci\'on ``lanzar pelota" \
 pueden ser la velocidad a la que se levanta el brazo, el \'angulo del codo y la posici\'on del hombro.
 
 \subsection{Nivel de interpretaci\'on}
-Este es un nivel clave, en el que se crean relaciones entre las observaciones, que en el sistema se le conoce como Paso.
+Este es un nivel clave, en el que se crean las relaciones entre las observaciones, que en el sistema se le conoce como Paso.
 Las relaciones entre observaciones son necesarias, ya que no todas las observaciones que se capturan influyen en las dem\'as,
 o no aportan informaci\'on \'util o relevante, y puede que incluso creen ruido, empeorando el diagn\'ostico.
 
@@ -57,15 +58,15 @@ en cuenta el sol, ya que no afecta a la manera de lanzar la pelota.
 
 Actualmente, para crear las relaciones entre pasos y situaciones, hay una persona que lo realiza a mano. En muchos casos
 es un trabajo de prueba y error y adem\'as con resultados sub\'optimos ya que no siempre se ven claramente las relaciones,
-e incluso pueden crearse relaciones que no aporten nada.
+e incluso pueden crearse relaciones err\'oneas y que empeoren los futuros resultados.
 
 En esta situaci\'on es donde cobra sentido la realizaci\'on de este TFG. El TFG, es un primer paso para facilitar
 el trabajo a la persona que crea esas relaciones. Es una herramienta de autor que de manera gr\'afica, permite
 acotar los datos procesados en el nivel de observaci\'on. Es decir, el software no recibe datos en bruto, sino
 las propiedades y las observaciones, con sus valores en el tiempo durante una sesi\'on de trabajo.
 
-Al acotar esos datos en distintos rangos se pueden crear pasos y situaciones de una manera mucho mas sencilla, y adem\'as
-siendo mas eficientes, ya que el cerebro humano es capaz de detectar patrones complejos en el espacio.
+Al acotar esos datos en distintos rangos se pueden crear pasos y situaciones de una manera mucho m\'as sencilla, y adem\'as
+siendo m\'as eficientes, ya que el cerebro humano es capaz de detectar patrones complejos en el espacio.
 
 Una vez creados los pasos y situaciones, se utilizar\'an algoritmos de \emph{Machine Learning} y miner\'ia de datos para
 realizar un \emph{Feature Selection \footnote{\url{http://jmlr.org/papers/volume3/guyon03a/guyon03a.pdf}}},
@@ -73,14 +74,15 @@ establecer las relaciones etc.
 
 \subsection{Nivel de diagn\'ostico}
 Finalmente, en este nivel, mediante distintas t\'ecnicas de diagn\'ostico, como por ejemplo el \emph{Clustering} y
-algoritmos de clasificaci\'on supervisada, compar\'andose con el experto.
-se determina si el alumno ha adquirido la habilidad, y se le proporciona el \emph{feedback} 
+algoritmos de clasificaci\'on supervisada, compar\'andose con el experto,
+se determina si el alumno ha adquirido la habilidad. Si aun no domina lo que deseaba aprender, se le proporciona el \emph{feedback} 
 necesario para saber donde tiene que incidir para poder mejorar.
 
 \section{Estudio de diferentes alternativas}
-La aplicaci\'on consiste en poder visualizar tanto en gr\'aficos como en v\'ideo lo capturado por una herramienta
-de realidad virtual. Al visualizar los gr\'aficos por pantalla y adem\'as sincronizados con uno o varios v\'ideos 
-puede elegirse con mayor precisi\'on.
+Como hemos visto en la secci\'on anterior, la aplicaci\'on debe poder visualizar tanto gr\'aficos como 
+v\'ideos capturados durante una sesi\'on de trabajo. Si se decide a\~nadir uno o varios v\'ideos, ir\'an
+sincronizados con los gr\'aficos, para poder identificar m\'as f\'acilmente en que momentos est\'a sucediendo
+algo que podr\'ia ser un paso o una situaci\'on.
 
 Para conseguir este objetivo, se barajaron distintos tipos de acercamientos al problema.
 
@@ -101,7 +103,7 @@ Debido a que el software va a desarrollarse con Visual Studio, era factible pens
 Visual Studio ser\'ia sencillo, con controles gr\'aficos que facilitaran la tarea.
 
 La realidad es bien distinta, ya que se necesita de componentes de terceros para crear ese tipo de interfaz. Pese a ese
-peque\~no inconveniente hay distintas librer\'ias de c\'odigo abierto que proporcionan esa funcionalidad.
+peque\~no inconveniente hay distintas librer\'ias de c\'odigo abierto que proporcionan la nombrada funcionalidad.
 
 Por tanto la alternativa que se tom\'o fue esta. Implementar una interfaz tipo IDE que permita el acoplamiento de ventanas,
 crear grupos de pesta\~nas etc.
