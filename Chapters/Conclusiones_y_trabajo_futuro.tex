@@ -1,16 +1,46 @@
 \chapter{Conclusiones y trabajo futuro}
-%\newpage
-Resumen del trabajo elaborado y de los principales hitos conseguidos.
 
-Conclusiones de la gestión: explicación y justificación de 
-los cambios respecto a la propuesta original, planificación, 
-costes, objetivos.
+\section{Mejoras}
+Utilizar bien SOLID
 
-Conclusiones desde un punto de vista critico: Utilidad del 
-trabajo realizado, problemas durante la realización del TFG, 
-opiniones de usuarios, comparativas con otras soluciones.
+Cambiar los Singleton por patrones Factory para cumplir correctamente SOLID
 
-Posibles mejoras y ampliaciones a lo realizado con una 
-pequeña estimación del trabajo que supondría afrontarlas 
-y una valoración sobre las mismas. Aspectos relacionados con el
- mantenimiento del trabajo desarrollado.
+Implementar pruebas unitarias
+
+Intentar utilizar los enlaces de datos que proporciona .NET
+
+Mejorar la manera en la que se utilizan los workers.
+
+Que cuando se pinche en un elemento que ya esta abierto, que consiga el foco
+
+Los graficos de cada observacion que tengan distintos colores para poder asociar
+visualmente un color a cada observacion
+
+Utilizar un modulo de mineria de datos, ya que muchas veces las observaciones
+seran muy similares entre si por lo que podria utilizarse para identificar 
+rangos automaticamente, y que el usuario diga si estan correctos o no.
+
+Eliminar los timers de la aplicacion, ya que es mucho mas eficiente utilizar
+INotifyPropertyChanged.
+
+Convertir MainWindow en UserControl para que pueda se añadido a otro dockingmanager.
+Realmente esto es muy facil, solo habria que crear un userControl llamandose Workbench
+con todo el XAML y el codigo cs de MainWindow y despues una aplicacion en la que su
+componente principal sea ese UserControl
+
+Crear un dialogo de opciones para personalizar el comportamiento de la aplicacion
+
+\section{Conclusiones}
+Hay que contar como han sido realmente las cosas: tiempos, distribucion del trabajo, 
+sensaciones que se han tenido al usar scrum etc. Por lo que habra que crear el
+burndown para mostrar como ha sido realmente el trabajo, que nuevas tareas han surgido...
+
+Algo sesudo, como por ejemplo, el sindrome del programador, que siempre se tienen nuevas
+ideas para implementar, ideas no contempladas desde el principio pero que no aportan nada.
+Por ejemplo, cada intervalo que se crea, poder mostrarlo en algun sitio y que se permita
+el borrado de los intervalos previamente creados, editarlo etc.
+
+Lo complicado que es trabajar en una tecnologia que apenas conoces, ademas utilizando
+librerias con escasa documentacion, en la que todo tu trabajo se basa en prueba y error
+y en mirar si otras personas han tenido antes el mismo problema que tu utilizando
+ademas la misma biblioteca.

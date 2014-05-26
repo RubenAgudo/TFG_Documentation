@@ -247,6 +247,24 @@ Por ejemplo, en la propiedad \emph{prop14} se ve que los instantes no son consec
 gr\'{a}fico no debe ser cont\'inuo en ese punto, es decir, desde el punto (1, 4) no debe unirse al 
 (3, 5). Esto es \'{u}til para saber si una propiedad esta sucediendo o no.
 
+Una cosa interesante y que adem\'as no se ped\'ia desde el principio, era si 
+ten\'ia sentido implementar procesamiento paralelo o procesos en segundo plano. El 
+procesamiento paralelo finalmente no tiene sentido implementarlo ya que no hay tareas
+que puedan separarse en subtareas para que cada ``trabajador" \ pueda procesar por su
+cuenta. En cambio, al no conocerse el tama\~no m\'aximo de entrada, se ha decidido
+implementar un \texttt{BackgroundWorker} a la hora de crear un intervalo, y a la hora
+de guardar en disco el paso o la situaci\'on.
+
+Se ha tomado esta decisi\'on porque si el guardar los datos se hace en el hilo principal
+de ejecuci\'on, dependiendo de la cantidad de datos, podr\'ia bloquear la interfaz y
+de esta manera el software es mucho m\'as escalable. Bien es
+verdad que un procesador moderno es capaz de procesar unos 50 millones de operaciones por
+segundo, y no se cree que la entrada, ni la salida vaya a ser tan grande.
+
+A la hora de cargar datos, no se ha implementando el \texttt{BackgroundWorker}
+porque en la aplicaci\'on no se puede realizar ninguna acci\'on hasta que los datos est\'an 
+listos.
+
 \section{Gesti\'{o}n del c\'{o}digo fuente}
 Hasta ahora no se ha hablado de algo que bien no es parte del desarrollo, pero que igualmente es importante.
 

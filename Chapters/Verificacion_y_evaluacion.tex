@@ -1,8 +1,59 @@
 \chapter{Verificaci\'{o}n y evaluaci\'{o}n}
-%\newpage
-Definición del trabajo desarrollado usando un lenguaje natural. 
-Se debe dar respuesta a cuestiones como ¿Qué se ha hecho? 
-¿Cómo se ha hecho? Cambien se explicara que problemas se han 
-encontrado durante el desarrollo del trabajo, que soluciones 
-se han estudiado, cual fue la elegida etc. Todo ello 
-justificando las decisiones tomadas.
+En este cap\'itulo se detallar\'an las pruebas
+que se han llevado a cabo para verificar que el software
+cumple todos los requisitos correctamente.
+
+Las pruebas representan los comportamientos que debe
+tener la aplicaci\'on, es decir, lo que se prueban son los
+casos de uso y subcasos de uso, no si cada m\'etodo
+realiza de forma correcta su tarea.
+
+\section{Cargar XML}
+
+\subsection{Preparaci\'on de las pruebas}
+Para poder probar este comportamiento no se requiere de ninguna preparaci\'on 
+especial.
+
+\subsection{Pruebas realizadas}
+\subsubsection{Cargar XML nada m\'as abrir la aplicaci\'on}
+Se prueba el comportamiento que debe tener la aplicaci\'on al cargar
+un XML para empezar a trabajar, lo que se conoce como un arranque en fr\'io.
+
+\subsubsection{Cargar XML cuando ya haya un XML cargado}
+Esta prueba contempla dos situaciones, 
+ya que este comportamiento se da cuando hay
+hay un XML cargado pero no se ha hecho nada, como cuando hay un XML cargado justo
+despu\'es de guardar un paso o situaci\'on a disco.
+
+\paragraph{Resultado esperado}
+Todos los datos cargados en la aplicaci\'on eliminados, 
+tanto intervalos creados, como visualizadores de datos,
+contenedores... todo debe haberse borrado de memoria volviendo a un estado inicial
+de la aplicaci\'on.
+
+\paragraph{Resultado obtenido}
+Todos los datos se han borrado excepto los elementos del \'arbol de observaciones
+y propiedades. 
+
+\paragraph{Acciones realizadas en caso de error}
+Modificado el m\'etodo de cargar XML para limpiar tambi\'en los elementos del
+\'arbol.
+
+\subsubsection{Cargar XML habiendo un XML cargado y con uno o varios intervalos guardados}
+
+
+\section{Crear intervalo}
+
+\section{Guardar paso}
+
+\section{Guardar Situaci\'on}
+
+\section{A\~nadir v\'ideo}
+
+\section{Cargar propiedad u observaci\'on}
+
+\section{Cerrar observaci\'on}
+
+\section{Cerrar propiedad}
+
+\section{Seleccionar rango}
