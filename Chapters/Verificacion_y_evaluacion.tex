@@ -19,6 +19,20 @@ especial.
 Se prueba el comportamiento que debe tener la aplicaci\'on al cargar
 un XML para empezar a trabajar, lo que se conoce como un arranque en fr\'io.
 
+\paragraph{Resultado esperado}
+Todos los datos cargados en la aplicaci\'on eliminados, 
+tanto intervalos creados, como visualizadores de datos,
+contenedores... todo debe haberse borrado de memoria volviendo a un estado inicial
+de la aplicaci\'on.
+
+\paragraph{Resultado obtenido}
+Todos los datos se han borrado excepto los elementos del \'arbol de observaciones
+y propiedades. 
+
+\paragraph{Acciones realizadas}
+Modificado el m\'etodo de cargar XML para limpiar tambi\'en los elementos del
+\'arbol.
+
 \subsubsection{Cargar XML cuando ya haya un XML cargado}
 Esta prueba contempla dos situaciones, 
 ya que este comportamiento se da cuando hay
@@ -35,12 +49,23 @@ de la aplicaci\'on.
 Todos los datos se han borrado excepto los elementos del \'arbol de observaciones
 y propiedades. 
 
-\paragraph{Acciones realizadas en caso de error}
+\paragraph{Acciones realizadas}
 Modificado el m\'etodo de cargar XML para limpiar tambi\'en los elementos del
 \'arbol.
 
 \subsubsection{Cargar XML habiendo un XML cargado y con uno o varios intervalos guardados}
+Esta prueba contempla el hecho de cargar un XML cuando ya hemos creado uno o varios
+intervalos listos para ser guardados
 
+\paragraph{Resultado esperado}
+Todos los datos cargados en la aplicaci\'on eliminados, sobre todo dando mucha importancia a
+que se eliminen los intervalos.
+
+\paragraph{Resultado obtenido}
+Todos los datos se han eliminado correctamente.
+
+\paragraph{Acciones realizadas}
+Ninguna por estar obtener el resultado esperado.
 
 \section{Crear intervalo}
 
