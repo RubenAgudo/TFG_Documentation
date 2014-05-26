@@ -263,7 +263,23 @@ segundo, y no se cree que la entrada, ni la salida vaya a ser tan grande.
 
 A la hora de cargar datos, no se ha implementando el \texttt{BackgroundWorker}
 porque en la aplicaci\'on no se puede realizar ninguna acci\'on hasta que los datos est\'an 
-listos.
+listos. Pese a todo, al cargar el XML no se cargan todos los datos, sino que se obtienen \'unicamente
+los nombres de las propiedades y las observaciones. Los datos en si se cargan bajo demanda, para optimizar la memoria
+utilizada del propio software haci\'endolo mas \'agil al mismo tiempo, ya que de esta manera el software no
+tiene que preocuparse de que datos est\'an cargados y cuales no, ya que todo aquello que est\'a cargado debe
+procesarse.
+
+Otras de las cosas que se implementaron a \'ultima hora fue la posibilidad de guardar m\'ultiples
+intervalos en un mismo Paso o Situaci\'on, ya que en palabras del director del TFG: ``No todo lo que est\'a 
+relacionado sucede \'unicamente durante un intervalo de tiempo". Para hacer frente a esta nueva funcionalidad
+hubo dos enfoques principales. El primero de ellos, consist\'ia en que cada vez que se le diera a guardar
+intervalo, el software preguntara si se quer\'ian a\~nadir intervalos mas tarde. Cuando se pinchara que no
+se mostrar\'ia el di\'alogo de guardar y se guardar\'ia a disco.
+
+La otra opci\'on, era separar las dos acciones, por un lado, crear los intervalos, y por otro lado guardar a disco.
+Finalmente se utiliz\'o la segunda manera porque se cree de que es mas intuitivo tener dos acciones separadas
+que se sabe bien que realiza cada una, con un flujo de trabajo claro, a tener una \'unica acci\'on, que dependiendo
+de la acci\'on del usuario haga una cosa u otra. 
 
 \section{Gesti\'{o}n del c\'{o}digo fuente}
 Hasta ahora no se ha hablado de algo que bien no es parte del desarrollo, pero que igualmente es importante.
