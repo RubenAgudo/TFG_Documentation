@@ -1,34 +1,69 @@
 \chapter{Conclusiones y trabajo futuro}
 
 \section{Mejoras}
-Utilizar bien SOLID
+Como todo software, siempre puede ser mejorado, y el presentado en este
+TFG no es ninguna excepci\'on. El software puede mejorarse sobre todo en tres niveles 
+bien diferenciados: Apariencia, dise\~no y funcionalidades, eso sin contar, por
+supuesto, los bugs que no han sido descubiertos en la fase de testing y que
+casi seguro surgir\'an durante su vida \'util en producci\'on.
 
-Cambiar los Singleton por patrones Factory para cumplir correctamente SOLID
+Los puntos clave en los que creo que este software puede mejorarse es sobre todo
+en dise\~no.
 
-Implementar pruebas unitarias
+Por ejemplo, pese a que lo he hecho lo mejor que he podido y que he sabido,
+seguro que en muchos puntos podr\'ia utilizarse SOLID de manera m\'as efectiva. Un
+ejemplo claro de esto que digo es el uso del patr\'on Singleton. Tal y como he detallado
+en el cap\'itulo de An\'alisis y dise\~no, muchos desarrolladores sostienen
+que no es buena idea utilizarlo, ya que las dependencias est\'an en el c\'odigo,
+no en las relaciones entre las clases. Una clase que utilice el patr\'on Singleton tiene
+un \'ambito global y utilizar objetos globales para
+no pasar la referencia de clase en clase est\'a considerado un 
+\emph{code smell \footnote{\url{https://en.wikipedia.org/wiki/Code_smell}}
+	 \footnote{Lista incompleta de smells: \url{http://blog.codinghorror.com/code-smells/}}}.
 
-Intentar utilizar los enlaces de datos que proporciona .NET
+No s\'olo es un \emph{code smell} si no que adem\'as incumple el principio de responsabilidad \'unica de SOLID.
+Y lo incumple porque la clase que utiliza el patr\'on tiene dos responsabilidades: Controlar que s\'olo exista
+una \'unica instancia y adem\'as su propia l\'ogica de negocio.
 
-Mejorar la manera en la que se utilizan los workers.
+Es por ello que una de las mejoras que propongo, es sustituir los Singleton por patrones
+Factory o patrones Builder para que sea esa clase externa la que limite la creaci\'on de instancias.
+De esta manera es m\'as escalable, ya que es muy probable que lo que hoy es \'unico, ma\~nana sea m\'ultiple.
 
-Que cuando se pinche en un elemento que ya esta abierto, que consiga el foco
+Otra cosa que no se ha realizado, y que se considera una buena pr\'actica de programaci\'on son
+las pruebas unitarias. Una vez implementadas podr\'ia utilizarse un enfoque m\'as del estilo
+de XP \footnote{eXtreme Programming: \url{http://www.extremeprogramming.org/}}, esto es, que todo gire
+en torno a las pruebas unitarias. Un bug no es un error, sino una prueba que no est\'a escrita. Y si esa 
+prueba que no estaba escrita falla, entonces es que hay un requisito que no se est\'a cumpliendo.
 
-Los graficos de cada observacion que tengan distintos colores para poder asociar
-visualmente un color a cada observacion
+Muy relacionado con las pruebas unitarias, es el TDD \footnote{Test Driven Development} en el cual no se programa
+nada hasta que no se hayan escrito todas las pruebas. Y un software se considera terminado cuando todas las pruebas
+validan. Obviamente hay que probar todas las situaciones posibles.
 
-Utilizar un modulo de mineria de datos, ya que muchas veces las observaciones
-seran muy similares entre si por lo que podria utilizarse para identificar 
-rangos automaticamente, y que el usuario diga si estan correctos o no.
+Otro de los \'ambitos que tiene mucho margen de mejora es el procesamiento paralelo. Si que es cierto que se ha
+utilizado, pero las posibilidades que da son enormes, y no se ha utilizado m\'as que en dos casos
+muy concretos. Con unas semanas de estudio y con algo de refactorizado del c\'odigo estoy seguro
+que se le podr\'ia sacar mas partido a los m\'ultiples n\'ucleos de los ordenadores actuales.
 
-Eliminar los timers de la aplicacion, ya que es mucho mas eficiente utilizar
-INotifyPropertyChanged.
+Por otro lado, como la aplicaci\'on aqu\'i presentada, en un futuro ser\'a integrada dentro de un sistema m\'as grande,
+requerir\'a de un poco de trabajo si no se quiere mantener como una aplicaci\'on independiente.
+Para ello, habr\'ia que convertir \texttt{MainWindow} en una subclase de \texttt{UserControl}, para
+que de esta manera pueda ser a\~nadido como una ventana acoplable al otro sistema y adem\'as deber\'a
+implementar la interfaz \texttt{IContainer} ya que la ventana principal a fin de cuentas es un contenedor
+de \texttt{UC\_ChartContainer}.
 
-Convertir MainWindow en UserControl para que pueda se añadido a otro dockingmanager.
-Realmente esto es muy facil, solo habria que crear un userControl llamandose Workbench
-con todo el XAML y el codigo cs de MainWindow y despues una aplicacion en la que su
-componente principal sea ese UserControl
+Por \'ultimo, en cuanto a temas de dise\~no se refiere, yo propongo cambiar los temporizadores de la
+aplicaci\'on y utilizar los \emph{data bindings} que proporciona .NET. Para poder hacer esto
+habr\'ia que aprender bien a utilizar el patr\'on MVVM, que si bien se ha utilizado en este proyecto
+no se le ha exprimido todas las caracter\'isticas.
 
-Crear un dialogo de opciones para personalizar el comportamiento de la aplicacion
+Finalmente, est\'eticamente hablando, yo considero que es una aplicaci\'on intuitiva, pero se podr\'ia conseguir
+que todo fuera m\'as claro si los gr\'aficos entre observaciones no compartieran el mismo color,
+es decir, si la observaci\'on 1, tiene los gr\'aficos de color verde, que la observaci\'on 2 los tenga de color azul.
+Ya que as\'i, queda m\'as bonito al ojo, y es m\'as f\'acil no confundir a que observaci\'on pertenece cada propiedad.
+Tambi\'en hay otra mejora cosm\'etica, y es que cuando el usuario haga doble click sobre un elemento del \'arbol
+de propiedades y observaciones, si ese \'item ya estaba cargado, que cogiera el foco, en vez de no hacer nada, que 
+es lo que hace actualmente. Y tambi\'en ser\'ia interesante crear un di\'alogo de opciones, ya que ahora las
+opciones est\'an metidas dentro de un XML y hay que editarlo a mano.
 
 \section{Conclusiones}
 Hay que contar como han sido realmente las cosas: tiempos, distribucion del trabajo, 
