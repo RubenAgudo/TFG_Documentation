@@ -8,319 +8,41 @@
 Los objetivos del proyecto consisten en crear un software que extienda la funcionalidad actual del sistema INTRASIM desarrollado 
 por la universidad de Navarra y del grupo de investigación GALAN perteneciente a la UPV/EHU.
 
-El software, debe permitir cargar observaciones y propiedades previamente capturadas con diversas herramientas (Kinect) y
+El software, debe permitir cargar observaciones y propiedades previamente capturadas con diversos
+sistemas interactivos (por ejemplo, con un dispositivo Kinect) y
 visualizarlas gr\'aficamente. Esas observaciones y propiedades se cargar\'an en un panel lateral con forma de \'arbol
 y podr\'an seleccionarse para ser visualizadas. Los gr\'aficos pueden ser reorganizados como el
 usuario quiera, para verlos al mismo tiempo.
 
-La herramienta ha de permitir visualizar los datos en bruto y en v\'{i}deo (si est\'a disponible). El fin de la herramienta es
-permitir al usuario experto seleccionar un rango en cualquiera de los gr\'aficos y exportarlo en formato XML.
+La herramienta ha de permitir la visualizaci\'on de esas observaciones y propiedades. 
+Tambi\'en permitir\'a la reproducci\'on de v\'ideos (si est\'an disponible).
+El fin de la herramienta es
+facilitar al usuario experto la identificaci\'on de intervalos donde se producen los
+pasos y situaciones para posteriormente extraer de manera semiautom\'atica las relaciones entre las observaciones y
+propiedades que forman parte de cada paso o situaci\'on.
 
 \section{Alcance}
-El alcance del proyecto va a definirse mediante un EDT, y el ciclo de vida que se ha decidido utilizar son las metodolog\'ias
-\'agiles, como Scrum y Kanban que ser\'an detallados m\'as adelante. Pero se puede adelantar que al utilizar este tipo
-de metodolog\'ias se hace frente a uno de los mayores problemas del desarrollo de software: la incertidumbre y los cambios
-no contemplados inicialmente, as\'i como incrementar la productividad al ser m\'as sistem\'aticos.
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=1\linewidth]{./Figures/EDT}
-    \caption[Alcance del proyecto]{EDT}
-    \label{fig:Alcance}
-\end{figure}
+Se ha decidido utilizar las metodolog\'ias
+\'agiles de desarrollo, como Scrum y Kanban en detrimento de los desarrollos cl\'asicos 
+como puede ser el desarrollo en cascada  
+\footnote{\url{www.cs.umd.edu/class/spring2003/cmsc838p/Process/waterfall.pdf}}.
+Al utilizar este tipo de metodolog\'ias se hace frente a uno de los mayores problemas del 
+desarrollo de software: la incertidumbre y los cambios
+no contemplados inicialmente, facilitando la reacci\'on ante los cambios
+al ser mucho mas flexible.
 
-\section{Descripci\'on de las tareas}
-Tal y como se ve en la Figura \ref{fig:Alcance} cada una de las tareas de los grupos
-``An\'alisis inicial", ``Entrevista cliente" \ y ``Dise\~no e implementaci\'on" \ van a realizarse en cada uno de los sprints.
-Para cada tarea se ha realizado una peque\~na tabla en la que se detalla que se va a hacer,
-la duraci\'on y esfuerzo aproximados, as\'i como otros datos de inter\'es.
+Al utilizar un modelo de desarrollo \'agil, el ciclo de vida que va a utilizarse, ser\'a iterativo e incremental.
 
-\subsection{Inicio proyecto}
-\subsubsection{Realizar introducci\'{o}n y objetivos del proyecto}
-\begin{table}[H]
-    \begin{center}
-        \rowcolors{1}{lightgray}{} %\rowcolors{<starting row index>}{<odd row color>}{<even row color>}
-        \begin{tabular}{l p{8cm}}
-            Responsable                           & Rub\'{e}n \\
-            Duraci\'{o}n (Horas / Persona)        & 7. \\ 
-            Esfuerzo (Horas)                      & 7. \\
-            Descripci\'{o}n                       & Realizar las secciones de la memoria de la Introducci\'{o}n y los
-            objetivos del proyecto. \\
-            Entradas                              & Scrum backlog  \\
-            Salidas / Entregables                 & Los cap\'{i}tulos de introducci\'{o}n y objetivos del proyecto. \\
-            Recursos necesarios                   & PC, \LaTeX, TeXStudio. \\
-            Precedencias                          & Ninguna. \\
-        \end{tabular}
-    \end{center}
-    
-\end{table}
-
-\subsubsection{Captura de requisitos inicial}
-\begin{table}[H]
-    \begin{center}
-        \rowcolors{1}{lightgray}{} %\rowcolors{<starting row index>}{<odd row color>}{<even row color>}
-        \begin{tabular}{l p{8cm}}
-            Responsable                           & Rub\'{e}n \\
-            Duraci\'{o}n (Horas / Persona)        & 7. \\ 
-            Esfuerzo (Horas)                      & 7. \\
-            Descripci\'{o}n                       & Entrevistarse con el cliente para obtener
-                                                    una captura de requisitos inicial. \\
-            Entradas                              & Ninguna. \\
-            Salidas / Entregables                 & Diagrama de casos de uso y modelo de dominio. \\
-            Recursos necesarios                   & PC, \LaTeX, TeXStudio. \\
-            Precedencias                          & Ninguna. \\
-        \end{tabular}
-    \end{center}
-    
-\end{table}
-
-\subsection{An\'alisis inicial}
-
-\subsubsection{Boceto de pantallas}
-\begin{table}[H]
-    \begin{center}
-        \rowcolors{1}{lightgray}{} %\rowcolors{<starting row index>}{<odd row color>}{<even row color>}
-        \begin{tabular}{l p{8cm}}
-            Responsable                           & Rub\'{e}n \\
-            Duraci\'{o}n (Horas / Persona)        & 4. \\ 
-            Esfuerzo (Horas)                      & 4. \\
-            Descripci\'{o}n                       & Diseño de pantallas inicial en base a las ideas obtenidas de la
-                                                    captura de datos inicial, a fin de obtener dudas sobre funcionalidades. \\
-            Entradas                              & Ninguna \\
-            Salidas / Entregables                 & Boceto dibujado a mano con el dise\~{n}o de las pantallas \\
-            Recursos necesarios                   & Papel y l\'{a}piz \\
-            Precedencias                          & Ninguna \\
-        \end{tabular}
-    \end{center}
-            
-\end{table}
-
-\subsubsection{Planificaci\'{o}n temporal (Scrum Backlog)}
-\begin{table}[H]
-    \begin{center}
-        \rowcolors{1}{lightgray}{} %\rowcolors{<starting row index>}{<odd row color>}{<even row color>}
-        \begin{tabular}{l p{8cm}}
-            Responsable                           & Rub\'{e}n \\
-            Duraci\'{o}n (Horas / Persona)        & 7. \\ 
-            Esfuerzo (Horas)                      & 7. \\
-            Descripci\'{o}n                       & Creaci\'on de todas las tareas para crear una pila. \\
-            Entradas                              & Requisitos del cliente.\\
-            Salidas / Entregables                 & Un listado con todas las tareas a completar \\
-            Recursos necesarios                   & PC con un editor de textos.\\
-            Precedencias                          & Requisitos del cliente. \\
-        \end{tabular}
-    \end{center}
-    
-\end{table}
-
-
-
-\subsection{Entrevista cliente}
-\subsubsection{Revisi\'{o}n de pantallas}
-\begin{table}[H]
-    \begin{center}
-        \rowcolors{1}{lightgray}{} %\rowcolors{<starting row index>}{<odd row color>}{<even row color>}
-        \begin{tabular}{l p{8cm}}
-            Responsable                           & Rub\'{e}n \\
-            Duraci\'{o}n (Horas / Persona)        & 2. \\ 
-            Esfuerzo (Horas)                      & 2. \\
-            Descripci\'{o}n                       & Mostrar al cliente, un prototipo inicial de pantallas
-                                                    para as\'i poder mejorar el dise\~{n}o para que sea m\'as f\'{a}cil de usar. \\
-            Entradas                              & Requisitos del cliente. \\
-            Salidas / Entregables                 & Prototipo realizado en WPF que muestra el comportamiento y forma de las pantallas. \\
-            Recursos necesarios                   & Visual Studio 2013, Avalon Dock, un PC. \\
-            Precedencias                          & Captura de requisitos inicial. \\
-        \end{tabular}
-    \end{center}
-    
-\end{table}
-
-\subsubsection{Reuniones al final de cada sprint}
-\begin{table}[H]
-    \begin{center}
-        \rowcolors{1}{lightgray}{} %\rowcolors{<starting row index>}{<odd row color>}{<even row color>}
-        \begin{tabular}{l p{8cm}}
-            Responsable                           & Rub\'{e}n \\
-            Duraci\'{o}n (Horas / Persona)        & 2. \\ 
-            Esfuerzo (Horas)                      & 2. \\
-            Descripci\'{o}n                       & Reuni\'{o}n para que el cliente vea como va el trabajo,
-                                                    aclarar dudas etc. \\
-            Entradas                              & El trabajo realizado hasta el momento.\\
-            Salidas / Entregables                 & Ninguno / acta de reuni\'{o}n \\
-            Recursos necesarios                   & PC con el programa funcional. \\
-            Precedencias                          & Ninguno. \\
-        \end{tabular}
-    \end{center}
-    
-\end{table}
-
-\subsection{Dise\~{n}o e implementaci\'{o}n}
-\subsubsection{Sprint backlog}
-\begin{table}[H]
-    \begin{center}
-        \rowcolors{1}{lightgray}{} %\rowcolors{<starting row index>}{<odd row color>}{<even row color>}
-        \begin{tabular}{l p{8cm}}
-            Responsable                           & Rub\'{e}n \\
-            Duraci\'{o}n (Horas / Persona)        & 1 \\ 
-            Esfuerzo (Horas)                      & 1. \\
-            Descripci\'{o}n                       & Elegir las tareas que van a conformar el sprint del mes. \\
-            Entradas                              & La lista de tareas completa\\
-            Salidas / Entregables                 & Post-it con las tareas seleccionadas para ese sprint \\
-            Recursos necesarios                   & Post-it, bol\'igrafo y lista de tareas. \\
-            Precedencias                          & Scrum backlog \\
-        \end{tabular}
-    \end{center}
-    
-\end{table}
-
-\subsubsection{Dise\~{n}o}
-\begin{table}[H]
-    \begin{center}
-        \rowcolors{1}{lightgray}{} %\rowcolors{<starting row index>}{<odd row color>}{<even row color>}
-        \begin{tabular}{l p{8cm}}
-            Responsable                           & Rub\'{e}n \\
-            Duraci\'{o}n (Horas / Persona)        & 10. \\ 
-            Esfuerzo (Horas)                      & 10. \\
-            Descripci\'{o}n                       & Realizar el diseño de software, clases, Interfaces necesarias, que patrones van a usarse etc 
-                                                    en el sprint del mes. \\
-            Entradas                              & Tarea a realizar y la interfaz de usuario.\\
-            Salidas / Entregables                 & Dise\~{n}o de software que guiar\'{a} el sprint del mes y la documentaci\'{o}n
-                                                    habr\'{a} sido actualizada en consecuencia. \\
-            Recursos necesarios                   & La documentaci\'{o}n realizada hasta el momento, Visual Studio 2013, Git y 	un 
-            										PC. \\
-            Precedencias                          & Sprint Backlog. \\
-        \end{tabular}
-    \end{center}
-    
-\end{table}
-
-\subsubsection{Implementaci\'{o}n}
-\begin{table}[H]
-    \begin{center}
-        \rowcolors{1}{lightgray}{} %\rowcolors{<starting row index>}{<odd row color>}{<even row color>}
-        \begin{tabular}{l p{8cm}}
-            Responsable                           & Rub\'{e}n \\
-            Duraci\'{o}n (Horas / Persona)        & 20. \\ 
-            Esfuerzo (Horas)                      & 20. \\
-            Descripci\'{o}n                       & Implementar lo dise\~{n}ado, lo que describe la tarea en el post-it del sprint. \\
-            Entradas                              & Dise\~{n}o realizado sobre la tarea, post-it con el sprint del mes.\\
-            Salidas / Entregables                 & La pieza de software con las nuevas funcionalidades implementadas, y la documentaci\'{o}n
-                                                    actualizada. \\
-            Recursos necesarios                   & La documentaci\'{o}n realizada hasta el momento, Visual Studio 2013, Git y un 
-            										PC. \\
-            Precedencias                          & Dise\~{n}o. \\
-        \end{tabular}
-    \end{center}
-    
-\end{table}
-
-\subsubsection{Documentaci\'{o}n}
-\begin{table}[H]
-    \begin{center}
-        \rowcolors{1}{lightgray}{} %\rowcolors{<starting row index>}{<odd row color>}{<even row color>}
-        \begin{tabular}{l p{8cm}}
-            Responsable                           & Rub\'{e}n \\
-            Duraci\'{o}n                          & 10. \\ 
-            Esfuerzo (Horas / Persona)            & 10. \\
-            Descripci\'{o}n                       & Revisar y actualizar la documentaci\'{o}n realizada durante el sprint. \\
-            Entradas                              & La documentaci\'{o}n realizada hasta el momento.\\
-            Salidas / Entregables                 & La documentaci\'{o}n actualizada. \\
-            Recursos necesarios                   & La documentaci\'{o}n. \\
-            Precedencias                          & Implementaci\'{o}n. \\
-        \end{tabular}
-    \end{center}
-    
-\end{table}
-
-\subsection{Cierre}
-\subsubsection{Finalizar cap\'{i}tulos de documentaci\'{o}n}
-\begin{table}[H]
-    \begin{center}
-        \rowcolors{1}{lightgray}{} %\rowcolors{<starting row index>}{<odd row color>}{<even row color>}
-        \begin{tabular}{l p{8cm}}
-            Responsable                           & Rub\'{e}n \\
-            Duraci\'{o}n (Horas  / Persona)       & 30. \\ 
-            Esfuerzo (Horas)                      & 30. \\
-            Descripci\'{o}n                       & Realizar los cap\'{i}tulos adicionales: Verificaci\'{o}n y evaluaci\'{o}n, conclusiones y trabajo futuro
-                                                    etc. \\
-            Entradas                              & La documentaci\'{o}n realizada. \\
-            Salidas / Entregables                 & La documentaci\'{o}n terminada. \\
-            Recursos necesarios                   & \LaTeX, Git, y un PC. \\
-            Precedencias                          & Dise\~{n}o e implementaci\'{o}n (categor\'{i}a). \\
-        \end{tabular}
-    \end{center}
-    
-\end{table}
-
-\subsubsection{Documentaci\'{o}n final}
-\begin{table}[H]
-    \begin{center}
-        \rowcolors{1}{lightgray}{} %\rowcolors{<starting row index>}{<odd row color>}{<even row color>}
-        \begin{tabular}{l p{8cm}}
-            Responsable                           & Rub\'{e}n \\
-            Duraci\'{o}n (Horas / Persona)        & 1 \\ 
-            Esfuerzo (Horas)                      & 1 \\
-            Descripci\'{o}n                       & Entregar la documentaci\'{o}n en secretar\'{i}a \\
-            Entradas                              & La documentaci\'{o}n. \\
-            Salidas / Entregables                 & Ninguna. \\
-            Recursos necesarios                   & La documentaci\'{o}n impresa. \\
-            Precedencias                          & Finalizar cap\'{i}tulos de la documentaci\'{o}n. \\
-        \end{tabular}
-    \end{center}
-    
-\end{table}
-
-\subsubsection{Ejecutable del proyecto}
-\begin{table}[H]
-    \begin{center}
-        \rowcolors{1}{lightgray}{} %\rowcolors{<starting row index>}{<odd row color>}{<even row color>}
-        \begin{tabular}{l p{8cm}}
-            Responsable                           & Rub\'{e}n \\
-            Duraci\'{o}n                          & 1. \\ 
-            Esfuerzo (Horas / Persona)            & 1. \\
-            Descripci\'{o}n                       & Entregar un CD con el ejecutable del proyecto realizado. \\
-            Entradas                              & El c\'{o}digo fuente del programa. \\
-            Salidas / Entregables                 & El ejecutable binario y el CD con el software. \\
-            Recursos necesarios                   & PC con grabadora, y un CD grabable en blanco. \\
-            Precedencias                          & Finalizar cap\'{i}tulos de la documentaci\'{o}n. \\
-        \end{tabular}
-    \end{center}
-    
-\end{table}
-
-\subsection{Presentaci\'{o}n y despliegue}
-\subsubsection{Presentar el proyecto}
-\begin{table}[H]
-    \begin{center}
-        \rowcolors{1}{lightgray}{} %\rowcolors{<starting row index>}{<odd row color>}{<even row color>}
-        \begin{tabular}{l p{8cm}}
-            Responsable                           & Rub\'{e}n \\
-            Duraci\'{o}n (Horas / Persona)        & 20 minutos. \\ 
-            Esfuerzo (Horas)                      & 20 minutos. \\
-            Descripci\'{o}n                       & Presentar el proyecto y defenderlo ante el tribunal. \\
-            Entradas                              & Slides de la presentaci\'{o}n.\\
-            Salidas / Entregables                 & Ninguna. \\
-            Recursos necesarios                   & PC con LibreOffice Impress. \\
-            Precedencias                          & Categor\'{i}a cierre. \\
-        \end{tabular}
-    \end{center}
-    
-\end{table}
-
-
-\section{Planificaci\'{o}n temporal}
-En vez de seguir una planificación cl\'asica, como puede ser COCOMO 
-\footnote{\url{http://sunset.usc.edu/csse/research/COCOMOII/cocomo_main.html}} o Waterfall 
-\footnote{\url{http://pdf.aminer.org/000/361/405/software_requirements_are_they_really_a_problem.pdf}} se ha decidido utilizar las 
-metodologías \'agiles de desarrollo, concretamente Scrum y Kanban
+Antes de exponer el alcance, es necesario saber en que consiste Scrum y Kanban.
 
 \subsection{Scrum}
 Scrum es una serie de herramientas (framework) para la gesti\'on y desarrollo de software basado en un proceso iterativo e incremental 
 \cite{Scrum:WhatIsIt}.
 
 \begin{figure}[H]
-    \includegraphics[width=0.7\linewidth]{./Figures/Scrumm.PNG}
-    \caption[Proceso iterativo Scrum]{Diagrama Scrum}
-    \label{fig:Scrum}
+	\includegraphics[width=0.7\linewidth]{./Figures/Scrumm.PNG}
+	\caption[Proceso iterativo Scrum]{Diagrama Scrum}
+	\label{fig:Scrum}
 \end{figure}
 
 En la figura \ref{fig:Scrum} \footnote{\url{https://upload.wikimedia.org/wikipedia/commons/e/e5/Scrumm.PNG} Autor: Maxie Ayala 
@@ -330,12 +52,12 @@ se puede ver el método de trabajo seg\'un Scrum, en el cual se observa lo impor
 %\newpage
 Scrum, de manera resumida consiste en lo siguiente:
 \begin{enumerate}
-    \item Hablar con el cliente para ver si hay nuevos requisitos.
-    \item Crear backlog, es decir, las tareas de ese sprint.
-    \item Programar los requisitos especificados en el sprint.
-    \item Reunión de retrospectiva para ver que ha ido mal y mejorarlo.
-    \item Enviar entregable al cliente.
-    \item Repetir.
+	\item Hablar con el cliente para ver si hay nuevos requisitos.
+	\item Crear backlog, es decir, las tareas de ese sprint.
+	\item Programar los requisitos especificados en el sprint.
+	\item Reunión de retrospectiva para ver que ha ido mal y mejorarlo.
+	\item Enviar entregable al cliente.
+	\item Repetir.
 \end{enumerate}
 
 Es fundamental entre sprint y sprint que el valor del producto haya aumentado. Lo importante es el producto, no el 
@@ -365,15 +87,285 @@ Kanban se centra mucho en que lo importante no es empezar muchas cosas, si no qu
 aquello que est\'a empezado. Sirve sobre todo 
 para ver de una manera visual:
 \begin{itemize}
-    \item Qu\'e hay pendiente
-    \item Qu\'e se est\'a haciendo ahora mismo
-    \item Qu\'e se ha terminado.
+	\item Qu\'e hay pendiente
+	\item Qu\'e se est\'a haciendo ahora mismo
+	\item Qu\'e se ha terminado.
 \end{itemize}
 
 El m\'{e}todo Kanban es algo muy extenso, pero en este proyecto, simplemente se ha aplicado el tablero Kanban mezclado con Scrum. 
 Cada mes, se crea una lista de tareas que se debe completar (Sprint Backlog) y se coloca en la columna de ``Tareas pendientes", 
 ordenadas por prioridad. Despu\'es, se coloca en la lista de ``En progreso" \ como m\'{a}ximo dos tareas. Y no se empieza ninguna otra
- hasta que esas dos hayan sido pasadas a la columna de ``Tareas finalizadas".
+hasta que esas dos hayan sido pasadas a la columna de ``Tareas finalizadas".
+
+\section{Descripci\'on de las tareas}
+El alcance del proyecto va a definirse mediante un EDT, en el que se muestran las tareas de las
+que se compone este TFG.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=1\linewidth]{./Figures/EDT}
+	\caption[Alcance del proyecto]{EDT}
+	\label{fig:Alcance}
+\end{figure}
+Tal y como se ve en la Figura \ref{fig:Alcance} cada una de las tareas de los grupos
+``An\'alisis inicial", ``Entrevista cliente" \ y ``Dise\~no e implementaci\'on" \ van a realizarse en cada uno de los sprints.
+Para cada tarea se ha realizado una peque\~na tabla en la que se detalla que se va a hacer,
+la duraci\'on y esfuerzo aproximados, as\'i como otros datos de inter\'es.
+
+\subsection{Inicio proyecto}
+\subsubsection{Realizar introducci\'{o}n y objetivos del proyecto}
+\begin{table}[H]
+    \begin{center}
+        \rowcolors{1}{lightgray}{} %\rowcolors{<starting row index>}{<odd row color>}{<even row color>}
+        \begin{tabular}{l p{8cm}}
+            Duraci\'{o}n (Horas / Persona)        & 7. \\ 
+            Descripci\'{o}n                       & Realizar las secciones de la memoria de la Introducci\'{o}n y los
+            objetivos del proyecto. \\
+            Entradas                              & Scrum backlog  \\
+            Salidas / Entregables                 & Los cap\'{i}tulos de introducci\'{o}n y objetivos del proyecto. \\
+            Recursos necesarios                   & PC, \LaTeX, TeXStudio. \\
+            Precedencias                          & Ninguna. \\
+        \end{tabular}
+    \end{center}
+    
+\end{table}
+
+\subsubsection{Captura de requisitos inicial}
+\begin{table}[H]
+    \begin{center}
+        \rowcolors{1}{lightgray}{} %\rowcolors{<starting row index>}{<odd row color>}{<even row color>}
+        \begin{tabular}{l p{8cm}}
+            Duraci\'{o}n (Horas / Persona)        & 7. \\ 
+            Descripci\'{o}n                       & Entrevistarse con el cliente para obtener
+                                                    una captura de requisitos inicial. \\
+            Entradas                              & Ninguna. \\
+            Salidas / Entregables                 & Diagrama de casos de uso y modelo de dominio. \\
+            Recursos necesarios                   & PC, \LaTeX, TeXStudio. \\
+            Precedencias                          & Ninguna. \\
+        \end{tabular}
+    \end{center}
+    
+\end{table}
+
+\subsection{An\'alisis inicial}
+
+\subsubsection{Boceto de pantallas}
+\begin{table}[H]
+    \begin{center}
+        \rowcolors{1}{lightgray}{} %\rowcolors{<starting row index>}{<odd row color>}{<even row color>}
+        \begin{tabular}{l p{8cm}}
+            Duraci\'{o}n (Horas / Persona)        & 4. \\ 
+            Descripci\'{o}n                       & Diseño de pantallas inicial en base a las ideas obtenidas de la
+                                                    captura de datos inicial, a fin de obtener dudas sobre funcionalidades. \\
+            Entradas                              & Ninguna \\
+            Salidas / Entregables                 & Boceto dibujado a mano con el dise\~{n}o de las pantallas \\
+            Recursos necesarios                   & Papel y l\'{a}piz \\
+            Precedencias                          & Ninguna \\
+        \end{tabular}
+    \end{center}
+            
+\end{table}
+
+\subsubsection{Planificaci\'{o}n temporal (Scrum Backlog)}
+\begin{table}[H]
+    \begin{center}
+        \rowcolors{1}{lightgray}{} %\rowcolors{<starting row index>}{<odd row color>}{<even row color>}
+        \begin{tabular}{l p{8cm}}
+            Duraci\'{o}n (Horas / Persona)        & 7. \\ 
+            Descripci\'{o}n                       & Creaci\'on de todas las tareas para crear una pila. \\
+            Entradas                              & Requisitos del cliente.\\
+            Salidas / Entregables                 & Un listado con todas las tareas a completar \\
+            Recursos necesarios                   & PC con un editor de textos.\\
+            Precedencias                          & Requisitos del cliente. \\
+        \end{tabular}
+    \end{center}
+    
+\end{table}
+
+
+
+\subsection{Entrevista cliente}
+\subsubsection{Revisi\'{o}n de pantallas}
+\begin{table}[H]
+    \begin{center}
+        \rowcolors{1}{lightgray}{} %\rowcolors{<starting row index>}{<odd row color>}{<even row color>}
+        \begin{tabular}{l p{8cm}}
+            Duraci\'{o}n (Horas / Persona)        & 2. \\ 
+            Descripci\'{o}n                       & Mostrar al cliente, un prototipo inicial de pantallas
+                                                    para as\'i poder mejorar el dise\~{n}o para que sea m\'as f\'{a}cil de usar. \\
+            Entradas                              & Requisitos del cliente. \\
+            Salidas / Entregables                 & Prototipo realizado en WPF que muestra el comportamiento y forma de las pantallas. \\
+            Recursos necesarios                   & Visual Studio 2013, Avalon Dock, un PC. \\
+            Precedencias                          & Captura de requisitos inicial. \\
+        \end{tabular}
+    \end{center}
+    
+\end{table}
+
+\subsubsection{Reuniones al final de cada sprint}
+\begin{table}[H]
+    \begin{center}
+        \rowcolors{1}{lightgray}{} %\rowcolors{<starting row index>}{<odd row color>}{<even row color>}
+        \begin{tabular}{l p{8cm}}
+            Duraci\'{o}n (Horas / Persona)        & 2. \\ 
+            Descripci\'{o}n                       & Reuni\'{o}n para que el cliente vea como va el trabajo,
+                                                    aclarar dudas etc. \\
+            Entradas                              & El trabajo realizado hasta el momento.\\
+            Salidas / Entregables                 & Ninguno / acta de reuni\'{o}n \\
+            Recursos necesarios                   & PC con el programa funcional. \\
+            Precedencias                          & Ninguno. \\
+        \end{tabular}
+    \end{center}
+    
+\end{table}
+
+\subsection{Dise\~{n}o e implementaci\'{o}n}
+\subsubsection{Sprint backlog}
+\begin{table}[H]
+    \begin{center}
+        \rowcolors{1}{lightgray}{} %\rowcolors{<starting row index>}{<odd row color>}{<even row color>}
+        \begin{tabular}{l p{8cm}}
+            Duraci\'{o}n (Horas / Persona)        & 1 \\ 
+            Descripci\'{o}n                       & Elegir las tareas que van a conformar el sprint del mes. \\
+            Entradas                              & La lista de tareas completa\\
+            Salidas / Entregables                 & Post-it con las tareas seleccionadas para ese sprint \\
+            Recursos necesarios                   & Post-it, bol\'igrafo y lista de tareas. \\
+            Precedencias                          & Scrum backlog \\
+        \end{tabular}
+    \end{center}
+    
+\end{table}
+
+\subsubsection{Dise\~{n}o}
+\begin{table}[H]
+    \begin{center}
+        \rowcolors{1}{lightgray}{} %\rowcolors{<starting row index>}{<odd row color>}{<even row color>}
+        \begin{tabular}{l p{8cm}}
+            Duraci\'{o}n (Horas / Persona)        & 10. \\ 
+            Descripci\'{o}n                       & Realizar el diseño de software, clases, Interfaces necesarias, que patrones van a usarse etc 
+                                                    en el sprint del mes. \\
+            Entradas                              & Tarea a realizar y la interfaz de usuario.\\
+            Salidas / Entregables                 & Dise\~{n}o de software que guiar\'{a} el sprint del mes y la documentaci\'{o}n
+                                                    habr\'{a} sido actualizada en consecuencia. \\
+            Recursos necesarios                   & La documentaci\'{o}n realizada hasta el momento, Visual Studio 2013, Git y 	un 
+            										PC. \\
+            Precedencias                          & Sprint Backlog. \\
+        \end{tabular}
+    \end{center}
+    
+\end{table}
+
+\subsubsection{Implementaci\'{o}n}
+\begin{table}[H]
+    \begin{center}
+        \rowcolors{1}{lightgray}{} %\rowcolors{<starting row index>}{<odd row color>}{<even row color>}
+        \begin{tabular}{l p{8cm}}
+            Duraci\'{o}n (Horas / Persona)        & 20. \\ 
+            Descripci\'{o}n                       & Implementar lo dise\~{n}ado, lo que describe la tarea en el post-it del sprint. \\
+            Entradas                              & Dise\~{n}o realizado sobre la tarea, post-it con el sprint del mes.\\
+            Salidas / Entregables                 & La pieza de software con las nuevas funcionalidades implementadas, y la documentaci\'{o}n
+                                                    actualizada. \\
+            Recursos necesarios                   & La documentaci\'{o}n realizada hasta el momento, Visual Studio 2013, Git y un 
+            										PC. \\
+            Precedencias                          & Dise\~{n}o. \\
+        \end{tabular}
+    \end{center}
+    
+\end{table}
+
+\subsubsection{Documentaci\'{o}n}
+\begin{table}[H]
+    \begin{center}
+        \rowcolors{1}{lightgray}{} %\rowcolors{<starting row index>}{<odd row color>}{<even row color>}
+        \begin{tabular}{l p{8cm}}
+            Duraci\'{o}n                          & 10. \\ 
+            Descripci\'{o}n                       & Revisar y actualizar la documentaci\'{o}n realizada durante el sprint. \\
+            Entradas                              & La documentaci\'{o}n realizada hasta el momento.\\
+            Salidas / Entregables                 & La documentaci\'{o}n actualizada. \\
+            Recursos necesarios                   & La documentaci\'{o}n. \\
+            Precedencias                          & Implementaci\'{o}n. \\
+        \end{tabular}
+    \end{center}
+    
+\end{table}
+
+\subsection{Cierre}
+\subsubsection{Finalizar cap\'{i}tulos de documentaci\'{o}n}
+\begin{table}[H]
+    \begin{center}
+        \rowcolors{1}{lightgray}{} %\rowcolors{<starting row index>}{<odd row color>}{<even row color>}
+        \begin{tabular}{l p{8cm}}
+            Duraci\'{o}n (Horas  / Persona)       & 30. \\ 
+            Descripci\'{o}n                       & Realizar los cap\'{i}tulos adicionales: Verificaci\'{o}n y evaluaci\'{o}n, conclusiones y trabajo futuro
+                                                    etc. \\
+            Entradas                              & La documentaci\'{o}n realizada. \\
+            Salidas / Entregables                 & La documentaci\'{o}n terminada. \\
+            Recursos necesarios                   & \LaTeX, Git, y un PC. \\
+            Precedencias                          & Dise\~{n}o e implementaci\'{o}n (categor\'{i}a). \\
+        \end{tabular}
+    \end{center}
+    
+\end{table}
+
+\subsubsection{Documentaci\'{o}n final}
+\begin{table}[H]
+    \begin{center}
+        \rowcolors{1}{lightgray}{} %\rowcolors{<starting row index>}{<odd row color>}{<even row color>}
+        \begin{tabular}{l p{8cm}}
+            Duraci\'{o}n (Horas / Persona)        & 1 \\ 
+            Descripci\'{o}n                       & Entregar la documentaci\'{o}n en secretar\'{i}a \\
+            Entradas                              & La documentaci\'{o}n. \\
+            Salidas / Entregables                 & Ninguna. \\
+            Recursos necesarios                   & La documentaci\'{o}n impresa. \\
+            Precedencias                          & Finalizar cap\'{i}tulos de la documentaci\'{o}n. \\
+        \end{tabular}
+    \end{center}
+    
+\end{table}
+
+\subsubsection{Ejecutable del proyecto}
+\begin{table}[H]
+    \begin{center}
+        \rowcolors{1}{lightgray}{} %\rowcolors{<starting row index>}{<odd row color>}{<even row color>}
+        \begin{tabular}{l p{8cm}}
+            Duraci\'{o}n                          & 1. \\ 
+            Descripci\'{o}n                       & Entregar un CD con el ejecutable del proyecto realizado. \\
+            Entradas                              & El c\'{o}digo fuente del programa. \\
+            Salidas / Entregables                 & El ejecutable binario y el CD con el software. \\
+            Recursos necesarios                   & PC con grabadora, y un CD grabable en blanco. \\
+            Precedencias                          & Finalizar cap\'{i}tulos de la documentaci\'{o}n. \\
+        \end{tabular}
+    \end{center}
+    
+\end{table}
+
+\subsection{Presentaci\'{o}n y despliegue}
+\subsubsection{Presentar el proyecto}
+\begin{table}[H]
+    \begin{center}
+        \rowcolors{1}{lightgray}{} %\rowcolors{<starting row index>}{<odd row color>}{<even row color>}
+        \begin{tabular}{l p{8cm}}
+            Duraci\'{o}n (Horas / Persona)        & 20 minutos. \\ 
+            Descripci\'{o}n                       & Presentar el proyecto y defenderlo ante el tribunal. \\
+            Entradas                              & Slides de la presentaci\'{o}n.\\
+            Salidas / Entregables                 & Ninguna. \\
+            Recursos necesarios                   & PC con LibreOffice Impress. \\
+            Precedencias                          & Categor\'{i}a cierre. \\
+        \end{tabular}
+    \end{center}
+    
+\end{table}
+
+
+\section{Planificaci\'{o}n temporal}
+Al seguirse un m\'etodo \'agil de desarrollo, la planificaci\'on se ha
+dividido en sprints. Ciertamente, detallar los sprints de ante mano,
+no es una buena idea, ya que se estar\'ia cayendo en el mismo error de el desarrollo
+en cascada. Es decir, el sprint 1, nos lleva al sprint 2, y el 2 al 3 y as\'i sucesivamente.
+
+Lo que se hace normalmente, es elegir lo que se va a hacer en el primer sprint, y hasta
+que no se termina, no se elige que se va a hacer en el segundo, aumentando la flexibilidad a 
+los cambios y los imprevistos.
 
 \subsection{Mi planificaci\'{o}n}
 Cada sprint tiene una duraci\'{o}n de un mes, empezando desde Octubre del 2013. 
@@ -385,9 +377,7 @@ media de horas que se trabajar\'a en el proyecto por sprint, ser\'a de 60 horas.
 \subsubsection{Gantt}
 Se ha creado un diagrama de Gantt para que de una manera visual pueda
 verse la distribuci\'on de los sprints, y m\'as adelante se detallar\'a
-en que consiste cada sprint. Hay que tener en cuenta que el contenido de
-cada sprint es orientativo. Ser\'ia algo as\'i como la planificaci\'on \'optima, pero no es algo
-que sea invariable.
+en que consiste cada sprint.
 
 \begin{figure}[h]
 \centering
@@ -492,7 +482,8 @@ Tambi\'en se finalizar\'a la documentaci\'on y memoria para dejarla para ser pre
 Este sprint final es para dar por cerrado el proyecto.
 
 \section{Herramientas}
-El proyecto, al ser propuesto por el director de TFG, no se ha tenido libertad total en 
+El TFG al requerir de una cierta compatibilidad con el proyecto
+existente, no se ha tenido libertad total en 
 elecci\'on de herramientas. 
 
 Las herramientas que se han utilizado para llevar a cabo este proyecto han sido:
@@ -596,7 +587,7 @@ temporal.
             Descripci\'{o}n                 & Al utilizar dos ordenadores, una workstation y un port\'{a}til puede que no 
             								  disponga de las mismas versiones del software o que no se satisfagan todas las 
             								  dependencias. \\
-            Prevenci\'{o}n                  & Asegurarme de disponer el mismo software con las mismas versiones. \\ 
+            Prevenci\'{o}n                  & Asegurarse de disponer el mismo software con las mismas versiones. \\ 
             Plan de contingencia            & Resolver manualmente las dependencias. \\
             Probabilidad                    & Probable \\
             Impacto                         & Bajo\\
@@ -624,9 +615,9 @@ temporal.
     \begin{center}
         \rowcolors{1}{lightgray}{} %\rowcolors{<starting row index>}{<odd row color>}{<even row color>}
         \begin{tabular}{l p{8cm}}
-            Descripci\'{o}n                 & Que las librar\'{i}as escogidas no cumplan los requisitos necesarios \\
-            Prevenci\'{o}n                  & Mirar con anterioridad que las librar\'{i}as cumplen todos nuestros requisitos. \\ 
-            Plan de contingencia            & Buscar otra librar\'{i}a o intentar parchear la actual, ya que son de c\'{o}digo 
+            Descripci\'{o}n                 & Que las librer\'{i}as escogidas no cumplan los requisitos necesarios \\
+            Prevenci\'{o}n                  & Mirar con anterioridad que s\'i los cumplan. \\ 
+            Plan de contingencia            & Buscar una alternativa o intentar parchear la actual, ya que son de c\'{o}digo 
             								  abierto. \\
             Probabilidad                    & Muy probable \\
             Impacto                         & Alto \\
@@ -746,9 +737,9 @@ que se le dedicar\'a al proyecto, que son 60 horas / mes.
 Por tanto:
 
 \begin{center}
-	$ Total \ horas = 60 horas / mes * 6 meses = 240 horas $
+	$ Total \ horas = 60 horas / mes * 7 meses = 420 horas $
 	
-	$ Total \ a \ percibir (€) = 240 horas * 30 € / hora = 7.200 € $
+	$ Total \ a \ percibir (€) = 420 horas * 30 € / hora = 12600 € $
 \end{center}
 
 \subsubsection{Lugar de trabajo}
@@ -772,7 +763,7 @@ Por lo tanto:
 El coste del port\'atil fue de 549€ IVA incluido.
 \begin{center}
 \begin{equation}
-Amortizacion \ anual (\%) = \frac{100}{8} = 12,5 \%
+Amortizacion \ anual (\%) = \frac{100}{8} = 12.5 \%
 \end{equation}
 
 \begin{equation}
@@ -780,20 +771,20 @@ Amortizacion \ anual (€) = \frac{Amortizacion \ anual(\%) * Precio \ dispositi
 \end{equation}
 
 \begin{equation}
-Amortizacion \ anual (€) = \frac{12,5 * 549}{100} = 68,625 €
+Amortizacion \ anual (€) = \frac{12.5 * 549}{100} = 68.625 €
 \end{equation}
 
 \begin{equation}
-Amortizacion \ a \ cargar (€) = 68,625 * 0,583 = 39,79 €
+Amortizacion \ a \ cargar (€) = 68.625 * 0,583 = 39.79 €
 \end{equation}
 
 
 \begin{equation}
-Amortizacion \ acumulada (€) = 68,625 * 4 = 274,5 €
+Amortizacion \ acumulada (€) = 68.625 * 4 = 274.5 €
 \end{equation}
 
 \begin{equation}
-Amortizacion \ acumulada (2014) = 274,5 + 68,625 = 343,125 €
+Amortizacion \ acumulada (2014) = 274.5 + 68.625 = 343.125 €
 \end{equation}
 
 \end{center}
@@ -804,7 +795,7 @@ Por lo que su amortizaci\'on hasta el d\'ia de hoy ha sido:
 
 \begin{center}
 \begin{equation}
-Amortizacion \ anual (\%) = \frac{100}{10} = 10,0 \%
+Amortizacion \ anual (\%) = \frac{100}{10} = 10.0 \%
 \end{equation}
 
 \begin{equation}
@@ -812,19 +803,19 @@ Amortizacion \ anual (€) = \frac{Amortizacion \ anual(\%) * Precio \ dispositi
 \end{equation}
 
 \begin{equation}
-Amortizacion \ anual (€) = \frac{10,0 * 277,65}{100} = 27,765 €
+Amortizacion \ anual (€) = \frac{10.0 * 277.65}{100} = 27.765 €
 \end{equation}
 
 \begin{equation}
-Amortizacion \ a \ cargar (€) = 27,765 * 0,583 = 16,187 €
+Amortizacion \ a \ cargar (€) = 27.765 * 0.583 = 16.187 €
 \end{equation}
 
 \begin{equation}
-Amortizacion \ acumulada (€) = 27,765 * 2 = 55,53 €
+Amortizacion \ acumulada (€) = 27.765 * 2 = 55.53 €
 \end{equation}
 
 \begin{equation}
-Amortizacion \ acumulada (2014) = 55,53 + 27,765 = 83,295 €
+Amortizacion \ acumulada (2014) = 55.53 + 27.765 = 83.295 €
 \end{equation}
 
 \end{center}
@@ -843,7 +834,7 @@ Microsoft ofrece unos precios razonables de actualizaci\'on.
 
 \begin{center}
 \begin{equation}
-Amortizacion \ anual (\%) = \frac{100}{4} = 25,0 \%
+Amortizacion \ anual (\%) = \frac{100}{4} = 25.0 \%
 \end{equation}
 
 \begin{equation}
@@ -851,19 +842,19 @@ Amortizacion \ anual (€) = \frac{Amortizacion \ anual(\%) * Precio \ software}
 \end{equation}
 
 \begin{equation}
-Amortizacion \ anual (€) = \frac{25,0 * 14.237,91 €}{100} = 3.559,4775 €
+Amortizacion \ anual (€) = \frac{25.0 * 14237.91 €}{100} = 3559.4775 €
 \end{equation}
 
 \begin{equation}
-Amortizacion \ a \ cargar (€) = 3.559,4775 * 0,583 = 2.075,17 €
+Amortizacion \ a \ cargar (€) = 3559.4775 * 0.583 = 2075.17 €
 \end{equation}
 
 \begin{equation}
-Amortizacion \ acumulada (€) = 3.559,4775 * 0 = 0 €
+Amortizacion \ acumulada (€) = 3559.4775 * 0 = 0 €
 \end{equation}
 
 \begin{equation}
-Amortizacion \ acumulada (2014) = 0 + 3.559,4775 = 3.559,4775 €
+Amortizacion \ acumulada (2014) = 0 + 3559.4775 = 3559.4775 €
 \end{equation} 
 \end{center} 
 
@@ -876,23 +867,22 @@ Los gastos comunes del proyecto (Agua, Internet, Luz, Gas) supondr\'an un 5\% de
 total del proyecto.
 
 \subsection{Gastos totales}
-La tabla \ref{GastosTotales} resume los gastos estimados del proyecto.
+La tabla \ref{GastosTotales} resume los gastos estimados del proyecto,
+aquellos gastos que son 0€ no se a\~naden a la tabla.
 \begin{table}[H]
 	\begin{center}
 		\begin{tabular}{l*{1}{r}r}
 		    Concepto                   & Gastos en € & \\
 		    \hline
 		    Amortizaci\'on material    & 55,977  & \\
-		    Material inform\'atico     & 0 & \\ 
-		    Gastos personal (salario)  & 7.200 & \\
-		    Lugar de trabajo           & 0 & \\
-		    Software                   & 2.075,17 & \\
+		    Gastos personal (salario)  & 12.600,000 & \\
+		    Software                   & 2.075.170 & \\
 		    \hline
-		    Sub total				   & 9.331,147 & \\
+		    Sub total				   & 14.062,290 & \\
 		    \hline
-		    Gastos comunes			   & 466,557 & \\
+		    Gastos comunes			   & 1.203,115 & \\
 		    \hline
-		    Total		               & 9.797,704 &\\
+		    Total		               & 25.265,410 &\\
 		\end{tabular}
 	\caption[Gastos totales]{Gastos totales}
 	\label{GastosTotales}

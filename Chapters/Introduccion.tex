@@ -5,36 +5,42 @@ Las razones de la aceptaci\'{o}n del TFG fueron que se ve\'{i}a una continuidad,
 utilizar el TFG como entrada a un grupo de investigaci\'{o}n y/o continuar con el trabajo durante un m\'{a}ster.
 
 \section{Planteamiento del problema}
-El problema que el proyecto dise\~nado por el grupo de investigaci\'on GALAN en colaboraci\'on
-con la universidad de Navarra intenta resolver, es ense\~nar a alumnos habilidades. Es decir, ayudar a 
+El problema que el software INSTRASIM, dise\~nado por el grupo de investigaci\'on GaLan en colaboraci\'on
+con la universidad de Navarra, intenta resolver, es ense\~nar a alumnos habilidades. Es decir, ayudar a 
 instruir a las personas cosas que no son f\'acilmente evaluables mediante un examen escrito.
 
-Para ello se ha dise\~nado un software que permite al alumno capturarse realizando una tarea, y el
-software dice si se est\'a realizando bien o no.
+INTRASIM es un software que permite unir un sistema
+de realidad virtual con un sistema educativo para poder evaluar la realizaci\'on de tareas procedimentales 
+o la adquisici\'on de habilidades.
 
 Los datos capturados en bruto por el sistema de realidad virtual son trasladados a objetos del propio software,
 que son las Observaciones y las Propiedades.
 
 De manera resumida, una Observaci\'on es un hecho interesante en el sistema y que quiere ser observado, y 
-est\'a compuesta por propiedades, que son las caracter\'isticas que la definen. De todas formas, en el 
+est\'a compuesta por propiedades, que son las caracter\'isticas que la definen. En el 
 apartado de Antecedentes todo se explicar\'a con mayor detalle, aqu\'i solo se pretende rascar la superficie para 
 conseguir una idea general.
 
 Una vez creadas las observaciones con sus propiedades, se crean Situaciones y Pasos. Siendo una Situaci\'on el contexto
 en el que suceden las observaciones, y los Pasos como se comportan ciertas observaciones en el tiempo.
 
-Finalmente, con esos Pasos y Situaciones el sistema, mediante distintas t\'ecnicas es capaz de dar un veredicto
-a la habilidad que se quiere aprender, dici\'endole al usuario si ha conseguido la habilidad o no.
+Finalmente, con esos Pasos y Situaciones el sistema, mediante distintas t\'ecnicas de diagn\'ostico 
+es capaz de dar un veredicto
+a la habilidad que se quiere aprender, e indic\'andole qu\'e ha hecho mal.
 
 \section{Justificaci\'{o}n y prop\'osito}
-Se hace evidente la necesidad de un software para facilitar la creaci\'on de Pasos y Situaciones porque
+Actualmente, la selecci\'on de pasos y situaciones se hace manualmente y con un gran componente de intuici\'on,
+por lo que se hace evidente la necesidad de un software para facilitar la creaci\'on de Pasos y Situaciones porque
 no es una tarea trivial. La creaci\'on de relaciones puede ser muy compleja, y el software de este TFG
 tiene como objetivo simplificar en la medida de lo posible esa tarea, aprovechando al m\'aximo las capacidades
-cognitivas \footnote{\url{https://es.wikipedia.org/wiki/Cognici\%C3\%B3n}} del cerebro humano para identificar
-patrones complejos que no son f\'acilmente identificables si no se presentan gr\'aficamente.
+cognitivas del cerebro humano para identificar
+patrones complejos. 
 
-Adem\'as, deber\'a ser un software sencillo de utilizar, centrando la interfaz y todos los controles en la tarea principal:
-Identificar esos Pasos y Situaciones.
+Pese a visualizarse gr\'aficamente, la identificaci\'on de esos patrones sigue sin ser algo sencillo. Es
+por ello que la tarea principal del software es facilitar la identificaci\'on de intervalos donde se producen los
+pasos y situaciones para posteriormente extraer de manera semiautom\'atica las relaciones entre las observaciones y
+propiedades que forman parte de cada paso o situaci\'on. Esos pasos y situaciones vienen identificados por el
+experto en el dominio que es el que dice ``es importante: levantar el brazo".
 
 \section{Definiciones, acr\'{o}nimos y abreviaturas}
 \textbf{TFG:} Trabajo de fin de grado.
