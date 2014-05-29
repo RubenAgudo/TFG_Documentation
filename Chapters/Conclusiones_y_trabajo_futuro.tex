@@ -66,14 +66,84 @@ es lo que hace actualmente. Y tambi\'en ser\'ia interesante crear un di\'alogo d
 opciones est\'an metidas dentro de un XML y hay que editarlo a mano.
 
 \section{Conclusiones}
+Para finalizar, en una memoria no puede faltar una secci\'on en la cual el desarrollador
+hace una reflexi\'on sesuda sobre el trabajo realizado, que es lo que se planific\'o
+y lo que ha sido realmente...
+
+\subsection{Reflexiones}
+Pues all\'a vamos. Empecemos por la reflexi\'on sesuda.
+Con todo proyecto grande en el que me involucro me pasa siempre lo mismo, a lo que yo llamo
+``el  s\'indrome del programador". B\'asicamente consiste en que da igual lo que hagas,
+tu c\'odigo nunca va a ser lo suficientemente bueno, tu c\'odigo siempre va a necesitar
+de nuevas funcionalidades, funcionalidades que ni siquiera se ped\'ian, pero como se le profesa
+un ``cari\~no" \ especial al software, siempre se intenta mejorar, aunque sea con nimiedades.
+
+Eso nos lleva a no centrarnos en las tareas principales, se tiende a no hacer el software que nos piden
+sino, el software que el propio desarrollador querr\'ia si fuese el quien ha encargado dicho software.
+Esto es algo muy peligroso, porque podemos meternos en un bucle de hacer/deshacer cosas \'epico, ya que
+lo que hoy parece una idea brillante, ma\~nana se te ocurre una manera mejor de hacerlo, y siempre
+se piensa que la nueva manera es \'optima. Pero nada mas lejos de la realidad. En muchas ocasiones el
+cambio est\'a justificado, si se trata de refactorizar, mejorar dise\~no etc. Mi opini\'on es que \'unicamente
+hay que cambiar algo que ya funciona cuando la mejora es visible. Es decir, que has cambiado un algoritmo O(n)
+por uno O(1) u O(ln n)...
+
+Este s\'indrome no afecta solo a la parte de dise\~no e implementaci\'on, sino tambi\'en a la interfaz gr\'afica:
+``Es que si ponemos este bot\'on aqu\'i queda m\'as claro...", ``Si a\~nadimos una nueva ventana de opciones es m\'as
+amigable con el usuario...". A lo que yo digo, si no se piden esos cambios, son bobadas. Porque primero, esos cambios
+no te los van a pagar, y segundo, tal vez el cliente no los quiera y te toque deshacer el trabajo.
+
+He de admitir que yo mismo he sufrido ese s\'indrome durante este proyecto, obsesion\'andome a ratos con tonter\'ias
+que no afectaban al funcionamiento, que lo previo no pod\'ia considerarse que estuviera mal... Vamos, llegu\'e a cambiar
+algoritmos enteros, sin mejorar su eficiencia simplemente porque pens\'e que el c\'odigo ser\'ia mas comprensible. Eso si,
+sin olvidar que el c\'odigo previo tampoco es que fuera chapucero.
+
+En otra situaci\'on en la que sufr\'i dicho problema, es cuando se implement\'o la funcionalidad de crear un intervalo
+para despu\'es poder guardarlo a disco. Me pareci\'o muy interesante crear otro panel lateral en el que mostrar los intervalos 
+que hab\'ian sido creados y que estaban en la lista de intervalos a exportar. Puede ser una buena idea, que a\'un sigo pensando
+que merece la pena implementarlo, pero no era un requisito inicial, y adem\'as trae consigo otro tipo de implicaciones. 
+Habr\'ia que mantener ese listado de alguna manera enlazado con la lista de los intervalos, si se muestra, tiene sentido
+que puedan ser tanto editados, como borrados. A simple vista parece un a\~nadido f\'acil, pero no se sabe hasta que punto
+puede llegar a modificar el comportamiento actual, y cuanto tiempo me llevar\'ia hacerlo, por lo que finalmente
+fue descartado.
+
+\subsection{Una historia de planificaciones y realidades}
+No voy a ser yo quien diga que una planificaci\'on temporal es una herramienta in\'util.
+Pero si voy a ser yo quien diga que trabajar en base a una planificaci\'on temporal es
+un esfuerzo f\'util. Y m\'as si se trata de un software como el presentado
+en este TFG.
+
+A la gente que tiene un perfil tirando a gestor, y poco t\'ecnico, tiende a pensar
+que en el mundo del software es f\'acil que la planificaci\'on y la realidad
+vayan de la mano. Se equivocan, sobre todo cuando no est\'as haciendo un software propio,
+si no que est\'as creando un software por encargo, donde los requisitos pueden
+cambiar d\'ia si, y d\'ia tambi\'en. Se tiende a cometer el error de utilizar la planificaci\'on
+temporal como una hoja de ruta inamovible, sin tener en cuenta la incertidumbre que rodea
+a todo proyecto de software.
+
+En mi caso concreto, seguir la planificaci\'on no ha sido un gran problema, ya que al tratarse
+de sprints que conten\'ian a su vez varias tareas los cambios no son tan visibles.
+
+Aun as\'i, puedo afirmar que las cosas han ido mejor de lo esperado, ya que este proyecto
+ten\'ia un alto grado de incertidumbre al no conocer ni la plataforma de desarrollo, ni las
+bibliotecas utilizadas, la mayor\'ia con documentaci\'on bastante deficiente.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.7\linewidth]{./Figures/burndown.png}
+\caption{Burndown}
+\label{fig:burndown}
+\end{figure}
+
+En la Figura \ref{fig:burndown} se puede ver las tareas que me quedaban en cada iteraci\'on
+y cual era el progreso ideal para acabarlo a tiempo. Tal y como de puede observar,
+las dos l\'ineas no van ni mucho menos cerca, aunque finalmente la fecha de entrega sea muy similar.
+
+Esto sirve para ver que aunque en algunos sprints se vaya con ``retraso", no implica que el proyecto
+en general vaya con retraso.
+
 Hay que contar como han sido realmente las cosas: tiempos, distribucion del trabajo, 
 sensaciones que se han tenido al usar scrum etc. Por lo que habra que crear el
 burndown para mostrar como ha sido realmente el trabajo, que nuevas tareas han surgido...
-
-Algo sesudo, como por ejemplo, el sindrome del programador, que siempre se tienen nuevas
-ideas para implementar, ideas no contempladas desde el principio pero que no aportan nada.
-Por ejemplo, cada intervalo que se crea, poder mostrarlo en algun sitio y que se permita
-el borrado de los intervalos previamente creados, editarlo etc.
 
 Lo complicado que es trabajar en una tecnologia que apenas conoces, ademas utilizando
 librerias con escasa documentacion, en la que todo tu trabajo se basa en prueba y error
