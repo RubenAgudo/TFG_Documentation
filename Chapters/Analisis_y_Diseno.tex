@@ -9,7 +9,7 @@
 %módulos/paquetes del software desarrollado, etc.
 
 \section{An\'{a}lisis}
-Los datos que recoge el software est\'an en un XML. El XML describe los datos que han de mostrarse. Se dividen en:
+Los datos que ha de guarda el software estar\'an en un XML. El XML se divide en:
 \begin{itemize}
 	\item Observaciones
 	\item Propiedades
@@ -28,17 +28,18 @@ mismo tiempo se sabe que est\'an relacionadas, por lo que es necesario que los r
 sincronizados.
 
 A la hora de guardar, tampoco podr\'an guardarse distintos rangos que se solapen con los
-previamente creados. Ya que en un mismo instante de tiempo, no pueden estar sucediendo dos cosas al mismo tiempo.
+previamente creados para un mismo paso o situaci\'on
+. Ya que en un mismo instante de tiempo, no pueden estar sucediendo dos cosas al mismo tiempo.
 Por ejemplo, un brazo no puede estar levant\'andose, y baj\'andose al mismo tiempo.
 
 Gr\'aficamente las clases se dividen de dos maneras: Contenedores y clases ``hoja".
 El programa puede verse como una estructura de \'arbol, en las que de la ventana principal,
-cuelgan los contenedores de v\'ideo y gr\'aficos, de los de gr\'aficos cuelga el 
+cuelgan los contenedores de v\'ideo y gr\'aficos, y de los de gr\'aficos cuelga el 
 visualizador de datos.
 
-Otro de los requisitos es permitir cargar v\'ideos, y que el progreso de esos v\'ideos vaya
-sincronizado con los gr\'aficos, para que el usuario pueda seleccionar con mayor precisi\'on los
-rangos que le interesen.
+Los v\'ideos tienen la misma estructura. Tambi\'en disponen de un contenedor en el que se
+guardan todos los v\'ideos. Esos v\'ideos, ir\'an sincronizados con los gr\'aficos, mostrando
+el progreso, para que sea m\'as intuitivo seleccionar los rangos.
 
 \section{Dise\~{n}o}
 No se ha seguido un proceso de dise\~no cl\'asico, en el cual antes de empezar a programar se realiza
@@ -51,36 +52,6 @@ hecho, en ning\'un momento se ha dejado algo porque ``funciona", siempre se ha i
 
 En cada iteraci\'on se iba consolidando el trabajo previo. Y si se llegaba a una situaci\'on en la que hab\'ia que redise\~nar
 partes grandes se hac\'ia sin miedo.
-
-Por ejemplo, al principio, la clase \texttt{GraphicsActions} conten\'ia una lista con todos los 
-\texttt{UC\_DataVisualizer}. Este
-acercamiento se eligi\'o al principio ya que era el m\'as simple para conseguir el objetivo del mes: mostrar datos.
-
-Posteriormente, se hizo necesario guardar tambi\'en los \texttt{UC\_ChartContainer}, ya que las propiedades estaban agrupadas por
-observaci\'on. Por lo tanto \texttt{GraphicsActions} pas\'o a tener un \texttt{HashMap} teniendo como clave el nombre de la 
-observaci\'on
-y como contenido una lista de \texttt{UC\_DataVisualizer}. Pero ese dise\~no entra en conflicto con uno de los principios
-SOLID que se explicar\'an m\'as adelante. Por lo que \texttt{GraphicsActions} ahora es un repositorio de 
-\texttt{UC\_ChartContainer},
-y cada \texttt{UC\_ChartContainer} contiene una lista de los\texttt{ UC\_DataVisualizer} que 
-pertenecen a esa observaci\'on y un \texttt{HashSet}
-con los nombres de las propiedades, para poder obtener en tiempo constante si ya estaban cargados, ya que solo se pueden cargar
-una \'unica vez.
-
-En la \'ultima iteraci\'on, se decidi\'o sustituir el \texttt{HashSet} y la lista por un \'arbol rojo negro. Ya que permite
-inserci\'on, b\'usqueda y eliminaci\'on en tiempo O(ln n) frente al O(n) de las listas. 
-Adem\'as un \'arbol rojo negro, s\'olo permite que existe una vez el mismo objeto en el \'arbol.
-
-\subsection{Diagrama de clases}
-El diagrama de clases aqu\'i insertado tiene todos los m\'etodos, propiedades y atributos ocultos para que entrase
-en el propio documento. En los anexos est\'a la versi\'on completa.
-
-\begin{figure}[h]
-\centering
-\includegraphics[width=1.2\linewidth]{./Figures/ClassDiagram}
-\caption[Diagrama de clases compacto]{Diagrama de clases compacto}
-\label{fig:ClassDiagram}
-\end{figure}
 
 \subsection{Librer\'{i}as usadas}
 \begin{itemize}
@@ -124,16 +95,25 @@ Es curioso que las principales cr\'{i}ticas provengan de su creador, Josh Gossma
 de UI es una exageraci\'{o}n y que si los enlaces de datos si no se gestionan correctamente puede llevar a un consumo excesivo de 
 memoria de la aplicaci\'{o}n \cite{MVVM:Criticism}
 
+\paragraph{Uso en el TFG}
+El patr\'on MVVM no se ha utilizado tal y como fue concebido. Pero si se ha mantenido la separaci\'on entre
+las tres partes del software. Se han creado los ViewModels tal y como se recomienda en el patr\'on, pero no
+se han podido utilizar los enlaces de datos, ya que para poder usarlos hay que establecer un contexto de datos,
+y en este caso es din\'amico. Adem\'as se necesitan m\'as cosas que simplemente visualizar unos datos. Pero
+pese a todo, el software se ha construido en torno a la idea del MVVM aunque no se haya podido aplicar exactamente
+como se recomienda.
+
 \subsubsection{Iterator}
-Si bien el titulo alude al patr\'{o}n \emph{Iterator} .NET no dispone como Java de la interfaz \texttt{Iterable}.
-En cambio, dispone de una interfaz llamada \texttt{IEnumerator<T>} que ofrece toda la funcionalidad b\'{a}sica del iterator,
-y con algunas funcionalidades extra.
+Si bien el titulo alude al patr\'{o}n \emph{Iterator} .NET no dispone como Java de las interfaces \emph{Iterable} ni
+\emph{Iterator}.
+En cambio, dispone de las interfaces llamadas \emph{IEnumerator<T>} e \emph{IEnumerable<T>} 
+que ofrecen una funcionalidad equivalente a las de Java.
 
 Se ha decidido utilizar este patr\'{o}n por los siguientes motivos:
 \begin{enumerate}
     \item \textbf{Abstracci\'{o}n:}
-    Al utilizar este patr\'{o}n se pueden obtener los elementos de un contenedor, que puede ser un \texttt{array}, una \texttt{LinkedList<>}...
-    cualquier clase que implemente la interfaz \texttt{IEnumerable<T>} sin
+    Al utilizar este patr\'{o}n se pueden obtener los elementos de un contenedor, que puede ser un \emph{array}, una \emph{LinkedList<>}...
+    cualquier clase que implemente la interfaz \emph{IEnumerable<T>} sin
     exponer su representaci\'{o}n interna, aumentando la seguridad y previniendo que una clase tenga acceso a cosas que no deba.
     
     \item \textbf{Facilidad de uso:}
@@ -149,6 +129,36 @@ Se ha decidido utilizar este patr\'{o}n por los siguientes motivos:
     Y ello llevar\'{a} a malgastar m\'{a}s aun algo tan preciado como el tiempo. Pero al menos servir\'a para darse cuenta del error y 
     se ver\'a lo \'{u}tiles que son los patrones.
 \end{enumerate}
+
+\paragraph{Uso en el TFG}
+Este patr\'on ha sido muy \'util en todo aquello que tenga que ver con recorrer datos. Por ejemplo a la hora de
+sincronizar el rango seleccionado entre los visualizadores de datos. Adem\'as en C\# se realiza de una manera 
+muy sem\'antica.
+
+\begin{lstlisting}[language=C, numbers=left, showspaces=false, breaklines=true, tabsize=2]
+	public partial class UC_ChartCOntainer : UserControl 
+	{
+		private SortedSet<UC_DataVisualizer> datavisualizers;
+		
+		internal void updateSelections(double[] selectedRange)
+		{
+			foreach(UC_DataVisualizer datav in datavisualizers) 
+			{
+				datav.updateRangeSelection(selectedRange);
+			}
+		}
+	}
+\end{lstlisting}
+
+Como se puede ver en el trozo de c\'odigo, se ha podido iterar a trav\'es de todos los elementos
+de \emph{datavisualizers} sin tener que comprobar si hay un elemento siguiente, el tama\~no del
+elemento sobre el que se quiere iterar... Y adem\'as como se ha dicho antes, este
+c\'odigo se ha vuelto mucho mas legible, ya que puede leerse de la 
+siguiente manera: ``para cada datav en datavisualizers,
+actualizar el rango seleccionado de datav con el rango obtenido por par\'ametro".
+Concretamente, el ejemplo hace referencia al m\'etodo de sincronizaci\'on de rangos de las
+observaciones. Lo que se ha hecho es recorrer todas las propiedades cargadas de una observaci\'on para
+sincronizarlo con el rango dado como par\'ametro.
 
 \subsubsection{Singleton}
 Patr\'on de dise\~no b\'asico que consigue que una clase tenga una \'unica instancia durante toda la ejecuci\'on del software, siendo 
@@ -185,7 +195,7 @@ Una inicializaci\'on perezosa con comprobaci\'on doble de bloqueo se realiza as\
     }
 \end{lstlisting}
 
-En .NET 4.0 fue incluida la clase \texttt{Lazy<T>} que realiza ese tipo de inicializaci\'on.
+En .NET 4.0 fue incluida la clase \emph{Lazy<T>} que realiza ese tipo de inicializaci\'on.
 
 \paragraph{Eager} En la inicializaci\'on \emph{Eager} o \emph{ansiosa} se crea la nueva instancia siempre. En este m\'etodo no hay problemas
 en entornos multihilo, pero tiene un mayor coste computacional si la constructora es muy compleja.
@@ -211,6 +221,11 @@ toda su l\'ogica de negocio \cite{Singleton:EVIL}.
 Por otro lado, tambi\'en tiene como inconveniente una de las m\'aximas de la programaci\'on: Las variables globales
 son malas. Pues por si no fuera poco, un Singleton es una clase global \cite{Singleton:EVIL}.
 
+\paragraph{Uso en el TFG}
+Pese a las cr\'iticas del p\'arrafo anterior, se ha utilizado en aquellos elementos que s\'olo iban a tener
+una instancia. Concretamente \emph{VideoActions}, \emph{GraphicActions} y \emph{XMLExport}. Al
+hacerlos accesibles desde todo el c\'odigo, se ha facilitado mucho la tarea al desarrollador para utilizarlo.
+
 \subsection{SOLID}
 SOLID es un acr\'{o}nimo mnem\'{o}nico acu\~{n}ado a comienzos de la d\'{e}cada de los 2000 por 
 Robert C. Martin \cite{SOLID:ADefinition}
@@ -234,9 +249,25 @@ tanto tendr\'{i}amos que separar el m\'{o}dulo en dos: El que compila el informe
 Utilizando este principio volveremos nuestro c\'{o}digo m\'as robusto, ya que un cambio en una clase, no 
 deber\'{i}a afectar a la salida, y por tanto los siguientes m\'{o}dulos que se alimenten de esa clase.
 
+\paragraph{Uso en el TFG}
+Si bien el principio de responsabilidad \'unica no es algo que se aplique de manera directa, es decir,
+no es si sucede A entonces haz B. Pero hay en algunas situaciones en las que se cumple este principio.
+Por ejemplo, en la clase \emph{UC\_ChartContainer} se manten\'ia un repositorio de Observaciones
+y adem\'as de propiedades. Se ve, que esta clase tiene dos razones de cambio. Una es por las propiedades
+(a\~nadir, borrar etc) como por las observaciones (a\~nadir, borrar etc). Al incumplirse el principio,
+la clase ha de separarse en dos. En un repositorio de propiedades, y en un repositorio de observaciones.
+
+En este caso concreto, no se separ\'o en dos clases, sino que la colecci\'on de propiedades, pas\'o a ser
+responsabilidad de cada \emph{UC\_ChartContainer}.
+
 \subsubsection{Open/Closed principle}
-El principio abierto / cerrado \cite{SOLID:OCP} implica que una clase est\'{a} abierta a la extensi\'{o}n pero cerrada a la modificaci\'{o}n. Ya que un cambio en el
+El principio abierto / cerrado \cite{SOLID:OCP} implica que una clase est\'{a} abierta a la extensi\'{o}n pero cerrada a la 
+modificaci\'{o}n. Ya que un cambio en el
 funcionamiento de una clase har\'{i}a que se tambalease la estabilidad de nuestro software.
+
+\paragraph{Uso en el TFG}
+Ciertamente este principio no se ha utilizado, ya que est\'a mas pensado para ser usado en
+c\'odigo que ya est\'a en producci\'on, no mientras el software est\'a en desarrollo.
 
 \subsubsection{Liskov's substitution principle}
 El principio de sustituci\'{o}n de Liskov \cite{SOLID:LSP} \footnote{\url{http://pmg.csail.mit.edu/~liskov/}} 
@@ -246,22 +277,133 @@ debe poder sustituir a su supertipo sin que haya un cambio de comportamiento.
 M\'{a}s formalmente: Si \textbf{S} es un subtipo de \textbf{T} entonces \textbf{T} puede sustituirse por \textbf{S} y 
 conservar su exactitud, tarea que realiza etc.
 
+\paragraph{Uso en el TFG}
+Este principio se cumple claramente, ya que para incumplirlo habr\'ia que sobreescribir alg\'un m\'etodo de la superclase
+y que funcionase diferente de como funciona en la superclase. 
+
+T\'omese como ejemplo las clases \emph{XMLValidation} y \emph{XMLLoader}.
+Si \emph{XMLValidation} no fuera abstracta, podr\'ia ser sustituida por \emph{XMLLoader}
+sin alterar su funcionalidad base, ya que \emph{XMLLoader} no sobreescribe el m\'etodo de la clase base. Lo mismo
+sucede con los ViewModels. Ambas clases derivadas podr\'ian sustituir a la clase abstracta sin cambiar su funcionalidad. Es
+decir, aunque las clases derivadas hayan sustituido a la clase padre, las clases derivadas siguen teniendo la funcionalidad
+de la clase base intacta.
+
 \subsubsection{Interface segregation principle}
 El principio de segregaci\'{o}n de interfaces dice que es mejor tener muchas interfaces espec\'{i}ficas, 
 que una gran interfaz que contenga todo \cite{SOLID:ISP}.
 
 De esta manera evitamos que haya partes del software que dependan de m\'{e}todos que no influyen en esa clase.
 
+\paragraph{Uso en el TFG}
+Al s\'olo tener una interfaz propia, y que adem\'as tiene un \'unico m\'etodo, se cumple siempre, ya que
+cada vez que una clase implemente esa interfaz es porque se requiere ese m\'etodo, si no, no tendr\'ia sentido
+implementarla.
+
 \subsubsection{Dependency inversion principle}
-El principio de Inversi\'{o}n de dependencia dice que:
+El principio de Inversi\'{o}n de dependencia \cite{SOLID:DIP} dice que:
 \begin{enumerate}
     \item Los m\'{o}dulos de alto nivel no deben depender en m\'{o}dulos de bajo nivel. Ambos deben depender de abstracciones
     \item Las abstracciones no deben depender en los detalles. Los detalles deben depender de las abstracciones.
 \end{enumerate}
-\cite{SOLID:DIP}
 
-\section{Clean Code}
+\paragraph{Uso en el TFG}
+Este principio es el \'unico que no se cumple. Ya que los m\'odulos de alto nivel, como por ejemplo
+\emph{UC\_ChartContainer} no depende de abstracciones, sino de tipos concretos (\emph{UC\_DataVisualizer}).
+Para arreglarlo, habr\'ia que definir una serie de interfaces que describan los m\'etodos necesarios que 
+debe tener un visualizador de datos. Y de esa manera el contenedor depende de esas abstracciones (interfaces).
+Esto mismo habr\'ia que aplic\'arselo a todos los elementos del proyecto.
+
+Excepto en casos muy concretos, los m\'etodos, deber\'ian tomar como par\'ametros, o bien interfaces, o bien
+objetos que implementen esas interfaces.
+
+\subsection{Clean Code}
 Otra de las cosas en las que incide mucho Martin es que evitemos realizar comentarios en el c\'odigo,
 ya que el hecho de realizar un cambio en el c\'odigo no garantiza que vayamos a cambiar el comentario, y 
 puede llevar a errores futuros o a inconsistencias en la documentaci\'on. Adem\'as, todo el mundo sabe que programar
-es un arte \cite{Art:Programming}.
+es un arte \cite{Art:Programming}, y es por ello que el c\'odigo del TFG tiene los comentarios justos y necesarios
+para hacer entender los m\'etodos que no se entienden o que tienen una l\'ogica ligeramente mas compleja de seguir.
+
+\subsection{Diagrama de clases}
+El diagrama de clases \ref{fig:ClassDiagram} tiene todos los m\'etodos, propiedades y atributos ocultos para que entrase
+en el propio documento. En el anexo \ref{chap:CasosDeUsoExt} puede encontrarse la versi\'on completa.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=1.2\linewidth]{./Figures/ClassDiagram}
+	\caption[Diagrama de clases compacto]{Diagrama de clases compacto}
+	\label{fig:ClassDiagram}
+\end{figure}
+
+\subsubsection{AbstractDataVisualizerViewModel}
+Clase abstracta que describe e implementa todos los m\'etodos y propiedades que han de tener todos los ViewModels. Es decir,
+define todo aquello que podr\'a ser cargado por un \emph{UC\_DataVisualizer}. Esta clase expone el m\'etodo
+\emph{private PlotModel createModel(List<DataPoint> points)}
+que todas sus clases han de implementar.
+
+\subsubsection{ContinousDataVisualizerViewModel}
+Subclase de \emph{AbstractDataVisualizerViewModel} que se especializa en tratar los datos cont\'inuos. 
+
+\subsubsection{DiscreteDataVisualizerVIewModel}
+Subclase de \emph{AbstractDataVisualizerViewModel} que se especializa en tratar los datos discretos.
+Esta clase requiere de datos adicionales, los elementos del eje de ordenadas.
+
+\subsubsection{XMLValidation}
+Clase abstracta que sirve como base a todas aquellas clases que requieran de validar un XML contra un XSD.
+
+\subsubsection{XMLExport}
+Subclase de \emph{XMLValidation} que se encarga de gestionar todo lo relacionado con exportar un XML. Creaci\'on y
+validaci\'on de intervalos y guardar a disco el paso o situaci\'on principalmente.
+
+\subsubsection{XMLLoader}
+Subclase de \emph{XMLValidation} que tiene como responsabilidad cargar los datos del XML, tanto obtener los datos
+para mostrar en el \'arbol como de crear los ViewModels que despu\'es ser\'an utilizados por los \emph{UC\_DataVisualizer}.
+
+\subsubsection{VideoActions}
+Clase Singleton que proporciona los m\'etodos necesarios para gestionar los v\'ideos cargados.
+
+\subsubsection{GraphicActions}
+Clase Singleton que gestiona los \emph{UC\_ChartContainer}. A\~nadir, borrar, sincronizar rangos etc.
+
+\subsubsection{UC\_VideoContainer}
+Control de usuario derivado de \emph{UserControl} y que implementa
+la interfaz \emph{IContainer}. Dispone de la interfaz y los m\'etodos necesarios para
+gestionar los \emph{UC\_VideoPlayer} (a\~nadir, borrar etc) as\'i como unos controles globales
+para controlar su reproducci\'on.
+
+\subsubsection{UC\_ChartContainer}
+Control de usuario derivado de \emph{UserControl} y que implementa la interfaz
+\emph{IContainer}. Esta clase contiene la interfaz gr\'afica y los m\'etodos requeridos para gestionar
+los \emph{UC\_DataVisualizer}. Representa una observaci\'on que dentro tiene sus propiedades.
+Tambi\'en es importante a\~nadir que es \'esta clase la que se suscribe al evento que notifica
+que el rango seleccionado ha cambiado, para poder inicial el proceso de sincronizaci\'on.
+
+\subsubsection{UC\_DataVisualizer}
+Control de usuario que se encarga de mostrar los datos de las propiedades y una de las funcionalidades
+principales consiste en notificar a su padre (un \emph{UC\_ChartContainer}) de que el rango seleccionado ha cambiado.
+
+Esta clase extiende a \emph{UserControl} e implementa las interfaces \emph{INotifyPropertyChanged},
+\emph{IEquatable<T>} e \emph{IComparable<T>}. Es necesario implementar
+esas interfaces para que el \'arbol rojo negro funcione correctamente, ya que requiere ordenar las instancias
+de alguna manera. 
+
+\subsubsection{UC\_VideoPlayer}
+Control de usuario que se encarga de reproducir v\'ideos.
+
+Al igual que \emph{UC\_DataVisualizer} extiende \emph{UserControl} 
+e implementa las interfaces \emph{INotifyPropertyChanged},
+\emph{IEquatable<T>} e \emph{IComparable<T>}. Los motivos de su implementaci\'on
+son los mismos que en \emph{UC\_DataVisualizer}.
+
+\subsubsection{IContainer}
+Esta interfaz define aquellos m\'etodos que deben ser implementados por las clases que vayan a ser contenedores
+de alg\'un tipo de dato.
+
+\subsubsection{FileNotSelectedException}
+Excepci\'on personalizada pensada para ser lanzada en los di\'alogos de apertura de ficheros.
+
+\subsubsection{MainWindow}
+Punto de entrada al programa. Al ser un contenedor de contenedores, concretamente de \emph{UC\_ChartContainer} y
+\emph{UC\_VideoContainer}, tambi\'en implementa la interfaz \emph{IContainer}.
+
+Esta clase, principalmente se encarga de realizar las llamadas a cargar los datos y añadir las observaciones
+y el contenedor de v\'ideos.

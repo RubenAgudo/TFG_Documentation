@@ -81,11 +81,19 @@ de ese \'arbol de propiedades y observaciones, el software sabe si se ha pinchad
 Si se quiere saber que sucede cuando se pincha en cada uno de ellos, todo esto est\'a mejor explicado en la secci\'on de
 Captura de requisitos, en los casos de uso extendidos.
 
-Cuando se cargan los datos que se desean, es decir, que se visualizan, se muestran organizados por observaciones. Y dentro de cada
+Cuando se cargan los datos que se desean, es decir, que se visualizan,como puede verse en la
+Figura \ref{fig:EjemploObservacion} se muestran organizados por observaciones. Y dentro de cada
 observaci\'on las propiedades que han sido cargadas. Las ventanas pueden organizarse como se quiera, ponerlas lado a lado,
 reordenar las pesta\~nas, colapsarlas a un lateral, dejarlas como ventanas flotantes etc. 
 La \'unica limitaci\'on intencionada es que una propiedad no puede acoplarse a una observaci\'on a la que no pertenece,
 para evitar confusiones.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.9\linewidth]{./Figures/Capturas/SeleccionRango.PNG}
+	\caption{Ejemplo de visualizaci\'on de propiedades}
+	\label{fig:EjemploObservacion}
+\end{figure}
 
 Despu\'es de escoger el tipo de organizaci\'on de ventanas, era necesario elegir como iban a mostrarse los gr\'aficos en pantalla.
 Para el sistema de gr\'aficos no hubo problemas a la hora de encontrar distintas librer\'ias, pero si que fue un 
@@ -252,7 +260,7 @@ ten\'ia sentido implementar procesamiento paralelo o procesos en segundo plano. 
 procesamiento paralelo finalmente no tiene sentido implementarlo ya que no hay tareas
 que puedan separarse en subtareas para que cada ``trabajador" \ pueda procesar por su
 cuenta. En cambio, al no conocerse el tama\~no m\'aximo de entrada, se ha decidido
-implementar un \texttt{BackgroundWorker} a la hora de crear un intervalo, y a la hora
+implementar un \emph{BackgroundWorker} a la hora de crear un intervalo, y a la hora
 de guardar en disco el paso o la situaci\'on.
 
 Se ha tomado esta decisi\'on porque si el guardar los datos se hace en el hilo principal
@@ -261,7 +269,7 @@ de esta manera el software es mucho m\'as escalable. Bien es
 verdad que un procesador moderno es capaz de procesar unos 50 millones de operaciones por
 segundo, y no se cree que la entrada, ni la salida vaya a ser tan grande.
 
-A la hora de cargar datos, no se ha implementando el \texttt{BackgroundWorker}
+A la hora de cargar datos, no se ha implementando el \emph{BackgroundWorker}
 porque en la aplicaci\'on no se puede realizar ninguna acci\'on hasta que los datos est\'an 
 listos. Pese a todo, al cargar el XML no se cargan todos los datos, sino que se obtienen \'unicamente
 los nombres de las propiedades y las observaciones. Los datos en si se cargan bajo demanda, para optimizar la memoria
@@ -280,6 +288,30 @@ La otra opci\'on, era separar las dos acciones, por un lado, crear los intervalo
 Finalmente se utiliz\'o la segunda manera porque se cree de que es mas intuitivo tener dos acciones separadas
 que se sabe bien que realiza cada una, con un flujo de trabajo claro, a tener una \'unica acci\'on, que dependiendo
 de la acci\'on del usuario haga una cosa u otra. 
+
+En cuanto a las cuestiones de dise\~no, tal y como se ha contado previamente en el cap\'itulo
+de An\'alisis y dise\~no se ha realizado de manera iterativa, mejorando el dise\~no sprint tras sprint,
+ya que creo que hacer un buen dise\~no desde el principio sin conocer en su totalidad que ha de hacerse
+es un error y una p\'erdida de tiempo.
+
+Por ejemplo, al principio, la clase \emph{GraphicsActions} conten\'ia una lista con todos los 
+\emph{UC\_DataVisualizer}. Este
+acercamiento se eligi\'o al principio ya que era el m\'as simple para conseguir el objetivo del mes: mostrar datos.
+
+Posteriormente, se hizo necesario guardar tambi\'en los \emph{UC\_ChartContainer}, ya que las propiedades estaban agrupadas por
+observaci\'on. Por lo tanto \emph{GraphicsActions} pas\'o a tener un \emph{HashMap} teniendo como clave el nombre de la 
+observaci\'on
+y como contenido una lista de \emph{UC\_DataVisualizer}. Pero ese dise\~no entra en conflicto con uno de los principios
+SOLID que se explicar\'an m\'as adelante. Por lo que \emph{GraphicsActions} ahora es un repositorio de 
+\emph{UC\_ChartContainer},
+y cada \emph{UC\_ChartContainer} contiene una lista de los\emph{ UC\_DataVisualizer} que 
+pertenecen a esa observaci\'on y un \emph{HashSet}
+con los nombres de las propiedades, para poder obtener en tiempo constante si ya estaban cargados, ya que solo se pueden cargar
+una \'unica vez.
+
+En la \'ultima iteraci\'on, se decidi\'o sustituir el \emph{HashSet} y la lista por un \'arbol rojo negro. Ya que permite
+inserci\'on, b\'usqueda y eliminaci\'on en tiempo O(ln n) frente al O(n) de las listas. 
+Adem\'as un \'arbol rojo negro, s\'olo permite que existe una vez el mismo objeto en el \'arbol.
 
 \section{Gesti\'{o}n del c\'{o}digo fuente}
 Hasta ahora no se ha hablado de algo que bien no es parte del desarrollo, pero que igualmente es importante.
