@@ -81,7 +81,7 @@ de ese \'arbol de propiedades y observaciones, el software sabe si se ha pinchad
 Si se quiere saber que sucede cuando se pincha en cada uno de ellos, todo esto est\'a mejor explicado en la secci\'on de
 Captura de requisitos, en los casos de uso extendidos.
 
-Cuando se cargan los datos que se desean, es decir, que se visualizan,como puede verse en la
+Cuando se cargan los datos que se desean, es decir, que se visualizan, como puede verse en la
 Figura \ref{fig:EjemploObservacion} se muestran organizados por observaciones. Y dentro de cada
 observaci\'on las propiedades que han sido cargadas. Las ventanas pueden organizarse como se quiera, ponerlas lado a lado,
 reordenar las pesta\~nas, colapsarlas a un lateral, dejarlas como ventanas flotantes etc. 
@@ -90,7 +90,7 @@ para evitar confusiones.
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.9\linewidth]{./Figures/Capturas/SeleccionRango.PNG}
+	\includegraphics[width=0.9\linewidth]{./Figures/Capturas/EjemploObservacion.PNG}
 	\caption{Ejemplo de visualizaci\'on de propiedades}
 	\label{fig:EjemploObservacion}
 \end{figure}
@@ -130,7 +130,9 @@ sus hijos para sincronizarse.
 
 La primera aproximaci\'on, y posiblemente la peor de todas, era realizar un \emph{polling}, es decir, cada, por ejemplo, 60 ms,
 preguntar a cada elemento si ha cambiado, y si alguno lo ha hecho, utilizar ese valor para poner ese rango en los dem\'as 
-gr\'aficos. Este enfoque, tiene diversos problemas, pese a que los gr\'aficos est\'an guardados en \'arboles rojo-negro,
+gr\'aficos. Este enfoque, tiene diversos problemas, pese a que los gr\'aficos est\'an guardados en \'arboles rojo-negro
+\footnote{\url{https://www.cs.auckland.ac.nz/~jmor159/PLDS210/red\_black.html}}
+\footnote{\url{https://www.cs.princeton.edu/courses/archive/fall08/cos226/lectures/10BalancedTrees-2x2.pdf}},
 no tiene sentido recorrer el \'arbol constantemente, y si se encuentra un elemento, habr\'ia que recorrer cada observaci\'on cargada,
 y para cada observaci\'on todas las propiedades cargadas actualmente. Eso,
 conllevar\'ia un coste de O(2*n*m) siendo ``n" \ el n\'umero de observaciones cargadas y ``m" \ el n\'umero de propiedades.
@@ -145,6 +147,44 @@ el proceso de sincronizado, tanto con sus hijos como con sus hermanos (el resto 
 Para la visualizaci\'on de v\'ideos no hubo mucho problema, y se utilizaron los
 propios componentes de WPF, que cumpl\'ian todas las necesidades.
 
+Por su parte, cargar los datos no fue demasiado problema una vez se decidi\'o cual iba a ser el formato de los
+ficheros XML.
+
+Se barajaron dos posibilidades. La primera, que por cada instante de simulaci\'on se guardaran las observaciones
+que est\'an teniendo lugar, y los valores de las propiedades que tienen en ese instante, tal y como
+se puede ver en la Figura \ref{Estructura XML1}.
+
+Este formato, a la vista parece bueno, ya que se pordr\'ia construir los gr\'aficos instante a instante,
+todos a la vez. Pero, ¿Y si se quiere obtener el valor de una propiedad en concreto para mostrar todo 
+el gr\'afico de golpe? No se obtiene de manera directa, ya que habr\'ia que ciclar a trav\'es de todos los nodos
+instante, y a trav\'es de todos los nodos observaci\'on, buscando la propiedad deseada.
+
+Tambi\'en hay que tener en cuenta, que en distintas observaciones puede haber propiedades que tengan el mismo nombre, 
+aumentando la complejidad de la consulta LINQ (m\'as adelante se hablar\'a de este tema).
+
+\begin{figure}[h]
+    \lstinputlisting[tabsize=2, language=XML, numbers=left]{./Attachments/Adjunto1.xml}
+    \caption[Estructura XML 1]{Estructura XML 1}
+    \label{Estructura XML1}
+\end{figure}
+
+La segunda opci\'on barajada, toma un enfoque distinto., tal y como se puede
+ver en la Figura \ref{Estructura XML2}. Los datos se agrupan por observaci\'on, con las observaciones teniendo sus propiedades,
+y estas \'ultimas sus instantes. De esta manera, de un simple vistazo podemos determinar todos los valores que va a tomar
+una propiedad de una observaci\'on en concreto, sin ning\'un tipo de consulta compleja.
+En el nodo \emph{<data>} se ha a\~{n}adido un nuevo atributo \emph{instantLength} que 
+determina la longitud de un instante. 
+
+Por ejemplo, en la propiedad \emph{prop14} se ve que los instantes no son consecutivos, por lo que el sistema sabe que el 
+gr\'{a}fico no debe ser cont\'inuo en ese punto, es decir, desde el punto (1, 4) no debe unirse al 
+(3, 5). Esto es \'{u}til para saber si una propiedad esta sucediendo o no.
+
+\begin{figure}[h]
+    \lstinputlisting[tabsize=2, language=XML, numbers=left]{./Attachments/Adjunto2.xml}
+    \caption[Estructura XML 2]{Estructura XML 2}
+    \label{Estructura XML2}
+\end{figure}
+
 Otro de los problemas fundamentales que se tuvieron, fue como guardar los datos. Debido a que de momento el software
 aqu\'i presentado va a ser completamente independiente, hab\'ia que buscar una manera de compartir los datos
 que implicara el menor n\'umero de cambios posibles en el sistema ya creado por el grupo de investigaci\'on.
@@ -152,7 +192,7 @@ que implicara el menor n\'umero de cambios posibles en el sistema ya creado por 
 Se barajaron varias posibilidades, como por ejemplo, las bases de datos relaciones, pero este sistema requerir\'ia
 de una estructura compleja para guardar unos datos bastante sencillos. Ya que del modelo de dominio, se infiere que m\'inimo,
 iba a haber 4 tablas para poder guardar los datos correctamente. Adem\'as, los datos no iban a ser f\'acilmente 
-visualizables por humanos, ya que ser\'ian un amasijo de n\'umeros guardados en tablas que ser\'ian dif\'iciles de
+comprensibles por humanos, ya que ser\'ian un amasijo de n\'umeros guardados en tablas que ser\'ian dif\'iciles de
 relacionar entre ellas de manera sencilla.
 
 Es por ello que se valor\'o la posibilidad de utilizar las bases de datos no relacionales, que est\'an tan de moda
@@ -177,83 +217,34 @@ Lo que realmente marca
 la diferencia es LINQ To XML.
 
 LINQ To XML es una extensi\'on de la biblioteca LINQ (Language Integrated Query), que permite hacer consultas
-similares a SQL a estructuras de datos .NET. Es posible obtener de un \emph{List<int>} todos aquellos n\'umeros
-que sean menores que 5 y mayores que 10 con una sintaxis tan simple como la siguiente:
+similares a SQL a estructuras de datos .NET. 
 
-\begin{figure}[H]
+En el ejemplo de la Figura \ref{Consulta LINQ}, extra\'ido de mi propio c\'odigo, se obtienen las propiedades de
+una determinada observaci\'on.
+Concretamente, este c\'odigo se ha utilizado a la hora de cargar el \'arbol lateral
+de observaciones y propiedades.
+
+\begin{figure}[h]
 	\begin{lstlisting}[tabsize=2, language=C, numbers=left, showspaces=false, breaklines=true]
-		class IntroToLINQ
-		{        
-			static void Main()
-			{
-				// Las 3 partes de una consulta LINQ:
-				//  1. Origen de datos.
-				int[] numbers = new int[7] { 1, 5, 20, -4, 7, 8, 9};
-				
-				// 2. Creacion de la consulta.
-				// numQuery es un IEnumerable<int>
-				var numQuery =
-					from num in numbers
-					where (num < 5) && num > 10
-					select num;
-				
-				// 3. Ejecucion de la consulta.
-				foreach (int num in numQuery)
-				{
-					Console.Write("{0,1}", num);
-				}
-			}
-		}
+		internal List<string> getPropertiesOf(string observation)
+        {
+            List<string> listProperties = null;
+            
+            IEnumerable<XElement> properties =
+                from prop in xml.Descendants("property")
+                where (string)prop.Parent.Attribute("name") == observation
+                select prop;
+            
+            listProperties = addElements(properties);
+            return listProperties;
+        }
 	\end{lstlisting}
 	\caption[Consulta LINQ]{Consulta LINQ}
 	\label{Consulta LINQ}
 \end{figure}
 
-En la Figura \ref{Consulta LINQ}
-\footnote{Extra\'ida de \url{http://msdn.microsoft.com/en-us/library/vstudio/bb397906\%28v=vs.100\%29.aspx}}
-se puede ver que con una sintaxis muy similar a SQL puede filtrarse un array en un momento.
-
-El mismo concepto tiene LINQ to XML por lo que no es necesario explicarlo en mayor profundidad.
-
 Una vez elegido el m\'etodo de guardado de datos, se llego a la tesitura de elegir una estructura para el XML.
 Las dos opciones valoradas fueron las siguientes.
-
-\subsection{Estructura XML 1}
-\begin{figure}[H]
-	\lstinputlisting[tabsize=2, language=XML, numbers=left]{./Attachments/Adjunto1.xml}
-	\caption[Estructura XML 1]{Estructura XML 1}
-	\label{Estructura XML1}
-\end{figure}
-
-
-Como se puede observar, el acercamiento sugerido es, que por cada instante de simulaci\'{o}n guardemos las observaciones que 
-est\'{a}n teniendo lugar,
-y los valores de las propiedades que tienen en ese instante.
-
-Este formato, a la vista parece bueno, ya que se podr\'{i}a construir los gr\'{a}ficos instante a instante, todos a la vez. 
-Pero, ¿Y si se quiere
-obtener el valor de una propiedad en concreto para mostrar todo el gr\'{a}fico de golpe? No se obtiene de manera directa, ya que 
-habr\'{i}a que ciclar
-a trav\'{e}s de todos los nodos instante, y a trav\'{e}s de todos los nodos observaci\'{o}n, buscando la propiedad deseada. 
-
-N\'{o}tese que en distintas observaciones puede haber propiedades que tengan el mismo nombre, aumentando de complejidad la 
-b\'{u}squeda.
-
-\subsection{Estructura XML 2}
-\begin{figure}[H]
-	\lstinputlisting[tabsize=2, language=XML, numbers=left]{./Attachments/Adjunto2.xml}
-	\caption[Estructura XML 2]{Estructura XML 2}
-	\label{Estructura XML2}
-\end{figure}
-
-En este segundo ejemplo, de un simple vistazo podemos determinar todos los valores que va a tomar una propiedad de una 
-observaci\'{o}n en concreto,
-sin ning\'{u}n tipo de iteraci\'{o}n. En el nodo \emph{<data>} se ha a\~{n}adido un nuevo atributo \emph{instantLength} que 
-determina la longitud de un instante. 
-
-Por ejemplo, en la propiedad \emph{prop14} se ve que los instantes no son consecutivos, por lo que el sistema sabe que el 
-gr\'{a}fico no debe ser cont\'inuo en ese punto, es decir, desde el punto (1, 4) no debe unirse al 
-(3, 5). Esto es \'{u}til para saber si una propiedad esta sucediendo o no.
 
 Una cosa interesante y que adem\'as no se ped\'ia desde el principio, era si 
 ten\'ia sentido implementar procesamiento paralelo o procesos en segundo plano. El 
@@ -326,7 +317,7 @@ una curva de aprendizaje bastante pronunciada.
 Por tanto se valor\'o la posibilidad de utilizar Dropbox como sistema de gesti\'on y sincronizado del c\'odigo fuente.
 Pero los problemas no tardaron en aflorar con cuestiones del tipo:
 
-¿Qu\'e pasar\'ia si quiero volver a una versi\'on que hice hace 20 d\'ias? ¿C\'omo creo un trabajo derivado a partir
+¿Qu\'e pasar\'ia si se quiere volver a una versi\'on que hice hace 20 d\'ias? ¿C\'omo se crea un trabajo derivado a partir
 de una versi\'on concreta? Por lo que finalmente se decidi\'o usar GIT, ya que incluso con la curva de aprendizaje,
 es una herramienta muy potente y \'util, en la que se puede ver f\'acilmente qu\'e se hizo cierto d\'ia, o volver sin 
 ning\'un problema a lo que se hizo ayer, o a lo que se hizo el primer d\'ia de proyecto.
