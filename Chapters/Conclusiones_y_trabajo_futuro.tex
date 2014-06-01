@@ -47,11 +47,9 @@ que se le podr\'ia sacar mas partido a los m\'ultiples n\'ucleos de los ordenado
 Por otro lado, como la aplicaci\'on aqu\'i presentada, en un futuro ser\'a integrada dentro de un sistema m\'as grande,
 requerir\'a de un poco de trabajo si no se quiere mantener como una aplicaci\'on independiente.
 Para ello, habr\'ia que convertir \texttt{MainWindow} en una subclase de \texttt{UserControl}, para
-que de esta manera pueda ser a\~nadido como una ventana acoplable al otro sistema y adem\'as deber\'a
-implementar la interfaz \texttt{IContainer} ya que la ventana principal a fin de cuentas es un contenedor
-de \texttt{UC\_ChartContainer}.
+que de esta manera pueda ser a\~nadido como una ventana acoplable al otro sistema.
 
-Por \'ultimo, en cuanto a temas de dise\~no se refiere, yo propongo cambiar los temporizadores de la
+Por \'ultimo en cuanto a temas de dise\~no se refiere, yo propongo cambiar los temporizadores de la
 aplicaci\'on y utilizar los \emph{data bindings} que proporciona .NET. Para poder hacer esto
 habr\'ia que aprender bien a utilizar el patr\'on MVVM, que si bien se ha utilizado en este proyecto
 no se le ha exprimido todas las caracter\'isticas.
@@ -106,6 +104,22 @@ que puedan ser tanto editados, como borrados. A simple vista parece un a\~nadido
 puede llegar a modificar el comportamiento actual, y cuanto tiempo me llevar\'ia hacerlo, por lo que finalmente
 fue descartado.
 
+Por otro lado, una de las razones personales de elegir este TFG fue porque me obligaba a salir de mi zona
+de confort. Habr\'ia sido muy f\'acil elegir un TFG que manejase materias que se me dieran bien
+y me gustasen especialmente, tecnol\'ogicamente hablando. A mi no me gusta crear interfaces gr\'aficas,
+y este TFG giraba sobre todo a un software con una interfaz gr\'afica compleja. Jam\'as hab\'ia trabajado
+con WPF ni con las versiones nuevas de .NET. Pueden parecer que no es un cambio grande, pero hay un mundo de
+diferencia entre Java y .NET, las cosas se hacen muy diferente aunque sint\'acticamente sean muy similares.
+
+Tampoco hab\'ia usado nunca librer\'ias externas de gr\'aficos ni de distribuci\'on de ventanas. Ha sido
+un proyecto que ha presentado muchos retos, situaciones en las que nunca hab\'ia trabajado previamente,
+pero que creo que han sido resueltas de una manera bastante elegante y eficiente para ser
+la primera vez que se trabajan con ellas. Eso si, es muy mejorable todo. Aparte
+de no haber utilizado estas bibliotecas, est\'a el problema de que ninguna de las usadas
+ten\'ia una documentaci\'on completa, por lo que se ha tenido que utilizar mucho los foros,
+y realizar un poco prueba y error y navegando a trav\'es del propio c\'odigo
+fuente de estas herramientas para ver como realizaban las cosas.
+
 \subsection{Una historia de planificaciones y realidades}
 No voy a ser yo quien diga que una planificaci\'on temporal es una herramienta in\'util.
 Pero si voy a ser yo quien diga que trabajar en base a una planificaci\'on temporal es
@@ -127,25 +141,48 @@ Aun as\'i, puedo afirmar que las cosas han ido mejor de lo esperado, ya que este
 ten\'ia un alto grado de incertidumbre al no conocer ni la plataforma de desarrollo, ni las
 bibliotecas utilizadas, la mayor\'ia con documentaci\'on bastante deficiente.
 
-\begin{figure}
-\centering
-\includegraphics[width=0.7\linewidth]{./Figures/burndown.png}
-\caption{Burndown}
-\label{fig:burndown}
+En la Figura \ref{fig:burndown} se puede ver las tareas que me quedaban en cada iteraci\'on
+y cual era el progreso ideal para acabarlo a tiempo. Tal y como se puede observar,
+las dos l\'ineas no van ni mucho menos cerca.
+
+Finalmente, aunque con un mes de retraso, el proyecto finaliz\'o satisfactoriamente.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\linewidth]{./Figures/burndown.png}
+    \caption{Burndown}
+    \label{fig:burndown}
 \end{figure}
 
-En la Figura \ref{fig:burndown} se puede ver las tareas que me quedaban en cada iteraci\'on
-y cual era el progreso ideal para acabarlo a tiempo. Tal y como de puede observar,
-las dos l\'ineas no van ni mucho menos cerca, aunque finalmente la fecha de entrega sea muy similar.
-
 Esto sirve para ver que aunque en algunos sprints se vaya con ``retraso", no implica que el proyecto
-en general vaya con retraso.
+en general vaya con retraso. Porque a veces se va con retraso, y a veces se va adelantado.
 
-Hay que contar como han sido realmente las cosas: tiempos, distribucion del trabajo, 
-sensaciones que se han tenido al usar scrum etc. Por lo que habra que crear el
-burndown para mostrar como ha sido realmente el trabajo, que nuevas tareas han surgido...
+En la planificaci\'on inicial se hablaba de que se iban a dedicar 60h/mes al proyecto,
+pero finalmente no ha podido ser as\'i. Bien es verdad que ha habido situaciones en las
+que se ha podido dedicar mas de 60h/mes, pero otras veces apenas se ha podido dedicar
+unas escasas 20h/mes, por la carga de trabajo que hab\'ia durante las clases.
 
-Lo complicado que es trabajar en una tecnologia que apenas conoces, ademas utilizando
-librerias con escasa documentacion, en la que todo tu trabajo se basa en prueba y error
-y en mirar si otras personas han tenido antes el mismo problema que tu utilizando
-ademas la misma biblioteca.
+Tambi\'en me parece importante contar la experiencia que ha sido usar Scrum y Kanban. 
+Seguir la metodolog\'ia de Scrum no ha sido muy complicado. Es cierto que no se ha aplicado
+un Scrum de manual, ya que al ser un equipo de una persona, todas las tareas las realizaba la 
+misma persona. Pese a todo, ha sido una manera de trabajar bajo mi punto de vista m\'as agradable,
+ya que permite bastante flexibilidad. Y se ha hecho uso de esta flexibilidad en distintas ocasiones.
+Por ejemplo cuando se a\~nadi\'o la funcionalidad de poder guardar m\'as de un intervalo en el mismo
+XML, o cuando se a\~nadi\'o el \'arbol lateral con las observaciones y las propiedades.
+
+En cambio, Kanban ha sido un poco mas dif\'icil de dominar. Normalmente en todos los sitios se insta
+a que el trabajador no se quede quieto, ya que de esa manera deja de ser ``productivo". Por supuesto
+esa manera de pensar, aunque yo personalmente est\'e de acuerdo, ha pesado mucho y 
+muchas veces, cuando no se sab\'ia solventar un problema se tuvo la tentaci\'on de dejarlo de lado
+y empezar con otra. En un par de ocasiones si que se realiz\'o eso mismo, pero estaba justificado
+ya que requer\'ia la interacci\'on de una tercera persona. Tambi\'en fue complicado mantener
+ordenado y actualizado el tablero Kanban. Este instrumento no s\'olo se utiliz\'o para gestionar
+este TFG, si no para gestionar tambi\'en las tareas de clase. Finalmente se cogi\'o ritmo
+y se cogi\'o la costumbre de que antes de ponerse a trabajar actualizar tanto el diagrama burndown
+como el tablero Kanban. Ya que como se nos ense\~no en la asignatura de Sistemas de Gesti\'on Integradoss,
+aquello que no se puede medir no se puede mejorar.
+
+Y pese a coger esa costumbre sistem\'atica, fue imposible terminar el trabajo en el
+plazo planificado. Podr\'ia decirse que hay excusa a la hora de entregar con retraso,
+ya que una de las razones personales por las que eleg\'i este TFG era porque me
+obligaba a salir de mi zona de confort como se ha comentado con anterioridad.
