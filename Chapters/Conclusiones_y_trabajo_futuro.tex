@@ -1,68 +1,5 @@
 \chapter{Conclusiones y trabajo futuro}
 
-\section{Mejoras}
-Como todo software, siempre puede ser mejorado, y el presentado en este
-TFG no es ninguna excepci\'on. El software puede mejorarse sobre todo en tres niveles 
-bien diferenciados: Apariencia, dise\~no y funcionalidades, eso sin contar, por
-supuesto, los bugs que no han sido descubiertos en la fase de testing y que
-casi seguro surgir\'an durante su vida \'util en producci\'on.
-
-Los puntos clave en los que creo que este software puede mejorarse es sobre todo
-en dise\~no.
-
-Por ejemplo, pese a que lo he hecho lo mejor que he podido y que he sabido,
-seguro que en muchos puntos podr\'ia utilizarse SOLID de manera m\'as efectiva. Un
-ejemplo claro de esto que digo es el uso del patr\'on Singleton. Tal y como he detallado
-en el cap\'itulo de An\'alisis y dise\~no, muchos desarrolladores sostienen
-que no es buena idea utilizarlo, ya que las dependencias est\'an en el c\'odigo,
-no en las relaciones entre las clases. Una clase que utilice el patr\'on Singleton tiene
-un \'ambito global y utilizar objetos globales para
-no pasar la referencia de clase en clase est\'a considerado un 
-\emph{code smell \footnote{\url{https://en.wikipedia.org/wiki/Code_smell}}
-	 \footnote{Lista incompleta de smells: \url{http://blog.codinghorror.com/code-smells/}}}.
-
-No s\'olo es un \emph{code smell} si no que adem\'as incumple el principio de responsabilidad \'unica de SOLID.
-Y lo incumple porque la clase que utiliza el patr\'on tiene dos responsabilidades: Controlar que s\'olo exista
-una \'unica instancia y adem\'as su propia l\'ogica de negocio.
-
-Es por ello que una de las mejoras que propongo, es sustituir los Singleton por patrones
-Factory o patrones Builder para que sea esa clase externa la que limite la creaci\'on de instancias.
-De esta manera es m\'as escalable, ya que es muy probable que lo que hoy es \'unico, ma\~nana sea m\'ultiple.
-
-Otra cosa que no se ha realizado, y que se considera una buena pr\'actica de programaci\'on son
-las pruebas unitarias. Una vez implementadas podr\'ia utilizarse un enfoque m\'as del estilo
-de XP \footnote{eXtreme Programming: \url{http://www.extremeprogramming.org/}}, esto es, que todo gire
-en torno a las pruebas unitarias. Un bug no es un error, sino una prueba que no est\'a escrita. Y si esa 
-prueba que no estaba escrita falla, entonces es que hay un requisito que no se est\'a cumpliendo.
-
-Muy relacionado con las pruebas unitarias, es el TDD \footnote{Test Driven Development} en el cual no se programa
-nada hasta que no se hayan escrito todas las pruebas. Y un software se considera terminado cuando todas las pruebas
-validan. Obviamente hay que probar todas las situaciones posibles.
-
-Otro de los \'ambitos que tiene mucho margen de mejora es el procesamiento paralelo. Si que es cierto que se ha
-utilizado, pero las posibilidades que da son enormes, y no se ha utilizado m\'as que en dos casos
-muy concretos. Con unas semanas de estudio y con algo de refactorizado del c\'odigo estoy seguro
-que se le podr\'ia sacar mas partido a los m\'ultiples n\'ucleos de los ordenadores actuales.
-
-Por otro lado, como la aplicaci\'on aqu\'i presentada, en un futuro ser\'a integrada dentro de un sistema m\'as grande,
-requerir\'a de un poco de trabajo si no se quiere mantener como una aplicaci\'on independiente.
-Para ello, habr\'ia que convertir \texttt{MainWindow} en una subclase de \texttt{UserControl}, para
-que de esta manera pueda ser a\~nadido como una ventana acoplable al otro sistema.
-
-Por \'ultimo en cuanto a temas de dise\~no se refiere, yo propongo cambiar los temporizadores de la
-aplicaci\'on y utilizar los \emph{data bindings} que proporciona .NET. Para poder hacer esto
-habr\'ia que aprender bien a utilizar el patr\'on MVVM, que si bien se ha utilizado en este proyecto
-no se le ha exprimido todas las caracter\'isticas.
-
-Finalmente, est\'eticamente hablando, yo considero que es una aplicaci\'on intuitiva, pero se podr\'ia conseguir
-que todo fuera m\'as claro si los gr\'aficos entre observaciones no compartieran el mismo color,
-es decir, si la observaci\'on 1, tiene los gr\'aficos de color verde, que la observaci\'on 2 los tenga de color azul.
-Ya que as\'i, queda m\'as bonito al ojo, y es m\'as f\'acil no confundir a que observaci\'on pertenece cada propiedad.
-Tambi\'en hay otra mejora cosm\'etica, y es que cuando el usuario haga doble click sobre un elemento del \'arbol
-de propiedades y observaciones, si ese \'item ya estaba cargado, que cogiera el foco, en vez de no hacer nada, que 
-es lo que hace actualmente. Y tambi\'en ser\'ia interesante crear un di\'alogo de opciones, ya que ahora las
-opciones est\'an metidas dentro de un XML y hay que editarlo a mano.
-
 \section{Conclusiones}
 Para finalizar, en una memoria no puede faltar una secci\'on en la cual el desarrollador
 hace una reflexi\'on sesuda sobre el trabajo realizado, que es lo que se planific\'o
@@ -149,7 +86,7 @@ Finalmente, aunque con un mes de retraso, el proyecto finaliz\'o satisfactoriame
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.8\linewidth]{./Figures/burndown.png}
+    \includegraphics[width=1.0\linewidth]{./Figures/burndown.png}
     \caption{Burndown}
     \label{fig:burndown}
 \end{figure}
@@ -161,6 +98,8 @@ En la planificaci\'on inicial se hablaba de que se iban a dedicar 60h/mes al pro
 pero finalmente no ha podido ser as\'i. Bien es verdad que ha habido situaciones en las
 que se ha podido dedicar mas de 60h/mes, pero otras veces apenas se ha podido dedicar
 unas escasas 20h/mes, por la carga de trabajo que hab\'ia durante las clases.
+
+Es por ello que al final el proyecto se ha retrasado casi un mes, con un desfase de 20 horas.
 
 Tambi\'en me parece importante contar la experiencia que ha sido usar Scrum y Kanban. 
 Seguir la metodolog\'ia de Scrum no ha sido muy complicado. Es cierto que no se ha aplicado
@@ -186,3 +125,108 @@ Y pese a coger esa costumbre sistem\'atica, fue imposible terminar el trabajo en
 plazo planificado. Podr\'ia decirse que hay excusa a la hora de entregar con retraso,
 ya que una de las razones personales por las que eleg\'i este TFG era porque me
 obligaba a salir de mi zona de confort como se ha comentado con anterioridad.
+
+En cuanto a los riesgos, todos se hab\'ian previsto bien, pero finalmente se han cumplido dos
+de ellos, concretamente el riesgo de tener que deshechar una biblioteca que se hubiese elegido,
+y el de que se a\~nadan al software nuevos requisitos.
+
+Afortunadamente, con los nuevos requisitos, al haber hecho un dise\~no aceptable integrar
+los nuevos cambios no supuso un gran esfuerzo, por lo que tanto la prevenci\'on como
+el plan de contingencia funcionaron bien.
+
+Por el contrario, con las librer\'ias no hubo tanta suerte. Se realiz\'o el plan 
+de prevenci\'on, es decir, mirar con anterioridad si las bibliotecas cumpl\'ian con
+los requisitos para ser v\'alidos para este proyecto, pero aun as\'i fue imposible
+evitar el plan de contingencia. No se pudieron parchear las bibliotecas ya que son
+desarrollos muy grandes, por lo que hubo que deshechar al menos en dos ocasiones
+la biblioteca de mostrar los gr\'aficos, y concretamente esa es la causa
+del retraso sufrido en el proyecto.
+
+\section{Mejoras}
+Como todo software, siempre puede ser mejorado, y el presentado en este
+TFG no es ninguna excepci\'on. El software puede mejorarse sobre todo en tres niveles 
+bien diferenciados: Apariencia, dise\~no y funcionalidades, eso sin contar, por
+supuesto, los bugs que no han sido descubiertos en la fase de testing y que
+casi seguro surgir\'an durante su vida \'util en producci\'on.
+
+Los puntos clave en los que creo que este software puede mejorarse son sobre todo
+referidos al dise\~no.
+
+Por ejemplo, pese a que lo he hecho lo mejor que he podido y que he sabido,
+seguro que en muchos puntos podr\'ia utilizarse SOLID de manera m\'as efectiva. Un
+ejemplo claro de esto que digo es el uso del patr\'on Singleton. Tal y como he detallado
+en el cap\'itulo de An\'alisis y dise\~no, muchos desarrolladores sostienen
+que no es buena idea utilizarlo, ya que las dependencias est\'an en el c\'odigo,
+no en las relaciones entre las clases. Una clase que utilice el patr\'on Singleton tiene
+un \'ambito global y utilizar objetos globales para
+no pasar la referencia de clase en clase est\'a considerado un 
+\emph{code smell \footnote{\url{https://en.wikipedia.org/wiki/Code_smell}}
+    \footnote{Lista incompleta de smells: \url{http://blog.codinghorror.com/code-smells/}}}.
+
+No s\'olo es un \emph{code smell} si no que adem\'as incumple el principio de responsabilidad \'unica de SOLID.
+Y lo incumple porque la clase que utiliza el patr\'on tiene dos responsabilidades: Controlar que s\'olo exista
+una \'unica instancia y adem\'as su propia l\'ogica de negocio.
+
+Es por ello que una de las mejoras que propongo, es sustituir los Singleton por patrones
+Factory o patrones Builder para que sea esa clase externa la que limite la creaci\'on de instancias.
+De esta manera es m\'as escalable, ya que es muy probable que lo que hoy es \'unico, ma\~nana sea m\'ultiple.
+
+Otra cosa que no se ha realizado, y que se considera una buena pr\'actica de programaci\'on son
+las pruebas unitarias. Una vez implementadas podr\'ia utilizarse un enfoque m\'as del estilo
+de extreme programming (XP) \footnote{\url{http://www.extremeprogramming.org/}}, esto es, que todo gire
+en torno a las pruebas unitarias. Un bug no es un error, sino una prueba que no est\'a escrita. Y si esa 
+prueba que no estaba escrita falla, entonces es que hay un requisito que no se est\'a cumpliendo.
+
+Muy relacionado con las pruebas unitarias, es el Test Driven Development (TDD) en el cual no se programa
+nada hasta que no se hayan escrito todas las pruebas. Y un software se considera terminado cuando todas las pruebas
+validan. Obviamente hay que probar todas las situaciones posibles. Yo propongo utilizar \'esta metodolog\'ia ya
+que de as\'i en todo momento se sabe que es lo que funciona, que es lo que no funciona, y hasta que punto ha sido
+probado el software. Igual que lo que he dicho en el cap\'itulo de Verificaci\'on y evaluaci\'on, las pruebas
+no deben probar que los m\'etodos hagan lo que se supone, sino lo que hay que probar es el comportamiento de la
+aplicaci\'on.
+
+Otro de los \'ambitos que tiene mucho margen de mejora es el procesamiento paralelo. Si que es cierto que se ha
+utilizado, pero las posibilidades que da son enormes, y no se ha utilizado m\'as que en dos casos
+muy concretos. Con unas semanas de estudio y con algo de refactorizado del c\'odigo estoy seguro
+que se le podr\'ia sacar mas partido a los m\'ultiples n\'ucleos de los ordenadores actuales.
+
+Por otro lado, como la aplicaci\'on aqu\'i presentada, en un futuro ser\'a integrada dentro de un sistema m\'as grande,
+requerir\'a de un poco de trabajo si no se quiere mantener como una aplicaci\'on independiente.
+Para ello, habr\'ia que convertir \texttt{MainWindow} en una subclase de \texttt{UserControl}, para
+que de esta manera pueda ser a\~nadido como una ventana acoplable al otro sistema.
+
+Por \'ultimo en cuanto a temas de dise\~no se refiere, yo propongo cambiar los temporizadores de la
+aplicaci\'on y utilizar los \emph{data bindings} que proporciona .NET. Para poder hacer esto
+habr\'ia que aprender bien a utilizar el patr\'on MVVM, que si bien se ha utilizado en este proyecto
+no se le ha exprimido todas las caracter\'isticas.
+
+Finalmente, est\'eticamente hablando, yo considero que es una aplicaci\'on intuitiva, pero se podr\'ia conseguir
+que todo fuera m\'as claro si los gr\'aficos entre observaciones no compartieran el mismo color,
+es decir, si la observaci\'on 1, tiene los gr\'aficos de color verde, que la observaci\'on 2 los tenga de color azul.
+Ya que as\'i, queda m\'as bonito al ojo, y es m\'as f\'acil no confundir a que observaci\'on pertenece cada propiedad.
+Tambi\'en hay otra mejora cosm\'etica, y es que cuando el usuario haga doble click sobre un elemento del \'arbol
+de propiedades y observaciones, si ese \'item ya estaba cargado, que cogiera el foco, en vez de no hacer nada, que 
+es lo que hace actualmente. Y tambi\'en ser\'ia interesante crear un di\'alogo de opciones, ya que ahora las
+opciones est\'an metidas dentro de un XML y hay que editarlo a mano.
+
+Para finalizar, muchas de las propuestas requieren de mucho trabajo para apenas notar una gran mejor\'ia, como
+puede ser el procesamiento paralelo. En casos muy extremos puede tener una justificaci\'on, pero con
+la capacidad de c\'alculo de los microprocesadores actuales y la cantidad de datos que va a manejar este
+software tal vez no merezca la pena implementarlo. En cuanto a las cuestiones de dise\~no y buenas pr\'acticas
+como TDD yo, personalmente, si que intentar\'ia implementarlas, ya que si bien no van a conseguir que el software
+sea mas potente, si que va a conseguir que sa mas robusto y f\'acil de expandir. En cuanto a tiempo de desarrollo,
+cambiar los Singleton por los patrones Factory o Builder no deber\'ia llevar demasiado tiempo. En cambio, preparar
+las pruebas para TDD s\'i que llevar\'a bastante tiempo, ya que preparar todos los comportamientos posibles de un software
+es complicado y adem\'as lleva tiempo, pero es un tiempo bien invertido.
+
+En el cap\'itulo de An\'alisis y dise\~no se ha comentado que no se ha aplicado el principio de inversi\'on de dependencias, 
+aquel que dice que los objetos deben depender de abstracciones y no de concreciones. Ciertamente no habr\'ia que realizar 
+cambios en el c\'odigo fuente, solo habr\'ia que cambiar las cabeceras de los m\'etodos para sustituir los objetos concretos
+por objetos del tipo \emph{metodo1(Class<T> implements interface1, interface2 unParam)} y por supuesto implementar
+las interfaces. Igual que antes, no son cambios que obliguen a rehacer gran parte del software, sino que se puede
+trabajar sobre lo que ya est\'a hecho.
+
+En cambio, de todos los cambios, el que parece el mas tonto, que es el de sustituir los temporizadores por data bindings,
+es el \'unico que creo que no merece la pena tocarlo. Para poder utilizarlo habr\'ia que quitar todos los timers,
+establecer los contextos de datos en la construcci\'on y finalmente enlazar. Yo, particularmente no lo har\'ia porque
+va a requerir bastante tiempo para no mejorar ni en dise\~no ni en eficiencia.

@@ -75,6 +75,51 @@ Dicho bug, lanzaba una excepci\'on cuando un elemento ``acoplable", que ten\'ia 
 en una pesta\~na, al cambiar de pesta\~na fallaba. El bug ya estaba reportado, pero aun as\'i se le proporcion\'o
 al desarrollador m\'as informaci\'on sobre el bug \footnote{\url{https://avalondock.codeplex.com/discussions/429063}}.
 
+Antes de explicar como es la interfaz que se ha dise\~nado, primero hay que saber como trabaja internamente
+AvalonDock y como se usa para poder crear esas pesta\~nas y ventanas acoplables.
+
+Explicado de manera muy sencilla, AvalonDock se compone de cuatro partes principales: el \emph{DockingManager},
+el \emph{LayoutPanel}, el \emph{LayoutAnchorablePane}, y el \emph{LayoutAnchorable}.
+Tambi\'en tiene otros elementos pero no han sido usados en este proyecto.
+
+\paragraph{DockingManager:} Es el n\'ucleo de AvalonDock, donde todos los elementos WPF son a\~nadidos, necesario
+siempre para poder trabajar con AvalonDock.
+
+\paragraph{LayoutPanel:} Este elemento organiza todos los hijos, poniendo un separador entre ellos, establecido
+usando la propiedad \emph{Orientation}.
+
+\paragraph{LayoutAnchorablePane:} Estos elementos son la clave. Ya que es el panel que permite que los objetos
+\emph{LayoutAnchorable} pueden ser arrastrados, puestos en pesta\~nas, lado a lado etc.
+
+\paragraph{LayoutAnchorable:} Estos elementos siempre deben ir dentro de un \emph{Pane}, bien \emph{LayoutAnchorablePane}
+bien \emph{LayoutDocumentPane} que no ha sido explicado. Estos elementos son los que pueden reorganizarse como uno quiera,
+anclarse a un lado, poner que se oculten etc. Y dentro pueden tener aquello que se desee.
+
+Por tanto, para tener una instancia funcional de AvalonDock, tendremos que tener un \emph{DockingManager} y un
+\emph{LayoutRoot} dentro de ese dockingmanager. Y dentro de ese \emph{LayoutRoot} un \emph{LayoutAnchorablePane}.
+
+Una vez tenemos eso, a\~nadir a un \emph{LayoutAnchorable} un elemento es muy sencillo, no hay mas que a\~nadirlo dentro de la
+propiedad Content. Y para a\~nadir ese \emph{LayoutAnchorable} al \emph{LayoutAnchorablePane} hay que a\~nadirlo a la colecci\'on
+de hijos. En la Figura \ref{AnadirHijoAvalonDock} se puede ver un ejemplo de como se a\~nade un \emph{UC\_DataVisualizer} a 
+AvalonDock.
+
+\begin{figure}[h]
+    \begin{lstlisting}[tabsize=2, language=C, numbers=left, showspaces=false, breaklines=true]
+    public void addToAnchorablePane(UserControl objectToAdd, string Title)
+    {
+        UC_DataVisualizer datav = (UC_DataVisualizer)objectToAdd;
+        LayoutAnchorable doc = new LayoutAnchorable();
+        doc.Title = Title;
+        doc.Content = datav;
+        mainPanelChartContainer.Children.Add(doc);
+
+    }
+    \end{lstlisting}
+    \caption[Adici\'on de elemento a AvalonDock]{Adici\'on de elemento a AvalonDock}
+    \label{AnadirHijoAvalonDock}
+\end{figure}
+
+Una vez conocemos el funcionamiento de AvalonDock, podemos pasar a hablar de la interfaz dise\~nada.
 La estructura que se ha dise\~nado es un ``workbench", con un panel lateral en el que se pueden visualizar las observaciones
 y propiedades disponibles despu\'es de haber cargado un fichero XML. Cuando se hace doble click sobre un elemento
 de ese \'arbol de propiedades y observaciones, el software sabe si se ha pinchado en una propiedad o en una observaci\'on.
@@ -120,8 +165,45 @@ muy simple, pero desafortunadamente, no existe una manera sencilla de selecciona
 
 OxyPlot, por su parte, es un proyecto comunitario en constante desarrollo. Con decenas de ejemplos online en su web
 oficial fue muy sencillo crear un prototipo funcional con todos los gr\'aficos requeridos, con las leyendas en los ejes
-y los t\'itulos. Conseguir la selecci\'on de un rango conllev\'o algo m\'as de tiempo de desarrollo, pero finalmente 
-se consigui\'o.
+y los t\'itulos. Conseguir la selecci\'on de un rango conllev\'o algo m\'as de tiempo de desarrollo.
+
+Para crear un gr\'afico es tan f\'acil como crear en el XAML un elemento \emph{<oxy:PlotView />} que va a ser el 
+elemento a contener el gr\'afico. Despu\'es, \'unicamente hay que a\~nadir un \emph{PlotModel}, que es la
+clase que contiene tanto los puntos, el titulo del gr\'afico, los ejes etc. Lo mejor en estos casos es un ejemplo.
+En la Figura \ref{CreacionPlotModel}, se ve el m\'etodo de creaci\'on de un \emph{PlotModel} para un visualizador de datos
+discreto.
+
+\begin{figure}[h]
+    \begin{lstlisting}[tabsize=2, language=C, numbers=left, showspaces=false, breaklines=true]
+    protected override PlotModel createModel(List<DataPoint> points)
+    {
+        var plotModel = new PlotModel();
+        var functionSeries = new StairStepSeries();
+        var categoryAxis = new CategoryAxis();
+        
+        categoryAxis.Position = AxisPosition.Left;
+        categoryAxis.AxislineStyle = LineStyle.Solid;
+        categoryAxis.MinorStep = 1;
+        categoryAxis.TickStyle = TickStyle.None;
+        categoryAxis.Labels.AddRange(Labels);
+        plotModel.Axes.Add(categoryAxis);
+        functionSeries.Points.AddRange(points);
+        plotModel.Series.Add(functionSeries);
+        plotModel.Title = Title;
+        Points = functionSeries.Points;
+        return plotModel;
+    }
+    \end{lstlisting}
+    \caption[Creaci\'on PlotModel]{Creaci\'on PlotModel}
+    \label{CreacionPlotModel}
+\end{figure}
+
+La selecci\'on de un rango,se hace a\~nadiendo al \emph{PlotModel} un elemento \emph{RectangleAnnotation}.
+Para actualizar el valor de inicio y fin de ese rango, hay que suscribirse a tres eventos, ya que una selecci\'on
+de rango es la combinaci\'on de tres eventos: hacer click, arrastrar, y dejar de hacer click. Cuando se pincha,
+se establece el lugar de inicio de selecci\'on, y mientras se va moviendo el rat\'on, si el bot\'on izquierdo
+del rat\'on est\'a presionado, entonces se va actualizando el rango seleccionado. Y cuando se deja de pinchar,
+termina el proceso.
 
 En los primeros prototipos, en cada gr\'afico pod\'ia seleccionarse un rango diferente, pero era algo inconsistente, ya
 que cuando llegase la hora de guardar los rangos, ¿Cual se usar\'ia? Por lo que fue necesario continuar un poco con la 

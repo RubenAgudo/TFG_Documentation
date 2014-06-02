@@ -95,11 +95,14 @@ Es curioso que las principales cr\'{i}ticas provengan de su creador, Josh Gossma
 de UI es una exageraci\'{o}n y que si los enlaces de datos si no se gestionan correctamente puede llevar a un consumo excesivo de 
 memoria de la aplicaci\'{o}n \cite{MVVM:Criticism}
 
-\paragraph{Uso en el TFG}
+\paragraph{Uso en MIPS}
 El patr\'on MVVM no se ha utilizado tal y como fue concebido. Pero si se ha mantenido la separaci\'on entre
 las tres partes del software. Se han creado los ViewModels tal y como se recomienda en el patr\'on, pero no
-se han podido utilizar los enlaces de datos, ya que para poder usarlos hay que establecer un contexto de datos,
-y en este caso es din\'amico. Adem\'as se necesitan m\'as cosas que simplemente visualizar unos datos. Pero
+se han podido utilizar los enlaces de datos, ya que para poder usarlos hay que establecer un contexto de datos
+y en este caso es din\'amico. Un contexto de datos determina de d\'onde van a obtenerse los datos para
+los enlaces. Un contexto de datos puede ser el propio objeto, una lista, una consulta a una base de datos...
+Y en este caso, el contexto de datos al ser din\'amico no se pueden establecer f\'acilmente en el XAML, hay que hacerlo
+program\'aticamente. Adem\'as se necesitan m\'as cosas que simplemente visualizar unos datos. Pero
 pese a todo, el software se ha construido en torno a la idea del MVVM aunque no se haya podido aplicar exactamente
 como se recomienda.
 
@@ -130,7 +133,7 @@ Se ha decidido utilizar este patr\'{o}n por los siguientes motivos:
     se ver\'a lo \'{u}tiles que son los patrones.
 \end{enumerate}
 
-\paragraph{Uso en el TFG}
+\paragraph{Uso en MIPS}
 Este patr\'on ha sido muy \'util en todo aquello que tenga que ver con recorrer datos. Por ejemplo a la hora de
 sincronizar el rango seleccionado entre los visualizadores de datos. Adem\'as en C\# se realiza de una manera 
 muy sem\'antica.
@@ -221,7 +224,7 @@ toda su l\'ogica de negocio \cite{Singleton:EVIL}.
 Por otro lado, tambi\'en tiene como inconveniente una de las m\'aximas de la programaci\'on: Las variables globales
 son malas. Pues por si no fuera poco, un Singleton es una clase global \cite{Singleton:EVIL}.
 
-\paragraph{Uso en el TFG}
+\paragraph{Uso en MIPS}
 Pese a las cr\'iticas del p\'arrafo anterior, se ha utilizado en aquellos elementos que s\'olo iban a tener
 una instancia. Concretamente \emph{VideoActions}, \emph{GraphicActions} y \emph{XMLExport}. Al
 hacerlos accesibles desde todo el c\'odigo, se ha facilitado mucho la tarea al desarrollador para utilizarlo.
@@ -249,12 +252,12 @@ tanto tendr\'{i}amos que separar el m\'{o}dulo en dos: El que compila el informe
 Utilizando este principio volveremos nuestro c\'{o}digo m\'as robusto, ya que un cambio en una clase, no 
 deber\'{i}a afectar a la salida, y por tanto los siguientes m\'{o}dulos que se alimenten de esa clase.
 
-\paragraph{Uso en el TFG}
+\paragraph{Uso en MIPS}
 Si bien el principio de responsabilidad \'unica no es algo que se aplique de manera directa, es decir,
 no es si sucede A entonces haz B. Pero hay en algunas situaciones en las que se cumple este principio.
 Por ejemplo, en la clase \emph{UC\_ChartContainer} se manten\'ia un repositorio de Observaciones
 y adem\'as de propiedades. Se ve, que esta clase tiene dos razones de cambio. Una es por las propiedades
-(a\~nadir, borrar etc) como por las observaciones (a\~nadir, borrar etc). Al incumplirse el principio,
+(a\~nadir, borrar etc) y la otra por las observaciones (a\~nadir, borrar etc). Al incumplirse el principio,
 la clase ha de separarse en dos. En un repositorio de propiedades, y en un repositorio de observaciones.
 
 En este caso concreto, no se separ\'o en dos clases, sino que la colecci\'on de propiedades, pas\'o a ser
@@ -265,7 +268,7 @@ El principio abierto / cerrado \cite{SOLID:OCP} implica que una clase est\'{a} a
 modificaci\'{o}n. Ya que un cambio en el
 funcionamiento de una clase har\'{i}a que se tambalease la estabilidad de nuestro software.
 
-\paragraph{Uso en el TFG}
+\paragraph{Uso en MIPS}
 Ciertamente este principio no se ha utilizado, ya que est\'a mas pensado para ser usado en
 c\'odigo que ya est\'a en producci\'on, no mientras el software est\'a en desarrollo.
 
@@ -277,7 +280,7 @@ debe poder sustituir a su supertipo sin que haya un cambio de comportamiento.
 M\'{a}s formalmente: Si \textbf{S} es un subtipo de \textbf{T} entonces \textbf{T} puede sustituirse por \textbf{S} y 
 conservar su exactitud, tarea que realiza etc.
 
-\paragraph{Uso en el TFG}
+\paragraph{Uso en MIPS}
 Este principio se cumple claramente, ya que para incumplirlo habr\'ia que sobreescribir alg\'un m\'etodo de la superclase
 y que funcionase diferente de como funciona en la superclase. 
 
@@ -294,7 +297,7 @@ que una gran interfaz que contenga todo \cite{SOLID:ISP}.
 
 De esta manera evitamos que haya partes del software que dependan de m\'{e}todos que no influyen en esa clase.
 
-\paragraph{Uso en el TFG}
+\paragraph{Uso en MIPS}
 Al s\'olo tener una interfaz propia, y que adem\'as tiene un \'unico m\'etodo, se cumple siempre, ya que
 cada vez que una clase implemente esa interfaz es porque se requiere ese m\'etodo, si no, no tendr\'ia sentido
 implementarla.
@@ -306,7 +309,7 @@ El principio de Inversi\'{o}n de dependencia \cite{SOLID:DIP} dice que:
     \item Las abstracciones no deben depender en los detalles. Los detalles deben depender de las abstracciones.
 \end{enumerate}
 
-\paragraph{Uso en el TFG}
+\paragraph{Uso en MIPS}
 Este principio es el \'unico que no se cumple. Ya que los m\'odulos de alto nivel, como por ejemplo
 \emph{UC\_ChartContainer} no depende de abstracciones, sino de tipos concretos (\emph{UC\_DataVisualizer}).
 Para arreglarlo, habr\'ia que definir una serie de interfaces que describan los m\'etodos necesarios que 
