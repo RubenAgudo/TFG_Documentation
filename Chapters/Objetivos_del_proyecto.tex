@@ -13,9 +13,8 @@ sistemas interactivos (por ejemplo, con un dispositivo Kinect) y
 visualizarlas gr\'aficamente. Esas observaciones y propiedades se cargar\'an en un panel lateral con forma de \'arbol
 y podr\'an seleccionarse para ser visualizadas. Los gr\'aficos pueden ser reorganizados como el
 usuario quiera, para verlos al mismo tiempo.
-
-La herramienta ha de permitir la visualizaci\'on de esas observaciones y propiedades. 
-Tambi\'en permitir\'a la reproducci\'on de v\'ideos (si est\'an disponible).
+ 
+Tambi\'en permitir\'a la reproducci\'on de v\'ideos si est\'an disponibles.
 El fin de la herramienta es
 facilitar al usuario experto la identificaci\'on de intervalos donde se producen los
 pasos y situaciones para posteriormente extraer de manera semiautom\'atica las relaciones entre las observaciones y
@@ -64,14 +63,15 @@ Es fundamental entre sprint y sprint que el valor del producto haya aumentado. L
 avance del propio proyecto. Se podr\'ia avanzar mucho en el dise\~no del software, pero si eso es algo que el cliente no 
 puede ver, se estar\'a fallando en el objetivo de ser \'agiles, ya que no le aporta nada.
 
-Por otro lado, si se comete alg\'un error ser\'a muy sencillo corregirlo ya que si los sprints son de dos semanas por ejemplo, no 
+Por otro lado, si se comete alg\'un error ser\'a muy sencillo corregirlo ya que si los sprints son, por ejemplo, de dos semanas, no 
 se habr\'a perdido apenas tiempo. Y adem\'as para el cliente los entregables ser\'an predecibles en el tiempo, 
-y se podr\'a estimar mejor cuando una funcionalidad presente en el \emph{backlog}
+y se podr\'a estimar mejor cu\'ando una funcionalidad presente en el \emph{backlog}
 ser\'a introducida en el software. Esto \'ultimo es cierto porque se sabe la cantidad media de requisitos que se
 entregan en cada sprint, por lo que se puede realizar una predicci\'on r\'apida y razonablemente precisa.
 
-Scrum es tambi\'en muy interesante, y se posiciona como una alternativa muy potente frente a 
-COCOMO o waterfall, porque en la creaci\'on de software hay un componente de incertidumbre muy 
+Scrum es tambi\'en muy interesante, y se posiciona como una alternativa muy potente frente al
+desarrollo en cascada, porque en la creaci\'on 
+de software hay un componente de incertidumbre muy 
 grande. No se sabe c\'omo, ni cu\'ando pueden cambiar los requisitos de un 
 software. Por ello, toman de nuevo importancia los sprints. 
 
@@ -109,7 +109,7 @@ que se compone este TFG.
 \end{figure}
 Tal y como se ve en la Figura \ref{fig:Alcance} cada una de las tareas de los grupos
 ``An\'alisis inicial", ``Entrevista cliente" \ y ``Dise\~no e implementaci\'on" \ van a realizarse en cada uno de los sprints.
-Para cada tarea se ha realizado una peque\~na tabla en la que se detalla que se va a hacer,
+Para cada tarea se ha realizado una peque\~na tabla en la que se detalla qu\'e se va a hacer,
 la duraci\'on y esfuerzo aproximados, as\'i como otros datos de inter\'es.
 
 \subsection{Inicio proyecto}
@@ -367,6 +367,9 @@ Lo que se hace normalmente, es elegir lo que se va a hacer en el primer sprint, 
 que no se termina, no se elige que se va a hacer en el segundo, aumentando la flexibilidad a 
 los cambios y los imprevistos.
 
+Por lo tanto, se ha detallado una planificaci\'on de los sprints como algo orientativo,
+nadie garantiza que lo aqu\'i descrito vaya a ser igual a lo que se va a realizar.
+
 \subsection{Mi planificaci\'{o}n}
 Cada sprint tiene una duraci\'{o}n de un mes, empezando desde Octubre del 2013. 
 El esfuerzo en horas que se va a 
@@ -399,7 +402,7 @@ Inicio del proyecto, establecer prioridades, documentarse etc. Lo que compone es
 \end{itemize} 
 
 \subsubsection{Sprint 2}
-Una vez configurados ordenadores y elegidas las bibliotecas necesarias:
+Una vez configurados los ordenadores y elegidas las bibliotecas necesarias:
 
 \begin{itemize}
     \item Reunirse con el cliente para realizar una captura de requisitos.
@@ -419,11 +422,11 @@ El siguiente paso consiste en poder cargar v\'{i}deos, tantos como se quieran, d
         \item Cargar distintos v\'{i}deos desde el sistema de archivos.
         \item Cada v\'{i}deo debe disponer de sus controles individuales. Play, pausa, stop y 
         avanzar de tantos segundos en tantos 
-        segundos, poder silenciarlo, y que sea configurable por el usuario, mediante un archivo 
-        de configuraci\'{o}n.
+        segundos, que esa funcionalidad sea configurable por el usuario mediante un archivo
+        de configuraci\'on y poder silenciar el v\'ideo.
         \item El contenedor de v\'{i}deos debe disponer de unos controles generales que ofrezcan 
         id\'enticas funcionalidades
-        que el punto anterior.
+        que las del punto anterior.
         \item Debe permitir establecer para cada v\'{i}deo el momento de inicio del v\'{i}deo 
         manualmente para mantener la 
         sincronizaci\'{o}n.
@@ -451,7 +454,7 @@ Ya tenemos todo preparado para funcionar, ahora hay que poder guardar datos.
 \begin{itemize}
     \item Elegir el m\'etodo de guardado de los datos.
     \item Configurar la base de datos (si aplica).
-    \item Crear el diagrama Entidad-Relaci\'{o}n que representara el modo de guardado de datos 
+    \item Crear el diagrama Entidad-Relaci\'{o}n que representa el modo de guardado de datos 
     (si aplica).
     \item A\~{n}adir al c\'{o}digo existente las llamadas necesarias a la base de datos (si 
     aplica).
@@ -467,7 +470,7 @@ Hay que poder cargar datos desde un origen de datos.
 \begin{itemize}
     \item Crear la clase para interactuar con el origen de datos.
     \item Hablar con el cliente para saber como est\'{a}n guardados los datos.
-    \item Utilizando los datos de origen cargar la aplicaci\'{o}n con esos datos.
+    \item Utilizando los datos de origen cargar la aplicaci\'{o}n.
 \end{itemize}
 
 \subsubsection{Sprint 7}
@@ -482,8 +485,8 @@ Tambi\'en se finalizar\'a la documentaci\'on y memoria para dejarla para ser pre
 Este sprint final es para dar por cerrado el proyecto.
 
 \section{Herramientas}
-El TFG al requerir de una cierta compatibilidad con el proyecto
-existente, no se ha tenido libertad total en 
+El software MIPS al requerir de una cierta compatibilidad con el proyecto
+ULISES, no se ha tenido libertad total en la 
 elecci\'on de herramientas. 
 
 Las herramientas que se han utilizado para llevar a cabo este proyecto han sido:
@@ -514,8 +517,8 @@ Las herramientas que se han utilizado para llevar a cabo este proyecto han sido:
     
     Fundamental en los proyectos que se basen en metodologías ágiles. Git es un software de 
     gestión de control de versiones 
-    distribuido, esto es, que cada desarrollador dispone de una copia completa del repositorio, 
-    desarrollado por Linus Torvalds y 
+    distribuido, esto es, que cada desarrollador dispone de una copia completa del repositorio. 
+    Desarrollado por Linus Torvalds y 
     Junio Hamano en 2005 y similar a SVN.
     
     GitHub es un repositorio online, gratuito para proyectos Open Source desarrollado y mantenido 
@@ -859,8 +862,8 @@ Amortizacion \ acumulada (2014) = 0 + 3559.4775 = 3559.4775 €
 \end{center} 
 
 \subsubsection{Resto del software}
-El resto del software utilizado es gratuito y de c\'odigo abierto, por lo que no contiene
-ning\'un tipo de gasto.
+El resto del software utilizado es gratuito y de c\'odigo abierto, por lo que no suponen
+un gasto.
 
 \subsection{Otros gastos}
 Los gastos comunes del proyecto (Agua, Internet, Luz, Gas) supondr\'an un 5\% del coste

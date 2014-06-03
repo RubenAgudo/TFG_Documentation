@@ -16,7 +16,7 @@ Es decir, en cada gr\'{a}fico habr\'{a} una l\'{i}nea de progreso para que sea f
 de simulaci\'{o}n estamos \footnote{Un ciclo de simulaci\'{o}n es la unidad de tiempo elegida para la captura de datos, no
     necesariamente es un segundo.}.
 
-Una vez hemos determinado cual es el problema ha resolver, se hace necesario tomar ciertas decisiones.
+Una vez hemos determinado cual es el problema a resolver, se hace necesario tomar ciertas decisiones.
 Desde un principio se sab\'ia que hab\'ia que programar en un entorno Windows, utilizando Visual Studio 2013.
 La raz\'on de esta decisi\'on fue que el proyecto actual est\'a desarrollado utilizando Windows Forms, y el 
 director del proyecto coment\'o que exist\'ia una intenci\'on de portarlo a WPF.
@@ -91,8 +91,8 @@ usando la propiedad \emph{Orientation}.
 \paragraph{LayoutAnchorablePane:} Estos elementos son la clave. Ya que es el panel que permite que los objetos
 \emph{LayoutAnchorable} pueden ser arrastrados, puestos en pesta\~nas, lado a lado etc.
 
-\paragraph{LayoutAnchorable:} Estos elementos siempre deben ir dentro de un \emph{Pane}, bien \emph{LayoutAnchorablePane}
-bien \emph{LayoutDocumentPane} que no ha sido explicado. Estos elementos son los que pueden reorganizarse como uno quiera,
+\paragraph{LayoutAnchorable:} Estos elementos siempre deben ir dentro de un \emph{Pane}, bien en un \emph{LayoutAnchorablePane}
+bien en un \emph{LayoutDocumentPane} que no ha sido explicado. Estos elementos son los que pueden reorganizarse como uno quiera,
 anclarse a un lado, poner que se oculten etc. Y dentro pueden tener aquello que se desee.
 
 Por tanto, para tener una instancia funcional de AvalonDock, tendremos que tener un \emph{DockingManager} y un
@@ -123,7 +123,8 @@ Una vez conocemos el funcionamiento de AvalonDock, podemos pasar a hablar de la 
 La estructura que se ha dise\~nado es un ``workbench", con un panel lateral en el que se pueden visualizar las observaciones
 y propiedades disponibles despu\'es de haber cargado un fichero XML. Cuando se hace doble click sobre un elemento
 de ese \'arbol de propiedades y observaciones, el software sabe si se ha pinchado en una propiedad o en una observaci\'on.
-Si se quiere saber que sucede cuando se pincha en cada uno de ellos, todo esto est\'a mejor explicado en la secci\'on de
+Si se quiere saber que sucede cuando se pincha en cada uno de ellos, todo esto est\'a mejor explicado en anexo 
+\ref{chap:CasosDeUsoExt} de
 Captura de requisitos, en los casos de uso extendidos.
 
 Cuando se cargan los datos que se desean, es decir, que se visualizan, como puede verse en la
@@ -141,7 +142,7 @@ para evitar confusiones.
 \end{figure}
 
 Despu\'es de escoger el tipo de organizaci\'on de ventanas, era necesario elegir como iban a mostrarse los gr\'aficos en pantalla.
-Para el sistema de gr\'aficos no hubo problemas a la hora de encontrar distintas librer\'ias, pero si que fue un 
+Para el sistema de gr\'aficos no hubo problemas a la hora de encontrar distintas librer\'ias, pero s\'i que fue un 
 problema encontrar uno que cumpliera las siguientes caracter\'isticas.
 
 \begin{itemize}
@@ -168,7 +169,7 @@ oficial fue muy sencillo crear un prototipo funcional con todos los gr\'aficos r
 y los t\'itulos. Conseguir la selecci\'on de un rango conllev\'o algo m\'as de tiempo de desarrollo.
 
 Para crear un gr\'afico es tan f\'acil como crear en el XAML un elemento \emph{<oxy:PlotView />} que va a ser el 
-elemento a contener el gr\'afico. Despu\'es, \'unicamente hay que a\~nadir un \emph{PlotModel}, que es la
+elemento que va a contener el gr\'afico. Despu\'es, \'unicamente hay que a\~nadir un \emph{PlotModel}, que es la
 clase que contiene tanto los puntos, el titulo del gr\'afico, los ejes etc. Lo mejor en estos casos es un ejemplo.
 En la Figura \ref{CreacionPlotModel}, se ve el m\'etodo de creaci\'on de un \emph{PlotModel} para un visualizador de datos
 discreto.
@@ -198,7 +199,7 @@ discreto.
     \label{CreacionPlotModel}
 \end{figure}
 
-La selecci\'on de un rango,se hace a\~nadiendo al \emph{PlotModel} un elemento \emph{RectangleAnnotation}.
+La selecci\'on de un rango, se hace a\~nadiendo al \emph{PlotModel} un elemento \emph{RectangleAnnotation}.
 Para actualizar el valor de inicio y fin de ese rango, hay que suscribirse a tres eventos, ya que una selecci\'on
 de rango es la combinaci\'on de tres eventos: hacer click, arrastrar, y dejar de hacer click. Cuando se pincha,
 se establece el lugar de inicio de selecci\'on, y mientras se va moviendo el rat\'on, si el bot\'on izquierdo
@@ -214,13 +215,18 @@ La primera aproximaci\'on, y posiblemente la peor de todas, era realizar un \emp
 preguntar a cada elemento si ha cambiado, y si alguno lo ha hecho, utilizar ese valor para poner ese rango en los dem\'as 
 gr\'aficos. Este enfoque, tiene diversos problemas, pese a que los gr\'aficos est\'an guardados en \'arboles rojo-negro
 \footnote{\url{https://www.cs.auckland.ac.nz/~jmor159/PLDS210/red\_black.html}}
-\footnote{\url{https://www.cs.princeton.edu/courses/archive/fall08/cos226/lectures/10BalancedTrees-2x2.pdf}},
+\footnote{\url{https://www.cs.princeton.edu/courses/archive/fall08/cos226/lectures/10BalancedTrees-2x2.pdf}}, que son
+unos \'arboles binarios autobalanceables,
 no tiene sentido recorrer el \'arbol constantemente, y si se encuentra un elemento, habr\'ia que recorrer cada observaci\'on cargada,
 y para cada observaci\'on todas las propiedades cargadas actualmente. Eso,
 conllevar\'ia un coste de O(2*n*m) siendo ``n" \ el n\'umero de observaciones cargadas y ``m" \ el n\'umero de propiedades.
 
 La otra soluci\'on, es implementar la interfaz \emph{INotifyPropertyChanged}. Utilizando esta interfaz, se expone un 
-nuevo evento, llamado \emph{PropertyChanged} al que otros objetos se pueden suscribir para estar a la escucha.
+nuevo evento, llamado \emph{PropertyChanged} al que otros objetos se pueden suscribir para estar a la escucha. Recu\'erdese,
+que los elementos est\'an dispuestos en forma de \'arbol, de la pantalla principal cuelgan las observaciones y el
+contenedor de v\'ideos,
+y de cada observaci\'on sus hijos son los gr\'aficos que representan las propiedades, y del contenedor de v\'ideos, sus hijos
+son los propios v\'ideos. Para mayor detalle ver el cap\'itulo de An\'alisis y dise\~no.
 
 De esta manera, cada vez que se a\~nada un nuevo gr\'afico, el contenedor de gr\'aficos se suscribe a ese evento para todos
 sus hijos. De esta manera, cuando el rango seleccionado cambie, ser\'a ese hijo el que notifique al padre, que iniciar\'a

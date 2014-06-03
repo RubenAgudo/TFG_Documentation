@@ -9,7 +9,7 @@
 %módulos/paquetes del software desarrollado, etc.
 
 \section{An\'{a}lisis}
-Los datos que ha de guarda el software estar\'an en un XML. El XML se divide en:
+Los datos que ha de guardar el software estar\'an en un XML. El XML se divide en:
 \begin{itemize}
 	\item Observaciones
 	\item Propiedades
@@ -28,8 +28,8 @@ mismo tiempo se sabe que est\'an relacionadas, por lo que es necesario que los r
 sincronizados.
 
 A la hora de guardar, tampoco podr\'an guardarse distintos rangos que se solapen con los
-previamente creados para un mismo paso o situaci\'on
-. Ya que en un mismo instante de tiempo, no pueden estar sucediendo dos cosas al mismo tiempo.
+previamente creados para un mismo paso o situaci\'on. Ya que en un mismo instante de 
+tiempo, no pueden estar sucediendo dos cosas al mismo tiempo en el mismo paso o situaci\'on.
 Por ejemplo, un brazo no puede estar levant\'andose, y baj\'andose al mismo tiempo.
 
 Gr\'aficamente las clases se dividen de dos maneras: Contenedores y clases ``hoja".
@@ -96,12 +96,13 @@ de UI es una exageraci\'{o}n y que si los enlaces de datos si no se gestionan co
 memoria de la aplicaci\'{o}n \cite{MVVM:Criticism}
 
 \paragraph{Uso en MIPS}
-El patr\'on MVVM no se ha utilizado tal y como fue concebido. Pero si se ha mantenido la separaci\'on entre
+El patr\'on MVVM no se ha utilizado tal y como fue concebido. Pero s\'i se ha mantenido la separaci\'on entre
 las tres partes del software. Se han creado los ViewModels tal y como se recomienda en el patr\'on, pero no
 se han podido utilizar los enlaces de datos, ya que para poder usarlos hay que establecer un contexto de datos
 y en este caso es din\'amico. Un contexto de datos determina de d\'onde van a obtenerse los datos para
 los enlaces. Un contexto de datos puede ser el propio objeto, una lista, una consulta a una base de datos...
-Y en este caso, el contexto de datos al ser din\'amico no se pueden establecer f\'acilmente en el XAML, hay que hacerlo
+Y en este caso, el contexto de datos al ser din\'amico los enlaces de datos no se pueden 
+establecer f\'acilmente en el XAML, hay que hacerlo
 program\'aticamente. Adem\'as se necesitan m\'as cosas que simplemente visualizar unos datos. Pero
 pese a todo, el software se ha construido en torno a la idea del MVVM aunque no se haya podido aplicar exactamente
 como se recomienda.
@@ -139,7 +140,7 @@ sincronizar el rango seleccionado entre los visualizadores de datos. Adem\'as en
 muy sem\'antica.
 
 \begin{lstlisting}[language=C, numbers=left, showspaces=false, breaklines=true, tabsize=2]
-	public partial class UC_ChartCOntainer : UserControl 
+	public partial class UC_ChartContainer : UserControl 
 	{
 		private SortedSet<UC_DataVisualizer> datavisualizers;
 		
@@ -218,14 +219,14 @@ Una inicializaci\'on ansiosa se realiza de la siguiente manera:
 
 \paragraph{Cr\'iticas}Pese a haberse utilizado el patr\'on Singleton, muchos desarrolladores desaconsejan su uso, ya que implican
 una violaci\'on del Principio de Responsabilidad \'Unica del que se hablar\'a m\'as adelante. Y lo viola porque
-la clase Singleton tendr\'ia dos responsabilidades, controlar que s\'olo exista una \'unica instancia y adem\'as
+la clase Singleton tendr\'ia dos responsabilidades, controlar que solo exista una \'unica instancia y adem\'as
 toda su l\'ogica de negocio \cite{Singleton:EVIL}.
 
 Por otro lado, tambi\'en tiene como inconveniente una de las m\'aximas de la programaci\'on: Las variables globales
 son malas. Pues por si no fuera poco, un Singleton es una clase global \cite{Singleton:EVIL}.
 
 \paragraph{Uso en MIPS}
-Pese a las cr\'iticas del p\'arrafo anterior, se ha utilizado en aquellos elementos que s\'olo iban a tener
+Pese a las cr\'iticas del p\'arrafo anterior, se ha utilizado en aquellos elementos que solo iban a tener
 una instancia. Concretamente \emph{VideoActions}, \emph{GraphicActions} y \emph{XMLExport}. Al
 hacerlos accesibles desde todo el c\'odigo, se ha facilitado mucho la tarea al desarrollador para utilizarlo.
 
@@ -269,7 +270,7 @@ modificaci\'{o}n. Ya que un cambio en el
 funcionamiento de una clase har\'{i}a que se tambalease la estabilidad de nuestro software.
 
 \paragraph{Uso en MIPS}
-Ciertamente este principio no se ha utilizado, ya que est\'a mas pensado para ser usado en
+Ciertamente este principio no se ha utilizado, ya que est\'a m\'as pensado para ser usado en
 c\'odigo que ya est\'a en producci\'on, no mientras el software est\'a en desarrollo.
 
 \subsubsection{Liskov's substitution principle}
@@ -298,7 +299,7 @@ que una gran interfaz que contenga todo \cite{SOLID:ISP}.
 De esta manera evitamos que haya partes del software que dependan de m\'{e}todos que no influyen en esa clase.
 
 \paragraph{Uso en MIPS}
-Al s\'olo tener una interfaz propia, y que adem\'as tiene un \'unico m\'etodo, se cumple siempre, ya que
+Al solo tener una interfaz propia, y que adem\'as tiene un \'unico m\'etodo, se cumple siempre, ya que
 cada vez que una clase implemente esa interfaz es porque se requiere ese m\'etodo, si no, no tendr\'ia sentido
 implementarla.
 
@@ -323,7 +324,7 @@ objetos que implementen esas interfaces.
 Otra de las cosas en las que incide mucho Martin es que evitemos realizar comentarios en el c\'odigo,
 ya que el hecho de realizar un cambio en el c\'odigo no garantiza que vayamos a cambiar el comentario, y 
 puede llevar a errores futuros o a inconsistencias en la documentaci\'on. Adem\'as, todo el mundo sabe que programar
-es un arte \cite{Art:Programming}, y es por ello que el c\'odigo del TFG tiene los comentarios justos y necesarios
+es un arte \cite{Art:Programming}, y es por ello que el c\'odigo de MIPS tiene los comentarios justos y necesarios
 para hacer entender los m\'etodos que no se entienden o que tienen una l\'ogica ligeramente mas compleja de seguir.
 
 \subsection{Diagrama de clases}
@@ -340,7 +341,7 @@ en el propio documento. En el anexo \ref{chap:DiagramaDeClasesCompleto} puede en
 \subsubsection{AbstractDataVisualizerViewModel}
 Clase abstracta que describe e implementa todos los m\'etodos y propiedades que han de tener todos los ViewModels. Es decir,
 define todo aquello que podr\'a ser cargado por un \emph{UC\_DataVisualizer}. Esta clase expone el m\'etodo
-\emph{private PlotModel createModel(List<DataPoint> points)}
+\emph{potected abstract PlotModel createModel(List<DataPoint> points)}
 que todas sus clases han de implementar.
 
 \subsubsection{ContinousDataVisualizerViewModel}
@@ -348,7 +349,7 @@ Subclase de \emph{AbstractDataVisualizerViewModel} que se especializa en tratar 
 
 \subsubsection{DiscreteDataVisualizerVIewModel}
 Subclase de \emph{AbstractDataVisualizerViewModel} que se especializa en tratar los datos discretos.
-Esta clase requiere de datos adicionales, los elementos del eje de ordenadas.
+Esta clase requiere de datos adicionales, concretamente los elementos del eje de ordenadas.
 
 \subsubsection{XMLValidation}
 Clase abstracta que sirve como base a todas aquellas clases que requieran de validar un XML contra un XSD.
@@ -377,7 +378,7 @@ para controlar su reproducci\'on.
 Control de usuario derivado de \emph{UserControl} y que implementa la interfaz
 \emph{IContainer}. Esta clase contiene la interfaz gr\'afica y los m\'etodos requeridos para gestionar
 los \emph{UC\_DataVisualizer}. Representa una observaci\'on que dentro tiene sus propiedades.
-Tambi\'en es importante a\~nadir que es \'esta clase la que se suscribe al evento que notifica
+Tambi\'en es importante a\~nadir que es esta clase la que se suscribe al evento que notifica
 que el rango seleccionado ha cambiado, para poder inicial el proceso de sincronizaci\'on.
 
 \subsubsection{UC\_DataVisualizer}
@@ -386,7 +387,8 @@ principales consiste en notificar a su padre (un \emph{UC\_ChartContainer}) de q
 
 Esta clase extiende a \emph{UserControl} e implementa las interfaces \emph{INotifyPropertyChanged},
 \emph{IEquatable<T>} e \emph{IComparable<T>}. Es necesario implementar
-esas interfaces para que el \'arbol rojo negro funcione correctamente, ya que requiere ordenar las instancias
+esas interfaces para que el \'arbol d\'onde se almacenan los objetos funcione correctamente, ya que 
+requiere ordenar las instancias
 de alguna manera. 
 
 \subsubsection{UC\_VideoPlayer}
