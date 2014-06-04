@@ -17,6 +17,9 @@ volver al cap\'itulo de Captura de requisitos.
 	\caption[Diagrama de casos de uso]{Diagrama de casos de uso}
 \end{figure}
 
+
+\cleardoublepage
+
 \section{Cargar XML}
 
 \begin{table}[H]
@@ -70,6 +73,7 @@ volver al cap\'itulo de Captura de requisitos.
 	\end{center}
 \end{table}
 
+
 \section{A\~nadir v\'ideo}
 \begin{table}[H]
 	\begin{center}
@@ -114,13 +118,14 @@ volver al cap\'itulo de Captura de requisitos.
 	\end{center}
 \end{table}
 
+
 \section{Cargar propiedad}
 \begin{table}[H]
 	\begin{center}
 		\rowcolors{2}{lightgray}{} %\rowcolors{<starting row index>}{<odd row color>}{<even row color>}
 		\begin{tabular}{|l*{1}{p{10cm}}|}
 			
-			\multicolumn{2}{c}{\includegraphics[width=0.6\linewidth]{./Figures/CargarPropiedad.png}} \\
+			\multicolumn{2}{c}{\includegraphics[width=0.5\linewidth]{./Figures/CargarPropiedad.png}} \\
 			\hline
 		    Nombre                     & Cargar propiedad \\
 		    Descripci\'on              & Carga una propiedad en el contenedor de gr\'aficos
@@ -134,17 +139,14 @@ volver al cap\'itulo de Captura de requisitos.
 		    Flujo de eventos           & \begin{enumerate}
 		    								\item El usuario hace doble click en alg\'un elemento
 		    									  del \'arbol de observaciones y propiedades.
+		   									\item Carga el contenedor si no estaba creado
 		    								\item \textbf{Si el elemento es una observaci\'on}
 		    								\begin{enumerate}
-		    									\item Carga el contenedor si no estaba creado
 		    									\item A\~nade todos sus hijos no cargados al
 		    										  contenedor.
 		    								\end{enumerate}
 		    								\item \textbf{Si el elemento es una propiedad}
 		    								\begin{enumerate}
-			    								\item Crea el contenedor de la observaci\'on
-			    									  a la que pertenece la propiedad seleccionada
-			    									  si no estaba cargado.
 			    								\item A\~nade la propiedad si no estaba cargada
 			    									  previamente.
 			    									  
@@ -162,15 +164,13 @@ volver al cap\'itulo de Captura de requisitos.
 	\end{center}
 \end{table}
 
-
 \section{Seleccionar rango}
-
 \begin{table}[H]
 	\begin{center}
 		\rowcolors{2}{lightgray}{} %\rowcolors{<starting row index>}{<odd row color>}{<even row color>}
 		\begin{tabular}{|l*{1}{p{10cm}}|}
 			
-			\multicolumn{2}{c}{\includegraphics[width=1.0\linewidth]{./Figures/SeleccionarRango.png}} \\
+			\multicolumn{2}{c}{\includegraphics[width=0.9\linewidth]{./Figures/SeleccionarRango.png}} \\
 			\hline
 		    Nombre                     & Seleccionar rango \\
 		    Descripci\'on              & Al pinchar y mover el rat\'on sobre un visualizador de datos,
@@ -202,7 +202,6 @@ volver al cap\'itulo de Captura de requisitos.
 	\end{center}
 \end{table}
 
-
 \section{Cerrar observaci\'on}
 \begin{table}[H]
 	\begin{center}
@@ -233,7 +232,6 @@ volver al cap\'itulo de Captura de requisitos.
 	\label{Cerrar observacion}
 	\end{center}
 \end{table}
-
 
 \section{Cerrar propiedad}
 \begin{table}[H]
@@ -311,7 +309,6 @@ volver al cap\'itulo de Captura de requisitos.
 	\end{center}
 \end{table}
 
-
 \section{Guardar paso}
 \begin{table}[H]
 	\begin{center}
@@ -355,7 +352,6 @@ volver al cap\'itulo de Captura de requisitos.
 	\label{Guardar paso}
 	\end{center}
 \end{table}
-
 
 \section{Guardar situaci\'on}
 \begin{table}[H]
@@ -403,7 +399,7 @@ volver al cap\'itulo de Captura de requisitos.
 	\end{center}
 \end{table}
 
-\pagebreak
+\newpage
 
 \section{Figuras de los casos de uso}
 Todas las figuras asociadas a los casos de uso extendidos pueden encontrarse en esta secci\'on
