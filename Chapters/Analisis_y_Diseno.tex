@@ -28,9 +28,15 @@ mismo tiempo se sabe que est\'an relacionadas, por lo que es necesario que los r
 sincronizados.
 
 A la hora de guardar, tampoco podr\'an guardarse distintos rangos que se solapen con los
-previamente creados para un mismo paso o situaci\'on. Ya que en un mismo instante de 
-tiempo, no pueden estar sucediendo dos cosas al mismo tiempo en el mismo paso o situaci\'on.
-Por ejemplo, un brazo no puede estar levant\'andose, y baj\'andose al mismo tiempo.
+previamente creados para un mismo paso o situaci\'on. La razón por la que no se pueden 
+solapar es que no tiene sentido definir que algo est\'a 
+ocurriendo dos veces exactamente en el mismo instante de tiempo. Si se dice que ``saltar"
+se produce en el intervalo [1, 3] y en el [2, 5], en los momentos 2 y 3...
+¿Se est\'a saltando dos veces? ¿Es el mismo salto? ¿Se est\'a saltando sobre un salto? ¿C\'omo 
+puede ser que en medio del primer salto se defina otro salto distinto? Esa es la raz\'on principal
+por la que dos cosas iguales no pueden ocurrir a la vez. En cambio, si que podr\'ia suceder
+que en un mismo intervalo de tiempo est\'en sucediendo dos cosas al mismo tiempo. Por ejemplo,
+``saltar" \ y ``flexionar rodillas".
 
 Gr\'aficamente las clases se dividen de dos maneras: Contenedores y clases ``hoja".
 El programa puede verse como una estructura de \'arbol, en las que de la ventana principal,
