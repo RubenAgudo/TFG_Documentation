@@ -1,4 +1,4 @@
-\documentclass[a4paper,12pt]{book}
+\documentclass[a4paper,12pt,openright,twoside]{report}
 \usepackage{inputenc}
 \usepackage[spanish]{babel}
 \usepackage{graphicx}
@@ -15,6 +15,7 @@
 \usepackage{pdfpages}
 
 \definecolor{lightgray}{gray}{0.9}
+\bibliographystyle{apacite}
 %\setmainfont{Helvetica Neue}
 
 %define la separacion que hay verticalmente entre parrafos
@@ -22,18 +23,20 @@
 
 \begin{document}
 
-\author{Rub\'{e}n Agudo Santos}
-\title{Trabajo de Fin de Grado}
-\date{\today}
+%\author{Rub\'{e}n Agudo Santos}
+%\title{Trabajo de Fin de Grado}
+%\date{\today}
 
+%\frontmatter
 \includepdf[pages={1}]{./Attachments/Portada.pdf}
-\frontmatter
+%\maketitle
+
 \tableofcontents
 \listoftables
 \listoffigures
 
 
-\mainmatter
+%\mainmatter
 
     \include{./Chapters/Introduccion}
     \include{./Chapters/Objetivos_del_proyecto}
@@ -42,20 +45,17 @@
     \include{./Chapters/Analisis_y_Diseno}
     \include{./Chapters/Desarrollo}
     \include{./Chapters/Verificacion_y_evaluacion}
-    \include{./Chapters/Conclusiones_y_trabajo_futuro}
-
+    \include{./Chapters/Conclusiones_y_trabajo_futuro}    
+    
+%\backmatter
+    %plain, alpha, amsplain, amsalpha
+    \bibliography{./Bibliography/bibliografia}
+    
+  
 \appendix
     \include{./Chapters/Diagrama_de_clases_completo}
     \include{./Chapters/Casos_de_uso_extendidos}
     \include{./Chapters/Diagramas_secuencia}
-    
-    
-    
-\backmatter
-    %plain, alpha, amsplain, amsalpha
-    \bibliographystyle{apacite}
-    \bibliography{./Bibliography/bibliografia}
-    
 % bibliography, glossary and index would go here.
 
 \end{document}
