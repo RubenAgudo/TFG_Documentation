@@ -17,7 +17,7 @@ Los datos que ha de guardar el software estar\'an en un XML. El XML se divide en
 \end{itemize}
 
 Por tanto se ha decidido guardar la lista de Observaciones, cada observaci\'on contiene la lista de Propiedades 
-y cada Propiedad una lista de Instantes en los que se guardar\'a los valores.
+y cada Propiedad una lista de Instantes en los que se guardar\'an los valores.
 
 El rango seleccionado en cada propiedad estar\'a sincronizado con el resto de propiedades cargadas. 
 Ya que no tiene sentido que por ejemplo, la observaci\'on ``coche", 
@@ -36,7 +36,7 @@ se produce en el intervalo [1, 3] y en el [2, 5], en los momentos 2 y 3...
 puede ser que en medio del primer salto se defina otro salto distinto? Esa es la raz\'on principal
 por la que dos cosas iguales no pueden ocurrir a la vez. En cambio, si que podr\'ia suceder
 que en un mismo intervalo de tiempo est\'en sucediendo dos cosas al mismo tiempo. Por ejemplo,
-``saltar" \ y ``flexionar rodillas".
+``saltar" \ y ``flexionar rodillas", pero se definir\'ian como pasos diferentes.
 
 Gr\'aficamente las clases se dividen de dos maneras: Contenedores y clases ``hoja".
 El programa puede verse como una estructura de \'arbol, en las que de la ventana principal,
@@ -62,7 +62,7 @@ partes grandes se hac\'ia sin miedo.
 \subsection{Librer\'{i}as usadas}
 \begin{itemize}
     \item \textbf{AvalonDock:} 
-    Es una librer\'{i}a que permite crear ventanas acoplables en WPF, al m\'as puro estilo Eclipse o Visual Studio. Es
+    Es una librer\'{i}a que permite crear ventanas acoplables en WPF, al m\'as puro estilo Eclipse o Visual Studio. Es de
     c\'{o}digo abierto y gratuita, pese a que tambi\'{e}n dispone de una versi\'{o}n profesional que es de pago. La usada en este proyecto
     ha sido la versi\'{o}n gratuita o \emph{community}. La versi\'{o}n usada esta licenciada bajo licencia BSD.
     \item \textbf{OxyPlot:}
@@ -73,13 +73,13 @@ partes grandes se hac\'ia sin miedo.
 \subsection{Patrones utilizados}
 
 \subsubsection{MVVM}
-MVVM es un patr\'{o}n de dise\~{n}o creado por Microsoft. Intenta conseguir las ventajas de Model-View-Controller como adem\'as una separaci\'{o}n total
+MVVM es un patr\'{o}n de dise\~{n}o creado por Microsoft. Intenta conseguir las ventajas de Model-View-Controller y adem\'as una separaci\'{o}n total
 de la vista del controlador. De esta forma los dise\~{n}adores de UI pueden centrar todos sus esfuerzos en crear la interfaz sin preocuparse 
 del c\'{o}digo de la aplicaci\'{o}n, ya que se asume que la interfaz va a cambiar mucho durante el ciclo de vida de la aplicaci\'{o}n. Pero,
 ¿Si separamos totalmente la vista del modelo, como se comunican? En MVC el encargado de eso es el controlador, pero un detalle importante es 
 que el c\'{o}digo referente a la vista debe tener llamadas a funciones en el lenguaje utilizado.
 
-Y en este punto es donde la parte VM \footnote{View-Model} toma sentido. el View-Model es una abstracci\'{o}n de la vista, y que es el objetivo 
+Y en este punto es donde la parte VM \footnote{View-Model} toma sentido. El View-Model es una abstracci\'{o}n de la vista, y que es el objetivo 
 de los enlaces de datos. El View-Model expone los datos del modelo para que el creador de interfaces pueda enlazar los elementos de la UI
 con los datos del modelo (bien utilizando orientaci\'{o}n a objetos o exponiendo los datos de la BD) sin escribir una sola l\'{i}nea de 
 c\'{o}digo .NET.
@@ -335,7 +335,8 @@ para hacer entender los m\'etodos que no se entienden o que tienen una l\'ogica 
 
 \subsection{Diagrama de clases}
 El diagrama de clases \ref{fig:ClassDiagram} tiene todos los m\'etodos, propiedades y atributos ocultos para que entrase
-en el propio documento. En el anexo \ref{chap:DiagramaDeClasesCompleto} puede encontrarse la versi\'on completa.
+en el propio documento. En el anexo \ref{chap:DiagramaDeClasesCompleto} puede encontrarse la versi\'on completa. Las clases que no son descritas m\'as adelante es porque o bien
+son clases propias de .NET o porque son clases generadas por Visual Studio.
 
 \begin{figure}[H]
 	\centering
@@ -348,7 +349,7 @@ en el propio documento. En el anexo \ref{chap:DiagramaDeClasesCompleto} puede en
 Clase abstracta que describe e implementa todos los m\'etodos y propiedades que han de tener todos los ViewModels. Es decir,
 define todo aquello que podr\'a ser cargado por un \emph{UC\_DataVisualizer}. Esta clase expone el m\'etodo
 \emph{potected abstract PlotModel createModel(List<DataPoint> points)}
-que todas sus clases han de implementar.
+que todas sus subclases han de implementar.
 
 \subsubsection{ContinousDataVisualizerViewModel}
 Subclase de \emph{AbstractDataVisualizerViewModel} que se especializa en tratar los datos cont\'inuos. 

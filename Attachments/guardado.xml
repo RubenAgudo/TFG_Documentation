@@ -1,0 +1,17 @@
+<step name="guardado.xml">
+    <interval start="1" end="3">
+		<observation name="observacion2">
+			<property type="1" name="prop21">
+				<instant ins="1" value="1"/>
+				<instant ins="2" value="2"/>
+				<instant ins="3" value="6"/>
+			</property>
+			<property type="0" name="prop22">
+				<instant ins="1" value="hola"/>
+				<instant ins="2" value="que tal"/>
+				<instant ins="3" value="hola"/>
+			</property>
+		</observation>
+	</interval>
+	...
+</data>

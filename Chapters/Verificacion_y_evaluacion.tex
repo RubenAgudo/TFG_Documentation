@@ -86,7 +86,7 @@ Para poder crear un intervalo es necesario tener cargado un XML, y adem\'as habe
 al menos, una propiedad en el sistema y tener un rango seleccionado.
 
 \subsection{Guardar el rango no habiendo ninguno guardado previamente}
-Se probar\'a si guarda correctamente un rango cu\'ando no hay ninguno guardado de antes.
+Se probar\'a si guarda correctamente un rango cuando no hay ninguno guardado de antes.
 Aqu\'i se pone a prueba el comportamiento de cuando se van a guardar rangos que no entran
 en conflicto con ninguno.
 
@@ -238,7 +238,7 @@ ya est\'a cargada y el usuario intenta volver a cargarla
 La propiedad no debe cargarse ni visualmente ni en memoria.
 
 \paragraph{Resultado obtenido}
-la propiedad no se carga visualmente pero si en memoria, y el software
+La propiedad no se carga visualmente pero s\'i en memoria, y el software
 al no ser consciente de que ese dato ha sido cargado, causa una fuga de memoria
 pudiendo dejar al pc sin memoria disponible.
 
@@ -340,5 +340,6 @@ En l\'ogica el valor ha cambiado pero el gr\'afico no se refresca.
 
 \paragraph{Acciones realizadas}
 Investigar la manera de refrescar manualmente los gr\'aficos.
-Finalmente se descubre que la funci\'on \emph{InvalidatePlot(true)} realiza
+Finalmente se descubre que la funci\'on \emph{InvalidatePlot(true)} de la
+clase \emph{PlotView} realiza
 esa tarea.
