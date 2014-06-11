@@ -358,6 +358,11 @@ ejemplo, tal y como puede verse en la figura \ref{EstructuraGuardado}.
     \label{EstructuraGuardado}
 \end{figure}
 
+Para poder determinar si los ficheros XML son v\'alidos se han creado dos 
+esquemas XSD. La ubicaci\'on de los ficheros XSD se especifican en el fichero 
+de configuraci\'on del programa. Por defecto la ubicaci\'on de los esquemas es 
+en la carpeta ra\'iz del software, dentro de una carpeta ``schemas".
+
 Una cosa interesante y que adem\'as no se ped\'ia desde el principio, era si 
 ten\'ia sentido implementar procesamiento paralelo o procesos en segundo plano. El 
 procesamiento paralelo finalmente no tiene sentido implementarlo ya que no hay tareas
@@ -407,7 +412,8 @@ una \'unica vez.
 
 En la \'ultima iteraci\'on, se decidi\'o sustituir el \emph{HashSet} y la lista por un \'arbol rojo-negro. Ya que permite
 inserci\'on, b\'usqueda y eliminaci\'on en tiempo O(ln n) frente al O(n) de las listas. 
-Adem\'as un \'arbol rojo negro, s\'olo permite que existe una vez el mismo objeto en el \'arbol.
+Adem\'as un \'arbol rojo negro, s\'olo permite que existe una vez el mismo 
+objeto en el \'arbol.
 
 \section{Gesti\'{o}n del c\'{o}digo fuente}
 Hasta ahora no se ha hablado de algo que bien no es parte del desarrollo, pero que igualmente es importante.
