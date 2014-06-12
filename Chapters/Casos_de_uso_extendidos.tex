@@ -1,14 +1,15 @@
 \chapter{Casos de uso extendidos}
 \label{chap:CasosDeUsoExt}
 En esta ap\'endice se proceder\'a a detallar cada caso de uso, dar una descripci\'on
-de que se hace, que actores toman parte, precondiciones, requisitos no funcionales, el flujo de
+de qu\'e se hace, que actores toman parte, precondiciones, requisitos no 
+funcionales, el flujo de
 eventos, as\'i como sus poscondiciones.
 
 De esta manera se podr\'a comprender m\'as f\'acilmente el funcionamiento del software
 sin la necesidad de utilizar el software o mirar el c\'odigo fuente e interfaz gr\'afica,
 que se encuentra al final de este anexo.
 
-Tambi\'en pongo aqu\'i el diagrama de casos de uso para que no haga falta
+Tambi\'en se a\~nade aqu\'i el diagrama de casos de uso para que no haga falta
 volver al cap\'itulo de Captura de requisitos.
 
 \begin{figure}[h]
@@ -83,7 +84,8 @@ volver al cap\'itulo de Captura de requisitos.
 			\multicolumn{2}{c}{\includegraphics[width=0.4\linewidth]{./Figures/AnadirVideo.png}} \\
 			\hline
 		    Nombre                     & A\~nadir v\'ideo \\
-		    Descripci\'on              & Abre un v\'ideo y lo a\~nade al contenedor
+		    Descripci\'on              & Abre uno o varios v\'ideos y los 
+		    							 a\~nade al contenedor
 		    							 de v\'ideos si ya hab\'ia v\'ideos previamente
 		    							 cargados. Si no, a\~nade tambi\'en un contenedor
 		    							 de v\'ideos.  \\ 
@@ -93,8 +95,8 @@ volver al cap\'itulo de Captura de requisitos.
 		    Flujo de eventos           & \begin{enumerate}
 		    								\item El usuario pincha en Add Video.
 		    								[\ref{fig:CargarVideo}]
-		    								\item \textbf{Si el contenedor no de v\'ideos estaba
-		    										      cargado}
+		    								\item \textbf{Si el contenedor de 
+		    								v\'ideos no estaba cargado}
 	    									\begin{enumerate}
 	    										\item Se crea y a\~nade un contenedor de v\'ideos.
 	    									\end{enumerate}
@@ -127,7 +129,8 @@ volver al cap\'itulo de Captura de requisitos.
 		\rowcolors{2}{lightgray}{} %\rowcolors{<starting row index>}{<odd row color>}{<even row color>}
 		\begin{tabular}{|l*{1}{p{10cm}}|}
 			
-			\multicolumn{2}{c}{\includegraphics[width=0.5\linewidth]{./Figures/CargarPropiedad.png}} \\
+			\multicolumn{2}{c}{\includegraphics[width=0.8\linewidth]{./Figures/CargarPropiedad.png}}
+			 \\
 			\hline
 		    Nombre                     & Cargar propiedad \\
 		    Descripci\'on              & Carga una propiedad en el contenedor de gr\'aficos
@@ -141,7 +144,8 @@ volver al cap\'itulo de Captura de requisitos.
 		    Flujo de eventos           & \begin{enumerate}
 		    								\item El usuario hace doble click en alg\'un elemento
 		    									  del \'arbol de observaciones y propiedades.
-		   									\item Carga el contenedor si no estaba creado
+		   									\item Crea el contenedor si no 
+		   									estaba creado
 		    								\item \textbf{Si el elemento es una observaci\'on}
 		    								\begin{enumerate}
 		    									\item A\~nade todos sus hijos no cargados al

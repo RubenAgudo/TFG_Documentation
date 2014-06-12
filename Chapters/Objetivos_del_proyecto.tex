@@ -6,7 +6,8 @@
 
 \section{Objetivos}
 Los objetivos del proyecto consisten en crear un software que extienda la funcionalidad actual del sistema ULISES desarrollado 
-por la universidad de Navarra y del grupo de investigación GALAN perteneciente a la UPV/EHU.
+por la universidad de Navarra y del grupo de investigaci\'on GALAN 
+perteneciente a la UPV/EHU.
 
 El software, debe permitir cargar observaciones y propiedades previamente capturadas con diversos
 sistemas interactivos (por ejemplo, con un dispositivo Kinect) y
@@ -28,7 +29,7 @@ como puede ser el desarrollo en cascada
 Al utilizar este tipo de metodolog\'ias se hace frente a uno de los mayores problemas del 
 desarrollo de software: la incertidumbre y los cambios
 no contemplados inicialmente, facilitando la reacci\'on ante los cambios
-al ser mucho mas flexible.
+al ser mucho m\'as flexible.
 
 Al utilizar un modelo de desarrollo \'agil, el ciclo de vida que va a utilizarse, ser\'a iterativo e incremental.
 
@@ -51,15 +52,21 @@ se puede ver el método de trabajo seg\'un Scrum, en el cual se observa lo impor
 %\newpage
 Scrum, de manera resumida consiste en lo siguiente:
 \begin{enumerate}
-	\item Hablar con el cliente para ver si hay nuevos requisitos.
-	\item Crear backlog, es decir, las tareas de ese sprint.
-	\item Programar los requisitos especificados en el sprint.
-	\item Reunión de retrospectiva para ver que ha ido mal y mejorarlo.
-	\item Enviar entregable al cliente.
-	\item Repetir.
+	\item Obtener la lista de tareas (Scrum backlog).
+	\item Mientras haya tareas en el Scrum backlog.
+	\begin{enumerate}
+		\item Crear sprint backlog, es decir, las tareas de ese sprint.
+		\item Programar las tareas del sprint.
+		\item Reuni\'on de retrospectiva para ver qu\'e ha ido mal y mejorarlo.
+		\item Enviar entregable al cliente.
+		\item Hablar con el cliente para ver si hay nuevos requisitos.
+		\item Repetir.
+	\end{enumerate}
+	
 \end{enumerate}
 
-Es fundamental entre sprint y sprint que el valor del producto haya aumentado. Lo importante es el producto, no el 
+Es fundamental que entre sprint y sprint el valor del producto haya aumentado. 
+Lo importante es el producto, no el 
 avance del propio proyecto. Se podr\'ia avanzar mucho en el dise\~no del software, pero si eso es algo que el cliente no 
 puede ver, se estar\'a fallando en el objetivo de ser \'agiles, ya que no le aporta nada.
 
@@ -80,8 +87,9 @@ paralizar el desarrollo del software y volver a analizar y diseñar. En cambio, 
 posible integrar ese cambio en el siguiente sprint.
 
 \subsection{Kanban}
-Kanban es un m\'etodo de organizaci\'on del conocimiento del trabajo que se est\'a realizando con un gran \'enfasis en el la entrega justo a 
-tiempo \footnote{JIT Delivery: Just-In-Time Delivery} sin sobrecargar al equipo \cite{Kanban:WhatIsIt}.
+Kanban es un m\'etodo de organizaci\'on del conocimiento del trabajo que se 
+est\'a realizando, con un gran \'enfasis en la entrega justo a 
+tiempo sin sobrecargar al equipo \cite{Kanban:WhatIsIt}.
 
 Kanban se centra mucho en que lo importante no es empezar muchas cosas, sino que se finalice
 aquello que est\'a empezado. Sirve sobre todo 
@@ -242,7 +250,9 @@ la duraci\'on y esfuerzo aproximados, as\'i como otros datos de inter\'es.
         \rowcolors{1}{lightgray}{} %\rowcolors{<starting row index>}{<odd row color>}{<even row color>}
         \begin{tabular}{l p{8cm}}
             Duraci\'{o}n (Horas / Persona)        & 10. \\ 
-            Descripci\'{o}n                       & Realizar el diseño de software, clases, Interfaces necesarias, que patrones van a usarse etc 
+            Descripci\'{o}n                       & Realizar el diseño de 
+            software, clases, Interfaces necesarias, qu\'e patrones van a 
+            usarse etc 
                                                     en el sprint del mes. \\
             Entradas                              & Tarea a realizar y la interfaz de usuario.\\
             Salidas / Entregables                 & Dise\~{n}o de software que guiar\'{a} el sprint del mes y la documentaci\'{o}n
@@ -331,10 +341,11 @@ la duraci\'on y esfuerzo aproximados, as\'i como otros datos de inter\'es.
         \rowcolors{1}{lightgray}{} %\rowcolors{<starting row index>}{<odd row color>}{<even row color>}
         \begin{tabular}{l p{8cm}}
             Duraci\'{o}n (Horas / Persona)        & 1. \\ 
-            Descripci\'{o}n                       & Entregar un CD con el ejecutable del proyecto realizado. \\
+            Descripci\'{o}n                       & Entregar el ejecutable del 
+            proyecto realizado. \\
             Entradas                              & El c\'{o}digo fuente del programa. \\
-            Salidas / Entregables                 & El ejecutable binario y el CD con el software. \\
-            Recursos necesarios                   & PC con grabadora, y un CD grabable en blanco. \\
+            Salidas / Entregables                 & El ejecutable binario. \\
+            Recursos necesarios                   & PC. \\
             Precedencias                          & Finalizar cap\'{i}tulos de la documentaci\'{o}n. \\
         \end{tabular}
     \end{center}
@@ -360,13 +371,14 @@ la duraci\'on y esfuerzo aproximados, as\'i como otros datos de inter\'es.
 
 
 \section{Planificaci\'{o}n temporal}
-Al seguirse un m\'etodo \'agil de desarrollo, la planificaci\'on se ha
+Al seguirse una metodolog\'ia \'agil de desarrollo, la planificaci\'on se ha
 dividido en sprints. Ciertamente, detallar los sprints de antemano,
 no es una buena idea, ya que se estar\'ia cayendo en el mismo error de el desarrollo
 en cascada. Es decir, el sprint 1, nos lleva al sprint 2, y el 2 al 3 y as\'i sucesivamente.
 
 Lo que se hace normalmente, es elegir lo que se va a hacer en el primer sprint, y hasta
-que no se termina, no se elige que se va a hacer en el segundo, aumentando la flexibilidad a 
+que no se termina, no se elige qu\'e se va a hacer en el segundo, aumentando la 
+flexibilidad a 
 los cambios y los imprevistos.
 
 Por lo tanto, se ha detallado una planificaci\'on de los sprints como algo orientativo,
@@ -418,7 +430,8 @@ Una vez configurados los ordenadores y elegidas las bibliotecas necesarias:
 El siguiente paso consiste en poder cargar v\'{i}deos, tantos como se quieran, desde el sistema de archivos.
 
 \begin{itemize}
-    \item Crear el control de cargar v\'{i}deos (contenedor de v\'{i}deos). El contenedor debe 
+    \item Crear el control de cargar v\'{i}deos (contenedor de v\'{i}deos). El 
+    contenedor debe 
     permitir:
     \begin{itemize}
         \item Cargar distintos v\'{i}deos desde el sistema de archivos.
@@ -445,7 +458,8 @@ crear un visualizador de datos.
         \item Visualizar datos continuos y discretos.
         \item Seleccionar un rango en la gr\'{a}fica, estableciendo un inicio y un fin para las 
         propiedades.
-        \item Que muestre el progreso, y que este sincronizado con el v\'{i}deo.
+        \item Que muestre el progreso, y que est\'e sincronizado con el 
+        v\'{i}deo.
         \item Guardar el inicio y fin seleccionado.
     \end{itemize}
 \end{itemize}
@@ -495,8 +509,10 @@ Las herramientas que se han utilizado para llevar a cabo este proyecto han sido:
 \begin{itemize}
     \item 
     \textbf{Visual Studio}
+    
     El \'unico software en el que no se ha tenido libertad de elecci\'on. Debido a que el 
-    software ULISES en el que MIPS ser\'a integrado est\'a desarrollado usando Visual Studio, se ha utilizado por 
+    software ULISES, en el que MIPS ser\'a integrado, est\'a desarrollado 
+    usando Visual Studio, se ha utilizado por 
     compatibilidad. Adem\'as, se estaba
     valorando la posibilidad de portar ULISES a WPF por lo que Visual Studio se 
     convert\'ia en una elecci\'on
@@ -591,7 +607,8 @@ temporal.
     \begin{center}
         \rowcolors{1}{lightgray}{} %\rowcolors{<starting row index>}{<odd row color>}{<even row color>}
         \begin{tabular}{l p{8cm}}
-            Descripci\'{o}n                 & Al utilizar dos ordenadores, una workstation y un port\'{a}til, puede que no 
+            Descripci\'{o}n                 & Al utilizar dos ordenadores, una 
+            workstation y un port\'{a}til, puede que no se
             								  disponga de las mismas versiones del software o que no se satisfagan todas las 
             								  dependencias. \\
             Prevenci\'{o}n                  & Asegurarse de disponer el mismo software con las mismas versiones. \\ 
@@ -645,7 +662,8 @@ temporal.
             								  satisfecho. \\
             Prevenci\'{o}n                  & Una buena comunicación con el cliente y reuniones progresivas para ir mostrando la 
             								  evolución del proyecto. \\ 
-            Plan de contingencia            & Blindar las caracter\'{i}sticas, solo se realizaran las estipuladas durante el 
+            Plan de contingencia            & Blindar las caracter\'{i}sticas, 
+            solo se realizar\'an las estipuladas durante el 
             							   	  proyecto. \\
             Probabilidad                    & Probable \\
             Impacto                         & Muy alto \\
@@ -659,7 +677,8 @@ temporal.
     \begin{center}
         \rowcolors{1}{lightgray}{} %\rowcolors{<starting row index>}{<odd row color>}{<even row color>}
         \begin{tabular}{l p{8cm}}
-            Descripci\'{o}n                 & Los  programadores  tienen  un  conocimiento
+            Descripci\'{o}n                 & Los  programadores  al tener  un  
+            conocimiento
             inform\'{a}tico superior no tendr\'{a}n problemas con el uso, pero los usuarios s\'i pueden tenerlos.\\
             Prevenci\'{o}n                  & Un diseño de interfaz sencillo y probar versiones con
             usuarios con conocimientos inform\'{a}ticos bajos. \\ 
@@ -701,7 +720,9 @@ temporal.
             Prevenci\'{o}n                  & Realizar un buen dise\~{n}o para que la posibilidad de añadir
             								  funcionalidades no suponga un coste muy elevado. \\ 
             Plan de contingencia            & Evaluar los nuevos requisitos para saber si se pueden
-            								  abordar o no y si fuese que s\'i estudiar la situación y realizarlo. \\
+            								  abordar o no y si fuese que s\'i, 
+            								  estudiar la situación y 
+            								  realizarlo. \\
             Probabilidad                    & Probable \\
             Impacto                         & Alto \\
         \end{tabular}
@@ -762,13 +783,14 @@ propiedad. Por lo que el gasto de alquiler/hipoteca es 0€.
 Con la amortizaci\'on cargamos al cliente con el desgaste que supone utilizar esos
 dispositivos para esa tarea. Como el proyecto ha durado siete meses, la amortizaci\'on
 correspondiente a este a\~no deber\'a ser multiplicada por $ \frac{7 meses}{12 meses} = 0.582 $ 
-para cobrar de manera correcta por ese desgaste. Este factor se le aplicar\'a tanto al Software de pago como
+para cobrar de manera correcta por ese desgaste. Este factor se le aplicar\'a 
+tanto al software de pago como
 a los dispositivos inform\'aticos utilizados.
 
 \subsubsection{Material inform\'{a}tico}
 El material informático que se va a usar es un portátil Acer TravelMate 5742G comprado en 
 Diciembre de 2010 y usado intensivamente durante estos 4 años. 
-El portátil estaba pensado para ser amortizado en 8 años.
+El portátil est\'a pensado para ser amortizado en 8 años.
 
 Por lo tanto:
 
@@ -802,7 +824,7 @@ Amortizacion \ acumulada (2014) = 274.5 + 68.625 = 343.125 €
 \end{center}
 
 Tambi\'{e}n se va a usar un PC gen\'{e}rico comprado a piezas en 2012, y pensado para
-ser amortizado en 10 a\~nos. El precio fue 277.65 € IVA incluido.
+ser amortizado en 10 a\~nos. El precio fue 277,65 € IVA incluido.
 Por lo que su amortizaci\'on hasta el d\'ia de hoy ha sido:
 
 \begin{center}
