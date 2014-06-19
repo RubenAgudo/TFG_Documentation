@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<data xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	  EspObservation="ObservationModelExample.xml" instantLength="1">
+	<observation name="Lanzar pelota">
+		<property name="Altura pelota" type="1">
+			<instant ins="1" value="1"/>
+			<instant ins="2" value="2"/>
+			<instant ins="3" value="4"/>
+			<instant ins="4" value="8"/>
+			<instant ins="5" value="16"/>
+			<instant ins="6" value="32"/>
+			<instant ins="7" value="16"/>
+			<instant ins="8" value="15.9"/>
+			<instant ins="9" value="15.8"/>
+			<instant ins="10" value="15.6"/>
+		</property>
+	</observation>
+	<observation name="Golpear pelota">
+		<property name="Pelota golpeada" type="0">
+			<instant ins="1" value="No"/>
+			<instant ins="2" value="No"/>
+			<instant ins="3" value="No"/>
+			<instant ins="4" value="No"/>
+			<instant ins="5" value="No"/>
+			<instant ins="6" value="No"/>
+			<instant ins="7" value="Si"/>
+			<instant ins="8" value="No"/>
+			<instant ins="9" value="No"/>
+			<instant ins="10" value="No"/>
+		</property>
+	</observation>
+</data>
