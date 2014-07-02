@@ -54,10 +54,99 @@
 		\item Cargar v\'ideos y visualizarlos
 		\item Seleccionar rangos
 		\item Exportar los rangos seleccionados en XML
-		\item Organizar los elementos como se desee, tipo Eclipse o Visual 
+		\item Interfaz tipo IDE, como Eclipse o Visual 
 		Studio
 	\end{enumerate}
 	
 \end{frame}
 
+\begin{frame}
+    \frametitle{Desarrollo}
+    \framesubtitle{C\'omo se ha hecho}
+    \begin{block}{Cargar un XML con las observaciones y propiedades}
+        
+        \begin{itemize}
+            \item Se ha utilizado LINQ to XML
+            \item Permite realizar consultas similares a SQL a los XML
+        \end{itemize}
+        
+    \end{block}
+    
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Desarrollo}
+    \framesubtitle{C\'omo se ha hecho}
+    
+    \begin{block}{Ejemplo LINQ To XML}
+        \begin{lstlisting}[ breaklines=true, language=C, 
+        numbers=left, 
+        showspaces=false]
+        private IEnumerable<XElement> getData(string observacion)
+        {
+            return from prop in xml.Descendants("property")
+                where (string)prop.Parent.Attribute("name") == 
+                observacion
+                select prop;
+        }
+        \end{lstlisting}
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Desarrollo}
+    \framesubtitle{C\'omo se ha hecho}
+    
+    \begin{block}{Seleccionar rangos}
+        
+        \begin{columns}[T]
+            \begin{column}[T]{0.5\linewidth}
+                \begin{enumerate}
+                    \item Cada propiedad notifica a su padre cuando cambia
+                    \item Esa observaci\'on notifica al Gestor de gr\'aficos 
+                    \item El gestor cicla a trav\'es de todas las observaciones
+                    \item Cada observaci\'on actualiza el valor de sus 
+                    propiedades
+                \end{enumerate}
+            \end{column}
+            
+            \begin{column}[T]{0.5\linewidth}
+                    
+                \includegraphics[width=1.0\linewidth]{Figures/EstructuraDatos.PNG}
+               
+            \end{column}
+        \end{columns}
+       
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Desarrollo}
+    \framesubtitle{C\'omo se ha hecho}
+    
+    \begin{block}{Exportar los rangos seleccionados}
+        
+        \begin{itemize}
+            \item Igual que cargar, pero al rev\'es
+            \item Se usa LINQ para obtener los datos de los View-Models
+            \item Se crean los elementos XML y se van guardando
+            \item Finalmente se exportan haciendo \emph{.toString()}
+        \end{itemize}
+        
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Desarrollo}
+    \framesubtitle{C\'omo se ha hecho}
+    
+    \begin{block}{Interfaz tipo IDE}
+        \begin{figure}
+            \centering
+            \includegraphics[width=0.6\linewidth]{Figures/AvalonDock.PNG}
+        \end{figure}
+        
+
+    \end{block}
+\end{frame}
 
